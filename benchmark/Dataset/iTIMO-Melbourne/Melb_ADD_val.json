@@ -1,0 +1,3205 @@
+{
+  "3255": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "St Michael's Uniting Church",
+          "Church",
+          "144.969174036096",
+          "-37.8143851325",
+          "medium"
+        ],
+        [
+          "Comedy Theatre",
+          "Theatre Live",
+          "144.97013311862",
+          "-37.8102053945",
+          "medium"
+        ],
+        [
+          "Council House 2 (CH2)",
+          "Retail/Office/Carpark",
+          "144.966638432727",
+          "-37.8142591432",
+          "high"
+        ],
+        [
+          "Victoria Police",
+          "Police Station",
+          "144.966486801188",
+          "-37.8164849024",
+          "high"
+        ],
+        [
+          "Melbourne Town Hall",
+          "Public Buildings",
+          "144.966542722283",
+          "-37.8150754791",
+          "high"
+        ],
+        [
+          "David Jones",
+          "Department Store",
+          "144.964373486798",
+          "-37.8133127261",
+          "medium"
+        ],
+        [
+          "The Melbourne Athenaeum Library",
+          "Library",
+          "144.967291289941",
+          "-37.8148855756",
+          "low"
+        ],
+        [
+          "Southgate Arts and Leisure Precinct",
+          "Retail/Office/Carpark",
+          "144.965989052839",
+          "-37.8202245787",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "removed_index": 6
+    },
+    "rec_exmaples": [
+      "1012",
+      "1274",
+      "1032",
+      "115",
+      "1155"
+    ],
+    "rec_examples_gpt_text_large": [
+      "3950",
+      "2938",
+      "1921",
+      "3799",
+      "2691"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "2341",
+      "2306",
+      "1967",
+      "3256",
+      "3281"
+    ],
+    "rec_examples_qwen3_8b": [
+      "2157",
+      "1136",
+      "1825",
+      "1078",
+      "1921"
+    ]
+  },
+  "901": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Hamer Hall",
+          "Theatre Live",
+          "144.967992144257",
+          "-37.8199901009",
+          "high"
+        ],
+        [
+          "SBS (Special Broadcasting Service)",
+          "Office",
+          "144.968740597156",
+          "-37.817692121",
+          "high"
+        ],
+        [
+          "Flemington Bridge Railway Station",
+          "Railway Station",
+          "144.939277838304",
+          "-37.788164589",
+          "low"
+        ],
+        [
+          "Federation Square",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.968963600783",
+          "-37.8178516572",
+          "high"
+        ],
+        [
+          "St Pauls Cathedral",
+          "Church",
+          "144.967681647402",
+          "-37.8169549012",
+          "high"
+        ],
+        [
+          "Melbourne Visitor Centre",
+          "Visitor Centre",
+          "144.967937138226",
+          "-37.8177352402",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "removed_index": 2
+    },
+    "rec_exmaples": [
+      "1006",
+      "1021",
+      "1160",
+      "121",
+      "1275"
+    ],
+    "rec_examples_gpt_text_large": [
+      "1654",
+      "2950",
+      "1868",
+      "2761",
+      "783"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "2838",
+      "3182",
+      "611",
+      "2952",
+      "264"
+    ],
+    "rec_examples_qwen3_8b": [
+      "2849",
+      "1725",
+      "3720",
+      "1868",
+      "1654"
+    ]
+  },
+  "1460": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Forum Theatre",
+          "Theatre Live",
+          "144.969386556998",
+          "-37.8164854097",
+          "high"
+        ],
+        [
+          "Flemington Bridge Railway Station",
+          "Railway Station",
+          "144.939277838304",
+          "-37.788164589",
+          "low"
+        ],
+        [
+          "Australian Centre For The Moving Image (ACMI)",
+          "Art Gallery/Museum",
+          "144.969070431323",
+          "-37.8176107327",
+          "medium"
+        ],
+        [
+          "Sandridge Rail Bridge",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.96298113724",
+          "-37.8201763043",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "removed_index": 1
+    },
+    "rec_exmaples": [
+      "1006",
+      "1021",
+      "1160",
+      "121",
+      "1275"
+    ],
+    "rec_examples_gpt_text_large": [
+      "1274",
+      "2029",
+      "1982",
+      "3448",
+      "2433"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "3437",
+      "3448",
+      "2363",
+      "1007",
+      "121"
+    ],
+    "rec_examples_qwen3_8b": [
+      "3448",
+      "2363",
+      "1274",
+      "2911",
+      "1868"
+    ]
+  },
+  "1481": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Lutheran Trinity Church",
+          "Church",
+          "144.975729473552",
+          "-37.8109757054",
+          "medium"
+        ],
+        [
+          "St Patricks Cathedral",
+          "Church",
+          "144.975901529712",
+          "-37.810114095",
+          "medium"
+        ],
+        [
+          "Fitzroy Gardens",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.980455714669",
+          "-37.8129616332",
+          "low"
+        ],
+        [
+          "Sinclair's Cottage",
+          "Art Gallery/Museum",
+          "144.980554992725",
+          "-37.8145407488",
+          "low"
+        ],
+        [
+          "Carlton Gardens South",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.971266479841",
+          "-37.8060684577",
+          "medium"
+        ],
+        [
+          "IMAX Melbourne",
+          "Cinema",
+          "144.970639929886",
+          "-37.8034315562",
+          "medium"
+        ],
+        [
+          "City Baths",
+          "Major Sports & Recreation Facility",
+          "144.963189789721",
+          "-37.8071585351",
+          "medium"
+        ],
+        [
+          "Melbourne Central Railway Station",
+          "Railway Station",
+          "144.963789344893",
+          "-37.8100167031",
+          "high"
+        ],
+        [
+          "State Library Victoria",
+          "Public Buildings",
+          "144.964330322397",
+          "-37.8099852201",
+          "high"
+        ],
+        [
+          "Council House 2 (CH2)",
+          "Retail/Office/Carpark",
+          "144.966638432727",
+          "-37.8142591432",
+          "high"
+        ],
+        [
+          "The Ian Potter Centre: NGV Australia",
+          "Art Gallery/Museum",
+          "144.969899048343",
+          "-37.8174831423",
+          "medium"
+        ],
+        [
+          "Melbourne Town Hall",
+          "Public Buildings",
+          "144.966542722283",
+          "-37.8150754791",
+          "high"
+        ],
+        [
+          "Victoria Police",
+          "Police Station",
+          "144.966486801188",
+          "-37.8164849024",
+          "high"
+        ],
+        [
+          "St Pauls Cathedral",
+          "Church",
+          "144.967681647402",
+          "-37.8169549012",
+          "high"
+        ],
+        [
+          "Melbourne Visitor Centre",
+          "Visitor Centre",
+          "144.967937138226",
+          "-37.8177352402",
+          "high"
+        ],
+        [
+          "Hamer Hall",
+          "Theatre Live",
+          "144.967992144257",
+          "-37.8199901009",
+          "high"
+        ],
+        [
+          "Sandridge Rail Bridge",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.96298113724",
+          "-37.8201763043",
+          "high"
+        ],
+        [
+          "Southgate Arts and Leisure Precinct",
+          "Retail/Office/Carpark",
+          "144.965989052839",
+          "-37.8202245787",
+          "high"
+        ],
+        [
+          "State Theatre",
+          "Theatre Live",
+          "144.968469643744",
+          "-37.821280635",
+          "medium"
+        ],
+        [
+          "FairFax Studio",
+          "Theatre Live",
+          "144.968836241692",
+          "-37.8216684582",
+          "low"
+        ],
+        [
+          "Victorian Arts Centre",
+          "Art Gallery/Museum",
+          "144.968837288153",
+          "-37.8219947336",
+          "medium"
+        ],
+        [
+          "NGV International",
+          "Public Buildings",
+          "144.969342535451",
+          "-37.8230135001",
+          "high"
+        ]
+      ],
+      "hint": "\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n",
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "removed_index": 10
+    },
+    "rec_exmaples": [
+      "2166",
+      "2864",
+      "3434",
+      "1611",
+      "1483"
+    ],
+    "rec_examples_gpt_text_large": [
+      "1611",
+      "3434",
+      "1483",
+      "900",
+      "3169"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "1825",
+      "1611",
+      "1572",
+      "3191",
+      "575"
+    ],
+    "rec_examples_qwen3_8b": [
+      "1825",
+      "1572",
+      "1611",
+      "900",
+      "3169"
+    ]
+  },
+  "2694": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Flagstaff Gardens",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.954696055235",
+          "-37.8111222889",
+          "low"
+        ],
+        [
+          "David Jones",
+          "Department Store",
+          "144.964373486798",
+          "-37.8133127261",
+          "medium"
+        ],
+        [
+          "Former Royal Mint",
+          "Office",
+          "144.957055454136",
+          "-37.8121838749",
+          "low"
+        ],
+        [
+          "Myer",
+          "Department Store",
+          "144.963855087868",
+          "-37.8135911985",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "removed_index": 1
+    },
+    "rec_exmaples": [
+      "1012",
+      "1274",
+      "1032",
+      "115",
+      "1155"
+    ],
+    "rec_examples_gpt_text_large": [
+      "338",
+      "3646",
+      "1092",
+      "757",
+      "3281"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "1495",
+      "2169",
+      "605",
+      "246",
+      "1802"
+    ],
+    "rec_examples_qwen3_8b": [
+      "1012",
+      "852",
+      "1495",
+      "3646",
+      "3421"
+    ]
+  },
+  "2928": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Council House 2 (CH2)",
+          "Retail/Office/Carpark",
+          "144.966638432727",
+          "-37.8142591432",
+          "high"
+        ],
+        [
+          "Melbourne Visitor Booth",
+          "Visitor Centre",
+          "144.964425882562",
+          "-37.8139525061",
+          "high"
+        ],
+        [
+          "Flemington Bridge Railway Station",
+          "Railway Station",
+          "144.939277838304",
+          "-37.788164589",
+          "low"
+        ],
+        [
+          "David Jones",
+          "Department Store",
+          "144.964373486798",
+          "-37.8133127261",
+          "medium"
+        ],
+        [
+          "Church of Christ",
+          "Church",
+          "144.96388920294",
+          "-37.8104524079",
+          "medium"
+        ],
+        [
+          "State Library Victoria",
+          "Public Buildings",
+          "144.964330322397",
+          "-37.8099852201",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "removed_index": 2
+    },
+    "rec_exmaples": [
+      "1006",
+      "1021",
+      "1160",
+      "121",
+      "1275"
+    ],
+    "rec_examples_gpt_text_large": [
+      "151",
+      "604",
+      "1237",
+      "660",
+      "2952"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "2952",
+      "3696",
+      "2838",
+      "611",
+      "151"
+    ],
+    "rec_examples_qwen3_8b": [
+      "2952",
+      "933",
+      "660",
+      "3174",
+      "604"
+    ]
+  },
+  "1718": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Melbourne Visitor Booth",
+          "Visitor Centre",
+          "144.964425882562",
+          "-37.8139525061",
+          "high"
+        ],
+        [
+          "Melbourne Visitor Centre",
+          "Visitor Centre",
+          "144.967937138226",
+          "-37.8177352402",
+          "high"
+        ],
+        [
+          "New Quay Marina",
+          "Marina",
+          "144.942283726231",
+          "-37.8152925455",
+          "low"
+        ],
+        [
+          "DFO South Wharf",
+          "Retail/Office",
+          "144.949794297819",
+          "-37.8248874012",
+          "low"
+        ],
+        [
+          "St Patricks Cathedral",
+          "Church",
+          "144.975901529712",
+          "-37.810114095",
+          "medium"
+        ],
+        [
+          "Southern Cross Railway Station",
+          "Railway Station",
+          "144.952944748845",
+          "-37.8181633057",
+          "medium"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n",
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "removed_index": 4
+    },
+    "rec_exmaples": [
+      "1008",
+      "1034",
+      "1687",
+      "3169",
+      "102"
+    ],
+    "rec_examples_gpt_text_large": [
+      "102",
+      "1687",
+      "1034",
+      "2093",
+      "1778"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "3866",
+      "3447",
+      "181",
+      "3953",
+      "3174"
+    ],
+    "rec_examples_qwen3_8b": [
+      "3866",
+      "593",
+      "1778",
+      "3612",
+      "2093"
+    ]
+  },
+  "3382": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Carlton Gardens South",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.971266479841",
+          "-37.8060684577",
+          "medium"
+        ],
+        [
+          "Melbourne Visitor Centre",
+          "Visitor Centre",
+          "144.967937138226",
+          "-37.8177352402",
+          "high"
+        ],
+        [
+          "Hamer Hall",
+          "Theatre Live",
+          "144.967992144257",
+          "-37.8199901009",
+          "high"
+        ],
+        [
+          "Melbourne Zoo",
+          "Outdoor Recreation Facility (Zoo, Golf Course)",
+          "144.951371205938",
+          "-37.7844449254",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "removed_index": 0
+    },
+    "rec_exmaples": [
+      "1006",
+      "1021",
+      "1160",
+      "121",
+      "1275"
+    ],
+    "rec_examples_gpt_text_large": [
+      "3732",
+      "1006",
+      "2811",
+      "852",
+      "2586"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "2811",
+      "1982",
+      "852",
+      "3732",
+      "2779"
+    ],
+    "rec_examples_qwen3_8b": [
+      "2811",
+      "2586",
+      "852",
+      "2779",
+      "3732"
+    ]
+  },
+  "1335": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Fire Services Museum Victoria",
+          "Art Gallery/Museum",
+          "144.975373745366",
+          "-37.8085761282",
+          "low"
+        ],
+        [
+          "The Royal Victorian Eye & Ear Hospital",
+          "Public Hospital",
+          "144.976268275082",
+          "-37.808752283",
+          "low"
+        ],
+        [
+          "St Patricks Cathedral",
+          "Church",
+          "144.975901529712",
+          "-37.810114095",
+          "medium"
+        ],
+        [
+          "St Pauls Cathedral",
+          "Church",
+          "144.967681647402",
+          "-37.8169549012",
+          "high"
+        ],
+        [
+          "Australian Centre For The Moving Image (ACMI)",
+          "Art Gallery/Museum",
+          "144.969070431323",
+          "-37.8176107327",
+          "medium"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n",
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "removed_index": 4
+    },
+    "rec_exmaples": [
+      "1008",
+      "1034",
+      "1687",
+      "3169",
+      "102"
+    ],
+    "rec_examples_gpt_text_large": [
+      "3866",
+      "1687",
+      "2166",
+      "2379",
+      "102"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "1229",
+      "2680",
+      "1813",
+      "3866",
+      "102"
+    ],
+    "rec_examples_qwen3_8b": [
+      "2942",
+      "1341",
+      "2943",
+      "1078",
+      "3196"
+    ]
+  },
+  "1594": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Collins Street Baptist Church",
+          "Church",
+          "144.968072486031",
+          "-37.8147011905",
+          "medium"
+        ],
+        [
+          "Old Treasury Building",
+          "Office",
+          "144.974423610255",
+          "-37.8132371663",
+          "medium"
+        ],
+        [
+          "Council House 2 (CH2)",
+          "Retail/Office/Carpark",
+          "144.966638432727",
+          "-37.8142591432",
+          "high"
+        ],
+        [
+          "Parliament Railway Station",
+          "Railway Station",
+          "144.973433796529",
+          "-37.8127621114",
+          "low"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "removed_index": 2
+    },
+    "rec_exmaples": [
+      "1006",
+      "1021",
+      "1160",
+      "121",
+      "1275"
+    ],
+    "rec_examples_gpt_text_large": [
+      "3950",
+      "1396",
+      "1093",
+      "2938",
+      "1393"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "712",
+      "266",
+      "690",
+      "1725",
+      "3179"
+    ],
+    "rec_examples_qwen3_8b": [
+      "1093",
+      "604",
+      "3262",
+      "3950",
+      "2111"
+    ]
+  },
+  "3187": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Church of Christ",
+          "Church",
+          "144.96388920294",
+          "-37.8104524079",
+          "medium"
+        ],
+        [
+          "St Francis Church",
+          "Church",
+          "144.962422614541",
+          "-37.8118847832",
+          "medium"
+        ],
+        [
+          "Welsh Presbyterian Church",
+          "Church",
+          "144.959873260087",
+          "-37.8104478768",
+          "low"
+        ],
+        [
+          "St James Church",
+          "Church",
+          "144.952468571683",
+          "-37.8101281202",
+          "low"
+        ],
+        [
+          "Victoria Police",
+          "Police Station",
+          "144.966486801188",
+          "-37.8164849024",
+          "high"
+        ],
+        [
+          "Lutheran Trinity Church",
+          "Church",
+          "144.975729473552",
+          "-37.8109757054",
+          "medium"
+        ],
+        [
+          "St Michael's Uniting Church",
+          "Church",
+          "144.969174036096",
+          "-37.8143851325",
+          "medium"
+        ],
+        [
+          "Scots Church",
+          "Church",
+          "144.96855105335",
+          "-37.8145687803",
+          "low"
+        ],
+        [
+          "St Pauls Cathedral",
+          "Church",
+          "144.967681647402",
+          "-37.8169549012",
+          "high"
+        ]
+      ],
+      "hint": "The itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "removed_index": 4
+    },
+    "rec_exmaples": [
+      "3295",
+      "1468",
+      "1480",
+      "1093",
+      "1847"
+    ],
+    "rec_examples_gpt_text_large": [
+      "3950",
+      "2938",
+      "2111",
+      "1921",
+      "723"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "1093",
+      "2492",
+      "190",
+      "1468",
+      "2919"
+    ],
+    "rec_examples_qwen3_8b": [
+      "1136",
+      "1778",
+      "2111",
+      "2169",
+      "2948"
+    ]
+  },
+  "2016": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "St James Church",
+          "Church",
+          "144.952468571683",
+          "-37.8101281202",
+          "low"
+        ],
+        [
+          "Southgate Arts and Leisure Precinct",
+          "Retail/Office/Carpark",
+          "144.965989052839",
+          "-37.8202245787",
+          "high"
+        ],
+        [
+          "Melbourne Visitor Centre",
+          "Visitor Centre",
+          "144.967937138226",
+          "-37.8177352402",
+          "high"
+        ],
+        [
+          "State Theatre",
+          "Theatre Live",
+          "144.968469643744",
+          "-37.821280635",
+          "medium"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "removed_index": 0
+    },
+    "rec_exmaples": [
+      "1006",
+      "1021",
+      "1160",
+      "121",
+      "1275"
+    ],
+    "rec_examples_gpt_text_large": [
+      "3950",
+      "1921",
+      "3799",
+      "3292",
+      "2129"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "3171",
+      "2157",
+      "2939",
+      "1982",
+      "2110"
+    ],
+    "rec_examples_qwen3_8b": [
+      "2433",
+      "2950",
+      "1825",
+      "3612",
+      "163"
+    ]
+  },
+  "905": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "State Library Victoria",
+          "Public Buildings",
+          "144.964330322397",
+          "-37.8099852201",
+          "high"
+        ],
+        [
+          "Our Lady of Lebanon Church",
+          "Church",
+          "144.969334720932",
+          "-37.802576654",
+          "low"
+        ],
+        [
+          "Carlton Gardens North",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.971997551189",
+          "-37.8017690847",
+          "low"
+        ],
+        [
+          "Eureka Skydeck 88",
+          "Observation Tower/Wheel",
+          "144.964622218598",
+          "-37.8216187583",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "removed_index": 3
+    },
+    "rec_exmaples": [
+      "1006",
+      "1021",
+      "1160",
+      "121",
+      "1275"
+    ],
+    "rec_examples_gpt_text_large": [
+      "3190",
+      "626",
+      "1480",
+      "115",
+      "472"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "2761",
+      "1798",
+      "690",
+      "602",
+      "3971"
+    ],
+    "rec_examples_qwen3_8b": [
+      "2301",
+      "3190",
+      "312",
+      "3658",
+      "723"
+    ]
+  },
+  "3043": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Princess Theatre",
+          "Theatre Live",
+          "144.9723265962",
+          "-37.8107257091",
+          "medium"
+        ],
+        [
+          "Parliament Railway Station",
+          "Railway Station",
+          "144.972330132127",
+          "-37.8095762219",
+          "low"
+        ],
+        [
+          "Parliament Railway Station",
+          "Railway Station",
+          "144.973433796529",
+          "-37.8127621114",
+          "low"
+        ],
+        [
+          "Old Treasury Building",
+          "Office",
+          "144.974423610255",
+          "-37.8132371663",
+          "medium"
+        ],
+        [
+          "Parliament Railway Station",
+          "Railway Station",
+          "144.973742010011",
+          "-37.8121572789",
+          "low"
+        ],
+        [
+          "Melbourne Aquarium",
+          "Aquarium",
+          "144.958425696055",
+          "-37.8209627825",
+          "high"
+        ],
+        [
+          "Lutheran Trinity Church",
+          "Church",
+          "144.975729473552",
+          "-37.8109757054",
+          "medium"
+        ],
+        [
+          "Treasury Reserve",
+          "Retail/Office",
+          "144.975236759799",
+          "-37.8129178793",
+          "low"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "removed_index": 5
+    },
+    "rec_exmaples": [
+      "1012",
+      "1274",
+      "1032",
+      "115",
+      "1155"
+    ],
+    "rec_examples_gpt_text_large": [
+      "163",
+      "45",
+      "620",
+      "2926",
+      "2691"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "163",
+      "2943",
+      "720",
+      "1471",
+      "1341"
+    ],
+    "rec_examples_qwen3_8b": [
+      "1572",
+      "1532",
+      "1500",
+      "2926",
+      "45"
+    ]
+  },
+  "2690": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Regent Theatre",
+          "Theatre Live",
+          "144.967916735261",
+          "-37.8160014744",
+          "high"
+        ],
+        [
+          "The Melbourne Athenaeum Library",
+          "Library",
+          "144.967291289941",
+          "-37.8148855756",
+          "low"
+        ],
+        [
+          "Flinders Street Railway Station",
+          "Railway Station",
+          "144.967064817875",
+          "-37.8179063008",
+          "high"
+        ],
+        [
+          "Melbourne Central Railway Station",
+          "Railway Station",
+          "144.963789344893",
+          "-37.8100167031",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "removed_index": 1
+    },
+    "rec_exmaples": [
+      "1012",
+      "1274",
+      "1032",
+      "115",
+      "1155"
+    ],
+    "rec_examples_gpt_text_large": [
+      "360",
+      "1847",
+      "620",
+      "2691",
+      "2341"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "626",
+      "3935",
+      "731",
+      "360",
+      "1937"
+    ],
+    "rec_examples_qwen3_8b": [
+      "360",
+      "2306",
+      "2926",
+      "1075",
+      "3720"
+    ]
+  },
+  "3247": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Parliament Railway Station",
+          "Railway Station",
+          "144.973017263156",
+          "-37.8116061787",
+          "high"
+        ],
+        [
+          "J.J Holland Park",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.923837074813",
+          "-37.7982358832",
+          "low"
+        ],
+        [
+          "Flinders Street Railway Station",
+          "Railway Station",
+          "144.967064817875",
+          "-37.8179063008",
+          "high"
+        ],
+        [
+          "Melbourne Central",
+          "Retail/Office/Carpark",
+          "144.962749729496",
+          "-37.8105371797",
+          "medium"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n",
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "removed_index": 1
+    },
+    "rec_exmaples": [
+      "1008",
+      "1034",
+      "1687",
+      "3169",
+      "102"
+    ],
+    "rec_examples_gpt_text_large": [
+      "3866",
+      "3953",
+      "2093",
+      "1687",
+      "1483"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "2093",
+      "1600",
+      "3696",
+      "3953",
+      "3866"
+    ],
+    "rec_examples_qwen3_8b": [
+      "3696",
+      "3953",
+      "957",
+      "3174",
+      "117"
+    ]
+  },
+  "3746": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Melbourne Central Railway Station",
+          "Railway Station",
+          "144.963789344893",
+          "-37.8100167031",
+          "high"
+        ],
+        [
+          "The Museum Of Australian Chinese History",
+          "Art Gallery/Museum",
+          "144.96923385414",
+          "-37.8107686128",
+          "low"
+        ],
+        [
+          "Church of Christ",
+          "Church",
+          "144.96388920294",
+          "-37.8104524079",
+          "medium"
+        ],
+        [
+          "Parliament Railway Station",
+          "Railway Station",
+          "144.973017263156",
+          "-37.8116061787",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "removed_index": 1
+    },
+    "rec_exmaples": [
+      "1012",
+      "1274",
+      "1032",
+      "115",
+      "1155"
+    ],
+    "rec_examples_gpt_text_large": [
+      "2306",
+      "3245",
+      "2110",
+      "2259",
+      "3213"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "1937",
+      "626",
+      "2248",
+      "360",
+      "731"
+    ],
+    "rec_examples_qwen3_8b": [
+      "929",
+      "3295",
+      "3184",
+      "3245",
+      "940"
+    ]
+  },
+  "3795": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "State Theatre",
+          "Theatre Live",
+          "144.968469643744",
+          "-37.821280635",
+          "medium"
+        ],
+        [
+          "Victorian Arts Centre",
+          "Art Gallery/Museum",
+          "144.968837288153",
+          "-37.8219947336",
+          "medium"
+        ],
+        [
+          "The Museum Of Australian Chinese History",
+          "Art Gallery/Museum",
+          "144.96923385414",
+          "-37.8107686128",
+          "low"
+        ],
+        [
+          "NGV International",
+          "Public Buildings",
+          "144.969342535451",
+          "-37.8230135001",
+          "high"
+        ],
+        [
+          "Southgate Arts and Leisure Precinct",
+          "Retail/Office/Carpark",
+          "144.965989052839",
+          "-37.8202245787",
+          "high"
+        ],
+        [
+          "Hamer Hall",
+          "Theatre Live",
+          "144.967992144257",
+          "-37.8199901009",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "removed_index": 2
+    },
+    "rec_exmaples": [
+      "1012",
+      "1274",
+      "1032",
+      "115",
+      "1155"
+    ],
+    "rec_examples_gpt_text_large": [
+      "2691",
+      "1021",
+      "3448",
+      "1032",
+      "2341"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "1532",
+      "167",
+      "164",
+      "3940",
+      "3825"
+    ],
+    "rec_examples_qwen3_8b": [
+      "1032",
+      "3865",
+      "1897",
+      "1079",
+      "2929"
+    ]
+  },
+  "3622": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Welsh Presbyterian Church",
+          "Church",
+          "144.959873260087",
+          "-37.8104478768",
+          "low"
+        ],
+        [
+          "Council House 2 (CH2)",
+          "Retail/Office/Carpark",
+          "144.966638432727",
+          "-37.8142591432",
+          "high"
+        ],
+        [
+          "Melbourne Central",
+          "Retail/Office/Carpark",
+          "144.962749729496",
+          "-37.8105371797",
+          "medium"
+        ],
+        [
+          "Melbourne Central Railway Station",
+          "Railway Station",
+          "144.96169061383",
+          "-37.8105992402",
+          "medium"
+        ],
+        [
+          "Argyle Square",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.965761295089",
+          "-37.8031480577",
+          "low"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "removed_index": 1
+    },
+    "rec_exmaples": [
+      "1012",
+      "1274",
+      "1032",
+      "115",
+      "1155"
+    ],
+    "rec_examples_gpt_text_large": [
+      "723",
+      "1078",
+      "3950",
+      "680",
+      "2442"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "2259",
+      "3447",
+      "3174",
+      "3190",
+      "3646"
+    ],
+    "rec_examples_qwen3_8b": [
+      "3950",
+      "723",
+      "2442",
+      "2248",
+      "3250"
+    ]
+  },
+  "1288": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "The Ian Potter Centre: NGV Australia",
+          "Art Gallery/Museum",
+          "144.969899048343",
+          "-37.8174831423",
+          "medium"
+        ],
+        [
+          "The Museum Of Australian Chinese History",
+          "Art Gallery/Museum",
+          "144.96923385414",
+          "-37.8107686128",
+          "low"
+        ],
+        [
+          "Flinders Street Railway Station",
+          "Railway Station",
+          "144.967064817875",
+          "-37.8179063008",
+          "high"
+        ],
+        [
+          "Sandridge Rail Bridge",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.96298113724",
+          "-37.8201763043",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "removed_index": 1
+    },
+    "rec_exmaples": [
+      "1012",
+      "1274",
+      "1032",
+      "115",
+      "1155"
+    ],
+    "rec_examples_gpt_text_large": [
+      "1967",
+      "3825",
+      "535",
+      "1007",
+      "3281"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "957",
+      "1937",
+      "1962",
+      "2014",
+      "2248"
+    ],
+    "rec_examples_qwen3_8b": [
+      "2660",
+      "2931",
+      "1007",
+      "957",
+      "1967"
+    ]
+  },
+  "574": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Melbourne Visitor Centre",
+          "Visitor Centre",
+          "144.967937138226",
+          "-37.8177352402",
+          "high"
+        ],
+        [
+          "Federation Square",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.968963600783",
+          "-37.8178516572",
+          "high"
+        ],
+        [
+          "Australian Centre For The Moving Image (ACMI)",
+          "Art Gallery/Museum",
+          "144.969070431323",
+          "-37.8176107327",
+          "medium"
+        ],
+        [
+          "St Pauls Cathedral",
+          "Church",
+          "144.967681647402",
+          "-37.8169549012",
+          "high"
+        ],
+        [
+          "Victoria Police",
+          "Police Station",
+          "144.966486801188",
+          "-37.8164849024",
+          "high"
+        ],
+        [
+          "Melbourne Town Hall",
+          "Public Buildings",
+          "144.966542722283",
+          "-37.8150754791",
+          "high"
+        ],
+        [
+          "Southgate Arts and Leisure Precinct",
+          "Retail/Office/Carpark",
+          "144.965989052839",
+          "-37.8202245787",
+          "high"
+        ],
+        [
+          "Sandridge Rail Bridge",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.96298113724",
+          "-37.8201763043",
+          "high"
+        ],
+        [
+          "Hamer Hall",
+          "Theatre Live",
+          "144.967992144257",
+          "-37.8199901009",
+          "high"
+        ],
+        [
+          "Royal Botanic Gardens",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.980850432751",
+          "-37.8306631583",
+          "high"
+        ],
+        [
+          "The Melbourne Athenaeum Library",
+          "Library",
+          "144.967291289941",
+          "-37.8148855756",
+          "low"
+        ],
+        [
+          "Collins Street Baptist Church",
+          "Church",
+          "144.968072486031",
+          "-37.8147011905",
+          "medium"
+        ]
+      ],
+      "hint": "The itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "removed_index": 9
+    },
+    "rec_exmaples": [
+      "3295",
+      "1468",
+      "1480",
+      "1093",
+      "1847"
+    ],
+    "rec_examples_gpt_text_large": [
+      "190",
+      "1749",
+      "1471",
+      "1155",
+      "593"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "1572",
+      "900",
+      "339",
+      "1825",
+      "575"
+    ],
+    "rec_examples_qwen3_8b": [
+      "1749",
+      "2919",
+      "900",
+      "1825",
+      "2029"
+    ]
+  },
+  "1735": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Southgate Arts and Leisure Precinct",
+          "Retail/Office/Carpark",
+          "144.965989052839",
+          "-37.8202245787",
+          "high"
+        ],
+        [
+          "Eureka Tower",
+          "Retail/Residential",
+          "144.964456721965",
+          "-37.821515754",
+          "high"
+        ],
+        [
+          "Sandridge Rail Bridge",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.96298113724",
+          "-37.8201763043",
+          "high"
+        ],
+        [
+          "St Michael's Uniting Church",
+          "Church",
+          "144.969174036096",
+          "-37.8143851325",
+          "medium"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "removed_index": 3
+    },
+    "rec_exmaples": [
+      "1006",
+      "1021",
+      "1160",
+      "121",
+      "1275"
+    ],
+    "rec_examples_gpt_text_large": [
+      "2169",
+      "3658",
+      "1603",
+      "2128",
+      "2849"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "1725",
+      "2849",
+      "690",
+      "1798",
+      "471"
+    ],
+    "rec_examples_qwen3_8b": [
+      "3191",
+      "644",
+      "534",
+      "3169",
+      "1603"
+    ]
+  },
+  "2700": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "ANZ 'Gothic' Bank",
+          "Retail/Office/Carpark",
+          "144.961673719242",
+          "-37.8161580666",
+          "medium"
+        ],
+        [
+          "Flinders Street Railway Station",
+          "Railway Station",
+          "144.967064817875",
+          "-37.8179063008",
+          "high"
+        ],
+        [
+          "Melbourne Visitor Centre",
+          "Visitor Centre",
+          "144.967937138226",
+          "-37.8177352402",
+          "high"
+        ],
+        [
+          "Federation Square",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.968963600783",
+          "-37.8178516572",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "removed_index": 0
+    },
+    "rec_exmaples": [
+      "1006",
+      "1021",
+      "1160",
+      "121",
+      "1275"
+    ],
+    "rec_examples_gpt_text_large": [
+      "1393",
+      "2952",
+      "1155",
+      "3174",
+      "2442"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "2779",
+      "472",
+      "2660",
+      "55",
+      "342"
+    ],
+    "rec_examples_qwen3_8b": [
+      "1393",
+      "611",
+      "1012",
+      "3174",
+      "3182"
+    ]
+  },
+  "2059": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "St Augustines Church",
+          "Church",
+          "144.954862000132",
+          "-37.8169741359",
+          "medium"
+        ],
+        [
+          "Former Royal Mint",
+          "Office",
+          "144.957055454136",
+          "-37.8121838749",
+          "low"
+        ],
+        [
+          "Melbourne Childrens Court",
+          "Public Buildings",
+          "144.958298873269",
+          "-37.8125077647",
+          "low"
+        ],
+        [
+          "Melbourne Town Hall",
+          "Public Buildings",
+          "144.966542722283",
+          "-37.8150754791",
+          "high"
+        ],
+        [
+          "Eureka Skydeck 88",
+          "Observation Tower/Wheel",
+          "144.964622218598",
+          "-37.8216187583",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "removed_index": 4
+    },
+    "rec_exmaples": [
+      "1012",
+      "1274",
+      "1032",
+      "115",
+      "1155"
+    ],
+    "rec_examples_gpt_text_large": [
+      "1921",
+      "3799",
+      "2111",
+      "2980",
+      "593"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "1654",
+      "2750",
+      "3748",
+      "1129",
+      "3174"
+    ],
+    "rec_examples_qwen3_8b": [
+      "723",
+      "720",
+      "312",
+      "2301",
+      "2761"
+    ]
+  },
+  "1987": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Webb Bridge",
+          "Bridge",
+          "144.947291011905",
+          "-37.8232052385",
+          "medium"
+        ],
+        [
+          "Docklands Park",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.946781702342",
+          "-37.8209956786",
+          "low"
+        ],
+        [
+          "Central Pier",
+          "Function/Conference/Exhibition Centre",
+          "144.943475014215",
+          "-37.8165177308",
+          "low"
+        ],
+        [
+          "Melbourne Central Railway Station",
+          "Railway Station",
+          "144.963789344893",
+          "-37.8100167031",
+          "low"
+        ],
+        [
+          "Forum Theatre",
+          "Theatre Live",
+          "144.969386556998",
+          "-37.8164854097",
+          "high"
+        ],
+        [
+          "Parliament Railway Station",
+          "Railway Station",
+          "144.973017263156",
+          "-37.8116061787",
+          "high"
+        ],
+        [
+          "Parliament House",
+          "Office",
+          "144.97372641185",
+          "-37.8112466554",
+          "medium"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "removed_index": 3
+    },
+    "rec_exmaples": [
+      "1012",
+      "1274",
+      "1032",
+      "115",
+      "1155"
+    ],
+    "rec_examples_gpt_text_large": [
+      "1978",
+      "3173",
+      "3437",
+      "3720",
+      "3174"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "2302",
+      "3246",
+      "167",
+      "3458",
+      "664"
+    ],
+    "rec_examples_qwen3_8b": [
+      "3800",
+      "3720",
+      "2952",
+      "1978",
+      "2029"
+    ]
+  },
+  "1464": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "State Library Victoria",
+          "Public Buildings",
+          "144.964330322397",
+          "-37.8099852201",
+          "high"
+        ],
+        [
+          "Sandridge Rail Bridge",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.96298113724",
+          "-37.8201763043",
+          "high"
+        ],
+        [
+          "Melbourne Central Railway Station",
+          "Railway Station",
+          "144.963789344893",
+          "-37.8100167031",
+          "high"
+        ],
+        [
+          "The Museum Of Australian Chinese History",
+          "Art Gallery/Museum",
+          "144.96923385414",
+          "-37.8107686128",
+          "low"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "removed_index": 3
+    },
+    "rec_exmaples": [
+      "1006",
+      "1021",
+      "1160",
+      "121",
+      "1275"
+    ],
+    "rec_examples_gpt_text_large": [
+      "626",
+      "3190",
+      "115",
+      "2931",
+      "2660"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "2660",
+      "3926",
+      "3257",
+      "2931",
+      "3696"
+    ],
+    "rec_examples_qwen3_8b": [
+      "2660",
+      "626",
+      "2931",
+      "3190",
+      "3257"
+    ]
+  },
+  "526": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Carlton Gardens South",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.971266479841",
+          "-37.8060684577",
+          "medium"
+        ],
+        [
+          "Royal Exhibition Building",
+          "Art Gallery/Museum",
+          "144.971521914952",
+          "-37.8046026243",
+          "high"
+        ],
+        [
+          "Melbourne Museum",
+          "Art Gallery/Museum",
+          "144.971690718887",
+          "-37.8035518129",
+          "high"
+        ],
+        [
+          "IMAX Melbourne",
+          "Cinema",
+          "144.970639929886",
+          "-37.8034315562",
+          "medium"
+        ],
+        [
+          "Carlton Gardens North",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.971997551189",
+          "-37.8017690847",
+          "low"
+        ],
+        [
+          "St Pauls Cathedral",
+          "Church",
+          "144.967681647402",
+          "-37.8169549012",
+          "high"
+        ],
+        [
+          "Southgate Arts and Leisure Precinct",
+          "Retail/Office/Carpark",
+          "144.965989052839",
+          "-37.8202245787",
+          "high"
+        ],
+        [
+          "Melbourne Magistrates Court",
+          "Government Building",
+          "144.956846193891",
+          "-37.8136147672",
+          "low"
+        ],
+        [
+          "Sandridge Rail Bridge",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.96298113724",
+          "-37.8201763043",
+          "high"
+        ],
+        [
+          "Enterprize Park",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.959276859602",
+          "-37.8202102696",
+          "medium"
+        ],
+        [
+          "Immigration Museum",
+          "Art Gallery/Museum",
+          "144.960426777129",
+          "-37.8191798798",
+          "medium"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n",
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "removed_index": 5
+    },
+    "rec_exmaples": [
+      "1008",
+      "1034",
+      "1687",
+      "3169",
+      "102"
+    ],
+    "rec_examples_gpt_text_large": [
+      "2379",
+      "1687",
+      "3169",
+      "3866",
+      "1611"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "3173",
+      "2305",
+      "816",
+      "3799",
+      "2942"
+    ],
+    "rec_examples_qwen3_8b": [
+      "900",
+      "342",
+      "2919",
+      "2942",
+      "1687"
+    ]
+  },
+  "2138": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Victoria Police",
+          "Police Station",
+          "144.966486801188",
+          "-37.8164849024",
+          "high"
+        ],
+        [
+          "Federation Square",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.968963600783",
+          "-37.8178516572",
+          "high"
+        ],
+        [
+          "Melbourne Central Railway Station",
+          "Railway Station",
+          "144.962670059539",
+          "-37.8097759326",
+          "medium"
+        ],
+        [
+          "Australian Centre For The Moving Image (ACMI)",
+          "Art Gallery/Museum",
+          "144.969070431323",
+          "-37.8176107327",
+          "medium"
+        ],
+        [
+          "Princess Theatre",
+          "Theatre Live",
+          "144.9723265962",
+          "-37.8107257091",
+          "medium"
+        ],
+        [
+          "Parliament Railway Station",
+          "Railway Station",
+          "144.973017263156",
+          "-37.8116061787",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "removed_index": 2
+    },
+    "rec_exmaples": [
+      "1012",
+      "1274",
+      "1032",
+      "115",
+      "1155"
+    ],
+    "rec_examples_gpt_text_large": [
+      "2305",
+      "3319",
+      "2197",
+      "3926",
+      "903"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "3190",
+      "3174",
+      "3646",
+      "3246",
+      "1136"
+    ],
+    "rec_examples_qwen3_8b": [
+      "2305",
+      "3319",
+      "3334",
+      "1021",
+      "2952"
+    ]
+  },
+  "517": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "St Augustines Church",
+          "Church",
+          "144.954862000132",
+          "-37.8169741359",
+          "medium"
+        ],
+        [
+          "Melbourne Town Hall",
+          "Public Buildings",
+          "144.966542722283",
+          "-37.8150754791",
+          "high"
+        ],
+        [
+          "Birrarung Marr",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.97314667014",
+          "-37.818061084",
+          "high"
+        ],
+        [
+          "Rod Laver Arena",
+          "Major Sports & Recreation Facility",
+          "144.978487173787",
+          "-37.822045612",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "removed_index": 0
+    },
+    "rec_exmaples": [
+      "1006",
+      "1021",
+      "1160",
+      "121",
+      "1275"
+    ],
+    "rec_examples_gpt_text_large": [
+      "611",
+      "472",
+      "2442",
+      "2980",
+      "680"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "472",
+      "1007",
+      "2779",
+      "113",
+      "342"
+    ],
+    "rec_examples_qwen3_8b": [
+      "3748",
+      "472",
+      "2954",
+      "1007",
+      "2157"
+    ]
+  },
+  "3454": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Polly Woodside",
+          "Art Gallery/Museum",
+          "144.953478052064",
+          "-37.8242574266",
+          "low"
+        ],
+        [
+          "Victoria Police",
+          "Police Station",
+          "144.966486801188",
+          "-37.8164849024",
+          "high"
+        ],
+        [
+          "Melbourne Town Hall",
+          "Public Buildings",
+          "144.966542722283",
+          "-37.8150754791",
+          "high"
+        ],
+        [
+          "St Francis Church",
+          "Church",
+          "144.962422614541",
+          "-37.8118847832",
+          "medium"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "removed_index": 3
+    },
+    "rec_exmaples": [
+      "1006",
+      "1021",
+      "1160",
+      "121",
+      "1275"
+    ],
+    "rec_examples_gpt_text_large": [
+      "950",
+      "2197",
+      "3007",
+      "3971",
+      "3926"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "1075",
+      "2442",
+      "3421",
+      "1021",
+      "1047"
+    ],
+    "rec_examples_qwen3_8b": [
+      "1921",
+      "3178",
+      "2433",
+      "2197",
+      "3007"
+    ]
+  },
+  "1736": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Queen Victoria Market",
+          "Retail",
+          "144.957158515056",
+          "-37.8075002018",
+          "high"
+        ],
+        [
+          "Carlton Gardens North",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.971997551189",
+          "-37.8017690847",
+          "low"
+        ],
+        [
+          "Flinders Street Railway Station",
+          "Railway Station",
+          "144.967064817875",
+          "-37.8179063008",
+          "high"
+        ],
+        [
+          "QV Village",
+          "Retail/Office/Residential/Carpark",
+          "144.965714574014",
+          "-37.8106891897",
+          "high"
+        ]
+      ],
+      "hint": "\nThe need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n",
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "removed_index": 1
+    },
+    "rec_exmaples": [
+      "1467",
+      "1618",
+      "3405",
+      "2752",
+      "1788"
+    ],
+    "rec_examples_gpt_text_large": [
+      "2589",
+      "1618",
+      "2752",
+      "1467",
+      "2310"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "2589",
+      "886",
+      "1467",
+      "937",
+      "1618"
+    ],
+    "rec_examples_qwen3_8b": [
+      "55",
+      "575",
+      "2589",
+      "339",
+      "1480"
+    ]
+  },
+  "871": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Victorian Arts Centre",
+          "Art Gallery/Museum",
+          "144.968837288153",
+          "-37.8219947336",
+          "medium"
+        ],
+        [
+          "Flemington Bridge Railway Station",
+          "Railway Station",
+          "144.939277838304",
+          "-37.788164589",
+          "low"
+        ],
+        [
+          "SBS (Special Broadcasting Service)",
+          "Office",
+          "144.968740597156",
+          "-37.817692121",
+          "high"
+        ],
+        [
+          "St Pauls Cathedral",
+          "Church",
+          "144.967681647402",
+          "-37.8169549012",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "removed_index": 1
+    },
+    "rec_exmaples": [
+      "1006",
+      "1021",
+      "1160",
+      "121",
+      "1275"
+    ],
+    "rec_examples_gpt_text_large": [
+      "3248",
+      "3448",
+      "342",
+      "1021",
+      "986"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "1725",
+      "986",
+      "712",
+      "2411",
+      "2761"
+    ],
+    "rec_examples_qwen3_8b": [
+      "1725",
+      "2849",
+      "379",
+      "986",
+      "2363"
+    ]
+  },
+  "3141": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "St Michael's Uniting Church",
+          "Church",
+          "144.969174036096",
+          "-37.8143851325",
+          "medium"
+        ],
+        [
+          "Melbourne Visitor Booth",
+          "Visitor Centre",
+          "144.964425882562",
+          "-37.8139525061",
+          "high"
+        ],
+        [
+          "Flemington Bridge Railway Station",
+          "Railway Station",
+          "144.939277838304",
+          "-37.788164589",
+          "low"
+        ],
+        [
+          "Flinders Street Railway Station",
+          "Railway Station",
+          "144.967064817875",
+          "-37.8179063008",
+          "high"
+        ],
+        [
+          "Melbourne Visitor Centre",
+          "Visitor Centre",
+          "144.967937138226",
+          "-37.8177352402",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "removed_index": 2
+    },
+    "rec_exmaples": [
+      "1012",
+      "1274",
+      "1032",
+      "115",
+      "1155"
+    ],
+    "rec_examples_gpt_text_large": [
+      "3950",
+      "2938",
+      "593",
+      "1445",
+      "3799"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "620",
+      "593",
+      "3950",
+      "1921",
+      "45"
+    ],
+    "rec_examples_qwen3_8b": [
+      "3950",
+      "190",
+      "3174",
+      "3612",
+      "2018"
+    ]
+  },
+  "245": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Holy Trinity",
+          "Church",
+          "144.983197322289",
+          "-37.8140667111",
+          "low"
+        ],
+        [
+          "Parliament Railway Station",
+          "Railway Station",
+          "144.973017263156",
+          "-37.8116061787",
+          "high"
+        ],
+        [
+          "Southgate Arts and Leisure Precinct",
+          "Retail/Office/Carpark",
+          "144.965989052839",
+          "-37.8202245787",
+          "high"
+        ],
+        [
+          "Queen Victoria Gardens",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.971049530478",
+          "-37.8216381245",
+          "low"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "removed_index": 0
+    },
+    "rec_exmaples": [
+      "1006",
+      "1021",
+      "1160",
+      "121",
+      "1275"
+    ],
+    "rec_examples_gpt_text_large": [
+      "2169",
+      "1396",
+      "712",
+      "2849",
+      "471"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "602",
+      "3696",
+      "3185",
+      "1725",
+      "266"
+    ],
+    "rec_examples_qwen3_8b": [
+      "1093",
+      "2169",
+      "3262",
+      "690",
+      "338"
+    ]
+  },
+  "3626": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Etihad Stadium",
+          "Major Sports & Recreation Facility",
+          "144.947496254547",
+          "-37.8161760472",
+          "medium"
+        ],
+        [
+          "Flemington Bridge Railway Station",
+          "Railway Station",
+          "144.939277838304",
+          "-37.788164589",
+          "low"
+        ],
+        [
+          "Flinders Street Railway Station",
+          "Railway Station",
+          "144.967064817875",
+          "-37.8179063008",
+          "high"
+        ],
+        [
+          "State Theatre",
+          "Theatre Live",
+          "144.968469643744",
+          "-37.821280635",
+          "medium"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "removed_index": 1
+    },
+    "rec_exmaples": [
+      "1012",
+      "1274",
+      "1032",
+      "115",
+      "1155"
+    ],
+    "rec_examples_gpt_text_large": [
+      "3179",
+      "3448",
+      "1817",
+      "2159",
+      "3174"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "2911",
+      "1937",
+      "783",
+      "1274",
+      "3935"
+    ],
+    "rec_examples_qwen3_8b": [
+      "1600",
+      "2911",
+      "3629",
+      "3720",
+      "783"
+    ]
+  },
+  "3380": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Enterprize Park",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.959276859602",
+          "-37.8202102696",
+          "medium"
+        ],
+        [
+          "The Museum Of Australian Chinese History",
+          "Art Gallery/Museum",
+          "144.96923385414",
+          "-37.8107686128",
+          "low"
+        ],
+        [
+          "Sandridge Rail Bridge",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.96298113724",
+          "-37.8201763043",
+          "high"
+        ],
+        [
+          "Southgate Arts and Leisure Precinct",
+          "Retail/Office/Carpark",
+          "144.965989052839",
+          "-37.8202245787",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "removed_index": 1
+    },
+    "rec_exmaples": [
+      "1012",
+      "1274",
+      "1032",
+      "115",
+      "1155"
+    ],
+    "rec_examples_gpt_text_large": [
+      "3147",
+      "2779",
+      "535",
+      "2943",
+      "1092"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "3254",
+      "3656",
+      "1802",
+      "535",
+      "1237"
+    ],
+    "rec_examples_qwen3_8b": [
+      "2660",
+      "3147",
+      "981",
+      "3437",
+      "481"
+    ]
+  },
+  "1015": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Carlton Gardens South",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.971266479841",
+          "-37.8060684577",
+          "medium"
+        ],
+        [
+          "Melbourne Central Railway Station",
+          "Railway Station",
+          "144.963789344893",
+          "-37.8100167031",
+          "high"
+        ],
+        [
+          "State Library Victoria",
+          "Public Buildings",
+          "144.964330322397",
+          "-37.8099852201",
+          "high"
+        ],
+        [
+          "Federation Square",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.968963600783",
+          "-37.8178516572",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "removed_index": 0
+    },
+    "rec_exmaples": [
+      "1012",
+      "1274",
+      "1032",
+      "115",
+      "1155"
+    ],
+    "rec_examples_gpt_text_large": [
+      "3732",
+      "2248",
+      "1006",
+      "55",
+      "338"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "2248",
+      "271",
+      "535",
+      "731",
+      "3254"
+    ],
+    "rec_examples_qwen3_8b": [
+      "55",
+      "626",
+      "3696",
+      "2248",
+      "1278"
+    ]
+  },
+  "3927": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Melbourne Aquarium",
+          "Aquarium",
+          "144.958425696055",
+          "-37.8209627825",
+          "high"
+        ],
+        [
+          "Sandridge Rail Bridge",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.96298113724",
+          "-37.8201763043",
+          "high"
+        ],
+        [
+          "Polly Woodside",
+          "Art Gallery/Museum",
+          "144.953478052064",
+          "-37.8242574266",
+          "low"
+        ],
+        [
+          "Melbourne Convention Centre",
+          "Function/Conference/Exhibition Centre",
+          "144.952288281644",
+          "-37.8249040485",
+          "high"
+        ],
+        [
+          "Enterprize Park",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.959276859602",
+          "-37.8202102696",
+          "medium"
+        ],
+        [
+          "The Museum Of Australian Chinese History",
+          "Art Gallery/Museum",
+          "144.96923385414",
+          "-37.8107686128",
+          "low"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n",
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "removed_index": 5
+    },
+    "rec_exmaples": [
+      "1008",
+      "1034",
+      "1687",
+      "3169",
+      "102"
+    ],
+    "rec_examples_gpt_text_large": [
+      "981",
+      "601",
+      "1034",
+      "1687",
+      "3866"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "1034",
+      "3246",
+      "167",
+      "3458",
+      "2302"
+    ],
+    "rec_examples_qwen3_8b": [
+      "981",
+      "3437",
+      "1034",
+      "1978",
+      "1304"
+    ]
+  },
+  "578": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Crown Entertainment Complex",
+          "Casino",
+          "144.957312880653",
+          "-37.8235761093",
+          "medium"
+        ],
+        [
+          "State Theatre",
+          "Theatre Live",
+          "144.968469643744",
+          "-37.821280635",
+          "medium"
+        ],
+        [
+          "Eureka Tower",
+          "Retail/Residential",
+          "144.964456721965",
+          "-37.821515754",
+          "high"
+        ],
+        [
+          "Melbourne Aquarium",
+          "Aquarium",
+          "144.958425696055",
+          "-37.8209627825",
+          "high"
+        ],
+        [
+          "Federation Square",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.968963600783",
+          "-37.8178516572",
+          "high"
+        ],
+        [
+          "Freshwater Place",
+          "Retail/Office/Residential/Carpark",
+          "144.96246144843",
+          "-37.8219745489",
+          "low"
+        ],
+        [
+          "Melbourne Visitor Centre",
+          "Visitor Centre",
+          "144.967937138226",
+          "-37.8177352402",
+          "high"
+        ],
+        [
+          "FairFax Studio",
+          "Theatre Live",
+          "144.968836241692",
+          "-37.8216684582",
+          "low"
+        ]
+      ],
+      "hint": "The itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "removed_index": 3
+    },
+    "rec_exmaples": [
+      "3295",
+      "1468",
+      "1480",
+      "1093",
+      "1847"
+    ],
+    "rec_examples_gpt_text_large": [
+      "202",
+      "2919",
+      "2691",
+      "121",
+      "2301"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "1766",
+      "190",
+      "1043",
+      "570",
+      "1500"
+    ],
+    "rec_examples_qwen3_8b": [
+      "3191",
+      "3260",
+      "1532",
+      "644",
+      "202"
+    ]
+  },
+  "1732": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Federation Square",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.968963600783",
+          "-37.8178516572",
+          "high"
+        ],
+        [
+          "Artplay",
+          "Indoor Recreation Facility",
+          "144.971542586509",
+          "-37.81841988",
+          "medium"
+        ],
+        [
+          "Forum Theatre",
+          "Theatre Live",
+          "144.969386556998",
+          "-37.8164854097",
+          "high"
+        ],
+        [
+          "Church of Christ",
+          "Church",
+          "144.96388920294",
+          "-37.8104524079",
+          "medium"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "removed_index": 3
+    },
+    "rec_exmaples": [
+      "1006",
+      "1021",
+      "1160",
+      "121",
+      "1275"
+    ],
+    "rec_examples_gpt_text_large": [
+      "2849",
+      "1725",
+      "1092",
+      "3182",
+      "3612"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "1798",
+      "690",
+      "712",
+      "471",
+      "1725"
+    ],
+    "rec_examples_qwen3_8b": [
+      "2849",
+      "2864",
+      "1021",
+      "2674",
+      "611"
+    ]
+  }
+}

@@ -1,0 +1,2365 @@
+{
+  "4997": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Union_Station_(Toronto)",
+          "Structure",
+          " -79.38056",
+          "43.64528",
+          "medium"
+        ],
+        [
+          "Nathan_Phillips_Square",
+          "Beach",
+          " -79.38361",
+          "43.6525",
+          "high"
+        ],
+        [
+          "Old_City_Hall_(Toronto)",
+          "Structure",
+          " -79.38167",
+          "43.6525",
+          "medium"
+        ],
+        [
+          "Hockey_Hall_of_Fame",
+          "Cultural",
+          " -79.377253",
+          "43.646976",
+          "high"
+        ],
+        [
+          "Ripley's_Aquarium_of_Canada",
+          "Cultural",
+          " -79.38605",
+          "43.642481",
+          "high"
+        ],
+        [
+          "BMO_Field",
+          "Sport",
+          " -79.41861",
+          "43.63278",
+          "low"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.91km",
+      "threshold_high": "1.74km"
+    },
+    "example_output": {
+      "removed_index": 5
+    },
+    "rec_examples_gpt_text_large": [
+      "380",
+      "753",
+      "745",
+      "1993",
+      "807"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "4408",
+      "5301",
+      "5556",
+      "822",
+      "4284"
+    ],
+    "rec_examples_qwen3_8b": [
+      "2496",
+      "867",
+      "1066",
+      "2252",
+      "544"
+    ],
+    "rec_exmaples": [
+      "1078",
+      "1089",
+      "1066",
+      "1063",
+      "1118"
+    ]
+  },
+  "2666": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Yonge-Dundas_Square",
+          "Beach",
+          " -79.38028",
+          "43.65611",
+          "high"
+        ],
+        [
+          "Toronto_Eaton_Centre",
+          "Shopping",
+          " -79.380319",
+          "43.653982",
+          "high"
+        ],
+        [
+          "Art_Gallery_of_Ontario",
+          "Cultural",
+          " -79.39278",
+          "43.65389",
+          "medium"
+        ],
+        [
+          "Kensington_Market",
+          "Shopping",
+          " -79.4006778",
+          "43.6547722",
+          "medium"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.91km",
+      "threshold_high": "1.74km"
+    },
+    "example_output": {
+      "removed_index": 1
+    },
+    "rec_examples_gpt_text_large": [
+      "4758",
+      "5278",
+      "5798",
+      "623",
+      "5256"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "675",
+      "1063",
+      "3969",
+      "5747",
+      "58"
+    ],
+    "rec_examples_qwen3_8b": [
+      "4758",
+      "5278",
+      "2069",
+      "5253",
+      "675"
+    ],
+    "rec_exmaples": [
+      "1078",
+      "1089",
+      "1066",
+      "1063",
+      "1118"
+    ]
+  },
+  "1082": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "CN_Tower",
+          "Amusement",
+          " -79.3871000",
+          "43.6426",
+          "high"
+        ],
+        [
+          "Art_Gallery_of_Ontario",
+          "Cultural",
+          " -79.39278",
+          "43.65389",
+          "medium"
+        ],
+        [
+          "Union_Station_(Toronto)",
+          "Structure",
+          " -79.38056",
+          "43.64528",
+          "medium"
+        ],
+        [
+          "Ripley's_Aquarium_of_Canada",
+          "Cultural",
+          " -79.38605",
+          "43.642481",
+          "high"
+        ],
+        [
+          "Exhibition_Place",
+          "Amusement",
+          " -79.41611",
+          "43.63278",
+          "medium"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.91km",
+      "threshold_high": "1.74km"
+    },
+    "example_output": {
+      "removed_index": 4
+    },
+    "rec_examples_gpt_text_large": [
+      "1591",
+      "4450",
+      "2896",
+      "1066",
+      "4408"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "4198",
+      "1591",
+      "5625",
+      "2896",
+      "1310"
+    ],
+    "rec_examples_qwen3_8b": [
+      "288",
+      "898",
+      "4450",
+      "1335",
+      "1066"
+    ],
+    "rec_exmaples": [
+      "1078",
+      "1089",
+      "1066",
+      "1063",
+      "1118"
+    ]
+  },
+  "1525": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Art_Gallery_of_Ontario",
+          "Cultural",
+          " -79.39278",
+          "43.65389",
+          "medium"
+        ],
+        [
+          "Ontario_Legislative_Building",
+          "Structure",
+          " -79.391708",
+          "43.662447",
+          "medium"
+        ],
+        [
+          "Kensington_Market",
+          "Shopping",
+          " -79.4006778",
+          "43.6547722",
+          "medium"
+        ],
+        [
+          "Toronto_Eaton_Centre",
+          "Shopping",
+          " -79.380319",
+          "43.653982",
+          "high"
+        ]
+      ],
+      "hint": "\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.91km",
+      "threshold_high": "1.74km"
+    },
+    "example_output": {
+      "removed_index": 1
+    },
+    "rec_examples_gpt_text_large": [
+      "515",
+      "2069",
+      "5709",
+      "3969",
+      "2908"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "4756",
+      "3960",
+      "67",
+      "3898",
+      "2838"
+    ],
+    "rec_examples_qwen3_8b": [
+      "675",
+      "1063",
+      "515",
+      "2069",
+      "5022"
+    ],
+    "rec_exmaples": [
+      "1424",
+      "316",
+      "1404",
+      "2110",
+      "1938"
+    ]
+  },
+  "5214": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Hockey_Hall_of_Fame",
+          "Cultural",
+          " -79.377253",
+          "43.646976",
+          "high"
+        ],
+        [
+          "Nathan_Phillips_Square",
+          "Beach",
+          " -79.38361",
+          "43.6525",
+          "high"
+        ],
+        [
+          "Toronto_Eaton_Centre",
+          "Shopping",
+          " -79.380319",
+          "43.653982",
+          "high"
+        ],
+        [
+          "Exhibition_Place",
+          "Amusement",
+          " -79.41611",
+          "43.63278",
+          "medium"
+        ],
+        [
+          "Maple_Leaf_Gardens",
+          "Sport",
+          " -79.38028",
+          "43.66222",
+          "low"
+        ],
+        [
+          "Ontario_Legislative_Building",
+          "Structure",
+          " -79.391708",
+          "43.662447",
+          "medium"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.91km",
+      "threshold_high": "1.74km"
+    },
+    "example_output": {
+      "removed_index": 3
+    },
+    "rec_examples_gpt_text_large": [
+      "880",
+      "624",
+      "822",
+      "4198",
+      "929"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "5282",
+      "1321",
+      "988",
+      "753",
+      "3149"
+    ],
+    "rec_examples_qwen3_8b": [
+      "979",
+      "624",
+      "822",
+      "5099",
+      "708"
+    ],
+    "rec_exmaples": [
+      "1117",
+      "1275",
+      "100",
+      "1875",
+      "1792"
+    ]
+  },
+  "1378": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Ripley's_Aquarium_of_Canada",
+          "Cultural",
+          " -79.38605",
+          "43.642481",
+          "high"
+        ],
+        [
+          "BMO_Field",
+          "Sport",
+          " -79.41861",
+          "43.63278",
+          "low"
+        ],
+        [
+          "CN_Tower",
+          "Amusement",
+          " -79.3871000",
+          "43.6426",
+          "high"
+        ],
+        [
+          "Air_Canada_Centre",
+          "Sport",
+          " -79.37917",
+          "43.64333",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.91km",
+      "threshold_high": "1.74km"
+    },
+    "example_output": {
+      "removed_index": 1
+    },
+    "rec_examples_gpt_text_large": [
+      "3626",
+      "3155",
+      "1912",
+      "1335",
+      "1275"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "3626",
+      "3155",
+      "1335",
+      "294",
+      "4308"
+    ],
+    "rec_examples_qwen3_8b": [
+      "3626",
+      "3155",
+      "4308",
+      "1912",
+      "1335"
+    ],
+    "rec_exmaples": [
+      "1078",
+      "1089",
+      "1066",
+      "1063",
+      "1118"
+    ]
+  },
+  "3932": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Nathan_Phillips_Square",
+          "Beach",
+          " -79.38361",
+          "43.6525",
+          "high"
+        ],
+        [
+          "Old_City_Hall_(Toronto)",
+          "Structure",
+          " -79.38167",
+          "43.6525",
+          "medium"
+        ],
+        [
+          "CN_Tower",
+          "Amusement",
+          " -79.3871000",
+          "43.6426",
+          "high"
+        ],
+        [
+          "Rogers_Centre",
+          "Sport",
+          " -79.38917",
+          "43.64139",
+          "high"
+        ]
+      ],
+      "hint": "\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.91km",
+      "threshold_high": "1.74km"
+    },
+    "example_output": {
+      "removed_index": 2
+    },
+    "rec_examples_gpt_text_large": [
+      "5324",
+      "1345",
+      "1875",
+      "2072",
+      "3968"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "5132",
+      "139",
+      "1536",
+      "5073",
+      "962"
+    ],
+    "rec_examples_qwen3_8b": [
+      "4284",
+      "3968",
+      "1345",
+      "5132",
+      "4972"
+    ],
+    "rec_exmaples": [
+      "5132",
+      "4972",
+      "5073",
+      "1345",
+      "139"
+    ]
+  },
+  "5912": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Harbourfront_Centre",
+          "Shopping",
+          " -79.382068",
+          "43.63849",
+          "medium"
+        ],
+        [
+          "Old_City_Hall_(Toronto)",
+          "Structure",
+          " -79.38167",
+          "43.6525",
+          "medium"
+        ],
+        [
+          "Rogers_Centre",
+          "Sport",
+          " -79.38917",
+          "43.64139",
+          "high"
+        ],
+        [
+          "CN_Tower",
+          "Amusement",
+          " -79.3871000",
+          "43.6426",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.91km",
+      "threshold_high": "1.74km"
+    },
+    "example_output": {
+      "removed_index": 0
+    },
+    "rec_examples_gpt_text_large": [
+      "2703",
+      "3037",
+      "5325",
+      "1642",
+      "988"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "453",
+      "3707",
+      "2349",
+      "1117",
+      "3968"
+    ],
+    "rec_examples_qwen3_8b": [
+      "3968",
+      "4284",
+      "681",
+      "3037",
+      "2703"
+    ],
+    "rec_exmaples": [
+      "1117",
+      "1275",
+      "100",
+      "1875",
+      "1792"
+    ]
+  },
+  "4374": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Yorkville,_Toronto",
+          "Shopping",
+          " -79.39111",
+          "43.67028",
+          "low"
+        ],
+        [
+          "Ontario_Legislative_Building",
+          "Structure",
+          " -79.391708",
+          "43.662447",
+          "medium"
+        ],
+        [
+          "Toronto_Eaton_Centre",
+          "Shopping",
+          " -79.380319",
+          "43.653982",
+          "high"
+        ],
+        [
+          "High_Park",
+          "Beach",
+          " -79.462996",
+          "43.646821",
+          "low"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.91km",
+      "threshold_high": "1.74km"
+    },
+    "example_output": {
+      "removed_index": 3
+    },
+    "rec_examples_gpt_text_large": [
+      "928",
+      "3481",
+      "3040",
+      "2207",
+      "3045"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "1063",
+      "5747",
+      "3037",
+      "5228",
+      "4914"
+    ],
+    "rec_examples_qwen3_8b": [
+      "928",
+      "3040",
+      "1063",
+      "790",
+      "3045"
+    ],
+    "rec_exmaples": [
+      "1078",
+      "1089",
+      "1066",
+      "1063",
+      "1118"
+    ]
+  },
+  "5649": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Toronto_Eaton_Centre",
+          "Shopping",
+          " -79.380319",
+          "43.653982",
+          "high"
+        ],
+        [
+          "Harbourfront_Centre",
+          "Shopping",
+          " -79.382068",
+          "43.63849",
+          "medium"
+        ],
+        [
+          "Nathan_Phillips_Square",
+          "Beach",
+          " -79.38361",
+          "43.6525",
+          "high"
+        ],
+        [
+          "CN_Tower",
+          "Amusement",
+          " -79.3871000",
+          "43.6426",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.91km",
+      "threshold_high": "1.74km"
+    },
+    "example_output": {
+      "removed_index": 1
+    },
+    "rec_examples_gpt_text_large": [
+      "825",
+      "1782",
+      "3040",
+      "4493",
+      "3045"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "2198",
+      "825",
+      "5343",
+      "928",
+      "969"
+    ],
+    "rec_examples_qwen3_8b": [
+      "825",
+      "5328",
+      "1877",
+      "619",
+      "2499"
+    ],
+    "rec_exmaples": [
+      "1078",
+      "1089",
+      "1066",
+      "1063",
+      "1118"
+    ]
+  },
+  "4005": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "BMO_Field",
+          "Sport",
+          " -79.41861",
+          "43.63278",
+          "low"
+        ],
+        [
+          "Old_City_Hall_(Toronto)",
+          "Structure",
+          " -79.38167",
+          "43.6525",
+          "medium"
+        ],
+        [
+          "Exhibition_Place",
+          "Amusement",
+          " -79.41611",
+          "43.63278",
+          "medium"
+        ],
+        [
+          "Canadian_National_Exhibition",
+          "Amusement",
+          " -79.41667",
+          "43.63333",
+          "low"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.91km",
+      "threshold_high": "1.74km"
+    },
+    "example_output": {
+      "removed_index": 1
+    },
+    "rec_examples_gpt_text_large": [
+      "775",
+      "5890",
+      "2198",
+      "5294",
+      "867"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "5751",
+      "1933",
+      "5294",
+      "963",
+      "5890"
+    ],
+    "rec_examples_qwen3_8b": [
+      "5294",
+      "5890",
+      "1933",
+      "5751",
+      "1937"
+    ],
+    "rec_exmaples": [
+      "1078",
+      "1089",
+      "1066",
+      "1063",
+      "1118"
+    ]
+  },
+  "4354": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Ontario_Legislative_Building",
+          "Structure",
+          " -79.391708",
+          "43.662447",
+          "medium"
+        ],
+        [
+          "Yonge-Dundas_Square",
+          "Beach",
+          " -79.38028",
+          "43.65611",
+          "high"
+        ],
+        [
+          "Toronto_Islands",
+          "Beach",
+          " -79.37861",
+          "43.62083",
+          "low"
+        ],
+        [
+          "Maple_Leaf_Gardens",
+          "Sport",
+          " -79.38028",
+          "43.66222",
+          "low"
+        ],
+        [
+          "Union_Station_(Toronto)",
+          "Structure",
+          " -79.38056",
+          "43.64528",
+          "medium"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.91km",
+      "threshold_high": "1.74km"
+    },
+    "example_output": {
+      "removed_index": 2
+    },
+    "rec_examples_gpt_text_large": [
+      "3149",
+      "928",
+      "1194",
+      "5277",
+      "1524"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "3975",
+      "5180",
+      "1592",
+      "380",
+      "2466"
+    ],
+    "rec_examples_qwen3_8b": [
+      "2896",
+      "5215",
+      "3149",
+      "969",
+      "1524"
+    ],
+    "rec_exmaples": [
+      "1078",
+      "1089",
+      "1066",
+      "1063",
+      "1118"
+    ]
+  },
+  "5377": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Union_Station_(Toronto)",
+          "Structure",
+          " -79.38056",
+          "43.64528",
+          "medium"
+        ],
+        [
+          "Air_Canada_Centre",
+          "Sport",
+          " -79.37917",
+          "43.64333",
+          "high"
+        ],
+        [
+          "Ripley's_Aquarium_of_Canada",
+          "Cultural",
+          " -79.38605",
+          "43.642481",
+          "high"
+        ],
+        [
+          "CN_Tower",
+          "Amusement",
+          " -79.3871000",
+          "43.6426",
+          "high"
+        ],
+        [
+          "Canadian_National_Exhibition",
+          "Amusement",
+          " -79.41667",
+          "43.63333",
+          "low"
+        ],
+        [
+          "Toronto_Eaton_Centre",
+          "Shopping",
+          " -79.380319",
+          "43.653982",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.91km",
+      "threshold_high": "1.74km"
+    },
+    "example_output": {
+      "removed_index": 4
+    },
+    "rec_examples_gpt_text_large": [
+      "5541",
+      "753",
+      "288",
+      "1792",
+      "380"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "3501",
+      "2207",
+      "4578",
+      "380",
+      "708"
+    ],
+    "rec_examples_qwen3_8b": [
+      "813",
+      "681",
+      "288",
+      "898",
+      "4420"
+    ],
+    "rec_exmaples": [
+      "1078",
+      "1089",
+      "1066",
+      "1063",
+      "1118"
+    ]
+  },
+  "2158": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Union_Station_(Toronto)",
+          "Structure",
+          " -79.38056",
+          "43.64528",
+          "medium"
+        ],
+        [
+          "Hockey_Hall_of_Fame",
+          "Cultural",
+          " -79.377253",
+          "43.646976",
+          "high"
+        ],
+        [
+          "CN_Tower",
+          "Amusement",
+          " -79.3871000",
+          "43.6426",
+          "high"
+        ],
+        [
+          "Rogers_Centre",
+          "Sport",
+          " -79.38917",
+          "43.64139",
+          "high"
+        ],
+        [
+          "Yorkdale_Shopping_Centre",
+          "Shopping",
+          " -79.452696",
+          "43.725599",
+          "low"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.91km",
+      "threshold_high": "1.74km"
+    },
+    "example_output": {
+      "removed_index": 4
+    },
+    "rec_examples_gpt_text_large": [
+      "3090",
+      "5539",
+      "5541",
+      "5640",
+      "1792"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "5539",
+      "2275",
+      "1792",
+      "2338",
+      "3556"
+    ],
+    "rec_examples_qwen3_8b": [
+      "5541",
+      "3090",
+      "5539",
+      "5556",
+      "2703"
+    ],
+    "rec_exmaples": [
+      "1117",
+      "1275",
+      "100",
+      "1875",
+      "1792"
+    ]
+  },
+  "1270": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Yonge-Dundas_Square",
+          "Beach",
+          " -79.38028",
+          "43.65611",
+          "high"
+        ],
+        [
+          "Toronto_Eaton_Centre",
+          "Shopping",
+          " -79.380319",
+          "43.653982",
+          "high"
+        ],
+        [
+          "Canadian_National_Exhibition",
+          "Amusement",
+          " -79.41667",
+          "43.63333",
+          "low"
+        ],
+        [
+          "Union_Station_(Toronto)",
+          "Structure",
+          " -79.38056",
+          "43.64528",
+          "medium"
+        ],
+        [
+          "Old_City_Hall_(Toronto)",
+          "Structure",
+          " -79.38167",
+          "43.6525",
+          "medium"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.91km",
+      "threshold_high": "1.74km"
+    },
+    "example_output": {
+      "removed_index": 2
+    },
+    "rec_examples_gpt_text_large": [
+      "4758",
+      "5278",
+      "5798",
+      "623",
+      "2377"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "929",
+      "753",
+      "988",
+      "71",
+      "380"
+    ],
+    "rec_examples_qwen3_8b": [
+      "71",
+      "744",
+      "5798",
+      "2466",
+      "5278"
+    ],
+    "rec_exmaples": [
+      "1078",
+      "1089",
+      "1066",
+      "1063",
+      "1118"
+    ]
+  },
+  "4506": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Yonge-Dundas_Square",
+          "Beach",
+          " -79.38028",
+          "43.65611",
+          "high"
+        ],
+        [
+          "Art_Gallery_of_Ontario",
+          "Cultural",
+          " -79.39278",
+          "43.65389",
+          "medium"
+        ],
+        [
+          "Toronto_Eaton_Centre",
+          "Shopping",
+          " -79.380319",
+          "43.653982",
+          "high"
+        ],
+        [
+          "Canadian_National_Exhibition",
+          "Amusement",
+          " -79.41667",
+          "43.63333",
+          "low"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.91km",
+      "threshold_high": "1.74km"
+    },
+    "example_output": {
+      "removed_index": 3
+    },
+    "rec_examples_gpt_text_large": [
+      "100",
+      "5963",
+      "4758",
+      "4451",
+      "5278"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "5253",
+      "2039",
+      "1642",
+      "2048",
+      "5963"
+    ],
+    "rec_examples_qwen3_8b": [
+      "4758",
+      "5253",
+      "5278",
+      "2069",
+      "71"
+    ],
+    "rec_exmaples": [
+      "1117",
+      "1275",
+      "100",
+      "1875",
+      "1792"
+    ]
+  },
+  "883": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Yonge-Dundas_Square",
+          "Beach",
+          " -79.38028",
+          "43.65611",
+          "high"
+        ],
+        [
+          "Toronto_Eaton_Centre",
+          "Shopping",
+          " -79.380319",
+          "43.653982",
+          "high"
+        ],
+        [
+          "Union_Station_(Toronto)",
+          "Structure",
+          " -79.38056",
+          "43.64528",
+          "medium"
+        ],
+        [
+          "High_Park",
+          "Beach",
+          " -79.462996",
+          "43.646821",
+          "low"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.91km",
+      "threshold_high": "1.74km"
+    },
+    "example_output": {
+      "removed_index": 3
+    },
+    "rec_examples_gpt_text_large": [
+      "5798",
+      "4758",
+      "623",
+      "5278",
+      "5256"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "5798",
+      "2198",
+      "969",
+      "928",
+      "825"
+    ],
+    "rec_examples_qwen3_8b": [
+      "5798",
+      "1592",
+      "3045",
+      "2466",
+      "3975"
+    ],
+    "rec_exmaples": [
+      "1078",
+      "1089",
+      "1066",
+      "1063",
+      "1118"
+    ]
+  },
+  "2916": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Yonge-Dundas_Square",
+          "Beach",
+          " -79.38028",
+          "43.65611",
+          "high"
+        ],
+        [
+          "Hockey_Hall_of_Fame",
+          "Cultural",
+          " -79.377253",
+          "43.646976",
+          "high"
+        ],
+        [
+          "BMO_Field",
+          "Sport",
+          " -79.41861",
+          "43.63278",
+          "low"
+        ],
+        [
+          "Union_Station_(Toronto)",
+          "Structure",
+          " -79.38056",
+          "43.64528",
+          "medium"
+        ],
+        [
+          "CN_Tower",
+          "Amusement",
+          " -79.3871000",
+          "43.6426",
+          "high"
+        ],
+        [
+          "Rogers_Centre",
+          "Sport",
+          " -79.38917",
+          "43.64139",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.91km",
+      "threshold_high": "1.74km"
+    },
+    "example_output": {
+      "removed_index": 2
+    },
+    "rec_examples_gpt_text_large": [
+      "923",
+      "3501",
+      "2377",
+      "3504",
+      "2334"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "1598",
+      "1591",
+      "4198",
+      "3504",
+      "6028"
+    ],
+    "rec_examples_qwen3_8b": [
+      "929",
+      "920",
+      "809",
+      "5541",
+      "5539"
+    ],
+    "rec_exmaples": [
+      "1078",
+      "1089",
+      "1066",
+      "1063",
+      "1118"
+    ]
+  },
+  "688": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Maple_Leaf_Gardens",
+          "Sport",
+          " -79.38028",
+          "43.66222",
+          "low"
+        ],
+        [
+          "Ontario_Legislative_Building",
+          "Structure",
+          " -79.391708",
+          "43.662447",
+          "medium"
+        ],
+        [
+          "Yorkville,_Toronto",
+          "Shopping",
+          " -79.39111",
+          "43.67028",
+          "low"
+        ],
+        [
+          "Art_Gallery_of_Ontario",
+          "Cultural",
+          " -79.39278",
+          "43.65389",
+          "medium"
+        ],
+        [
+          "Nathan_Phillips_Square",
+          "Beach",
+          " -79.38361",
+          "43.6525",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.91km",
+      "threshold_high": "1.74km"
+    },
+    "example_output": {
+      "removed_index": 2
+    },
+    "rec_examples_gpt_text_large": [
+      "1796",
+      "5183",
+      "1835",
+      "5263",
+      "5237"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "2275",
+      "5282",
+      "5539",
+      "1792",
+      "2039"
+    ],
+    "rec_examples_qwen3_8b": [
+      "1796",
+      "4756",
+      "5183",
+      "5282",
+      "4276"
+    ],
+    "rec_exmaples": [
+      "1117",
+      "1275",
+      "100",
+      "1875",
+      "1792"
+    ]
+  },
+  "162": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Hockey_Hall_of_Fame",
+          "Cultural",
+          " -79.377253",
+          "43.646976",
+          "high"
+        ],
+        [
+          "Maple_Leaf_Gardens",
+          "Sport",
+          " -79.38028",
+          "43.66222",
+          "low"
+        ],
+        [
+          "Union_Station_(Toronto)",
+          "Structure",
+          " -79.38056",
+          "43.64528",
+          "medium"
+        ],
+        [
+          "Nathan_Phillips_Square",
+          "Beach",
+          " -79.38361",
+          "43.6525",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.91km",
+      "threshold_high": "1.74km"
+    },
+    "example_output": {
+      "removed_index": 1
+    },
+    "rec_examples_gpt_text_large": [
+      "880",
+      "624",
+      "5301",
+      "4198",
+      "1118"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "880",
+      "1835",
+      "3556",
+      "2338",
+      "3469"
+    ],
+    "rec_examples_qwen3_8b": [
+      "880",
+      "5301",
+      "5640",
+      "778",
+      "2338"
+    ],
+    "rec_exmaples": [
+      "1117",
+      "1275",
+      "100",
+      "1875",
+      "1792"
+    ]
+  },
+  "2803": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Old_City_Hall_(Toronto)",
+          "Structure",
+          " -79.38167",
+          "43.6525",
+          "medium"
+        ],
+        [
+          "Nathan_Phillips_Square",
+          "Beach",
+          " -79.38361",
+          "43.6525",
+          "high"
+        ],
+        [
+          "Toronto_Eaton_Centre",
+          "Shopping",
+          " -79.380319",
+          "43.653982",
+          "high"
+        ],
+        [
+          "Royal_Ontario_Museum",
+          "Cultural",
+          " -79.39417",
+          "43.6675",
+          "high"
+        ]
+      ],
+      "hint": "\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.91km",
+      "threshold_high": "1.74km"
+    },
+    "example_output": {
+      "removed_index": 3
+    },
+    "rec_examples_gpt_text_large": [
+      "1345",
+      "4972",
+      "788",
+      "5132",
+      "3707"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "1345",
+      "5132",
+      "4972",
+      "2838",
+      "962"
+    ],
+    "rec_examples_qwen3_8b": [
+      "1345",
+      "380",
+      "5132",
+      "788",
+      "2048"
+    ],
+    "rec_exmaples": [
+      "5132",
+      "4972",
+      "5073",
+      "1345",
+      "139"
+    ]
+  },
+  "5287": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Old_City_Hall_(Toronto)",
+          "Structure",
+          " -79.38167",
+          "43.6525",
+          "medium"
+        ],
+        [
+          "Art_Gallery_of_Ontario",
+          "Cultural",
+          " -79.39278",
+          "43.65389",
+          "medium"
+        ],
+        [
+          "Nathan_Phillips_Square",
+          "Beach",
+          " -79.38361",
+          "43.6525",
+          "high"
+        ],
+        [
+          "Yonge-Dundas_Square",
+          "Beach",
+          " -79.38028",
+          "43.65611",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n",
+      "threshold_low": "0.91km",
+      "threshold_high": "1.74km"
+    },
+    "example_output": {
+      "removed_index": 1
+    },
+    "rec_examples_gpt_text_large": [
+      "1620",
+      "2340",
+      "821",
+      "814",
+      "979"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "821",
+      "1620",
+      "2340",
+      "979",
+      "814"
+    ],
+    "rec_examples_qwen3_8b": [
+      "4451",
+      "1620",
+      "3149",
+      "2908",
+      "5343"
+    ],
+    "rec_exmaples": [
+      "814",
+      "1620",
+      "1259",
+      "157",
+      "302"
+    ]
+  },
+  "1179": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Art_Gallery_of_Ontario",
+          "Cultural",
+          " -79.39278",
+          "43.65389",
+          "medium"
+        ],
+        [
+          "Royal_Ontario_Museum",
+          "Cultural",
+          " -79.39417",
+          "43.6675",
+          "high"
+        ],
+        [
+          "Yorkdale_Shopping_Centre",
+          "Shopping",
+          " -79.452696",
+          "43.725599",
+          "low"
+        ],
+        [
+          "Yonge-Dundas_Square",
+          "Beach",
+          " -79.38028",
+          "43.65611",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.91km",
+      "threshold_high": "1.74km"
+    },
+    "example_output": {
+      "removed_index": 3
+    },
+    "rec_examples_gpt_text_large": [
+      "5709",
+      "3969",
+      "2069",
+      "4783",
+      "515"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "515",
+      "1310",
+      "4783",
+      "3045",
+      "5022"
+    ],
+    "rec_examples_qwen3_8b": [
+      "2069",
+      "5278",
+      "5253",
+      "4758",
+      "4451"
+    ],
+    "rec_exmaples": [
+      "1078",
+      "1089",
+      "1066",
+      "1063",
+      "1118"
+    ]
+  },
+  "2592": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Toronto_Eaton_Centre",
+          "Shopping",
+          " -79.380319",
+          "43.653982",
+          "high"
+        ],
+        [
+          "Riverdale_Farm",
+          "Cultural",
+          " -79.361294",
+          "43.667111",
+          "low"
+        ],
+        [
+          "Old_City_Hall_(Toronto)",
+          "Structure",
+          " -79.38167",
+          "43.6525",
+          "medium"
+        ],
+        [
+          "Yonge-Dundas_Square",
+          "Beach",
+          " -79.38028",
+          "43.65611",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.91km",
+      "threshold_high": "1.74km"
+    },
+    "example_output": {
+      "removed_index": 1
+    },
+    "rec_examples_gpt_text_large": [
+      "453",
+      "2048",
+      "2349",
+      "843",
+      "729"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "5963",
+      "100",
+      "2048",
+      "5253",
+      "2349"
+    ],
+    "rec_examples_qwen3_8b": [
+      "5963",
+      "100",
+      "3707",
+      "5256",
+      "729"
+    ],
+    "rec_exmaples": [
+      "1117",
+      "1275",
+      "100",
+      "1875",
+      "1792"
+    ]
+  },
+  "4570": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Yonge-Dundas_Square",
+          "Beach",
+          " -79.38028",
+          "43.65611",
+          "high"
+        ],
+        [
+          "Harbourfront_Centre",
+          "Shopping",
+          " -79.382068",
+          "43.63849",
+          "medium"
+        ],
+        [
+          "Toronto_Eaton_Centre",
+          "Shopping",
+          " -79.380319",
+          "43.653982",
+          "high"
+        ],
+        [
+          "Union_Station_(Toronto)",
+          "Structure",
+          " -79.38056",
+          "43.64528",
+          "medium"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.91km",
+      "threshold_high": "1.74km"
+    },
+    "example_output": {
+      "removed_index": 2
+    },
+    "rec_examples_gpt_text_large": [
+      "623",
+      "5798",
+      "5278",
+      "4758",
+      "5256"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "5747",
+      "3037",
+      "730",
+      "5228",
+      "4914"
+    ],
+    "rec_examples_qwen3_8b": [
+      "623",
+      "5747",
+      "5798",
+      "1592",
+      "2466"
+    ],
+    "rec_exmaples": [
+      "1078",
+      "1089",
+      "1066",
+      "1063",
+      "1118"
+    ]
+  },
+  "4004": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Old_City_Hall_(Toronto)",
+          "Structure",
+          " -79.38167",
+          "43.6525",
+          "medium"
+        ],
+        [
+          "Yorkville,_Toronto",
+          "Shopping",
+          " -79.39111",
+          "43.67028",
+          "low"
+        ],
+        [
+          "Rogers_Centre",
+          "Sport",
+          " -79.38917",
+          "43.64139",
+          "high"
+        ],
+        [
+          "CN_Tower",
+          "Amusement",
+          " -79.3871000",
+          "43.6426",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.91km",
+      "threshold_high": "1.74km"
+    },
+    "example_output": {
+      "removed_index": 1
+    },
+    "rec_examples_gpt_text_large": [
+      "790",
+      "5747",
+      "5556",
+      "1598",
+      "3707"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "3481",
+      "3968",
+      "1117",
+      "453",
+      "2349"
+    ],
+    "rec_examples_qwen3_8b": [
+      "1598",
+      "4284",
+      "510",
+      "5556",
+      "4972"
+    ],
+    "rec_exmaples": [
+      "1117",
+      "1275",
+      "100",
+      "1875",
+      "1792"
+    ]
+  },
+  "1283": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Toronto_Eaton_Centre",
+          "Shopping",
+          " -79.380319",
+          "43.653982",
+          "high"
+        ],
+        [
+          "BMO_Field",
+          "Sport",
+          " -79.41861",
+          "43.63278",
+          "low"
+        ],
+        [
+          "Nathan_Phillips_Square",
+          "Beach",
+          " -79.38361",
+          "43.6525",
+          "high"
+        ],
+        [
+          "Old_City_Hall_(Toronto)",
+          "Structure",
+          " -79.38167",
+          "43.6525",
+          "medium"
+        ],
+        [
+          "Air_Canada_Centre",
+          "Sport",
+          " -79.37917",
+          "43.64333",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.91km",
+      "threshold_high": "1.74km"
+    },
+    "example_output": {
+      "removed_index": 1
+    },
+    "rec_examples_gpt_text_large": [
+      "4493",
+      "6028",
+      "825",
+      "5913",
+      "729"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "5301",
+      "4284",
+      "4271",
+      "1118",
+      "4408"
+    ],
+    "rec_examples_qwen3_8b": [
+      "2349",
+      "6028",
+      "4493",
+      "2198",
+      "4284"
+    ],
+    "rec_exmaples": [
+      "1078",
+      "1089",
+      "1066",
+      "1063",
+      "1118"
+    ]
+  },
+  "472": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Exhibition_Place",
+          "Amusement",
+          " -79.41611",
+          "43.63278",
+          "medium"
+        ],
+        [
+          "Rogers_Centre",
+          "Sport",
+          " -79.38917",
+          "43.64139",
+          "high"
+        ],
+        [
+          "BMO_Field",
+          "Sport",
+          " -79.41861",
+          "43.63278",
+          "low"
+        ],
+        [
+          "Canadian_National_Exhibition",
+          "Amusement",
+          " -79.41667",
+          "43.63333",
+          "low"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.91km",
+      "threshold_high": "1.74km"
+    },
+    "example_output": {
+      "removed_index": 1
+    },
+    "rec_examples_gpt_text_large": [
+      "1937",
+      "5890",
+      "1938",
+      "5751",
+      "3881"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "5890",
+      "1933",
+      "5294",
+      "4308",
+      "5751"
+    ],
+    "rec_examples_qwen3_8b": [
+      "1933",
+      "5294",
+      "5751",
+      "5890",
+      "1937"
+    ],
+    "rec_exmaples": [
+      "1078",
+      "1089",
+      "1066",
+      "1063",
+      "1118"
+    ]
+  },
+  "2795": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Hockey_Hall_of_Fame",
+          "Cultural",
+          " -79.377253",
+          "43.646976",
+          "high"
+        ],
+        [
+          "Yonge-Dundas_Square",
+          "Beach",
+          " -79.38028",
+          "43.65611",
+          "high"
+        ],
+        [
+          "Toronto_Eaton_Centre",
+          "Shopping",
+          " -79.380319",
+          "43.653982",
+          "high"
+        ],
+        [
+          "Air_Canada_Centre",
+          "Sport",
+          " -79.37917",
+          "43.64333",
+          "high"
+        ]
+      ],
+      "hint": "\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.91km",
+      "threshold_high": "1.74km"
+    },
+    "example_output": {
+      "removed_index": 3
+    },
+    "rec_examples_gpt_text_large": [
+      "962",
+      "3454",
+      "1931",
+      "624",
+      "809"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "962",
+      "4972",
+      "1345",
+      "2838",
+      "5073"
+    ],
+    "rec_examples_qwen3_8b": [
+      "962",
+      "1931",
+      "3454",
+      "809",
+      "708"
+    ],
+    "rec_exmaples": [
+      "5132",
+      "4972",
+      "5073",
+      "1345",
+      "139"
+    ]
+  },
+  "5555": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Art_Gallery_of_Ontario",
+          "Cultural",
+          " -79.39278",
+          "43.65389",
+          "medium"
+        ],
+        [
+          "CN_Tower",
+          "Amusement",
+          " -79.3871000",
+          "43.6426",
+          "high"
+        ],
+        [
+          "Old_City_Hall_(Toronto)",
+          "Structure",
+          " -79.38167",
+          "43.6525",
+          "medium"
+        ],
+        [
+          "Royal_Ontario_Museum",
+          "Cultural",
+          " -79.39417",
+          "43.6675",
+          "high"
+        ],
+        [
+          "Rogers_Centre",
+          "Sport",
+          " -79.38917",
+          "43.64139",
+          "high"
+        ],
+        [
+          "Ripley's_Aquarium_of_Canada",
+          "Cultural",
+          " -79.38605",
+          "43.642481",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.91km",
+      "threshold_high": "1.74km"
+    },
+    "example_output": {
+      "removed_index": 2
+    },
+    "rec_examples_gpt_text_large": [
+      "515",
+      "5709",
+      "5276",
+      "2069",
+      "2908"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "3501",
+      "4578",
+      "3149",
+      "5709",
+      "4451"
+    ],
+    "rec_examples_qwen3_8b": [
+      "1335",
+      "1912",
+      "3008",
+      "302",
+      "681"
+    ],
+    "rec_exmaples": [
+      "1078",
+      "1089",
+      "1066",
+      "1063",
+      "1118"
+    ]
+  },
+  "4182": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "High_Park",
+          "Beach",
+          " -79.462996",
+          "43.646821",
+          "low"
+        ],
+        [
+          "Rogers_Centre",
+          "Sport",
+          " -79.38917",
+          "43.64139",
+          "high"
+        ],
+        [
+          "CN_Tower",
+          "Amusement",
+          " -79.3871000",
+          "43.6426",
+          "high"
+        ],
+        [
+          "Ripley's_Aquarium_of_Canada",
+          "Cultural",
+          " -79.38605",
+          "43.642481",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.91km",
+      "threshold_high": "1.74km"
+    },
+    "example_output": {
+      "removed_index": 0
+    },
+    "rec_examples_gpt_text_large": [
+      "1592",
+      "1275",
+      "1786",
+      "3469",
+      "1642"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "1275",
+      "4276",
+      "1642",
+      "453",
+      "3968"
+    ],
+    "rec_examples_qwen3_8b": [
+      "315",
+      "1275",
+      "4308",
+      "1536",
+      "1335"
+    ],
+    "rec_exmaples": [
+      "1117",
+      "1275",
+      "100",
+      "1875",
+      "1792"
+    ]
+  },
+  "4580": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Nathan_Phillips_Square",
+          "Beach",
+          " -79.38361",
+          "43.6525",
+          "high"
+        ],
+        [
+          "Kensington_Market",
+          "Shopping",
+          " -79.4006778",
+          "43.6547722",
+          "medium"
+        ],
+        [
+          "Old_City_Hall_(Toronto)",
+          "Structure",
+          " -79.38167",
+          "43.6525",
+          "medium"
+        ],
+        [
+          "Yonge-Dundas_Square",
+          "Beach",
+          " -79.38028",
+          "43.65611",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.91km",
+      "threshold_high": "1.74km"
+    },
+    "example_output": {
+      "removed_index": 1
+    },
+    "rec_examples_gpt_text_large": [
+      "2471",
+      "4345",
+      "71",
+      "5180",
+      "3975"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "3040",
+      "790",
+      "744",
+      "1782",
+      "3045"
+    ],
+    "rec_examples_qwen3_8b": [
+      "2471",
+      "4345",
+      "3975",
+      "5180",
+      "1782"
+    ],
+    "rec_exmaples": [
+      "1078",
+      "1089",
+      "1066",
+      "1063",
+      "1118"
+    ]
+  },
+  "3493": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Union_Station_(Toronto)",
+          "Structure",
+          " -79.38056",
+          "43.64528",
+          "medium"
+        ],
+        [
+          "Toronto_Eaton_Centre",
+          "Shopping",
+          " -79.380319",
+          "43.653982",
+          "high"
+        ],
+        [
+          "Yonge-Dundas_Square",
+          "Beach",
+          " -79.38028",
+          "43.65611",
+          "high"
+        ],
+        [
+          "Nathan_Phillips_Square",
+          "Beach",
+          " -79.38361",
+          "43.6525",
+          "high"
+        ],
+        [
+          "Riverdale_Farm",
+          "Cultural",
+          " -79.361294",
+          "43.667111",
+          "low"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "threshold_low": "0.91km",
+      "threshold_high": "1.74km"
+    },
+    "example_output": {
+      "removed_index": 4
+    },
+    "rec_examples_gpt_text_large": [
+      "380",
+      "753",
+      "1421",
+      "745",
+      "963"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "3975",
+      "1592",
+      "2466",
+      "71",
+      "2377"
+    ],
+    "rec_examples_qwen3_8b": [
+      "100",
+      "5256",
+      "5759",
+      "5963",
+      "2466"
+    ],
+    "rec_exmaples": [
+      "1078",
+      "1089",
+      "1066",
+      "1063",
+      "1118"
+    ]
+  }
+}

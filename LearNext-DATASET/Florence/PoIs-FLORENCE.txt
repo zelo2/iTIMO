@@ -1,0 +1,1022 @@
+F592 | Firenze | Monastero_di_Sant'Orsola |  |  43.7772333333 | 11.2544694444
+F679 | Firenze | Fontana_del_Porcellino | Porcellino | 43.76985 | 11.2542638889
+F222 | Firenze | Carcere_delle_Stinche |  |  43.770125 | 11.2609833333
+F855 | Firenze | Giardino_di_San_Marco |  |  43.7786722222 | 11.2582694444
+F780 | Firenze | Galleria_Rinaldo_Carnielo |  |  43.7812194444 | 11.2666111111
+F682 | Firenze | Chiesa_di_Santa_Maria_degli_Ughi |  |  43.771175 | 11.2525444444
+F267 | Firenze | Palazzo_Guicciardini |  |  43.7665416667 | 11.2511
+F540 | Firenze | Museo_nazionale_Alinari_della_fotografia |  |  43.7729222222 | 11.2491166667
+F767 | Firenze | Chiesa_della_Sacra_Famiglia |  |  43.7696333333 | 11.2780083333
+F763 | Firenze | Chiesa_di_Nostra_Signora_degli_Angeli |  |  43.7697583333 | 11.2715416667
+F854 | Firenze | Chiesa_di_San_Giuseppe_(via_Santa_Caterina_d'Alessandria) |  |  43.7818333333 | 11.256575
+F853 | Firenze | Chiesa_dei_Sette_Santi_Fondatori |  |  43.7807333333 | 11.2784916667
+FIPOIHPC1000000538 | Firenze | Palazzo_Minerbetti |  |  43.7704055556 | 11.2512305556
+F144 | Firenze | Incredulità_di_San_Tommaso_(Verrocchio) | Christ_and_St._Thomas_(Verrocchio) | 43.7707305556 | 11.2552555556
+FIPOIHPC1000000773 | Firenze | Palazzo_Portigiani |  |  43.773025 | 11.2518805556
+FIPOIHPC1000000772 | Firenze | Palazzo_Franceschi |  |  43.7730416667 | 11.2516055556
+F728 | Firenze | Via_de'_Rustici |  |  43.7729444444 | 11.251425
+F896 | Firenze | Chiesa_di_Santa_Maria_degli_Angiolini |  |  43.775475 | 11.2636333333
+F543 | Firenze | Orti_Oricellari |  |  43.7756388889 | 11.2438416667
+F549 | Firenze | Fortezza_da_Basso |  |  43.7819583333 | 11.2483027778
+F168 | Firenze | Statua_equestre_di_Cosimo_I_de'_Medici |  |  43.7697777778 | 11.2560111111
+F820 | Firenze | Museo_Marino_Marini_(Firenze) |  |  43.7718361111 | 11.249975
+F738 | Firenze | Chiesa_dei_Santi_Simone_e_Giuda_(Firenze) |  |  43.7698305556 | 11.2605333333
+F483 | Firenze | Chiesa_Evangelica_Luterana_(Firenze) |  |  43.7655472222 | 11.2571027778
+F258 | Firenze | Chiesa_di_Santa_Felicita_(Firenze) | Santa_Felicita,_Florence | 43.7668333333 | 11.2526361111
+F811 | Firenze | Ex_monastero_di_Sant'Anna_sul_Prato |  |  43.7758805556 | 11.2422666667
+F636 | Firenze | Piazza_della_Santissima_Annunziata |  |  43.7764472222 | 11.2607333333
+F280 | Firenze | Basilica_di_Santo_Spirito | Santo_Spirito,_Florence | 43.7676388889 | 11.2484361111
+F813 | Firenze | Chiesa_di_San_Benedetto_(Firenze) |  |  43.7722555556 | 11.2571694444
+F266 | Firenze | Via_Guicciardini |  |  43.7669472222 | 11.2517888889
+FIPOIHPC1000000537 | Firenze | Via_dell'Oriuolo |  |  43.772375 | 11.2593944444
+FIPOIHPC1000001006 | Firenze | Lungarno_della_Zecca_Vecchia |  |  43.7664111111 | 11.2649138889
+F524 | Firenze | Trinità_(Masaccio) | Holy_Trinity_(Masaccio) | 43.7744777778 | 11.2491833333
+FIPOIHPC1000000535 | Firenze | Palazzo_Lenzi |  |  43.772475 | 11.2452833333
+FIPOIHPC1000000871 | Firenze | Teatro_Mediceo |  |  43.768625 | 11.256075
+F376 | Firenze | Museo_di_storia_naturale_sezione_di_zoologia_La_Specola | La_Specola | 43.7645305556 | 11.2473416667
+F339 | Firenze | Palazzo_Larderel |  |  43.7722277778 | 11.2512805556
+F607 | Firenze | Palazzo_Medici_Riccardi | Palazzo_Medici_Riccardi | 43.7752 | 11.25542
+FIPOIHPC1000000648 | Firenze | Sala_di_Clemente_VII |  |  43.7689277778 | 11.2570861111
+FIPOIHPC1000000425 | Firenze | Tempio_Maggiore_Israelitico_di_Firenze | Great_Synagogue_of_Florence | 43.7728194444 | 11.266625
+F271 | Firenze | Torri_dei_Barbadori |  |  43.7679083333 | 11.2515361111
+FIPOIHPC1000000620 | Firenze | Chiesa_di_San_Michele_alle_Trombe |  |  43.7717638889 | 11.2560777778
+F329 | Firenze | Basilica_di_Santa_Trinita | Santa_Trinita | 43.7701777778 | 11.2506666667
+F846 | Firenze | Torre_degli_Albizi |  |  43.7715416667 | 11.2601666667
+F851 | Firenze | Chiesa_di_Santa_Lucia_sul_Prato |  |  43.7746194444 | 11.2435055556
+F125 | Firenze | Chiesa_di_Santa_Reparata | Santa_Reparata,_Florence | 43.77323 | 11.25599
+F252 | Firenze | Torre_dei_Salterelli |  |  43.7692111111 | 11.2545138889
+F891 | Firenze | Torre_dei_Sacchetti |  |  43.7702333333 | 11.257025
+F892 | Firenze | Torre_dei_Visdomini |  |  43.7722527778 | 11.2560944444
+F695 | Firenze | Torre_degli_Strozzi |  |  43.7706527778 | 11.2520888889
+F719 | Firenze | Torre_degli_Alberti |  |  43.7679666667 | 11.2598916667
+F345 | Firenze | Torre_dei_Gianfigliazzi |  |  43.7699 | 11.250825
+F538 | Firenze | Chiesa_di_San_Jacopo_di_Ripoli |  |  43.7768472222 | 11.243875
+F537 | Firenze | Chiesa_di_San_Martino_in_Santa_Maria_della_Scala |  |  43.7759444444 | 11.2447527778
+F534 | Firenze | Oratorio_dei_Santi_Jacopo_e_Filippo |  |  43.7742888889 | 11.2471222222
+F533 | Firenze | Farmacia_di_Santa_Maria_Novella |  |  43.7743388889 | 11.2478777778
+F849 | Firenze | Chiesa_Cristiana_Evangelica_dei_Fratelli |  |  43.7700444444 | 11.2582916667
+F215 | Firenze | Chiesa_di_Sant'Apollinare_(Firenze) |  |  43.7701027778 | 11.2580361111
+F850 | Firenze | Chiesa_di_Santa_Maria_dei_Battilani |  |  43.7800083333 | 11.2579416667
+F440 | Firenze | Cimitero_delle_Porte_Sante |  |  43.7589527778 | 11.2640861111
+F401 | Firenze | Cappella_Corsini |  |  43.7676388889 | 11.2440861111
+F673 | Firenze | Via_della_Canonica |  |  43.7723472222 | 11.2561833333
+F436 | Firenze | Basilica_di_San_Miniato_al_Monte | San_Miniato_al_Monte | 43.7596388889 | 11.2652388889
+F486 | Firenze | Palazzo_Canigiani |  |  43.7658194444 | 11.2564916667
+F819 | Firenze | Chiesa_di_San_Pancrazio_(Firenze) | San_Pancrazio,_Florence | 43.7718361111 | 11.249975
+F558 | Firenze | Via_Nazionale_(Firenze) |  |  43.7773583333 | 11.252375
+F604 | Firenze | Palazzo_Tolomei_(Firenze) |  |  43.7766805556 | 11.2557833333
+F491 | Firenze | Ippodromo_delle_Cascine |  |  43.7802166667 | 11.2274472222
+FIPOIHPC1000000629 | Firenze | Studiolo_di_Cosimo_I |  |  43.7691277778 | 11.2565527778
+FIPOIHPC1000000628 | Firenze | Terminal_degli_autobus_di_Santa_Maria_Novella |  |  43.7770055556 | 11.2490194444
+FIPOIHPC1000000995 | Firenze | Via_di_Capaccio |  |  43.7696277778 | 11.2539416667
+F237 | Firenze | Chiesa_di_San_Pier_Scheraggio |  |  43.7689222222 | 11.2564388889
+F600 | Firenze | Palazzo_Barbolani_di_Montauto |  |  43.7755777778 | 11.2553361111
+F317 | Firenze | Fontana_del_Carciofo |  |  43.7646611111 | 11.2504972222
+F522 | Firenze | Cappella_Tornabuoni | Tornabuoni_Chapel | 43.7751277778 | 11.249425
+F627 | Firenze | Monumento_al_Generale_Manfredo_Fanti |  |  43.7777888889 | 11.2588611111
+F749 | Firenze | Loggia_del_Pesce |  |  43.7713416667 | 11.2650388889
+F561 | Firenze | Piazza_dell'Indipendenza |  |  43.7798166667 | 11.2538
+FIPOIHPC1000000902 | Firenze | Viale_Antonio_Gramsci |  |  43.7754638889 | 11.2698166667
+F761 | Firenze | Viale_Giovine_Italia |  |  43.7681472222 | 11.2694555556
+FIPOIHPC1000000900 | Firenze | Istituto_Storico_della_Resistenza_in_Toscana |  |  43.7722388889 | 11.2666555556
+F687 | Firenze | Banco_di_Sicilia_(Firenze) |  |  43.7710055556 | 11.2546694444
+F658 | Firenze | Palazzo_Buontalenti |  |  43.7745777778 | 11.2583111111
+F663 | Firenze | Galleria_dell'Accademia |  |  43.7767 | 11.2591
+F762 | Firenze | Viale_Giovanni_Amendola |  |  43.7682194444 | 11.2712222222
+F388 | Firenze | Casa_Guidi | Casa_Guidi | 43.7653083333 | 11.2479805556
+FIPOIHPC1000000908 | Firenze | Viale_Alessandro_Guidoni |  |  43.7974638889 | 11.2205944444
+F406 | Firenze | Piazza_Piattellina |  |  43.7684638889 | 11.24315
+F219 | Firenze | Via_Ghibellina |  |  43.7700833333 | 11.2651083333
+FIPOIHPC1000000644 | Firenze | Chiesa_di_San_Donato_in_Polverosa |  |  43.7905416667 | 11.2261472222
+F639 | Firenze | Spedale_degli_Innocenti | Ospedale_degli_Innocenti | 43.7763083333 | 11.2612138889
+F667 | Firenze | Teatro_Niccolini_(Firenze) |  |  43.77369 | 11.25606
+FIPOIHPC1000000521 | Firenze | Gran_Caffè_Doney | Gran_Caffé_Doney | 43.7708694444 | 11.2515444444
+F445 | Firenze | Osservatorio_Astrofisico_di_Arcetri | Arcetri_Observatory | 43.7505555556 | 11.2544444444
+F285 | Firenze | Biblioteca_Pietro_Thouar |  |  43.7661138889 | 11.2472694444
+FIPOIHPC1000000975 | Firenze | Romito |  |  43.7852555556 | 11.2471222222
+FIPOIHPC1000000753 | Firenze | Palazzo_Calcagnini |  |  43.7738805556 | 11.2407916667
+FIPOIHPC1000000752 | Firenze | Tabernacolo_di_Montiloro |  |  43.7738944444 | 11.2636138889
+F465 | Firenze | Piazza_de'_Mozzi |  |  43.765075 | 11.2582277778
+FIPOIHPC1000000699 | Firenze | Via_Por_Santa_Maria |  |  43.7691055556 | 11.2539944444
+FIPOIHPC1000000757 | Firenze | Scuola_Marescialli_e_Brigadieri_Carabinieri |  |  43.7752 | 11.2471666667
+F514 | Firenze | Residenza_Contini_Bonacossi |  |  43.7737027778 | 11.2428333333
+FIPOIHPC1000000755 | Firenze | Palazzo_della_Questura_(Firenze) |  |  43.7814222222 | 11.259325
+FIPOIHPC1000000615 | Firenze | Stazione_di_Firenze_Campo_Marte | Firenze_Campo_di_Marte_railway_station | 43.7774916667 | 11.2763944444
+F737 | Firenze | Via_dell'Anguillara |  |  43.7696416667 | 11.2595111111
+FIPOIHPC1000000447 | Firenze | Via_Faenza |  |  43.7781388889 | 11.2508833333
+F642 | Firenze | Statua_equestre_di_Ferdinando_I_de'_Medici |  |  43.7763277778 | 11.2606194444
+F643 | Firenze | Fontane_dei_mostri_marini |  |  43.7763444444 | 11.2609416667
+F585 | Firenze | Piazza_del_Mercato_Centrale |  |  43.7765361111 | 11.254075
+F662 | Firenze | Via_Ricasoli |  |  43.7755444444 | 11.2577305556
+F229 | Firenze | Via_della_Vigna_Vecchia |  |  43.7701944444 | 11.2590888889
+FIPOIHPC1000000695 | Firenze | Via_dei_Fossi |  |  43.7718583333 | 11.2484722222
+F841 | Firenze | Palazzo_Corsini_al_Parione |  |  43.770475 | 11.2489833333
+F840 | Firenze | Museo_di_storia_naturale_sezione_di_mineralogia_e_litologia |  |  43.7778 | 11.26059
+F380 | Firenze | Giardino_Corsi_Annalena |  |  43.7635805556 | 11.244125
+F842 | Firenze | Giardino_Corsini |  |  43.7768333333 | 11.242075
+F797 | Firenze | Chiesa_di_Sant'Egidio_(Firenze) |  |  43.7732777778 | 11.2600555556
+F502 | Firenze | Cenacolo_del_Ghirlandaio_(Ognissanti) |  |  43.7725388889 | 11.2456361111
+F788 | Firenze | Oratorio_di_Gesù_Pellegrino |  |  43.7784611111 | 11.2575777778
+F789 | Firenze | Chiesa_di_Sant'Agata_(Firenze) |  |  43.7821444444 | 11.2607611111
+F593 | Firenze | Chiesa_di_San_Barnaba |  |  43.7778833333 | 11.2540166667
+F407 | Firenze | Chiesa_di_Santa_Monica_(Firenze) |  |  43.7681222222 | 11.2449638889
+F624 | Firenze | Piazza_San_Marco_(Firenze) |  |  43.77787 | 11.25873
+F796 | Firenze | Chiesa_dei_Santi_Vito_e_Modesto_(Firenze) |  |  43.7694027778 | 11.2335166667
+F474 | Firenze | Chiesa_di_San_Niccolò_Oltrarno |  |  43.7646138889 | 11.261225
+FIPOIHPC1000000800 | Firenze | Palazzo_de'_Nobili |  |  43.7698527778 | 11.2525611111
+F716 | Firenze | Teatro_dei_Concordi_(Firenze) |  |  43.7673833333 | 11.2600333333
+F316 | Firenze | Grotta_di_Mosè |  |  43.7647305556 | 11.2504388889
+FIPOIHPC1000000962 | Firenze | Teatro_Diurno |  |  43.7635611111 | 11.269725
+F556 | Firenze | Cenacolo_di_Fuligno |  |  43.7772833333 | 11.2514222222
+F821 | Firenze | Chiesa_di_San_Salvi | San_Salvi | 43.7721 | 11.28611
+F149 | Firenze | Palazzo_dell'Arte_dei_Mercatanti |  |  43.7699555556 | 11.2551555556
+F318 | Firenze | Giardino_di_Boboli | Boboli_Gardens | 43.7623611111 | 11.2482972222
+F466 | Firenze | Palazzo_dei_Mozzi | Palazzo_Mozzi | 43.7646694444 | 11.2579916667
+F158 | Firenze | Perseo_con_la_testa_di_Medusa |  |  43.7692194444 | 11.2557805556
+FIPOIHPC1000000965 | Firenze | Annunciazione_Cavalcanti |  |  43.7682333333 | 11.2627666667
+F234 | Firenze | Museo_di_storia_della_scienza | Institute_and_Museum_of_the_History_of_Science | 43.7677555556 | 11.2559555556
+F346 | Firenze | Palazzo_Frescobaldi_di_San_Jacopo |  |  43.7682416667 | 11.2500416667
+FIPOIHPC1000000575 | Firenze | Complesso_delle_Oblate |  |  43.7726138889 | 11.2597861111
+F361 | Firenze | Palazzo_Corsini_Suarez |  |  43.7660527778 | 11.2483861111
+F369 | Firenze | Istituto_Emily_Gould |  |  43.7666055556 | 11.2452388889
+FIPOIHPC1000000572 | Firenze | Parterre_(Firenze) |  |  43.7852027778 | 11.2628972222
+F882 | Firenze | Ospizio_della_Quarconia |  |  43.7705527778 | 11.2564694444
+F282 | Firenze | Sagrestia_di_Santo_Spirito |  |  43.7674638889 | 11.2479111111
+FIPOIHPC1000000476 | Firenze | Palazzo_Socci |  |  43.77875 | 11.2577444444
+FIPOIHPC1000000477 | Firenze | Via_del_Corso_(Firenze) |  |  43.7714694444 | 11.2568833333
+F400 | Firenze | Cappella_Brancacci | Brancacci_Chapel | 43.7677222222 | 11.243575
+FIPOIHPC1000000475 | Firenze | Palazzo_Le_Monnier |  |  43.7790388889 | 11.2575027778
+F379 | Firenze | Ospizio_di_San_Niccolò |  |  43.7643027778 | 11.2466
+F382 | Firenze | Ex_Spedale_dello_Spirito_Santo |  |  43.76255 | 11.2435638889
+F226 | Firenze | Ex_chiesa_dei_Santi_Jacopo_e_Lorenzo |  |  43.7690972222 | 11.2669916667
+F225 | Firenze | Monastero_delle_Murate |  |  43.7690944444 | 11.2686861111
+F670 | Firenze | Tabernacolo_delle_cinque_lampade |  |  43.77439 | 11.25664
+F239 | Firenze | Loggia_del_Grano |  |  43.7685361111 | 11.2570555556
+F529 | Firenze | Chiostro_Grande_(Santa_Maria_Novella) |  |  43.7747277778 | 11.2480861111
+F776 | Firenze | Giardino_della_Gherardesca |  |  43.7779027778 | 11.2657416667
+F871 | Firenze | Chiesa_dei_Santi_Gervasio_e_Protasio_(Firenze) |  |  43.7843222222 | 11.2827888889
+F748 | Firenze | Piazza_dei_Ciompi |  |  43.7711138889 | 11.2649333333
+F479 | Firenze | Palazzo_Serristori |  |  43.7650555556 | 11.2610388889
+F327 | Firenze | Palazzo_della_Missione |  |  43.7684194444 | 11.2501611111
+F270 | Firenze | Fontana_dello_Sprone |  |  43.7681055556 | 11.2499138889
+FIPOIHPC1000000878 | Firenze | Viale_Spartaco_Lavagnini |  |  43.7826722222 | 11.2564861111
+F434 | Firenze | Giardino_dell'Iris | Giardino_dell'Iris | 43.7628166667 | 11.266875
+FIPOIHPC1000000872 | Firenze | Teatrino_della_Baldracca |  |  43.7680027778 | 11.2561277778
+FIPOIHPC1000000873 | Firenze | Teatro_Umberto_I |  |  43.7744305556 | 11.2677972222
+F751 | Firenze | Teatro_Alfieri_(Firenze) |  |  43.7712722222 | 11.2632055556
+F864 | Firenze | Piazza_della_Libertà | Piazza_della_Libertà | 43.7838944444 | 11.2619138889
+F515 | Firenze | Piazza_Santa_Maria_Novella |  |  43.7735055556 | 11.2494222222
+F768 | Firenze | Casa_Antonini |  |  43.7690333333 | 11.2748055556
+F319 | Firenze | Anfiteatro_di_Boboli |  |  43.7639555556 | 11.2510444444
+F148 | Firenze | Palazzo_dei_Cavalcanti |  |  43.7704305556 | 11.2551638889
+F256 | Firenze | Ponte_Vecchio | Ponte_Vecchio | 43.7679888889 | 11.2531916667
+F760 | Firenze | Casa_della_Gioventù_Italiana_del_Littorio_di_Firenze |  |  43.7691805556 | 11.2706916667
+F321 | Firenze | Grotta_del_Buontalenti |  |  43.7662 | 11.2518972222
+F262 | Firenze | Torre_degli_Ubriachi |  |  43.7671833333 | 11.2527083333
+F268 | Firenze | Torre_dei_Rossi-Cerchi |  |  43.7674833333 | 11.2526527778
+F583 | Firenze | Osservatorio_Ximeniano |  |  43.7744638889 | 11.2552416667
+F300 | Firenze | Torre_dei_Lanfredini |  |  43.7687138889 | 11.2477527778
+F273 | Firenze | Torre_dei_Ramaglianti |  |  43.7675388889 | 11.2514083333
+F276 | Firenze | Torre_dei_Marsili |  |  43.7678888889 | 11.2508944444
+F390 | Firenze | Tabernacolo_di_Santa_Rosa | Santa_Rosa,_Florence | 43.7718694444 | 11.2407055556
+FIPOIHPC1000000911 | Firenze | Chiesa_di_Santa_Cecilia_(Firenze) |  |  43.7696694444 | 11.2548138889
+F108 | Firenze | Loggia_del_Bigallo | Loggia_del_Bigallo | 43.7727472222 | 11.2552555556
+F812 | Firenze | Chiesa_della_Madonna_della_Tosse |  |  43.7864583333 | 11.2653527778
+F352 | Firenze | Palazzo_Martellini-Rosselli_del_Turco |  |  43.7673555556 | 11.2493888889
+F332 | Firenze | Palazzo_Buondelmonti |  |  43.7699944444 | 11.2515555556
+F870 | Firenze | Arco_di_San_Pierino |  |  43.7715916667 | 11.2618166667
+F832 | Firenze | Oratorio_di_San_Pierino |  |  43.7772388889 | 11.2622222222
+F867 | Firenze | Torre_della_Zecca |  |  43.7664138889 | 11.2685277778
+F550 | Firenze | Porta_a_Faenza |  |  43.7809638889 | 11.2492722222
+F868 | Firenze | Torre_della_Pagliazza |  |  43.7717888889 | 11.2560694444
+F866 | Firenze | Arco_di_trionfo_(Firenze) |  |  43.7841777778 | 11.2621027778
+F467 | Firenze | Museo_Bardini |  |  43.7650111111 | 11.2584305556
+F279 | Firenze | Piazza_Santo_Spirito |  |  43.7665777778 | 11.2472888889
+F235 | Firenze | Galleria_degli_Uffizi | Uffizi | 43.7684388889 | 11.2559
+FIPOIHPC1000000177 | Firenze | Firenze_Fiera |  |  43.7780388889 | 11.2495972222
+F528 | Firenze | Cappella_dei_Papi |  |  43.7751722222 | 11.2481027778
+F334 | Firenze | Palazzo_Antinori |  |  43.7728166667 | 11.2511277778
+F831 | Firenze | Chiesa_di_San_Marco_Vecchio |  |  43.7912916667 | 11.2691583333
+F901 | Firenze | Piazza_dell'Unità_Italiana |  |  43.7748694444 | 11.2504388889
+FIPOIHPC1000000803 | Firenze | Palazzo_Altoviti_Sangalletti |  |  43.7708694444 | 11.2515444444
+F513 | Firenze | Monte_di_Pietà_o_Presto |  |  43.7729833333 | 11.2480666667
+F506 | Firenze | Palazzo_della_Marescialla |  |  43.7716333333 | 11.2466388889
+F628 | Firenze | Basilica_di_San_Marco_(Firenze) | San_Marco,_Florence | 43.7783166667 | 11.2590611111
+F651 | Firenze | Palazzo_Giugni |  |  43.7752333333 | 11.261325
+FIPOIHPC1000000440 | Firenze | Teatro_Comunale_(Firenze) | Teatro_Comunale_Florence | 43.7750027778 | 11.2390194444
+FIPOIHPC1000000967 | Firenze | Sinagoghe_di_via_delle_Oche |  |  43.7721138889 | 11.2566055556
+F349 | Firenze | Palazzo_Agostini_(Firenze) |  |  43.7677138889 | 11.249425
+FIPOIHPC1000000639 | Firenze | Manifattura_Tabacchi_(Firenze) |  |  43.7855444444 | 11.2242527778
+F358 | Firenze | Casa_Velluti |  |  43.7664222222 | 11.2488722222
+F254 | Firenze | Torre_degli_Amidei |  |  43.7687638889 | 11.2536361111
+F255 | Firenze | Torre_dei_Baldovinetti |  |  43.7690138889 | 11.2537861111
+FIPOIHPC1000000553 | Firenze | Via_Calimaruzza |  |  43.7699111111 | 11.2549444444
+F605 | Firenze | Chiesa_di_San_Giovannino_degli_Scolopi | San_Giovannino_degli_Scolopi | 43.7747611111 | 11.2557333333
+F711 | Firenze | Palazzo_Cocchi-Serristori |  |  43.7692722222 | 11.2606583333
+F876 | Firenze | Palazzo_Acciaiuoli |  |  43.769175 | 11.2533083333
+F173 | Firenze | Palazzo_Uguccioni |  |  43.7699888889 | 11.2564888889
+F709 | Firenze | Palazzo_dell'Antella |  |  43.7687083333 | 11.2611527778
+F135 | Firenze | Torri_degli_Adimari |  |  43.7723444444 | 11.2553666667
+F136 | Firenze | Chiesa_di_San_Cristoforo_degli_Adimari |  |  43.7725166667 | 11.2553472222
+F170 | Firenze | Chiesa_di_San_Romolo |  |  43.7700388889 | 11.25565
+F697 | Firenze | Caffè_Le_Giubbe_Rosse | Caffè_Giubbe_Rosse | 43.77115 | 11.253975
+FIPOIHPC1000000657 | Firenze | Chiesa_di_Santa_Maria_a_Ricorboli |  |  43.7616722222 | 11.2738416667
+FIPOIHPC1000000654 | Firenze | Chiesa_di_Sant'Antonino_(Firenze) |  |  43.7678694444 | 11.2885527778
+F424 | Firenze | Chiesa_di_San_Leone_Magno |  |  43.7517583333 | 11.2356527778
+FIPOIHPC1000000652 | Firenze | Chiesa_del_Sacro_Cuore_al_Romito |  |  43.7852555556 | 11.2471222222
+FIPOIHPC1000000653 | Firenze | Chiesa_di_San_Piero_in_Palco |  |  43.7589916667 | 11.2838583333
+F362 | Firenze | Casa_Ridolfi |  |  43.7654833333 | 11.2483388889
+F365 | Firenze | Palazzo_Del_Pugliese |  |  43.7686083333 | 11.2459083333
+FIPOIHPC1000000658 | Firenze | Chiesa_della_Beata_Maria_Vergine_Madre_della_Divina_Provvidenza |  |  43.7885583333 | 11.2751722222
+FIPOIHPC1000000659 | Firenze | Chiesa_dell'Ascensione_di_Nostro_Signore_Gesù_Cristo |  |  43.7904583333 | 11.2365777778
+FIPOIHPC1000000719 | Firenze | Via_delle_Terme |  |  43.7698444444 | 11.2527722222
+F249 | Firenze | Torre_dei_Pulci |  |  43.7685611111 | 11.2550722222
+F248 | Firenze | Via_Lambertesca |  |  43.7688472222 | 11.2544472222
+FIPOIHPC1000000716 | Firenze | Alloggi_per_dipendenti_governativi_di_via_XX_Settembre |  |  43.784725 | 11.2549444444
+FIPOIHPC1000000715 | Firenze | Alloggi_per_dipendenti_governativi_di_via_Crispi |  |  43.7850861111 | 11.2536833333
+F472 | Firenze | Via_San_Niccolò |  |  43.7641944444 | 11.2615111111
+F459 | Firenze | Costa_San_Giorgio |  |  43.7645416667 | 11.2560305556
+F754 | Firenze | Borgo_La_Croce |  |  43.77125 | 11.268525
+F713 | Firenze | Borgo_Santa_Croce |  |  43.768075 | 11.2607027778
+F449 | Firenze | Torre_del_Gallo | Torre_del_Gallo | 43.751925 | 11.2585527778
+FIPOIHPC1000000959 | Firenze | Via_dello_Statuto |  |  43.7852777778 | 11.2511111111
+FIPOIHPC1000000854 | Firenze | Sala_Vanni |  |  43.7683555556 | 11.2434166667
+FIPOIHPC1000000855 | Firenze | Teatro_estivo_Il_Boschetto |  |  43.7702277778 | 11.2251277778
+F377 | Firenze | Tribuna_di_Galileo |  |  43.7644083333 | 11.2473388889
+FIPOIHPC1000000950 | Firenze | Monastero_delle_Suore_Domenicane_dello_Spirito_Santo |  |  43.7955583333 | 11.2610972222
+FIPOIHPC1000000939 | Firenze | San_Jacopo_(Orsanmichele) | Orsanmichele's_St._James_Tabernacle | 43.7705833333 | 11.2549333333
+F814 | Firenze | Palazzo_Rucellai | Palazzo_Rucellai | 43.7712916667 | 11.2495277778
+F448 | Firenze | Villa_Il_Giullarino |  |  43.7520305556 | 11.2542527778
+FIPOIHPC1000000856 | Firenze | Teatro_13 |  |  43.7850416667 | 11.28595
+F450 | Firenze | Villa_La_Gallina |  |  43.7503944444 | 11.258525
+F453 | Firenze | Villa_Giovannelli |  |  43.756525 | 11.2602805556
+FIPOIHPC1000000857 | Firenze | Teatro_Arena_San_Salvi |  |  43.7710583333 | 11.286775
+FIPOIHPC1000000899 | Firenze | Viale_Fratelli_Rosselli |  |  43.7791111111 | 11.2433333333
+F589 | Firenze | Via_Taddea |  |  43.7768638889 | 11.254675
+FIPOIHPC1000001020 | Firenze | Torre_del_Guardingo |  |  43.7693916667 | 11.2572777778
+FIPOIHPC1000000583 | Firenze | Palazzo_Wilson_Gattai |  |  43.7735527778 | 11.2670333333
+FIPOIHPC1000000852 | Firenze | Auditorium_FLOG |  |  43.79595 | 11.2480527778
+F315 | Firenze | Fonte_del_Leone |  |  43.76555 | 11.2504777778
+F535 | Firenze | Palazzo_Dal_Borgo |  |  43.7737583333 | 11.248225
+F151 | Firenze | Piazza_della_Signoria | Piazza_della_Signoria | 43.7695861111 | 11.2557666667
+F476 | Firenze | Palazzo_Demidoff-Amici |  |  43.764725 | 11.2605722222
+F323 | Firenze | Kaffeehaus_del_Giardino_di_Boboli |  |  43.7642555556 | 11.2525638889
+F610 | Firenze | Biblioteca_Moreniana |  |  43.7754527778 | 11.2555361111
+F568 | Firenze | Palazzo_Della_Stufa |  |  43.7753861111 | 11.2544
+F691 | Firenze | Palazzo_Sertini |  |  43.7721805556 | 11.2521611111
+FIPOIHPC1000000827 | Firenze | Sede_della_Rari_Nantes_Florentia |  |  43.7640361111 | 11.2765888889
+F764 | Firenze | Sede_ACI_(Firenze) |  |  43.7691638889 | 11.2715944444
+FIPOIHPC1000000432 | Firenze | Pia_Casa_di_Lavoro_di_Montedomini |  |  43.7677055556 | 11.2673972222
+F723 | Firenze | Palazzo_Malenchini_Alberti |  |  43.767075 | 11.258975
+F413 | Firenze | Chiesa_di_San_Donato_in_Scopeto |  |  43.7612222222 | 11.2377833333
+FIPOIHPC1000000436 | Firenze | Palazzo_dei_Cerchi |  |  43.7702861111 | 11.2558722222
+FIPOIHPC1000000437 | Firenze | Palazzo_Compagni |  |  43.7734916667 | 11.2589555556
+F259 | Firenze | Cappella_Barbadori |  |  43.7668972222 | 11.2524583333
+FIPOIHPC1000000435 | Firenze | Ospedale_Bonifacio |  |  43.7811444444 | 11.2594888889
+F138 | Firenze | Chiesa_di_Orsanmichele | Orsanmichele | 43.7707583333 | 11.2551694444
+F612 | Firenze | Palazzo_Capponi-Covoni |  |  43.7753416667 | 11.25655
+F614 | Firenze | Palazzo_Bastogi |  |  43.7759722222 | 11.2570805556
+F613 | Firenze | Palazzo_Bartolommei_(via_Cavour) |  |  43.7762916667 | 11.2572972222
+F618 | Firenze | Ex_convento_di_Santa_Caterina |  |  43.7779305556 | 11.2578472222
+F646 | Firenze | Palazzo_Durazzo |  |  43.7755416667 | 11.2599166667
+F657 | Firenze | Palazzo_di_Sforza_Almeni |  |  43.7745694444 | 11.2587194444
+F659 | Firenze | Palazzo_Pasqui |  |  43.7741277778 | 11.2582861111
+FIPOIHPC1000000482 | Firenze | Via_de'_Macci |  |  43.7697666667 | 11.26575
+F204 | Firenze | Via_del_Proconsolo |  |  43.7711138889 | 11.2580694444
+FIPOIHPC1000000480 | Firenze | Via_Bufalini |  |  43.773575 | 11.258925
+F160 | Firenze | Ercole_e_il_Centauro_Nesso |  |  43.7692388889 | 11.2554972222
+F224 | Firenze | Teatro_Verdi_(Firenze) |  |  43.76995 | 11.2610222222
+FIPOIHPC1000000589 | Firenze | Via_dell'Alloro |  |  43.773925 | 11.2525555556
+FIPOIHPC1000000782 | Firenze | Palazzo_degli_Sporti |  |  43.7719388889 | 11.2616055556
+FIPOIHPC1000000508 | Firenze | Palazzina_de'_Servi |  |  43.7778638889 | 11.2622777778
+FIPOIHPC1000000509 | Firenze | Piccola_Casa_della_Divina_Provvidenza_(Firenze) |  |  43.7952888889 | 11.2513638889
+FIPOIHPC1000000506 | Firenze | Studio_Fiorentino |  |  43.7717638889 | 11.2569444444
+FIPOIHPC1000000507 | Firenze | Casa_di_Andrea_del_Sarto |  |  43.7776666667 | 11.2627944444
+FIPOIHPC1000000504 | Firenze | Palazzo_Marzichi-Lenzi |  |  43.7730472222 | 11.2628638889
+FIPOIHPC1000000505 | Firenze | Palazzo_Zuccari |  |  43.7775361111 | 11.2631333333
+FIPOIHPC1000000502 | Firenze | Palazzo_degli_Alessandri |  |  43.7713944444 | 11.2607805556
+FIPOIHPC1000000503 | Firenze | Ponte_Rosso |  |  43.7861611111 | 11.2622555556
+F718 | Firenze | Palazzo_Mellini-Fossi |  |  43.7686861111 | 11.2605833333
+F721 | Firenze | Palazzo_Bardi |  |  43.7674972222 | 11.2590972222
+F710 | Firenze | Fontana_di_piazza_Santa_Croce |  |  43.7691138889 | 11.260825
+F665 | Firenze | Palazzo_di_Bettino_Ricasoli |  |  43.7742222222 | 11.2565611111
+F914 | Firenze | Villa_Schifanoia |  |  43.7985805556 | 11.2816888889
+FIPOIHPC1000000815 | Firenze | Palazzo_Corsini-Rosselli_del_Turco |  |  43.7655166667 | 11.2481388889
+F573 | Firenze | Sagrestia_Vecchia | Sagrestia_Vecchia | 43.7747138889 | 11.2536472222
+F511 | Firenze | Oratorio_dei_Vanchetoni | Oratorio_dei_Vanchetoni | 43.7732666667 | 11.2471916667
+FIPOIHPC1000000789 | Firenze | Tabernacolo_di_San_Sisto_papa |  |  43.7717666667 | 11.2505944444
+F206 | Firenze | Palazzo_Pazzi |  |  43.7712722222 | 11.2583638889
+F526 | Firenze | Crocifisso_di_Santa_Maria_Novella |  |  43.7748666667 | 11.2494333333
+F615 | Firenze | Casa_di_Giovanni_Spadolini |  |  43.7769583333 | 11.2576333333
+F101 | Firenze | Piazza_San_Giovanni_(Firenze) |  |  43.7729555556 | 11.2547555556
+F824 | Firenze | Oratorio_di_San_Tommaso_d'Aquino |  |  43.773025 | 11.2611944444
+F383 | Firenze | Ex_Spedale_di_San_Pier_Novello |  |  43.7639472222 | 11.2456638889
+FIPOIHPC1000000139 | Firenze | Piazza_San_Firenze |  |  43.7698111111 | 11.2577194444
+F207 | Firenze | Museo_di_storia_naturale_sezione_di_antropologia_ed_etnologia |  |  43.7716944444 | 11.2583666667
+F816 | Firenze | Stadio_Artemio_Franchi | Stadio_Artemio_Franchi_(Florence) | 43.7808222222 | 11.2822583333
+F340 | Firenze | Palazzo_Tornabuoni |  |  43.7718972222 | 11.2516555556
+F152 | Firenze | Palazzo_Vecchio | Palazzo_Vecchio | 43.76931 | 11.25617
+F444 | Firenze | Chiesa_di_San_Leonardo_in_Arcetri | San_Leonardo_in_Arcetri | 43.7597333333 | 11.2553305556
+F779 | Firenze | Dipartimento_di_Italianistica_(Firenze) |  |  43.7821222222 | 11.2658916667
+F693 | Firenze | Palazzo_Strozzi | Palazzo_Strozzi | 43.7712722222 | 11.2518416667
+FIPOIHPC1000000396 | Firenze | Palazzo_dei_Vescovi_a_San_Miniato_al_Monte |  |  43.7593916667 | 11.2649722222
+F251 | Firenze | Torre_dei_Rigaletti |  |  43.7689638889 | 11.2542666667
+FIPOIHPC1000000853 | Firenze | Circolo_Teatro_del_Sale |  |  43.7711416667 | 11.2663638889
+F297 | Firenze | Casa_Pitti |  |  43.7685194444 | 11.2479638889
+F890 | Firenze | Torre_dei_Peruzzi |  |  43.7689083333 | 11.2593027778
+FIPOIHPC1000000894 | Firenze | Centro_di_documentazione_Matteo_Lanzoni_di_Polimoda |  |  43.7706722222 | 11.2269916667
+F845 | Firenze | Borgo_Albizi |  |  43.7715055556 | 11.2598111111
+F247 | Firenze | Via_dei_Georgofili |  |  43.7684972222 | 11.2518305556
+F744 | Firenze | Ex_monastero_di_Santa_Teresa |  |  43.7715166667 | 11.2683138889
+F471 | Firenze | Porta_San_Niccolò |  |  43.764475 | 11.2649305556
+F238 | Firenze | Torre_dei_Filipetri |  |  43.7686805556 | 11.2571944444
+F895 | Firenze | Torre_dei_Pazzi_di_Valdarno |  |  43.7715388889 | 11.2616583333
+F869 | Firenze | Piazza_San_Pier_Maggiore |  |  43.7713805556 | 11.2615722222
+F153 | Firenze | Salone_dei_Cinquecento |  |  43.7693444444 | 11.2567916667
+F373 | Firenze | Giardino_Torrigiani |  |  43.7657222222 | 11.241675
+F324 | Firenze | Fontana_dell'Oceano |  |  43.7614611111 | 11.2455472222
+F411 | Firenze | Chiesa_di_San_Francesco_di_Sales_(Firenze) |  |  43.769125 | 11.2399305556
+F746 | Firenze | Ex_monastero_di_Santa_Verdiana |  |  43.7699722222 | 11.2679472222
+F475 | Firenze | Porta_San_Miniato |  |  43.7637138889 | 11.2615805556
+F458 | Firenze | Porta_San_Giorgio_(Firenze) |  |  43.7630333333 | 11.2550527778
+F389 | Firenze | Porta_San_Frediano |  |  43.7704666667 | 11.2400555556
+F412 | Firenze | Porta_Romana_(Firenze) |  |  43.7606777778 | 11.2418888889
+F159 | Firenze | Ratto_delle_Sabine_(Giambologna) | The_Rape_of_the_Sabine_Women | 43.7692888889 | 11.2555305556
+F839 | Firenze | Museo_Stibbert | Stibbert_museum | 43.7928833333 | 11.255175
+F213 | Firenze | Palazzo_Columbia-Parlamento |  |  43.7693055556 | 11.2577666667
+FIPOIHPC1000000525 | Firenze | Villa_del_Garofano |  |  43.7899638889 | 11.2783638889
+F121 | Firenze | Cupola_del_Brunelleschi |  |  43.7733333333 | 11.2572944444
+F894 | Firenze | Torri_di_Corso_Donati |  |  43.7712222222 | 11.2613833333
+F519 | Firenze | Cappella_Gondi |  |  43.77505 | 11.2493
+F620 | Firenze | Teatro_Standish |  |  43.7828444444 | 11.2617305556
+F629 | Firenze | Cappella_Salviati |  |  43.7785055556 | 11.2588361111
+FIPOIHPC1000000617 | Firenze | Istituto_Tecnico_per_Geometri_Gaetano_Salvemini |  |  43.7768888889 | 11.2640555556
+F630 | Firenze | Museo_nazionale_di_San_Marco |  |  43.77819 | 11.25932
+F893 | Firenze | Torre_dei_Bagnesi |  |  43.7679916667 | 11.2583583333
+FIPOIHPC1000000968 | Firenze | Centro_di_documentazione_Cultura_della_Legalità_Democratica |  |  43.7937305556 | 11.2221694444
+FIPOIHPC1000000969 | Firenze | Teatro_di_via_dell'Acqua |  |  43.7790444444 | 11.2509722222
+F680 | Firenze | Mercato_Vecchio |  |  43.7714472222 | 11.2540611111
+F233 | Firenze | Piazza_dei_Giudici |  |  43.7675944444 | 11.2562583333
+FIPOIHPC1000000802 | Firenze | Palazzo_Gherardi_Uguccioni |  |  43.7710416667 | 11.2512638889
+FIPOIHPC1000000914 | Firenze | Palazzo_Rinuccini_(via_de'_Cimatori) |  |  43.7704361111 | 11.2565972222
+F217 | Firenze | Tempio_di_Iside_(Firenze) |  |  43.769375 | 11.2580833333
+F216 | Firenze | Chiesa_di_San_Fiorenzo |  |  43.7694305556 | 11.2578111111
+F883 | Firenze | Torre_dei_Della_Bella | Torre_dei_Della_Bella | 43.7709194444 | 11.2560555556
+F640 | Firenze | Museo_archeologico_nazionale_di_Firenze | National_Archaeological_Museum_(Florence) | 43.7762388889 | 11.2622666667
+F137 | Firenze | Chiesa_di_Santa_Maria_Nepotecosa |  |  43.7715527778 | 11.2554194444
+FIPOIHPC1000000912 | Firenze | Chiesa_di_Santa_Maria_degli_Alberighi |  |  43.7717833333 | 11.2563972222
+F622 | Firenze | Farmacia_di_San_Marco |  |  43.778963 | 11.25913
+F740 | Firenze | Fontana_dell'Agnellino |  |  43.77 | 11.2604416667
+FIPOIHPC1000000511 | Firenze | Via_Gino_Capponi |  |  43.7788277778 | 11.2638222222
+F732 | Firenze | Palazzo_Peruzzi-Bourbon_del_Monte |  |  43.7689888889 | 11.2599388889
+F725 | Firenze | Arco_dei_Peruzzi |  |  43.7685 | 11.2600916667
+F700 | Firenze | Palazzo_Pola_e_Todescan |  |  43.7723472222 | 11.2535527778
+FIPOIHPC1000000688 | Firenze | Palazzo_Giugni_(via_della_Condotta) |  |  43.7702916667 | 11.2562861111
+FIPOIHPC1000000760 | Firenze | Palazzo_Medici_Tornaquinci |  |  43.7706611111 | 11.2515666667
+FIPOIHPC1000000510 | Firenze | Chiesa_dei_Santi_Francesco_e_Chiara |  |  43.7937722222 | 11.250125
+FIPOIHPC1000000685 | Firenze | Biblioteca_delle_Oblate |  |  43.7724527778 | 11.2598555556
+FIPOIHPC1000000684 | Firenze | Palazzo_Bastogi_(via_dell'Oriuolo) |  |  43.7722416667 | 11.2596111111
+FIPOIHPC1000000687 | Firenze | Palazzo_delle_Farine |  |  43.7701777778 | 11.2563055556
+FIPOIHPC1000000686 | Firenze | Villa_Coppini |  |  43.7945694444 | 11.2652805556
+F223 | Firenze | Palazzo_Gherardi |  |  43.7700805556 | 11.2628444444
+FIPOIHPC1000000680 | Firenze | Via_Faentina |  |  43.7932666667 | 11.2720333333
+FIPOIHPC1000000683 | Firenze | Villa_Sassetti |  |  43.7973 | 11.2626222222
+FIPOIHPC1000000682 | Firenze | Villa_Natalia |  |  43.7957555556 | 11.2618527778
+FIPOIHPC1000001021 | Firenze | Ponte_della_tramvia |  |  43.7763694444 | 11.22945
+F616 | Firenze | Palazzo_Vettori |  |  43.7765111111 | 11.2574388889
+F485 | Firenze | Chiesa_di_Santa_Lucia_dei_Magnoli |  |  43.7660222222 | 11.2562277778
+F807 | Firenze | Chiesa_di_Santa_Maria_Maddalena_dei_Pazzi | Santa_Maria_Maddalena_dei_Pazzi | 43.7742944444 | 11.2646472222
+F795 | Firenze | Chiesa_di_San_Francesco_di_Paola_(Firenze) |  |  43.7649111111 | 11.2370083333
+F287 | Firenze | Chiesa_di_San_Carlo_dei_Barnabiti |  |  43.7669194444 | 11.2462194444
+F385 | Firenze | Piazza_San_Felice_in_Piazza |  |  43.7651 | 11.2480277778
+F794 | Firenze | Chiesa_di_Santa_Maria_al_Pignone |  |  43.7728611111 | 11.2352166667
+F793 | Firenze | Cimitero_monumentale_ebraico_di_Firenze |  |  43.7694527778 | 11.2384555556
+F597 | Firenze | Via_Panicale |  |  43.7772083333 | 11.2532472222
+F419 | Firenze | Giardino_del_Bobolino |  |  43.7579361111 | 11.2482333333
+F396 | Firenze | Ponte_Amerigo_Vespucci | Ponte_Amerigo_Vespucci | 43.7719666667 | 11.2429861111
+F290 | Firenze | Via_Santo_Spirito |  |  43.7684472222 | 11.248375
+FIPOIHPC1000000897 | Firenze | Via_de'_Pecori |  |  43.7727305556 | 11.2533111111
+FIPOIHPC1000000994 | Firenze | Palazzo_Piccioli |  |  43.7696583333 | 11.2506055556
+FIPOIHPC1000000450 | Firenze | Monumento_a_Garibaldi_(Firenze) |  |  43.7736861111 | 11.2407916667
+F517 | Firenze | Basilica_di_Santa_Maria_Novella | Basilica_of_Santa_Maria_Novella | 43.7746166667 | 11.2494083333
+F608 | Firenze | Cappella_dei_Magi | Magi_Chapel | 43.7751361111 | 11.2558833333
+F626 | Firenze | Accademia_di_belle_arti_di_Firenze | Accademia_di_Belle_Arti_Firenze | 43.77719 | 11.25933
+F745 | Firenze | Via_dell'Agnolo |  |  43.7699361111 | 11.2660305556
+FIPOIHPC1000000804 | Firenze | Palazzo_Scali-Ricasoli |  |  43.7699722222 | 11.2517888889
+F487 | Firenze | Palazzo_Tempi |  |  43.7666444444 | 11.2550416667
+FIPOIHPC1000000461 | Firenze | Palazzo_Quaratesi |  |  43.7729166667 | 11.2629833333
+FIPOIHPC1000000460 | Firenze | Casino_Salviati |  |  43.7772527778 | 11.2670111111
+FIPOIHPC1000000463 | Firenze | Via_de'_Neri |  |  43.7682 | 11.2579777778
+F717 | Firenze | Via_de'_Benci |  |  43.768275 | 11.2600388889
+F690 | Firenze | Palazzo_Vecchietti |  |  43.7716166667 | 11.2529638889
+F843 | Firenze | Oratorio_di_San_Giuseppe |  |  43.7754861111 | 11.2516527778
+F689 | Firenze | Palazzo_Sassetti |  |  43.7711638889 | 11.2530444444
+F269 | Firenze | Borgo_San_Jacopo |  |  43.7677305556 | 11.2518222222
+F221 | Firenze | Tabernacolo_delle_Stinche |  |  43.7703777778 | 11.2607694444
+FIPOIHPC1000000468 | Firenze | Palazzi_Gianfigliazzi |  |  43.7699361111 | 11.249975
+FIPOIHPC1000000455 | Firenze | Borgo_Pinti |  |  43.7743055556 | 11.264075
+F348 | Firenze | Palazzo_Pitti-Mannelli |  |  43.7680888889 | 11.2496
+F562 | Firenze | Chiesa_di_Nostra_Signora_del_Sacro_Cuore_(Firenze) |  |  43.7812555556 | 11.2555861111
+FIPOIHPC1000000548 | Firenze | Palazzo_Corsini-Serristori |  |  43.7679388889 | 11.26055
+F579 | Firenze | Biblioteca_Medicea_Laurenziana | Laurentian_Library | 43.7744111111 | 11.2536555556
+F599 | Firenze | Palazzo_Neroni |  |  43.7754388889 | 11.2552777778
+F828 | Firenze | Chiesa_di_Santa_Maria_del_Suffragio_(Firenze) |  |  43.7950777778 | 11.2612527778
+F306 | Firenze | Palazzo_Temple_Leader |  |  43.7658944444 | 11.2494583333
+FIPOIHPC1000000543 | Firenze | Palazzo_di_Valfonda |  |  43.7783722222 | 11.2485138889
+F590 | Firenze | Palazzetto_dei_Serragli |  |  43.7767694444 | 11.2550111111
+FIPOIHPC1000000457 | Firenze | Palazzo_Ximenes_da_Sangallo |  |  43.7759 | 11.2660694444
+FIPOIHPC1000000546 | Firenze | Cappella_Demidoff_di_San_Donato |  |  43.7883277778 | 11.2255166667
+F209 | Firenze | Badia_Fiorentina | Badia_Fiorentina | 43.7704333333 | 11.2577166667
+FIPOIHPC1000000544 | Firenze | Palazzo_Venturi |  |  43.7735083333 | 11.2515416667
+F808 | Firenze | Ponte_alle_Grazie | Ponte_alle_Grazie | 43.76628 | 11.25827
+FIPOIHPC1000000869 | Firenze | Teatro_della_Piazza_vecchia |  |  43.7747694444 | 11.251125
+FIPOIHPC1000000868 | Firenze | Teatro_Nuovo_(Firenze_via_Bufalini) |  |  43.7732555556 | 11.258775
+FIPOIHPC1000000865 | Firenze | Teatro_Auditorium_al_Duomo |  |  43.7737194444 | 11.2527166667
+FIPOIHPC1000000864 | Firenze | Area_ex-Longinotti |  |  43.7575305556 | 11.2891277778
+FIPOIHPC1000000867 | Firenze | Teatro_del_Rondò_di_Bacco |  |  43.7659583333 | 11.2507333333
+FIPOIHPC1000000866 | Firenze | Teatro_dell'Affratellamento |  |  43.7630833333 | 11.2756805556
+F781 | Firenze | Teatro_Le_Laudi |  |  43.7823388889 | 11.2661166667
+F372 | Firenze | Teatro_Goldoni_(Firenze) |  |  43.7647138889 | 11.2443722222
+F552 | Firenze | Giardini_della_Fortezza |  |  43.7823666667 | 11.2516416667
+F553 | Firenze | Piazza_Bambine_e_Bambini_di_Beslan |  |  43.7804138889 | 11.2496138889
+FIPOIHPC1000000763 | Firenze | Palazzo_Pasquali |  |  43.7728861111 | 11.2517166667
+F496 | Firenze | Palazzo_Giuntini |  |  43.77225 | 11.2449083333
+FIPOIHPC1000000566 | Firenze | Via_Porta_Rossa |  |  43.7701833333 | 11.2540555556
+F454 | Firenze | Villa_di_Volsanminiato |  |  43.7509805556 | 11.2561138889
+F298 | Firenze | Palazzo_Manetti |  |  43.7686138889 | 11.247725
+F765 | Firenze | Caserma_Antonio_Baldissera |  |  43.7662888889 | 11.2698777778
+F766 | Firenze | Chiesino_del_Suffragio |  |  43.7723888889 | 11.273425
+F905 | Firenze | Chiesa_della_Beata_Vergine_del_Buon_Consiglio |  |  43.7851527778 | 11.2651277778
+F778 | Firenze | Chiesa_di_San_Francesco_(Firenze) |  |  43.7825861111 | 11.2666083333
+FIPOIHPC1000000383 | Firenze | Madonna_reliquiario_di_Santa_Maria_Maggiore |  |  43.7733 | 11.2531611111
+F906 | Firenze | Stazione_di_Firenze_Belfiore |  |  43.7844694444 | 11.2427388889
+F907 | Firenze | Chiesa_di_Maria_Mater_Misericordiae |  |  43.7654333333 | 11.2487666667
+F908 | Firenze | Museo_degli_strumenti_musicali_(Firenze) |  |  43.77647 | 11.25894
+F439 | Firenze | Palazzo_dei_Vescovi_fiorentini |  |  43.789825 | 11.2560722222
+F468 | Firenze | Palazzo_Torrigiani_Del_Nero |  |  43.7653194444 | 11.2581277778
+F451 | Firenze | Villa_Agape-Arrighetti |  |  43.7523472222 | 11.2566861111
+F790 | Firenze | Chiesa_di_San_Giovannino_dei_Cavalieri | San_Giovannino_dei_Cavalieri | 43.7797861111 | 11.2585638889
+F739 | Firenze | Via_dei_Lavatoi |  |  43.7697777778 | 11.2608916667
+FIPOIHPC1000000567 | Firenze | Via_della_Condotta |  |  43.7702138889 | 11.2566333333
+F325 | Firenze | Fontana_del_Bacchino_(Boboli) |  |  43.7659416667 | 11.2512666667
+FIPOIHPC1000000625 | Firenze | Grotticina_della_Madama |  |  43.7653416667 | 11.2531361111
+FIPOIHPC1000000464 | Firenze | Via_de'_Bardi |  |  43.7656583333 | 11.2564222222
+F311 | Firenze | Galleria_del_costume |  |  43.7646083333 | 11.2490583333
+F338 | Firenze | Palazzo_Beccanugi |  |  43.7724944444 | 11.2512305556
+F313 | Firenze | Museo_delle_porcellane |  |  43.762 | 11.2525055556
+F521 | Firenze | Cappella_Strozzi_di_Mantova |  |  43.7750166667 | 11.2492027778
+F236 | Firenze | Corridoio_Vasariano | Vasari_Corridor | 43.7682027778 | 11.2540472222
+FIPOIHPC1000000990 | Firenze | Chiesa_di_Sant'Onofrio_(Firenze) |  |  43.7672416667 | 11.2668027778
+F504 | Firenze | Casa-galleria_Vichi |  |  43.7722555556 | 11.2461027778
+F865 | Firenze | Porta_San_Gallo |  |  43.7837111111 | 11.2617916667
+F863 | Firenze | Villa_Triste |  |  43.7919611111 | 11.2612111111
+F862 | Firenze | Villa_Fabbricotti_(Firenze) |  |  43.7904833333 | 11.2573694444
+F861 | Firenze | Villa_dell'Ombrellino |  |  43.7632444444 | 11.2319166667
+F447 | Firenze | Villa_Capponi_(Firenze) |  |  43.7523805556 | 11.2540305556
+F742 | Firenze | Oratorio_della_Compagnia_di_San_Michele_della_Pace |  |  43.7716972222 | 11.2663111111
+F692 | Firenze | Piazza_Strozzi |  |  43.7712916667 | 11.2523138889
+F103 | Firenze | Palazzo_Arcivescovile_(Firenze) |  |  43.7730722222 | 11.2543305556
+F641 | Firenze | Loggia_dei_Servi_di_Maria |  |  43.7766638889 | 11.2603861111
+F825 | Firenze | Chiesa_di_San_Pier_Maggiore_(Firenze) |  |  43.7713472222 | 11.2617833333
+F344 | Firenze | Palazzo_Bartolini_Salimbeni |  |  43.7701888889 | 11.2516916667
+F452 | Firenze | Villa_Giramonte |  |  43.75435 | 11.2585444444
+F758 | Firenze | Porta_alla_Croce |  |  43.7707583333 | 11.2709972222
+F542 | Firenze | Porta_al_Prato |  |  43.7779027778 | 11.2399638889
+F818 | Firenze | Chiesa_di_Santa_Maria_Maggiore_(Firenze) | Santa_Maria_Maggiore,_Florence | 43.7732694444 | 11.2530666667
+F399 | Firenze | Basilica_di_Santa_Maria_del_Carmine_(Firenze) | Santa_Maria_del_Carmine,_Florence | 43.7680027778 | 11.2439027778
+F621 | Firenze | Biblioteca_Marucelliana |  |  43.7774583333 | 11.2577638889
+FIPOIHPC1000000561 | Firenze | Giardino_San_Francesco_di_Paola |  |  43.7644444444 | 11.2373138889
+F785 | Firenze | Viale_Giacomo_Matteotti |  |  43.7806361111 | 11.2650138889
+FIPOIHPC1000000997 | Firenze | Cappella_Bartolini_Salimbeni |  |  43.7701666667 | 11.2507972222
+F859 | Firenze | Villa_La_Pietra | Villa_La_Pietra | 43.7958138889 | 11.2660583333
+FIPOIHPC1000000819 | Firenze | Palazzo_Pannocchieschi |  |  43.7668527778 | 11.2486472222
+F387 | Firenze | Chiesa_di_San_Felice_in_Piazza | San_Felice,_Florence | 43.76505 | 11.2476027778
+FIPOIHPC1000000905 | Firenze | Parco_della_musica_e_della_cultura |  |  43.7800222222 | 11.2337055556
+FIPOIHPC1000000923 | Firenze | Museo_Capucci |  |  43.7640027778 | 11.2562805556
+F759 | Firenze | Archivio_di_Stato_di_Firenze |  |  43.7691805556 | 11.2706916667
+F420 | Firenze | Giardino_di_scultura_contemporanea_olandese |  |  43.7539388889 | 11.2470888889
+F417 | Firenze | Istituto_Statale_d'Arte_di_Firenze |  |  43.7597333333 | 11.2460638889
+F879 | Firenze | Torre_dei_Ciacchi |  |  43.7697138889 | 11.2547555556
+F878 | Firenze | Torre_dei_Cerchi |  |  43.7707194444 | 11.2562805556
+F877 | Firenze | Torre_della_Castagna |  |  43.7708694444 | 11.2570527778
+FIPOIHPC1000000310 | Firenze | Torre_dei_Buondelmonti |  |  43.7695222222 | 11.2533777778
+F129 | Firenze | Museo_Torrini |  |  43.7735333333 | 11.2564027778
+FIPOIHPC1000000316 | Firenze | Tabernacolo_della_Quarquonia |  |  43.7705527778 | 11.2563194444
+F881 | Firenze | Piazza_del_Limbo |  |  43.7692527778 | 11.2519166667
+F880 | Firenze | Torre_dei_Consorti |  |  43.7686277778 | 11.2533777778
+F595 | Firenze | Palazzo_dei_Cartelloni | Palazzo_dei_Cartelloni | 43.775475 | 11.2515416667
+F609 | Firenze | Biblioteca_Riccardiana | Biblioteca_Riccardiana | 43.7754527778 | 11.2555361111
+FIPOIHPC1000000859 | Firenze | Teatro_di_Rifredi |  |  43.7957611111 | 11.2419
+FIPOIHPC1000000649 | Firenze | Cappella_di_Eleonora |  |  43.7691722222 | 11.2563166667
+F167 | Firenze | Fontana_del_Nettuno_(Firenze) | Fountain_of_Neptune | 43.7695555556 | 11.2559305556
+FIPOIHPC1000000720 | Firenze | Palazzo_dell'Arte_della_Seta |  |  43.7696166667 | 11.2540694444
+F654 | Firenze | Chiostro_degli_Angeli |  |  43.774975 | 11.2608472222
+FIPOIHPC1000000656 | Firenze | Chiesa_del_Preziosissimo_Sangue_di_Gesù |  |  43.7875083333 | 11.2296166667
+F286 | Firenze | Bagno_comunale_di_Firenze |  |  43.7668138889 | 11.2464944444
+F301 | Firenze | Palazzetto_Medici |  |  43.7688361111 | 11.2474666667
+F292 | Firenze | Palazzo_Segni |  |  43.7683361111 | 11.2491583333
+FIPOIHPC1000000641 | Firenze | Il_Pennello |  |  43.7709166667 | 11.2568027778
+F688 | Firenze | Palazzo_delle_Poste_(Firenze) |  |  43.7706666667 | 11.2532888889
+F750 | Firenze | Via_Pietrapiana |  |  43.7714277778 | 11.2646333333
+FIPOIHPC1000000642 | Firenze | Villino_Lampredi_(via_Giano_della_Bella_9) |  |  43.7651694444 | 11.240175
+F635 | Firenze | Istituto_Geografico_Militare |  |  43.77732 | 11.26003
+F126 | Firenze | Museo_dell'Opera_del_Duomo_(Firenze) |  |  43.773075 | 11.2578694444
+FIPOIHPC1000000647 | Firenze | Istituto_delle_Suore_Serve_di_Maria_Santissima_Addolorata |  |  43.7941027778 | 11.2719305556
+F598 | Firenze | Via_de'_Ginori |  |  43.776775 | 11.2560583333
+F714 | Firenze | Palazzo_Spinelli_(Firenze) |  |  43.7680444444 | 11.261175
+F146 | Firenze | Museo_di_Orsanmichele |  |  43.7707583333 | 11.2551694444
+F139 | Firenze | San_Matteo_(Ghiberti) |  |  43.7707555556 | 11.2547972222
+FIPOIHPC1000000924 | Firenze | Villa_Il_Tasso |  |  43.7595388889 | 11.2777472222
+FIPOIHPC1000000814 | Firenze | Casa_di_Ignazio_Villa |  |  43.7744805556 | 11.2430555556
+FIPOIHPC1000000926 | Firenze | Palazzo_dei_Buonaguisi |  |  43.7703583333 | 11.2554
+F586 | Firenze | Mercato_Centrale_(Firenze) | Mercato_Centrale_(Florence) | 43.7766305556 | 11.2533027778
+F330 | Firenze | Cappella_Sassetti | Sassetti_Chapel | 43.7702694444 | 11.2506638889
+F462 | Firenze | Villa_Bardini |  |  43.7639638889 | 11.256275
+F581 | Firenze | Palazzo_Aldobrandini |  |  43.7745666667 | 11.2526861111
+FIPOIHPC1000000728 | Firenze | Hotel_Majestic |  |  43.7750361111 | 11.25115
+F360 | Firenze | Palazzo_Dami |  |  43.7661444444 | 11.2484972222
+FIPOIHPC1000000545 | Firenze | Palazzo_Albizi |  |  43.7715722222 | 11.2603888889
+F375 | Firenze | Oratorio_di_San_Sebastiano_de'_Bini |  |  43.7646861111 | 11.247
+F460 | Firenze | Chiesa_di_San_Giorgio_alla_Costa |  |  43.7653305556 | 11.2550027778
+F371 | Firenze | Chiesa_di_Santa_Elisabetta_delle_Convertite |  |  43.7654472222 | 11.2443083333
+F378 | Firenze | Chiesa_di_San_Pier_Gattolino |  |  43.76315 | 11.2440916667
+F415 | Firenze | Chiesa_di_San_Giovanni_Battista_della_Calza |  |  43.7610305556 | 11.2418388889
+F177 | Firenze | Teatro_romano_di_Firenze |  |  43.7692666667 | 11.2572916667
+F299 | Firenze | Palazzo_Lanfredini |  |  43.76905 | 11.2482222222
+F119 | Firenze | Cattedrale_di_Santa_Maria_del_Fiore | Florence_Cathedral | 43.77323 | 11.25599
+F441 | Firenze | Chiesa_di_San_Salvatore_al_Monte |  |  43.7615805556 | 11.2654055556
+F435 | Firenze | Giardino_delle_Rose |  |  43.7629333333 | 11.2627916667
+FIPOIHPC1000000586 | Firenze | Piazza_della_Vittoria_(Firenze) |  |  43.7860888889 | 11.2556694444
+FIPOIHPC1000000587 | Firenze | Canto_dei_Carnesecchi |  |  43.7734527778 | 11.2521166667
+FIPOIHPC1000000584 | Firenze | Palazzo_Bargellini |  |  43.7691277778 | 11.2631388889
+FIPOIHPC1000000585 | Firenze | Palazzo_Pepi_Ferri |  |  43.7693694444 | 11.262425
+F674 | Firenze | Piazza_del_Capitolo |  |  43.7724138889 | 11.2564222222
+FIPOIHPC1000000428 | Firenze | Palazzo_Martelli |  |  43.7740611111 | 11.2535361111
+F210 | Firenze | Chiostro_degli_Aranci |  |  43.7703194444 | 11.2574583333
+FIPOIHPC1000000454 | Firenze | Via_Cavour_(Firenze) | Via_Camillo_Cavour | 43.7760222222 | 11.2568722222
+FIPOIHPC1000000424 | Firenze | Palazzo_Portinari-Salviati |  |  43.7715777778 | 11.2574166667
+FIPOIHPC1000000427 | Firenze | Conservatorio_delle_Mantellate |  |  43.7828 | 11.2609944444
+F477 | Firenze | Palazzo_Gianni-Lucchesini-Vegni |  |  43.7643111111 | 11.2601527778
+FIPOIHPC1000000421 | Firenze | Torre_dei_Ricci |  |  43.7715666667 | 11.2561638889
+F132 | Firenze | Palazzo_Strozzi_di_Mantova |  |  43.7727194444 | 11.2582527778
+FIPOIHPC1000000423 | Firenze | Ex_convento_di_San_Francesco_de'_Macci |  |  43.7688583333 | 11.2650305556
+FIPOIHPC1000000422 | Firenze | Torre_dei_Macci |  |  43.7711305556 | 11.2551416667
+F275 | Firenze | Chiesa_di_San_Jacopo_Soprarno | San_Jacopo_sopr'Arno | 43.7681 | 11.2508916667
+F333 | Firenze | Via_de'_Tornabuoni | Via_de'_Tornabuoni | 43.7708555556 | 11.2514083333
+F916 | Firenze | Villa_Palmieri | Villa_Palmieri,_Fiesole | 43.796625 | 11.2782361111
+F724 | Firenze | Palazzo_Bardi-Tempi |  |  43.7669666667 | 11.2592805556
+FIPOIHPC1000000823 | Firenze | Palazzo_Stiozzi_Ridolfi |  |  43.7645 | 11.2593888889
+F353 | Firenze | Palazzo_Michelozzi |  |  43.7670944444 | 11.2492944444
+F634 | Firenze | Giardino_dei_Semplici | Orto_Botanico_di_Firenze | 43.77884 | 11.26076
+FIPOIHPC1000000910 | Firenze | Palazzo_Davanzati | Palazzo_Davanzati | 43.770125 | 11.2529777778
+FIPOIHPC1000000458 | Firenze | Palazzo_Caccini |  |  43.7734194444 | 11.2631083333
+FIPOIHPC1000000459 | Firenze | Giardino_del_Borgo |  |  43.7767277778 | 11.2666722222
+F567 | Firenze | Monumento_a_Giovanni_delle_Bande_Nere |  |  43.7750111111 | 11.2549666667
+F488 | Firenze | Ponte_alla_Vittoria |  |  43.7748861111 | 11.2344194444
+FIPOIHPC1000000515 | Firenze | Convento_delle_Suore_di_San_Francesco |  |  43.7917638889 | 11.25215
+FIPOIHPC1000000517 | Firenze | Tabernacolo_di_via_dei_Cappuccini |  |  43.7929194444 | 11.2504166667
+FIPOIHPC1000000516 | Firenze | Villa_Cristina |  |  43.7985138889 | 11.2529472222
+F470 | Firenze | Ponte_di_San_Niccolò |  |  43.7647611111 | 11.2711277778
+F588 | Firenze | Via_dell'Ariento |  |  43.77585 | 11.2533083333
+F314 | Firenze | Museo_delle_carrozze |  |  43.7650888889 | 11.248725
+F569 | Firenze | Palazzo_Benci |  |  43.7751805556 | 11.2530055556
+F133 | Firenze | Via_dei_Calzaiuoli |  |  43.7716277778 | 11.2553222222
+F212 | Firenze | Complesso_di_San_Firenze |  |  43.7695777778 | 11.2581472222
+FIPOIHPC1000000456 | Firenze | Palazzo_Roffia |  |  43.7725444444 | 11.2625361111
+F128 | Firenze | Bottegone_(Firenze) |  |  43.7735694444 | 11.255675
+F822 | Firenze | Ospedale_psichiatrico_di_San_Salvi |  |  43.7708 | 11.2867111111
+F342 | Firenze | Palazzo_Viviani_della_Robbia |  |  43.7717138889 | 11.2512027778
+F784 | Firenze | Palazzo_ex-Nuova_Italia |  |  43.7830138889 | 11.2666472222
+FIPOIHPC1000000841 | Firenze | Casa_Acciaiuoli |  |  43.7692666667 | 11.2530222222
+F166 | Firenze | Ercole_e_Caco | Hercules_and_Cacus | 43.7691583333 | 11.255825
+F672 | Firenze | Via_del_Campanile |  |  43.7724444444 | 11.2559388889
+F307 | Firenze | Palazzo_Pitti | Palazzo_Pitti | 43.7652638889 | 11.2500944444
+F551 | Firenze | Padiglione_Spadolini |  |  43.7821 | 11.2502861111
+F140 | Firenze | San_Giovanni_Battista_(Ghiberti) | St._John_the_Baptist_(Ghiberti) | 43.7706361111 | 11.2552472222
+F328 | Firenze | Piazza_Santa_Trinita | Piazza_Santa_Trinita | 43.7700805556 | 11.2512444444
+FIPOIHPC1000000693 | Firenze | Via_della_Vigna_Nuova |  |  43.7712472222 | 11.2499666667
+F243 | Firenze | Chiesa_di_San_Remigio | San_Remigio,_Florence | 43.7683833333 | 11.2584666667
+F408 | Firenze | Tabernacolo_del_Canto_alla_Cuculia |  |  43.7677694444 | 11.2456694444
+FIPOIHPC1000000758 | Firenze | Palazzo_Tempi-Mazzei |  |  43.7678388889 | 11.2456777778
+F733 | Firenze | Anfiteatro_romano_di_Firenze |  |  43.7692972222 | 11.25975
+F461 | Firenze | Casa_di_Galileo_(Firenze) |  |  43.7662861111 | 11.2541055556
+F366 | Firenze | Palazzo_Antinori_di_Brindisi |  |  43.7682833333 | 11.2462194444
+FIPOIHPC1000000858 | Firenze | Teatro_Cantiere_Florida |  |  43.7716083333 | 11.2256416667
+F727 | Firenze | Palazzina_Brogi |  |  43.7667722222 | 11.2610277778
+F900 | Firenze | Stazione_Leopolda_(Firenze) |  |  43.7778277778 | 11.2381222222
+F227 | Firenze | Casa_Buonarroti | Casa_Buonarroti | 43.7699027778 | 11.2637583333
+F284 | Firenze | Palazzo_Guadagni |  |  43.7661138889 | 11.2472694444
+F898 | Firenze | Chiesa_di_San_Jacopino |  |  43.7821416667 | 11.2394694444
+F897 | Firenze | Piazza_San_Jacopino |  |  43.7838472222 | 11.2403694444
+F625 | Firenze | Palazzina_della_Livia |  |  43.77812 | 11.25823
+F228 | Firenze | Oratorio_di_San_Niccolò_del_Ceppo |  |  43.7707194444 | 11.2616805556
+F205 | Firenze | Chiesa_di_Santa_Maria_in_Campo |  |  43.7721638889 | 11.25825
+F848 | Firenze | Palazzo_Pandolfini |  |  43.7807166667 | 11.2595805556
+F480 | Firenze | Casa_museo_Rodolfo_Siviero |  |  43.7652611111 | 11.2593777778
+F347 | Firenze | Via_Maggio |  |  43.7674055556 | 11.2493361111
+F356 | Firenze | Palazzo_di_Bianca_Cappello |  |  43.7670305556 | 11.2490388889
+F847 | Firenze | Palazzo_Valori-Altoviti |  |  43.7715722222 | 11.2597388889
+F384 | Firenze | Chiesa_e_convento_di_San_Vincenzo_d'Annalena |  |  43.7644944444 | 11.2453916667
+F844 | Firenze | Monastero_di_Santa_Marta |  |  43.7998805556 | 11.2567083333
+F545 | Firenze | Stazione_di_Firenze_Santa_Maria_Novella | Firenze_Santa_Maria_Novella_railway_station | 43.77633 | 11.24752
+FIPOIHPC1000000848 | Firenze | Nelson_Mandela_Forum | Nelson_Mandela_Forum | 43.7767583333 | 11.2829944444
+F525 | Firenze | Cappellone_degli_Spagnoli |  |  43.7748333333 | 11.2488527778
+FIPOIHPC1000000604 | Firenze | Patroclo_e_Menelao | Menelaus_supporting_the_body_of_Patroclus | 43.7691861111 | 11.2556694444
+F520 | Firenze | Cappella_Rucellai |  |  43.7750083333 | 11.24965
+F530 | Firenze | Chiostro_Verde |  |  43.7745666667 | 11.2488916667
+F704 | Firenze | Cappella_Baroncelli |  |  43.7680555556 | 11.2632722222
+FIPOIHPC1000000600 | Firenze | Cappella_Bardi |  |  43.7681 | 11.2634166667
+FIPOIHPC1000000603 | Firenze | Palazzina_Reale_di_Santa_Maria_Novella |  |  43.7778416667 | 11.2483083333
+F509 | Firenze | Pescaia_di_Santa_Rosa |  |  43.7712111111 | 11.2444805556
+FIPOIHPC1000000979 | Firenze | Viale_Redi |  |  43.7837666667 | 11.2424694444
+FIPOIHPC1000000978 | Firenze | Piazza_Leopoldo |  |  43.7913527778 | 11.2471722222
+F523 | Firenze | Cappella_di_Filippo_Strozzi |  |  43.7750694444 | 11.2495611111
+F518 | Firenze | Cappella_Bardi_(Santa_Maria_Novella) |  |  43.7750777778 | 11.2496388889
+FIPOIHPC1000000966 | Firenze | Villa_San_Donato | Villa_San_Donato | 43.7903611111 | 11.2256111111
+FIPOIHPC1000000949 | Firenze | Casa_della_Gioventù_Francescana_di_Firenze |  |  43.7946333333 | 11.2499083333
+F157 | Firenze | Loggia_della_Signoria | Loggia_dei_Lanzi | 43.7692027778 | 11.2556583333
+F656 | Firenze | Palazzo_Niccolini |  |  43.7749333333 | 11.2588472222
+FIPOIHPC1000000888 | Firenze | Palazzo_Da_Magnale |  |  43.772675 | 11.2494777778
+F798 | Firenze | Ospedale_di_Santa_Maria_Nuova | Hospital_of_Santa_Maria_Nuova | 43.7734083333 | 11.2598944444
+F722 | Firenze | Chiesa_Evangelica_Metodista_(Firenze) |  |  43.7680805556 | 11.25955
+F293 | Firenze | Palazzo_Machiavelli |  |  43.7682527778 | 11.2489055556
+FIPOIHPC1000000986 | Firenze | Kunsthistorisches_Institut_in_Florenz |  |  43.7775361111 | 11.2631333333
+FIPOIHPC1000000670 | Firenze | Teatro_Puccini |  |  43.7861944444 | 11.2254472222
+FIPOIHPC1000000671 | Firenze | Chiesa_di_Santa_Maria_dei_Bardi |  |  43.7668166667 | 11.2547111111
+FIPOIHPC1000000672 | Firenze | Palazzo_Salviati-Quaratesi |  |  43.7704722222 | 11.2609388889
+F241 | Firenze | Palazzo_di_Alberto_di_Zanobi |  |  43.7685611111 | 11.2573888889
+FIPOIHPC1000000674 | Firenze | Via_San_Giuseppe |  |  43.7683388889 | 11.26415
+FIPOIHPC1000000675 | Firenze | Via_dei_Malcontenti |  |  43.7672861111 | 11.2670638889
+FIPOIHPC1000000676 | Firenze | Tabernacolo_di_via_dei_Malcontenti |  |  43.7677416667 | 11.2656055556
+F852 | Firenze | Chiesa_di_San_Piero_a_Monticelli |  |  43.7696555556 | 11.2237305556
+FIPOIHPC1000000678 | Firenze | Villa_Finaly |  |  43.7996194444 | 11.265975
+FIPOIHPC1000000679 | Firenze | Villa_dello_Spedaluzzo |  |  43.7985666667 | 11.2639694444
+F294 | Firenze | Palazzo_Coverelli |  |  43.7683722222 | 11.2489888889
+F507 | Firenze | Chiesa_Evangelica_Battista_(Firenze) |  |  43.7713694444 | 11.2474027778
+F805 | Firenze | Casa_famiglia_Santa_Lucia |  |  43.7775555556 | 11.2672833333
+F804 | Firenze | Chiesa_di_Santa_Maria_Sopra_Porta |  |  43.7697138889 | 11.2537194444
+F288 | Firenze | Via_delle_Caldaie |  |  43.7656388889 | 11.2465055556
+F505 | Firenze | Ospedale_di_San_Giovanni_di_Dio |  |  43.7719222222 | 11.2466861111
+F806 | Firenze | Ex-monastero_di_San_Silvestro |  |  43.7754666667 | 11.2654305556
+FIPOIHPC1000000771 | Firenze | Palazzo_Adorni_Braccesi |  |  43.7729444444 | 11.251425
+FIPOIHPC1000000770 | Firenze | Via_de'_Rondinelli |  |  43.7730916667 | 11.2518
+F809 | Firenze | Chiesa_dei_Santi_Girolamo_e_Francesco_alla_Costa |  |  43.7660222222 | 11.2541861111
+F810 | Firenze | Chiesa_dei_Santi_Agostino_e_Cristina |  |  43.7654611111 | 11.2555388889
+F705 | Firenze | Cappella_Pazzi | Pazzi_Chapel | 43.7680055556 | 11.2629888889
+FIPOIHPC1000000774 | Firenze | Palazzo_Ginori_(via_de'_Rondinelli) |  |  43.7732222222 | 11.2518472222
+F755 | Firenze | Oratorio_dei_Santi_Crispino_e_Crespiniano |  |  43.7712583333 | 11.2687861111
+F652 | Firenze | Palazzo_Guidi_Raggio |  |  43.7749472222 | 11.2616527778
+F532 | Firenze | Via_della_Scala |  |  43.7753666667 | 11.2457722222
+F703 | Firenze | Cappella_Bardi_di_Vernio |  |  43.7683416667 | 11.2635694444
+F359 | Firenze | Casa_di_Bernardo_Buontalenti |  |  43.7657861111 | 11.2484805556
+F244 | Firenze | Lungarno_Diaz |  |  43.7670666667 | 11.2581388889
+FIPOIHPC1000001009 | Firenze | Lungarno_degli_Acciaiuoli |  |  43.76905 | 11.2519277778
+F289 | Firenze | Palazzo_Settimanni |  |  43.7657027778 | 11.246675
+FIPOIHPC1000000964 | Firenze | Monumento_funebre_dell'antipapa_Giovanni_XXIII | Tomb_of_Antipope_John_XXIII | 43.7732166667 | 11.2549111111
+F395 | Firenze | Casa_Capponi |  |  43.7696916667 | 11.2453555556
+F398 | Firenze | Palazzo_Rospigliosi_Pallavicini |  |  43.7685722222 | 11.2433805556
+F457 | Firenze | Forte_Belvedere | Belvedere_(fort) | 43.7629666667 | 11.2538666667
+F645 | Firenze | Via_degli_Alfani |  |  43.7751944444 | 11.2608944444
+FIPOIHPC1000001005 | Firenze | Piazza_della_Costituzione_(Firenze) |  |  43.7843666667 | 11.2655555556
+F536 | Firenze | Ex_monastero_della_Santissima_Concezione |  |  43.7747888889 | 11.2468055556
+F726 | Firenze | Lungarno_delle_Grazie |  |  43.7667611111 | 11.2604638889
+F698 | Firenze | Paszkowski |  |  43.7718055556 | 11.253875
+F694 | Firenze | Palazzo_dello_Strozzino |  |  43.7708361111 | 11.2525694444
+F699 | Firenze | Caffè_Gilli |  |  43.7718527778 | 11.2543083333
+F355 | Firenze | Palazzo_di_Cosimo_Ridolfi |  |  43.7667777778 | 11.2490861111
+F351 | Firenze | Palazzo_Ricasoli_Firidolfi |  |  43.7675583333 | 11.249575
+F484 | Firenze | Palazzo_Capponi_alle_Rovinate |  |  43.766075 | 11.2561944444
+F919 | Firenze | Palazzo_Ramirez_de_Montalvo |  |  43.7715638889 | 11.2590166667
+FIPOIHPC1000000751 | Firenze | Stadio_Luigi_Ridolfi |  |  43.7785555556 | 11.2804444444
+F702 | Firenze | Basilica_di_Santa_Croce | Basilica_of_Santa_Croce,_Florence | 43.76849 | 11.26231
+FIPOIHPC1000000813 | Firenze | Casa_di_Giovan_Battista_Foggini |  |  43.7656333333 | 11.2482055556
+F176 | Firenze | Rivoire |  |  43.7695777778 | 11.2552
+F469 | Firenze | Palazzo_Nasi |  |  43.7649694444 | 11.2579916667
+F653 | Firenze | Opificio_delle_pietre_dure | Opificio_delle_pietre_dure | 43.7761 | 11.25898
+F357 | Firenze | Palazzo_Biliotti |  |  43.7664888889 | 11.2486638889
+F174 | Firenze | Tribunale_della_Mercanzia |  |  43.7697305556 | 11.2569138889
+F554 | Firenze | Chiesa_di_San_Giuliano_(Firenze) |  |  43.7784583333 | 11.2508416667
+F161 | Firenze | Ratto_di_Polissena |  |  43.7691666667 | 11.2557666667
+F253 | Firenze | Chiesa_di_Santo_Stefano_al_Ponte | Santo_Stefano_al_Ponte | 43.7686722222 | 11.2542444444
+FIPOIHPC1000000557 | Firenze | Palazzo_dei_Cerretani |  |  43.7752722222 | 11.2504944444
+FIPOIHPC1000000556 | Firenze | Via_Luigi_Lanzi |  |  43.7888388889 | 11.2559305556
+F250 | Firenze | Palazzo_Bartolommei-Buschetti |  |  43.7688638889 | 11.2542916667
+FIPOIHPC1000000550 | Firenze | Ex-sinagoga_di_via_de'_Ramaglianti |  |  43.76765 | 11.25135
+F575 | Firenze | Cappelle_medicee | Medici_Chapel | 43.7749333333 | 11.2534222222
+F676 | Firenze | Piazza_delle_Pallottole |  |  43.7723861111 | 11.2576361111
+F438 | Firenze | Cappella_del_Cardinale_del_Portogallo |  |  43.759575 | 11.2651555556
+FIPOIHPC1000000891 | Firenze | Rotonda_dei_Barbetti |  |  43.7750444444 | 11.2428916667
+FIPOIHPC1000000892 | Firenze | Loggia_Reale |  |  43.7744027778 | 11.2427083333
+F541 | Firenze | Via_degli_Avelli |  |  43.7744722222 | 11.2498888889
+F677 | Firenze | Chiesa_di_San_Salvatore_al_Vescovo | San_Salvatore_al_Vescovo | 43.77295 | 11.2541138889
+F596 | Firenze | Borgo_La_Noce |  |  43.7757416667 | 11.2541555556
+F546 | Firenze | Piazza_Adua |  |  43.7777638889 | 11.2492555556
+F544 | Firenze | Piazza_della_Stazione_(Firenze) |  |  43.7754444444 | 11.2487333333
+FIPOIHPC1000000898 | Firenze | Viale_Belfiore |  |  43.7810583333 | 11.2423166667
+FIPOIHPC1000000700 | Firenze | Via_Calimala |  |  43.7704083333 | 11.2544972222
+F815 | Firenze | Loggia_Rucellai | Loggia_de'_Rucellai | 43.7711222222 | 11.2498222222
+F671 | Firenze | Chiesa_di_San_Michele_Visdomini | San_Michele_Visdomini | 43.7739277778 | 11.2580694444
+FIPOIHPC1000000784 | Firenze | Palazzo_Bartolommei_(via_dell'Oriuolo) |  |  43.7717777778 | 11.2617694444
+F731 | Firenze | Palazzo_Peruzzi_(via_de'_Rustici) |  |  43.7686888889 | 11.2588722222
+F730 | Firenze | Palazzo_Venerosi_Pesciolini |  |  43.7688861111 | 11.2590194444
+FIPOIHPC1000000787 | Firenze | Palazzo_Visconti_di_Modrone |  |  43.7685972222 | 11.2590722222
+FIPOIHPC1000000780 | Firenze | Palazzo_Ricci-Altoviti |  |  43.7723805556 | 11.2530527778
+F756 | Firenze | Spedale_di_San_Niccolò_degli_Aliotti |  |  43.771025 | 11.270125
+F171 | Firenze | Palazzo_delle_Assicurazioni_Generali | Palazzo_delle_Assicurazioni_Generali_(Florence) | 43.7696805556 | 11.2551722222
+FIPOIHPC1000000783 | Firenze | Palazzo_Corsi-Albizi |  |  43.7718416667 | 11.26145
+FIPOIHPC1000000839 | Firenze | Villa_Fontallerta |  |  43.7880527778 | 11.2891472222
+FIPOIHPC1000000920 | Firenze | Istituto_agronomico_per_l'oltremare | Istituto_agronomico_per_l'oltremare | 43.7849527778 | 11.2849111111
+F743 | Firenze | Tabernacolo_di_Sant'Ambrogio |  |  43.7714166667 | 11.2666388889
+F106 | Firenze | Battistero_di_San_Giovanni_(Firenze) | Florence_Baptistery | 43.7731972222 | 11.2551944444
+FIPOIHPC1000000528 | Firenze | Palazzo_Arrighetti-Gaddi |  |  43.7742944444 | 11.2517083333
+F909 | Firenze | Piazza_Oberdan |  |  43.7728944444 | 11.2747888889
+F430 | Firenze | Viale_dei_Colli |  |  43.7608111111 | 11.2703027778
+F777 | Firenze | Piazza_Savonarola |  |  43.7818138889 | 11.266925
+F911 | Firenze | Palazzo_Orlandini_del_Beccuto |  |  43.7729277778 | 11.2530583333
+F397 | Firenze | Piazza_del_Carmine |  |  43.7686472222 | 11.2440666667
+F773 | Firenze | Piazzale_Donatello |  |  43.7781166667 | 11.2676972222
+F910 | Firenze | Piazza_San_Benedetto |  |  43.7722472222 | 11.2573083333
+F490 | Firenze | Palazzina_Reale_delle_Cascine |  |  43.7827333333 | 11.2200361111
+F644 | Firenze | Palazzo_Budini_Gattai |  |  43.7761972222 | 11.2602361111
+F856 | Firenze | Palazzo_di_San_Clemente |  |  43.7787277778 | 11.2634666667
+F296 | Firenze | Palazzo_Frescobaldi |  |  43.7681027778 | 11.2481111111
+F858 | Firenze | Piazza_d'Azeglio |  |  43.7743833333 | 11.2678055556
+F481 | Firenze | Piazza_Demidoff |  |  43.7651472222 | 11.2601777778
+F857 | Firenze | Giardino_dell'Orticultura |  |  43.7878027778 | 11.2618138889
+F232 | Firenze | Palazzo_Vivarelli_Colonna |  |  43.7696111111 | 11.2666388889
+F257 | Firenze | Torre_dei_Mannelli | Torre_dei_Mannelli | 43.7675361111 | 11.2529583333
+FIPOIHPC1000000935 | Firenze | San_Marco_(Donatello) | Saint_Mark_(Donatello) | 43.7705833333 | 11.2548166667
+F218 | Firenze | Chiesa_di_San_Procolo_(Firenze) |  |  43.7707944444 | 11.2587305556
+F163 | Firenze | David_di_Michelangelo | David_(Michelangelo) | 43.7767027778 | 11.25945
+F741 | Firenze | Chiesa_di_Sant'Ambrogio_(Firenze) | Sant'Ambrogio,_Florence | 43.7715555556 | 11.2668638889
+F675 | Firenze | Palazzo_del_Capitolo_dei_Canonici |  |  43.7724111111 | 11.2565694444
+F410 | Firenze | Chiesa_di_San_Salvatore_a_Camaldoli |  |  43.7680194444 | 11.2404166667
+F587 | Firenze | Chiesa_di_San_Tommaso_(Firenze) |  |  43.7718222222 | 11.2547166667
+F202 | Firenze | Tabernacolo_di_Santa_Maria_della_Tromba |  |  43.7707916667 | 11.2546777778
+F566 | Firenze | Piazza_San_Lorenzo |  |  43.7747722222 | 11.2548583333
+F305 | Firenze | Piazza_de'_Pitti |  |  43.7655416667 | 11.2496416667
+F577 | Firenze | Sagrestia_Nuova |  |  43.7751638889 | 11.2538083333
+F826 | Firenze | Chiesa_Episcopale_Americana_di_Saint_James |  |  43.7766222222 | 11.2431027778
+F264 | Firenze | Casa_in_via_dello_Sprone |  |  43.7667611111 | 11.2510333333
+F309 | Firenze | Galleria_palatina |  |  43.7651777778 | 11.2499583333
+F308 | Firenze | Appartamenti_monumentali |  |  43.7651111111 | 11.2496777778
+F310 | Firenze | Galleria_d'arte_moderna_(Firenze) |  |  43.7651777778 | 11.2499583333
+F312 | Firenze | Museo_degli_argenti |  |  43.7652194444 | 11.2505611111
+F131 | Firenze | Venerabile_Arciconfraternita_della_Misericordia_di_Firenze |  |  43.7725388889 | 11.255775
+F278 | Firenze | Piazza_della_Passera |  |  43.7671611111 | 11.2504472222
+F295 | Firenze | Palazzo_Bardi-Guicciardini |  |  43.7688888889 | 11.2483333333
+FIPOIHPC1000000817 | Firenze | Villa_Favard |  |  43.7740888889 | 11.2415888889
+F245 | Firenze | Palazzo_della_Borsa_(Firenze) |  |  43.7673888889 | 11.2569805556
+F769 | Firenze | Edificio_residenziale_di_via_Piagentina |  |  43.7682333333 | 11.2789694444
+FIPOIHPC1000000536 | Firenze | Palazzo_Fenzi | Palazzo_Fenzi | 43.7776305556 | 11.2568416667
+F707 | Firenze | Monumento_funebre_di_Carlo_Marsuppini |  |  43.7683555556 | 11.2631472222
+F802 | Firenze | Chiesa_di_Santa_Maria_di_Candeli | Santa_Maria_dei_Candeli | 43.7738583333 | 11.2637611111
+F715 | Firenze | Palazzo_Jennings_Riccioli |  |  43.7667861111 | 11.2618444444
+FIPOIHPC1000000983 | Firenze | Tomba_di_Giovanni_e_Piero_de'_Medici |  |  43.774725 | 11.253725
+F736 | Firenze | Palazzo_Tafani_da_Barberino |  |  43.7692055556 | 11.2587666667
+FIPOIHPC1000000522 | Firenze | Palazzo_della_Banca_d'Italia_(Firenze) |  |  43.7719777778 | 11.2592055556
+F649 | Firenze | Rotonda_del_Brunelleschi |  |  43.7753108333 | 11.2603166667
+F240 | Firenze | Palazzo_Fagni-Da_Diacceto |  |  43.7684055556 | 11.2573444444
+F242 | Firenze | Ex-Cinema_Capitol |  |  43.76841 | 11.256875
+FIPOIHPC1000000570 | Firenze | Palazzo_dei_Catellini |  |  43.7699138889 | 11.2539277778
+F559 | Firenze | Cinema_Apollo |  |  43.7767555556 | 11.2508944444
+F498 | Firenze | Chiesa_di_Ognissanti | Ognissanti,_Florence | 43.7724972222 | 11.2458833333
+FIPOIHPC1000000984 | Firenze | Tempietto_del_Santo_Sepolcro |  |  43.7719361111 | 11.2498916667
+F888 | Firenze | Palazzo_Bartolini-Torrigiani |  |  43.7700722222 | 11.2538888889
+F889 | Firenze | Vicolo_dello_Scandalo |  |  43.7712527778 | 11.2565277778
+F887 | Firenze | Torre_dei_Giudi |  |  43.769375 | 11.25375
+F584 | Firenze | Torre_dei_Marignolli |  |  43.7735277778 | 11.254475
+F885 | Firenze | Torre_dei_Foresi |  |  43.7703277778 | 11.2525972222
+F886 | Firenze | Torri_dei_Galigai |  |  43.7706027778 | 11.2561694444
+F495 | Firenze | Piazza_Ognissanti |  |  43.7721638889 | 11.2453722222
+F884 | Firenze | Torre_dei_Donati |  |  43.771425 | 11.2569305556
+FIPOIHPC1000000523 | Firenze | Palazzo_delle_Cento_Finestre |  |  43.7732611111 | 11.2525333333
+F107 | Firenze | Porta_del_Paradiso |  |  43.7730694444 | 11.2552333333
+FIPOIHPC1000000148 | Firenze | Chiesa_di_San_Salvatore_(Firenze) |  |  43.7667166667 | 11.2431694444
+F757 | Firenze | Piazza_Beccaria | Piazza_Beccaria | 43.7707833333 | 11.2707333333
+F860 | Firenze | Villa_il_Ventaglio |  |  43.7881888889 | 11.2795583333
+FIPOIHPC1000000735 | Firenze | Centrale_termica_e_Cabina_apparati_centrali |  |  43.7816555556 | 11.2449361111
+F564 | Firenze | Palazzo_della_Cassa_di_Risparmio_(Firenze_via_Santa_Caterina_d'Alessandria) |  |  43.7808416667 | 11.2557083333
+F753 | Firenze | Centro_e_museo_didattico_nazionale |  |  43.7705861111 | 11.2646388889
+F565 | Firenze | Centro_Leasing |  |  43.7822555556 | 11.2569555556
+F655 | Firenze | Casa_del_Mutilato_(Firenze) |  |  43.7749694444 | 11.2604555556
+F623 | Firenze | Via_del_Traditore |  |  43.7752611111 | 11.2561666667
+FIPOIHPC1000000733 | Firenze | Case_per_indigenti |  |  43.7755666667 | 11.2265083333
+F326 | Firenze | Ponte_Santa_Trinita | Ponte_Santa_Trinita | 43.7690166667 | 11.2503111111
+F336 | Firenze | Cappella_Antinori |  |  43.7725555556 | 11.2515888889
+FIPOIHPC1000000635 | Firenze | Sede_della_Direzione_provinciale_delle_Poste_e_Telegrafi_di_Firenze |  |  43.7711694444 | 11.2629166667
+FIPOIHPC1000000636 | Firenze | Sede_centrale_della_Cassa_di_Risparmio_di_Firenze |  |  43.7739277778 | 11.2585666667
+F367 | Firenze | Palazzo_Rosselli_del_Turco |  |  43.7679944444 | 11.2462083333
+F771 | Firenze | Villino_Broggi-Caraceni |  |  43.77175 | 11.2732722222
+FIPOIHPC1000000631 | Firenze | Villino_Lampredi |  |  43.764975 | 11.2401805556
+FIPOIHPC1000000632 | Firenze | Loggia_dei_Tessitori |  |  43.7790916667 | 11.2578916667
+F331 | Firenze | Palazzo_Spini_Feroni | Palazzo_Spini_Feroni | 43.7695944444 | 11.2509916667
+FIPOIHPC1000000973 | Firenze | Piazza_Bernardo_Tanucci |  |  43.7902833333 | 11.2444472222
+F708 | Firenze | Monumento_funebre_di_Leonardo_Bruni |  |  43.7682 | 11.2628194444
+F594 | Firenze | Istituto_di_Sant'Agnese |  |  43.7790444444 | 11.2509722222
+FIPOIHPC1000000558 | Firenze | Via_San_Carlo |  |  43.7628638889 | 11.2255222222
+FIPOIHPC1000000388 | Firenze | Giardino_Bardini | Giardino_Bardini | 43.7637472222 | 11.2573583333
+F141 | Firenze | Quattro_Santi_Coronati_(Nanni_di_Banco) |  |  43.7708388889 | 11.2549972222
+FIPOIHPC1000000933 | Firenze | San_Filippo_(Nanni_di_Banco) |  |  43.7708277778 | 11.2551361111
+FIPOIHPC1000000932 | Firenze | Sant'Eligio_(Nanni_di_Banco) |  |  43.7706194444 | 11.2547916667
+FIPOIHPC1000000930 | Firenze | Santo_Stefano_(Ghiberti) |  |  43.7706944444 | 11.2547972222
+F143 | Firenze | San_Pietro_(Brunelleschi) |  |  43.7708277778 | 11.2552138889
+F368 | Firenze | Monastero_di_San_Pietro_Martire |  |  43.7634388889 | 11.2434638889
+F211 | Firenze | Museo_nazionale_del_Bargello | Bargello | 43.7703722222 | 11.25835
+F142 | Firenze | San_Giorgio_(Donatello) |  |  43.770825 | 11.2548861111
+FIPOIHPC1000000977 | Firenze | Via_Vittorio_Emanuele_II_(Firenze) |  |  43.7891055556 | 11.2567138889
+FIPOIHPC1000000976 | Firenze | Statuto_(Firenze) |  |  43.7851722222 | 11.2513361111
+F899 | Firenze | Condominio_in_San_Jacopino |  |  43.7842388889 | 11.2402305556
+FIPOIHPC1000000741 | Firenze | Condominio_in_via_Lanza |  |  43.7681777778 | 11.2853666667
+FIPOIHPC1000000742 | Firenze | Emeroteca_dell'Università_di_Firenze |  |  43.7793583333 | 11.2424055556
+F648 | Firenze | Facoltà_di_Lettere_e_Filosofia_(Firenze) |  |  43.7745527778 | 11.2615305556
+FIPOIHPC1000000744 | Firenze | Palazzo_Pazzi_dell'Accademia_Colombaria |  |  43.7715861111 | 11.2587527778
+F516 | Firenze | Grand_Hotel_Minerva |  |  43.7738555556 | 11.2489916667
+F442 | Firenze | Istituto_Ortopedico_Toscano |  |  43.7548583333 | 11.2722972222
+FIPOIHPC1000000747 | Firenze | Limonaia_di_Villa_Strozzi |  |  43.7707361111 | 11.2282333333
+F602 | Firenze | Palazzo_Taddei |  |  43.7763305556 | 11.2556333333
+F603 | Firenze | Palazzo_Tolomei_Biffi |  |  43.7765722222 | 11.2557472222
+F370 | Firenze | Galleria_Pio_Fedi |  |  43.7650638889 | 11.2443638889
+F611 | Firenze | Caffè_Michelangiolo |  |  43.7754083333 | 11.2562888889
+F350 | Firenze | Chiesa_Anglicana_di_St._Mark |  |  43.7675777778 | 11.2493472222
+F220 | Firenze | Palazzo_Borghese_(Firenze) |  |  43.7706861111 | 11.2592305556
+F834 | Firenze | Monastero_dell'Arcangelo_Raffaello |  |  43.7704472222 | 11.2409388889
+FIPOIHPC1000000843 | Firenze | Via_del_Ponte_alle_Mosse |  |  43.7825194444 | 11.2345027778
+F836 | Firenze | Museo_di_storia_naturale_sezione_di_botanica |  |  43.778 | 11.26
+F633 | Firenze | Chiesa_Valdese_(Firenze) |  |  43.78007 | 11.26098
+F404 | Firenze | Albergo_Popolare |  |  43.7675444444 | 11.2429305556
+F837 | Firenze | Museo_di_storia_naturale_sezione_di_geologia_e_paleontologia |  |  43.77836 | 11.26019
+F838 | Firenze | Museo_e_istituto_fiorentino_di_preistoria |  |  43.7725305556 | 11.2604472222
+F787 | Firenze | Cenacolo_di_Sant'Apollonia |  |  43.7783583333 | 11.2569972222
+F508 | Firenze | Giardino_Fossombroni |  |  43.7719694444 | 11.2475194444
+F770 | Firenze | Chiesa_del_Sacro_Cuore_(Firenze) | Sacro_Cuore,_Florence | 43.7738722222 | 11.2780472222
+F912 | Firenze | Palazzo_Borgherini-Rosselli_del_Turco |  |  43.7693083333 | 11.2523027778
+F381 | Firenze | Via_del_Ronco |  |  43.7626833333 | 11.244375
+FIPOIHPC1000000296 | Firenze | Castello_d'Altafronte |  |  43.7676638889 | 11.2559833333
+F208 | Firenze | Palazzo_dell'Arte_dei_Giudici_e_Notai |  |  43.7709888889 | 11.2581472222
+F874 | Firenze | Torre_della_Serpe |  |  43.7770416667 | 11.2380611111
+F127 | Firenze | Palazzo_dei_Canonici |  |  43.7725083333 | 11.2567222222
+F873 | Firenze | Teatro_L'Amicizia |  |  43.7773361111 | 11.240125
+F606 | Firenze | Palazzo_Panciatichi |  |  43.774825 | 11.2564611111
+F872 | Firenze | Palazzo_della_Gherardesca |  |  43.7779027778 | 11.2657416667
+F473 | Firenze | Piazza_Giuseppe_Poggi |  |  43.7646611111 | 11.2645805556
+FIPOIHPC1000000443 | Firenze | Biblioteca_delle_Carra |  |  43.7814 | 11.2375333333
+F134 | Firenze | Chiesa_di_San_Carlo_dei_Lombardi |  |  43.77065 | 11.2555694444
+FIPOIHPC1000000441 | Firenze | Biblioteca_Comunale_Centrale |  |  43.7727416667 | 11.260125
+F791 | Firenze | Chiesa_Avventista_Episcopale |  |  43.7771777778 | 11.2564861111
+F512 | Firenze | Chiesa_di_San_Paolino_(Firenze) |  |  43.7726611111 | 11.2477277778
+FIPOIHPC1000000569 | Firenze | Palazzo_degli_Altoviti |  |  43.7695388889 | 11.2520222222
+F875 | Firenze | Il_Prato |  |  43.7753694444 | 11.2421611111
+F363 | Firenze | Ponte_alla_Carraia | Ponte_alla_Carraia | 43.7702416667 | 11.2472472222
+FIPOIHPC1000000879 | Firenze | Viale_Filippo_Strozzi |  |  43.7808277778 | 11.2514138889
+F570 | Firenze | Basilica_di_San_Lorenzo_(Firenze) | Basilica_of_San_Lorenzo,_Florence | 43.7748888889 | 11.2538638889
+F817 | Firenze | Oratorio_dei_Buonomini_di_San_Martino | San_Martino_del_Vescovo | 43.7708527778 | 11.2568305556
+F580 | Firenze | Palazzo_Gaddi_(Firenze) |  |  43.7748361111 | 11.2523861111
+F431 | Firenze | Piazzale_Michelangelo | Piazzale_Michelangelo | 43.7629166667 | 11.2651555556
+F706 | Firenze | Cappella_Peruzzi |  |  43.7680555556 | 11.2634
+F203 | Firenze | Palazzo_dell'Arte_della_Lana |  |  43.7707388889 | 11.254675
+F464 | Firenze | Museo_Annigoni |  |  43.7640027778 | 11.2562805556
+F291 | Firenze | Palazzo_Capponi-Vettori |  |  43.7696527778 | 11.2464722222
+FIPOIHPC1000000590 | Firenze | Palazzo_Canacci |  |  43.7698055556 | 11.2535305556
+F601 | Firenze | Palazzo_Ginori |  |  43.77595 | 11.255475
+F666 | Firenze | Palazzo_Gerini |  |  43.7758666667 | 11.2582472222
+F783 | Firenze | Cimitero_della_Misericordia_(Firenze) |  |  43.7799138889 | 11.2694916667
+F747 | Firenze | Mercato_di_Sant'Ambrogio |  |  43.7705388889 | 11.2670333333
+FIPOIHPC1000000597 | Firenze | Palazzo_Strozzi_del_Poeta |  |  43.7707194444 | 11.2512722222
+FIPOIHPC1000000596 | Firenze | Palazzo_dell'Arte_dei_Beccai |  |  43.77095 | 11.2550916667
+F110 | Firenze | Campanile_di_Giotto | Giotto's_Campanile | 43.7727722222 | 11.2557861111
+F277 | Firenze | Torre_degli_Angiolieri |  |  43.7679194444 | 11.2512555556
+F272 | Firenze | Torre_dei_Belfredelli |  |  43.7676583333 | 11.2514472222
+F902 | Firenze | Piazza_Goldoni |  |  43.770925 | 11.24775
+F409 | Firenze | Piazza_Tasso |  |  43.76735 | 11.2406222222
+F246 | Firenze | Piazza_Mentana |  |  43.7673416667 | 11.2578055556
+F904 | Firenze | Torre_dei_Pierozzi |  |  43.77235 | 11.2568805556
+F130 | Firenze | Bottega_dell'Opera_del_Duomo |  |  43.7721638889 | 11.2568333333
+F903 | Firenze | Sita_Sogin |  |  43.7757 | 11.2465444444
+F154 | Firenze | Studiolo_di_Francesco_I | Studiolo_of_Francesco_I | 43.7691277778 | 11.2565527778
+F320 | Firenze | Obelisco_di_Boboli |  |  43.7641055556 | 11.2509277778
+FIPOIHPC1000000833 | Firenze | Casa_del_Fascio_(Firenze) |  |  43.7708611111 | 11.2623861111
+F283 | Firenze | Cenacolo_di_Santo_Spirito |  |  43.7670305556 | 11.2475666667
+F560 | Firenze | Tabernacolo_delle_Fonticine |  |  43.7771722222 | 11.2520055556
+F786 | Firenze | Via_San_Gallo |  |  43.7799694444 | 11.2585638889
+F374 | Firenze | Via_Romana |  |  43.7633 | 11.2447611111
+F650 | Firenze | Chiesa_di_Santa_Maria_degli_Angeli_(Firenze) | Santa_Maria_degli_Angeli,_Florence | 43.774525 | 11.260875
+FIPOIHPC1000000761 | Firenze | Palazzo_Mondragone |  |  43.7736083333 | 11.2509722222
+F827 | Firenze | Chiesa_dell'Adorazione_Perpetua |  |  43.7760861111 | 11.2427472222
+F414 | Firenze | Chiesa_di_Sant'Ilario_a_Colombaia |  |  43.757425 | 11.2390555556
+F617 | Firenze | Chiostro_dello_Scalzo |  |  43.7796388889 | 11.2595388889
+F829 | Firenze | Casa_di_Dante |  |  43.7709972222 | 11.2571
+F830 | Firenze | Museo_di_Firenze_com'era |  |  43.7724555556 | 11.2601361111
+F720 | Firenze | Museo_Horne |  |  43.7675138889 | 11.2596138889
+F668 | Firenze | Palazzo_Pucci |  |  43.7744333333 | 11.2575861111
+F632 | Firenze | Conservatorio_Luigi_Cherubini |  |  43.7764 | 11.25862
+F685 | Firenze | Via_de'_Tosinghi |  |  43.7721833333 | 11.2540222222
+F696 | Firenze | Piazza_della_Repubblica_(Firenze) | Piazza_della_Repubblica_(Florence) | 43.7714472222 | 11.2540611111
+F683 | Firenze | Torre_degli_Amieri |  |  43.770925 | 11.2538472222
+F684 | Firenze | Torre_dei_Caponsacchi |  |  43.7710666667 | 11.2539888889
+F175 | Firenze | Palazzo_Bombicci |  |  43.7700888889 | 11.2553722222
+F147 | Firenze | Chiesa_di_San_Bartolomeo_(Firenze) |  |  43.7710194444 | 11.2552972222
+FIPOIHPC1000000942 | Firenze | San_Luca_(Giambologna) |  |  43.7708111111 | 11.2552555556
+FIPOIHPC1000000943 | Firenze | Palazzo_Bombicci_Pontelli |  |  43.76685 | 11.2604833333
+F145 | Firenze | Madonna_della_Rosa |  |  43.7705777778 | 11.2550722222
+FIPOIHPC1000000941 | Firenze | San_Giovanni_Evangelista_(Baccio_da_Montelupo) |  |  43.7705722222 | 11.2551555556
+FIPOIHPC1000000887 | Firenze | Palazzo_Farinola |  |  43.7725138889 | 11.2496694444
+F800 | Firenze | Chiesa_di_Santa_Margherita_dei_Cerchi | Santa_Margherita_de'_Cerchi | 43.7712527778 | 11.2573083333
+F120 | Firenze | Porta_della_Mandorla |  |  43.7733277778 | 11.2565277778
+FIPOIHPC1000000886 | Firenze | Via_del_Sole |  |  43.7720611111 | 11.2503305556
+F337 | Firenze | Loggia_di_San_Gaetano |  |  43.7725972222 | 11.2522055556
+F835 | Firenze | Chiesa_Russa_Ortodossa_della_Natività |  |  43.78385 | 11.2549472222
+FIPOIHPC1000000885 | Firenze | Via_della_Spada |  |  43.7718666667 | 11.2501805556
+FIPOIHPC1000000846 | Firenze | Villa_Pagani |  |  43.7650916667 | 11.2373
+F686 | Firenze | Via_degli_Speziali |  |  43.7714861111 | 11.2549138889
+FIPOIHPC1000000845 | Firenze | Casa_dello_Studente_(Firenze) |  |  43.7864 | 11.2342555556
+FIPOIHPC1000000844 | Firenze | Piazza_Puccini |  |  43.7863916667 | 11.2269694444
+F637 | Firenze | Basilica_della_Santissima_Annunziata | Santissima_Annunziata,_Florence | 43.7773222222 | 11.2618222222
+F274 | Firenze | Via_dei_Ramaglianti |  |  43.76765 | 11.25135
+F701 | Firenze | Piazza_Santa_Croce | Piazza_Santa_Croce | 43.76885 | 11.2614805556
+FIPOIHPC1000000889 | Firenze | Via_delle_Belle_Donne |  |  43.7727083333 | 11.2504972222
+FIPOIHPC1000000842 | Firenze | Gazometro_di_Firenze |  |  43.7713555556 | 11.2385694444
+FIPOIHPC1000000663 | Firenze | Chiesa_di_Santa_Maria_Regina_della_Pace |  |  43.7965277778 | 11.2301416667
+FIPOIHPC1000000662 | Firenze | Ospizio_di_Orbatello |  |  43.7751722222 | 11.2633777778
+FIPOIHPC1000000661 | Firenze | Chiesa_di_Santa_Caterina_da_Siena_a_Coverciano |  |  43.7738805556 | 11.2898472222
+FIPOIHPC1000000660 | Firenze | Chiesa_del_Santissimo_Crocifisso_(Firenze) |  |  43.7697861111 | 11.2251416667
+F354 | Firenze | Palazzo_Zanchini-Corbinelli |  |  43.7668722222 | 11.2492194444
+F735 | Firenze | Palazzo_di_Ubaldino_Peruzzi |  |  43.7691611111 | 11.259775
+FIPOIHPC1000000665 | Firenze | Chiesa_dei_Santi_Antonio_e_Margherita |  |  43.7552083333 | 11.2727666667
+FIPOIHPC1000000664 | Firenze | Cimitero_Israelitico_(Firenze) |  |  43.7984611111 | 11.2298583333
+F335 | Firenze | Chiesa_dei_Santi_Michele_e_Gaetano | San_Gaetano,_Florence | 43.7724555556 | 11.2517916667
+F104 | Firenze | Opera_di_San_Giovanni |  |  43.7735 | 11.2551194444
+F734 | Firenze | Borgo_dei_Greci |  |  43.7696694444 | 11.2592166667
+F563 | Firenze | Chiesa_di_San_Giuseppe_(Firenze) |  |  43.7680666667 | 11.265525
+F801 | Firenze | Chiesa_di_Santa_Margherita_in_Santa_Maria_de'_Ricci |  |  43.7715083333 | 11.2567166667
+F510 | Firenze | Via_Palazzuolo |  |  43.7737083333 | 11.2462833333
+FIPOIHPC1000000709 | Firenze | Via_della_Colonna |  |  43.7746333333 | 11.2651
+F799 | Firenze | Palagio_di_Parte_Guelfa |  |  43.7695388889 | 11.2536833333
+F582 | Firenze | Borgo_San_Lorenzo_(via) |  |  43.7739833333 | 11.2548583333
+F591 | Firenze | Via_Guelfa |  |  43.7779666667 | 11.2539722222
+FIPOIHPC1000000706 | Firenze | Via_Sant'Antonino |  |  43.7756083333 | 11.2521361111
+F503 | Firenze | Borgo_Ognissanti |  |  43.772825 | 11.2450555556
+F803 | Firenze | Chiesa_di_Santa_Maria_Vergine_della_Croce_al_Tempio |  |  43.7681527778 | 11.2649055556
+FIPOIHPC1000000701 | Firenze | Via_Panzani |  |  43.7739083333 | 11.251325
+FIPOIHPC1000000702 | Firenze | Via_de'_Cerretani |  |  43.7734138889 | 11.2533583333
+FIPOIHPC1000000703 | Firenze | Palazzo_Del_Bembo |  |  43.7733416667 | 11.2539111111
+FIPOIHPC1000000027 | Firenze | Loggia_del_Mercato_Nuovo | Loggia_del_Mercato_Nuovo | 43.7699916667 | 11.2542944444
+FIPOIHPC1000000677 | Firenze | Villa_Colletta |  |  43.7964 | 11.2622416667
+F774 | Firenze | Cimitero_degli_Inglesi | English_Cemetery,_Florence | 43.7776138889 | 11.2682111111
+F712 | Firenze | Biblioteca_Nazionale_Centrale_di_Firenze | National_Central_Library_(Florence) | 43.7670444444 | 11.2624444444
+FIPOIHPC1000001019 | Firenze | Via_dei_Leoni |  |  43.7690638889 | 11.2572416667
+FIPOIHPC1000001013 | Firenze | Lungarno_Torrigiani |  |  43.7662472222 | 11.2563916667
+F304 | Firenze | Lungarno_Guicciardini |  |  43.7690472222 | 11.2485277778
+FIPOIHPC1000001011 | Firenze | Lungarno_Vespucci |  |  43.7729972222 | 11.2425638889
+FIPOIHPC1000001010 | Firenze | Lungarno_Corsini |  |  43.7698055556 | 11.2500333333
+FIPOIHPC1000001017 | Firenze | Via_de'_Martelli |  |  43.7743055556 | 11.2556833333
+F303 | Firenze | Palazzo_Medici-Soderini |  |  43.7694833333 | 11.2471611111
+FIPOIHPC1000001015 | Firenze | Lungarno_Benvenuto_Cellini |  |  43.7645194444 | 11.2683166667
+F478 | Firenze | Lungarno_Serristori |  |  43.7652333333 | 11.260775
+F917 | Firenze | Ponte_Giovanni_da_Verrazzano |  |  43.7649611111 | 11.281775
+F281 | Firenze | Cappella_Corsini_di_Santo_Spirito |  |  43.7674805556 | 11.2467916667
+F915 | Firenze | Villa_Strozzi_al_Boschetto |  |  43.7707361111 | 11.2268527778
+F823 | Firenze | Teatro_della_Pergola | Teatro_della_Pergola | 43.7732194444 | 11.2616111111
+F619 | Firenze | Casino_Mediceo_di_San_Marco |  |  43.7791083333 | 11.2586583333
+F913 | Firenze | Palazzo_del_Circolo_dell'Unione |  |  43.7708611111 | 11.2512888889
+F555 | Firenze | Chiesa_di_San_Jacopo_in_Campo_Corbolini |  |  43.7764222222 | 11.2517777778
+F833 | Firenze | Palazzo_di_Gino_Capponi |  |  43.778225 | 11.2633777778
+F405 | Firenze | Palazzo_Accolti |  |  43.7664666667 | 11.2439666667
+F539 | Firenze | Palazzo_Venturi_Ginori |  |  43.7760888889 | 11.2444444444
+F918 | Firenze | Chiesa_di_San_Martino_a_Montughi |  |  43.7927694444 | 11.2546361111
+FIPOIHPC1000000838 | Firenze | Sede_de_La_Nazione |  |  43.7698722222 | 11.2702666667
+F681 | Firenze | Chiesa_di_Sant'Andrea_(Firenze) |  |  43.770775 | 11.2541888889
+F772 | Firenze | Villino_Ravazzini |  |  43.771875 | 11.2731194444
+FIPOIHPC1000000837 | Firenze | Villino_Uzielli |  |  43.774825 | 11.2669472222
+F426 | Firenze | Villa_Bayon |  |  43.7523027778 | 11.2346388889
+FIPOIHPC1000000835 | Firenze | Villino_Galeotti-Flori |  |  43.7848861111 | 11.2559361111
+FIPOIHPC1000000832 | Firenze | Edificio_ex-BICA |  |  43.7775305556 | 11.2523361111
+F792 | Firenze | Chiesa_dei_Santi_Apostoli_(Firenze) | Santi_Apostoli,_Florence | 43.7692 | 11.2521222222
+FIPOIHPC1000000830 | Firenze | Ex-stabilimento_FIAT_di_Novoli |  |  43.7908777778 | 11.2270388889
+FIPOIHPC1000000831 | Firenze | Teatro_della_Compagnia |  |  43.7756305556 | 11.2573388889
+F678 | Firenze | Via_Roma_(Firenze) |  |  43.7723777778 | 11.25445
+FIPOIHPC1000000779 | Firenze | Palazzo_Ricasoli |  |  43.7708138889 | 11.2481611111
+F548 | Firenze | Palazzo_dei_Congressi_(Firenze) |  |  43.7791277778 | 11.2493027778
+F547 | Firenze | Palazzo_degli_Affari |  |  43.7780388889 | 11.2495972222
+FIPOIHPC1000000498 | Firenze | Chiesa_dell'Immacolata_(Firenze) |  |  43.7895944444 | 11.25365
+FIPOIHPC1000000499 | Firenze | Vicolo_del_Bigozzi |  |  43.7899555556 | 11.2546694444
+FIPOIHPC1000000876 | Firenze | Palazzo_di_Giustizia_(Firenze) | Tribunal_of_Florence | 43.7954416667 | 11.2258666667
+F647 | Firenze | Palazzo_Baldi |  |  43.7766 | 11.2579333333
+F660 | Firenze | Palazzetto_Del_Bianco |  |  43.7736833333 | 11.2574138889
+FIPOIHPC1000000495 | Firenze | Borgo_Allegri |  |  43.7695 | 11.2643305556
+F343 | Firenze | Palazzo_Dudley |  |  43.7714777778 | 11.2510583333
+FIPOIHPC1000000497 | Firenze | Sagrestia_di_Santa_Trinita |  |  43.7704 | 11.2506722222
+F230 | Firenze | Palazzo_Covoni |  |  43.7701666667 | 11.2591833333
+F231 | Firenze | Palazzo_Da_Cintoia |  |  43.7701833333 | 11.2603805556
+F661 | Firenze | Palazzo_Naldini |  |  43.7736 | 11.2575583333
+F669 | Firenze | Palazzo_Incontri |  |  43.7740944444 | 11.2578083333
+F302 | Firenze | Palazzo_Rinuccini |  |  43.7689222222 | 11.2465861111
+F263 | Firenze | Torre_dei_Fifanti |  |  43.7666555556 | 11.252875
+F261 | Firenze | Torre_dei_Nerli |  |  43.7671888889 | 11.2522277778
+FIPOIHPC1000000794 | Firenze | Torre_degli_Alepri |  |  43.7702472222 | 11.2560388889
+FIPOIHPC1000000793 | Firenze | Torre_dei_Ghiberti |  |  43.7715388889 | 11.2562666667
+FIPOIHPC1000000792 | Firenze | Torre_di_via_Sant'Elisabetta |  |  43.77205 | 11.2561305556
+FIPOIHPC1000000791 | Firenze | Torre_in_via_de'_Cerretani |  |  43.7735305556 | 11.2543138889
+F265 | Firenze | Torre_in_via_dello_Sprone |  |  43.7667555556 | 11.2506861111
+F729 | Firenze | Palazzo_Borgianni |  |  43.7687194444 | 11.2592166667
+F341 | Firenze | Palazzetto_Tornabuoni |  |  43.7720305556 | 11.25125

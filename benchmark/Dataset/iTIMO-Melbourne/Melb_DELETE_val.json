@@ -1,0 +1,4549 @@
+{
+  "2128": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Melbourne Town Hall",
+          "Public Buildings",
+          "144.966542722283",
+          "-37.8150754791",
+          "high"
+        ],
+        [
+          "Flinders Street Railway Station",
+          "Railway Station",
+          "144.967064817875",
+          "-37.8179063008",
+          "high"
+        ]
+      ],
+      "hint": "\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "Candidate POIs": [
+        {
+          "cand_id": 0,
+          "poi": [
+            "DFO South Wharf",
+            "Retail/Office",
+            "144.949794297819",
+            "-37.8248874012",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 1,
+          "poi": [
+            "FairFax Studio",
+            "Theatre Live",
+            "144.968836241692",
+            "-37.8216684582",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 2,
+          "poi": [
+            "Malthouse Theatre",
+            "Theatre Live",
+            "144.966936821789",
+            "-37.8271768001",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 3,
+          "poi": [
+            "Parliament Railway Station",
+            "Railway Station",
+            "144.973017263156",
+            "-37.8116061787",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 4,
+          "poi": [
+            "Southgate Arts and Leisure Precinct",
+            "Retail/Office/Carpark",
+            "144.965989052839",
+            "-37.8202245787",
+            "high"
+          ]
+        }
+      ],
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "insert_index": 2,
+      "selected_cand_id": 4,
+      "selected_poi": [
+        "Southgate Arts and Leisure Precinct",
+        "Retail/Office/Carpark",
+        "144.965989052839",
+        "-37.8202245787",
+        "high"
+      ]
+    },
+    "rec_exmaples": [
+      "1897",
+      "1015",
+      "1738",
+      "1395",
+      "1579"
+    ],
+    "rec_examples_gpt_text_large": [
+      "611",
+      "271",
+      "517",
+      "1015",
+      "2931"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "2931",
+      "1015",
+      "271",
+      "1603",
+      "517"
+    ],
+    "rec_examples_qwen3_8b": [
+      "271",
+      "290",
+      "2254",
+      "957",
+      "1471"
+    ]
+  },
+  "2948": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Forum Theatre",
+          "Theatre Live",
+          "144.969386556998",
+          "-37.8164854097",
+          "high"
+        ],
+        [
+          "Scots Church",
+          "Church",
+          "144.96855105335",
+          "-37.8145687803",
+          "low"
+        ],
+        [
+          "Princess Theatre",
+          "Theatre Live",
+          "144.9723265962",
+          "-37.8107257091",
+          "medium"
+        ],
+        [
+          "St Patricks Cathedral",
+          "Church",
+          "144.975901529712",
+          "-37.810114095",
+          "medium"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "Candidate POIs": [
+        {
+          "cand_id": 0,
+          "poi": [
+            "Cooks' Cottage",
+            "Art Gallery/Museum",
+            "144.979471339826",
+            "-37.81446049",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 1,
+          "poi": [
+            "Harbour Town",
+            "Current Construction Site",
+            "144.938123825625",
+            "-37.8139256327",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 2,
+          "poi": [
+            "MTC Theatre",
+            "Theatre Live",
+            "144.968174400274",
+            "-37.8242661833",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 3,
+          "poi": [
+            "New Quay Marina",
+            "Marina",
+            "144.942283726231",
+            "-37.8152925455",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 4,
+          "poi": [
+            "Parliament Railway Station",
+            "Railway Station",
+            "144.973017263156",
+            "-37.8116061787",
+            "high"
+          ]
+        }
+      ],
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "insert_index": 2,
+      "selected_cand_id": 4,
+      "selected_poi": [
+        "Parliament Railway Station",
+        "Railway Station",
+        "144.973017263156",
+        "-37.8116061787",
+        "high"
+      ]
+    },
+    "rec_exmaples": [
+      "1136",
+      "1468",
+      "1274",
+      "444",
+      "1825"
+    ],
+    "rec_examples_gpt_text_large": [
+      "1532",
+      "2029",
+      "1193",
+      "1274",
+      "3295"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "1532",
+      "1136",
+      "1335",
+      "3940",
+      "3248"
+    ],
+    "rec_examples_qwen3_8b": [
+      "1193",
+      "1847",
+      "2363",
+      "1290",
+      "3295"
+    ]
+  },
+  "2310": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Parliament Railway Station",
+          "Railway Station",
+          "144.973017263156",
+          "-37.8116061787",
+          "high"
+        ],
+        [
+          "Federation Square",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.968963600783",
+          "-37.8178516572",
+          "high"
+        ],
+        [
+          "Artplay",
+          "Indoor Recreation Facility",
+          "144.971542586509",
+          "-37.81841988",
+          "medium"
+        ]
+      ],
+      "hint": "\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "Candidate POIs": [
+        {
+          "cand_id": 0,
+          "poi": [
+            "Dallas Brooks Centre",
+            "Function/Conference/Exhibition Centre",
+            "144.981383411592",
+            "-37.8097374138",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 1,
+          "poi": [
+            "Melbourne Cricket Ground (MCG)",
+            "Major Sports & Recreation Facility",
+            "144.983402879078",
+            "-37.8194921618",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 2,
+          "poi": [
+            "Melbourne Visitor Centre",
+            "Visitor Centre",
+            "144.967937138226",
+            "-37.8177352402",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 3,
+          "poi": [
+            "Royal Womens Hospital",
+            "Public Hospital",
+            "144.954897253856",
+            "-37.798889246",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 4,
+          "poi": [
+            "University of Melbourne",
+            "Tertiary (University)",
+            "144.96099520158",
+            "-37.7982892285",
+            "medium"
+          ]
+        }
+      ],
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "insert_index": 3,
+      "selected_cand_id": 1,
+      "selected_poi": [
+        "Melbourne Cricket Ground (MCG)",
+        "Major Sports & Recreation Facility",
+        "144.983402879078",
+        "-37.8194921618",
+        "high"
+      ]
+    },
+    "rec_exmaples": [
+      "1897",
+      "1015",
+      "1738",
+      "1395",
+      "1579"
+    ],
+    "rec_examples_gpt_text_large": [
+      "245",
+      "2259",
+      "181",
+      "1015",
+      "1483"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "937",
+      "2849",
+      "1603",
+      "1738",
+      "964"
+    ],
+    "rec_examples_qwen3_8b": [
+      "245",
+      "1015",
+      "1721",
+      "3746",
+      "3247"
+    ]
+  },
+  "2955": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Melbourne Visitor Booth",
+          "Visitor Centre",
+          "144.964425882562",
+          "-37.8139525061",
+          "high"
+        ],
+        [
+          "Council House 2 (CH2)",
+          "Retail/Office/Carpark",
+          "144.966638432727",
+          "-37.8142591432",
+          "high"
+        ]
+      ],
+      "hint": "\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "Candidate POIs": [
+        {
+          "cand_id": 0,
+          "poi": [
+            "Melbourne Central Railway Station",
+            "Railway Station",
+            "144.963789344893",
+            "-37.8100167031",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 1,
+          "poi": [
+            "Myer",
+            "Department Store",
+            "144.963855087868",
+            "-37.8135911985",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 2,
+          "poi": [
+            "Scots Church",
+            "Church",
+            "144.96855105335",
+            "-37.8145687803",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 3,
+          "poi": [
+            "Sidney Myer Music Bowl",
+            "Public Buildings",
+            "144.974686151365",
+            "-37.8233471609",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 4,
+          "poi": [
+            "Waterfront City",
+            "Retail/Office",
+            "144.939136876334",
+            "-37.8150566618",
+            "high"
+          ]
+        }
+      ],
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "insert_index": 2,
+      "selected_cand_id": 3,
+      "selected_poi": [
+        "Sidney Myer Music Bowl",
+        "Public Buildings",
+        "144.974686151365",
+        "-37.8233471609",
+        "high"
+      ]
+    },
+    "rec_exmaples": [
+      "1897",
+      "1015",
+      "1738",
+      "1395",
+      "1579"
+    ],
+    "rec_examples_gpt_text_large": [
+      "472",
+      "2442",
+      "611",
+      "271",
+      "3181"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "271",
+      "2939",
+      "472",
+      "3926",
+      "2442"
+    ],
+    "rec_examples_qwen3_8b": [
+      "1536",
+      "2683",
+      "271",
+      "2254",
+      "611"
+    ]
+  },
+  "2197": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Victoria Police",
+          "Police Station",
+          "144.966486801188",
+          "-37.8164849024",
+          "high"
+        ],
+        [
+          "Melbourne Recital Centre",
+          "Public Buildings",
+          "144.967682729667",
+          "-37.8238327886",
+          "low"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "Candidate POIs": [
+        {
+          "cand_id": 0,
+          "poi": [
+            "ANZ 'Gothic' Bank",
+            "Retail/Office/Carpark",
+            "144.961673719242",
+            "-37.8161580666",
+            "medium"
+          ]
+        },
+        {
+          "cand_id": 1,
+          "poi": [
+            "Hamer Hall",
+            "Theatre Live",
+            "144.967992144257",
+            "-37.8199901009",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 2,
+          "poi": [
+            "St Francis Church",
+            "Church",
+            "144.962422614541",
+            "-37.8118847832",
+            "medium"
+          ]
+        },
+        {
+          "cand_id": 3,
+          "poi": [
+            "Victoria Police",
+            "Police Station",
+            "144.953398014034",
+            "-37.821977391",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 4,
+          "poi": [
+            "Victorian Arts Centre",
+            "Art Gallery/Museum",
+            "144.968837288153",
+            "-37.8219947336",
+            "medium"
+          ]
+        }
+      ],
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "insert_index": 1,
+      "selected_cand_id": 4,
+      "selected_poi": [
+        "Victorian Arts Centre",
+        "Art Gallery/Museum",
+        "144.968837288153",
+        "-37.8219947336",
+        "medium"
+      ]
+    },
+    "rec_exmaples": [
+      "1012",
+      "1093",
+      "1047",
+      "1765",
+      "3253"
+    ],
+    "rec_examples_gpt_text_large": [
+      "3454",
+      "186",
+      "1765",
+      "964",
+      "3178"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "186",
+      "3454",
+      "2254",
+      "3407",
+      "1047"
+    ],
+    "rec_examples_qwen3_8b": [
+      "3454",
+      "186",
+      "3926",
+      "964",
+      "3334"
+    ]
+  },
+  "3437": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Melbourne Exhibition Centre",
+          "Function/Conference/Exhibition Centre",
+          "144.95435243249",
+          "-37.8252455123",
+          "medium"
+        ],
+        [
+          "Sandridge Rail Bridge",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.96298113724",
+          "-37.8201763043",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "Candidate POIs": [
+        {
+          "cand_id": 0,
+          "poi": [
+            "Alfred Hospital",
+            "Public Hospital",
+            "144.981786260765",
+            "-37.8462631206",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 1,
+          "poi": [
+            "Australian Broadcasting Corporation (ABC)",
+            "Office",
+            "144.966551401578",
+            "-37.8238133237",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 2,
+          "poi": [
+            "Flagstaff Railway Station",
+            "Railway Station",
+            "144.956318211113",
+            "-37.8122356515",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 3,
+          "poi": [
+            "Melbourne Central Railway Station",
+            "Railway Station",
+            "144.963100728702",
+            "-37.8108930047",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 4,
+          "poi": [
+            "Webb Bridge",
+            "Bridge",
+            "144.947291011905",
+            "-37.8232052385",
+            "medium"
+          ]
+        }
+      ],
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "insert_index": 1,
+      "selected_cand_id": 4,
+      "selected_poi": [
+        "Webb Bridge",
+        "Bridge",
+        "144.947291011905",
+        "-37.8232052385",
+        "medium"
+      ]
+    },
+    "rec_exmaples": [
+      "1012",
+      "1093",
+      "1047",
+      "1765",
+      "3253"
+    ],
+    "rec_examples_gpt_text_large": [
+      "3216",
+      "202",
+      "3173",
+      "1536",
+      "1304"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "950",
+      "3407",
+      "3966",
+      "1460",
+      "2254"
+    ],
+    "rec_examples_qwen3_8b": [
+      "202",
+      "3216",
+      "3173",
+      "3927",
+      "2919"
+    ]
+  },
+  "2138": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Victoria Police",
+          "Police Station",
+          "144.966486801188",
+          "-37.8164849024",
+          "high"
+        ],
+        [
+          "Federation Square",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.968963600783",
+          "-37.8178516572",
+          "high"
+        ],
+        [
+          "Australian Centre For The Moving Image (ACMI)",
+          "Art Gallery/Museum",
+          "144.969070431323",
+          "-37.8176107327",
+          "medium"
+        ],
+        [
+          "Parliament Railway Station",
+          "Railway Station",
+          "144.973017263156",
+          "-37.8116061787",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "Candidate POIs": [
+        {
+          "cand_id": 0,
+          "poi": [
+            "MTC Theatre",
+            "Theatre Live",
+            "144.968174400274",
+            "-37.8242661833",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 1,
+          "poi": [
+            "Melbourne Aquarium",
+            "Aquarium",
+            "144.958425696055",
+            "-37.8209627825",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 2,
+          "poi": [
+            "Princess Theatre",
+            "Theatre Live",
+            "144.9723265962",
+            "-37.8107257091",
+            "medium"
+          ]
+        },
+        {
+          "cand_id": 3,
+          "poi": [
+            "Railway Good Shed No 2",
+            "Current Construction Site - Commercial",
+            "144.951378883631",
+            "-37.8211371302",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 4,
+          "poi": [
+            "Webb Bridge",
+            "Bridge",
+            "144.947291011905",
+            "-37.8232052385",
+            "medium"
+          ]
+        }
+      ],
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "insert_index": 3,
+      "selected_cand_id": 2,
+      "selected_poi": [
+        "Princess Theatre",
+        "Theatre Live",
+        "144.9723265962",
+        "-37.8107257091",
+        "medium"
+      ]
+    },
+    "rec_exmaples": [
+      "1012",
+      "1093",
+      "1047",
+      "1765",
+      "3253"
+    ],
+    "rec_examples_gpt_text_large": [
+      "1765",
+      "3454",
+      "186",
+      "3178",
+      "2305"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "1471",
+      "119",
+      "1397",
+      "3041",
+      "336"
+    ],
+    "rec_examples_qwen3_8b": [
+      "2305",
+      "3334",
+      "186",
+      "3454",
+      "181"
+    ]
+  },
+  "900": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "St Pauls Cathedral",
+          "Church",
+          "144.967681647402",
+          "-37.8169549012",
+          "high"
+        ],
+        [
+          "Carlton Gardens South",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.971266479841",
+          "-37.8060684577",
+          "medium"
+        ],
+        [
+          "Melbourne Museum",
+          "Art Gallery/Museum",
+          "144.971690718887",
+          "-37.8035518129",
+          "high"
+        ],
+        [
+          "IMAX Melbourne",
+          "Cinema",
+          "144.970639929886",
+          "-37.8034315562",
+          "medium"
+        ],
+        [
+          "Australian Centre for Contemporary Art",
+          "Art Gallery/Museum",
+          "144.967252924593",
+          "-37.8266045433",
+          "low"
+        ],
+        [
+          "Rod Laver Arena",
+          "Major Sports & Recreation Facility",
+          "144.978487173787",
+          "-37.822045612",
+          "high"
+        ],
+        [
+          "Federation Square",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.968963600783",
+          "-37.8178516572",
+          "high"
+        ],
+        [
+          "NGV International",
+          "Public Buildings",
+          "144.969342535451",
+          "-37.8230135001",
+          "high"
+        ],
+        [
+          "Victorian Arts Centre",
+          "Art Gallery/Museum",
+          "144.968837288153",
+          "-37.8219947336",
+          "medium"
+        ],
+        [
+          "Hamer Hall",
+          "Theatre Live",
+          "144.967992144257",
+          "-37.8199901009",
+          "high"
+        ],
+        [
+          "Southgate Arts and Leisure Precinct",
+          "Retail/Office/Carpark",
+          "144.965989052839",
+          "-37.8202245787",
+          "high"
+        ]
+      ],
+      "hint": "The itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "Candidate POIs": [
+        {
+          "cand_id": 0,
+          "poi": [
+            "Birrarung Marr",
+            "Informal Outdoor Facility (Park/Garden/Reserve)",
+            "144.97314667014",
+            "-37.818061084",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 1,
+          "poi": [
+            "Government House",
+            "Dwelling (House)",
+            "144.976655130464",
+            "-37.8275635886",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 2,
+          "poi": [
+            "Queen Victoria Market",
+            "Retail",
+            "144.957158515056",
+            "-37.8075002018",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 3,
+          "poi": [
+            "The Royal Victorian Eye & Ear Hospital",
+            "Public Hospital",
+            "144.976268275082",
+            "-37.808752283",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 4,
+          "poi": [
+            "Victoria Police",
+            "Police Station",
+            "144.966486801188",
+            "-37.8164849024",
+            "high"
+          ]
+        }
+      ],
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "insert_index": 6,
+      "selected_cand_id": 0,
+      "selected_poi": [
+        "Birrarung Marr",
+        "Informal Outdoor Facility (Park/Garden/Reserve)",
+        "144.97314667014",
+        "-37.818061084",
+        "high"
+      ]
+    },
+    "rec_exmaples": [
+      "1155",
+      "1483",
+      "1654",
+      "1043",
+      "202"
+    ],
+    "rec_examples_gpt_text_large": [
+      "2943",
+      "3940",
+      "1825",
+      "1479",
+      "1193"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "1479",
+      "1611",
+      "1825",
+      "1749",
+      "1481"
+    ],
+    "rec_examples_qwen3_8b": [
+      "1611",
+      "574",
+      "1825",
+      "2929",
+      "1749"
+    ]
+  },
+  "1779": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Melbourne Visitor Booth",
+          "Visitor Centre",
+          "144.964425882562",
+          "-37.8139525061",
+          "high"
+        ],
+        [
+          "Victoria Police",
+          "Police Station",
+          "144.966486801188",
+          "-37.8164849024",
+          "high"
+        ]
+      ],
+      "hint": "\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "Candidate POIs": [
+        {
+          "cand_id": 0,
+          "poi": [
+            "Flinders Street Railway Station",
+            "Railway Station",
+            "144.967064817875",
+            "-37.8179063008",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 1,
+          "poi": [
+            "Melbourne Town Hall",
+            "Public Buildings",
+            "144.966542722283",
+            "-37.8150754791",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 2,
+          "poi": [
+            "Royal Dental Hospital",
+            "Public Hospital",
+            "144.964526842767",
+            "-37.7995065904",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 3,
+          "poi": [
+            "St Michael's Uniting Church",
+            "Church",
+            "144.969174036096",
+            "-37.8143851325",
+            "medium"
+          ]
+        },
+        {
+          "cand_id": 4,
+          "poi": [
+            "Waterfront City",
+            "Retail/Office",
+            "144.939136876334",
+            "-37.8150566618",
+            "high"
+          ]
+        }
+      ],
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "insert_index": 1,
+      "selected_cand_id": 1,
+      "selected_poi": [
+        "Melbourne Town Hall",
+        "Public Buildings",
+        "144.966542722283",
+        "-37.8150754791",
+        "high"
+      ]
+    },
+    "rec_exmaples": [
+      "1897",
+      "1015",
+      "1738",
+      "1395",
+      "1579"
+    ],
+    "rec_examples_gpt_text_large": [
+      "2442",
+      "472",
+      "611",
+      "3181",
+      "2683"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "576",
+      "571",
+      "1579",
+      "964",
+      "3926"
+    ],
+    "rec_examples_qwen3_8b": [
+      "186",
+      "3454",
+      "645",
+      "3727",
+      "2683"
+    ]
+  },
+  "164": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Comedy Theatre",
+          "Theatre Live",
+          144.97013311862,
+          -37.8102053945,
+          "medium"
+        ],
+        [
+          "Victoria Police",
+          "Police Station",
+          144.966486801188,
+          -37.8164849024,
+          "high"
+        ],
+        [
+          "David Jones",
+          "Department Store",
+          144.964373486798,
+          -37.8133127261,
+          "medium"
+        ],
+        [
+          "Her Majesty's Theatre",
+          "Theatre Live",
+          144.969520183129,
+          -37.8109975613,
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "Candidate POIs": [
+        {
+          "cand_id": 0,
+          "poi": [
+            "Flagstaff Gardens",
+            "Informal Outdoor Facility (Park/Garden/Reserve)",
+            "144.954696055235",
+            "-37.8111222889",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 1,
+          "poi": [
+            "Melbourne Visitor Booth",
+            "Visitor Centre",
+            "144.964425882562",
+            "-37.8139525061",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 2,
+          "poi": [
+            "Queen Victoria Market",
+            "Retail",
+            "144.957158515056",
+            "-37.8075002018",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 3,
+          "poi": [
+            "Royal Womens Hospital",
+            "Public Hospital",
+            "144.954897253856",
+            "-37.798889246",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 4,
+          "poi": [
+            "Thoroughbred Racing Gallery",
+            "Art Gallery/Museum",
+            "144.9839700954",
+            "-37.8188662731",
+            "low"
+          ]
+        }
+      ],
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "insert_index": 2,
+      "selected_cand_id": 1,
+      "selected_poi": [
+        "Melbourne Visitor Booth",
+        "Visitor Centre",
+        "144.964425882562",
+        "-37.8139525061",
+        "high"
+      ]
+    },
+    "rec_exmaples": [
+      "1136",
+      "1468",
+      "1274",
+      "444",
+      "1825"
+    ],
+    "rec_examples_gpt_text_large": [
+      "3255",
+      "1500",
+      "1532",
+      "2926",
+      "1921"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "1532",
+      "3248",
+      "3799",
+      "3940",
+      "1136"
+    ],
+    "rec_examples_qwen3_8b": [
+      "3255",
+      "1495",
+      "1047",
+      "1500",
+      "1532"
+    ]
+  },
+  "583": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "State Library Victoria",
+          "Public Buildings",
+          "144.964330322397",
+          "-37.8099852201",
+          "high"
+        ],
+        [
+          "Church of Christ",
+          "Church",
+          "144.96388920294",
+          "-37.8104524079",
+          "medium"
+        ]
+      ],
+      "hint": "\nThe need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n",
+      "Candidate POIs": [
+        {
+          "cand_id": 0,
+          "poi": [
+            "Argyle Square",
+            "Informal Outdoor Facility (Park/Garden/Reserve)",
+            "144.965761295089",
+            "-37.8031480577",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 1,
+          "poi": [
+            "Central Pier",
+            "Function/Conference/Exhibition Centre",
+            "144.943475014215",
+            "-37.8165177308",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 2,
+          "poi": [
+            "Melbourne Central Railway Station",
+            "Railway Station",
+            "144.963789344893",
+            "-37.8100167031",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 3,
+          "poi": [
+            "Playhouse",
+            "Theatre Live",
+            "144.968337832721",
+            "-37.8218124583",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 4,
+          "poi": [
+            "Treasury Reserve",
+            "Retail/Office",
+            "144.975236759799",
+            "-37.8129178793",
+            "low"
+          ]
+        }
+      ],
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "insert_index": 1,
+      "selected_cand_id": 2,
+      "selected_poi": [
+        "Melbourne Central Railway Station",
+        "Railway Station",
+        "144.963789344893",
+        "-37.8100167031",
+        "high"
+      ]
+    },
+    "rec_exmaples": [
+      "1235",
+      "1032",
+      "852",
+      "2110",
+      "2157"
+    ],
+    "rec_examples_gpt_text_large": [
+      "2928",
+      "3696",
+      "2873",
+      "626",
+      "1480"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "2873",
+      "2363",
+      "1341",
+      "3696",
+      "2350"
+    ],
+    "rec_examples_qwen3_8b": [
+      "1480",
+      "2111",
+      "2928",
+      "119",
+      "2873"
+    ]
+  },
+  "720": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Melbourne Town Hall",
+          "Public Buildings",
+          "144.966542722283",
+          "-37.8150754791",
+          "high"
+        ],
+        [
+          "Eureka Skydeck 88",
+          "Observation Tower/Wheel",
+          "144.964622218598",
+          "-37.8216187583",
+          "high"
+        ],
+        [
+          "SBS (Special Broadcasting Service)",
+          "Office",
+          "144.968740597156",
+          "-37.817692121",
+          "high"
+        ],
+        [
+          "St Pauls Cathedral",
+          "Church",
+          "144.967681647402",
+          "-37.8169549012",
+          "high"
+        ],
+        [
+          "State Theatre",
+          "Theatre Live",
+          "144.968469643744",
+          "-37.821280635",
+          "medium"
+        ]
+      ],
+      "hint": "\nThe need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n",
+      "Candidate POIs": [
+        {
+          "cand_id": 0,
+          "poi": [
+            "Artplay",
+            "Indoor Recreation Facility",
+            "144.971542586509",
+            "-37.81841988",
+            "medium"
+          ]
+        },
+        {
+          "cand_id": 1,
+          "poi": [
+            "Batman Park",
+            "Informal Outdoor Facility (Park/Garden/Reserve)",
+            "144.956665812218",
+            "-37.821846095",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 2,
+          "poi": [
+            "Carlton Gardens South",
+            "Informal Outdoor Facility (Park/Garden/Reserve)",
+            "144.971266479841",
+            "-37.8060684577",
+            "medium"
+          ]
+        },
+        {
+          "cand_id": 3,
+          "poi": [
+            "Melbourne Central Railway Station",
+            "Railway Station",
+            "144.963100728702",
+            "-37.8108930047",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 4,
+          "poi": [
+            "Southgate Arts and Leisure Precinct",
+            "Retail/Office/Carpark",
+            "144.965989052839",
+            "-37.8202245787",
+            "high"
+          ]
+        }
+      ],
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "insert_index": 3,
+      "selected_cand_id": 0,
+      "selected_poi": [
+        "Artplay",
+        "Indoor Recreation Facility",
+        "144.971542586509",
+        "-37.81841988",
+        "medium"
+      ]
+    },
+    "rec_exmaples": [
+      "1235",
+      "1032",
+      "852",
+      "2110",
+      "2157"
+    ],
+    "rec_examples_gpt_text_large": [
+      "852",
+      "2157",
+      "2928",
+      "3041",
+      "957"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "3866",
+      "2928",
+      "3795",
+      "1718",
+      "2302"
+    ],
+    "rec_examples_qwen3_8b": [
+      "2029",
+      "3041",
+      "1749",
+      "982",
+      "852"
+    ]
+  },
+  "266": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Hamer Hall",
+          "Theatre Live",
+          "144.967992144257",
+          "-37.8199901009",
+          "high"
+        ],
+        [
+          "Melbourne Central Railway Station",
+          "Railway Station",
+          "144.963100728702",
+          "-37.8108930047",
+          "low"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "Candidate POIs": [
+        {
+          "cand_id": 0,
+          "poi": [
+            "Athanaeum Theatre",
+            "Theatre Live",
+            "144.96732254212",
+            "-37.8149543478",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 1,
+          "poi": [
+            "Church of Christ",
+            "Church",
+            "144.96388920294",
+            "-37.8104524079",
+            "medium"
+          ]
+        },
+        {
+          "cand_id": 2,
+          "poi": [
+            "Piazza Italia",
+            "Informal Outdoor Facility (Park/Garden/Reserve)",
+            "144.965863092947",
+            "-37.8025164193",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 3,
+          "poi": [
+            "Queen Victoria Market",
+            "Retail",
+            "144.957158515056",
+            "-37.8075002018",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 4,
+          "poi": [
+            "St Johns Lutheran Church",
+            "Church",
+            "144.967121099857",
+            "-37.8209399677",
+            "low"
+          ]
+        }
+      ],
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "insert_index": 1,
+      "selected_cand_id": 1,
+      "selected_poi": [
+        "Church of Christ",
+        "Church",
+        "144.96388920294",
+        "-37.8104524079",
+        "medium"
+      ]
+    },
+    "rec_exmaples": [
+      "1012",
+      "1093",
+      "1047",
+      "1765",
+      "3253"
+    ],
+    "rec_examples_gpt_text_large": [
+      "2950",
+      "530",
+      "1868",
+      "2752",
+      "1654"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "2678",
+      "1721",
+      "3626",
+      "3935",
+      "3968"
+    ],
+    "rec_examples_qwen3_8b": [
+      "2691",
+      "1868",
+      "1049",
+      "940",
+      "2950"
+    ]
+  },
+  "1342": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "The Ian Potter Centre: NGV Australia",
+          "Art Gallery/Museum",
+          "144.969899048343",
+          "-37.8174831423",
+          "medium"
+        ],
+        [
+          "Australian Centre For The Moving Image (ACMI)",
+          "Art Gallery/Museum",
+          "144.969070431323",
+          "-37.8176107327",
+          "medium"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n",
+      "Candidate POIs": [
+        {
+          "cand_id": 0,
+          "poi": [
+            "Forum Theatre",
+            "Theatre Live",
+            "144.969386556998",
+            "-37.8164854097",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 1,
+          "poi": [
+            "Holy Trinity",
+            "Church",
+            "144.983197322289",
+            "-37.8140667111",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 2,
+          "poi": [
+            "Melbourne Visitor Centre",
+            "Visitor Centre",
+            "144.967937138226",
+            "-37.8177352402",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 3,
+          "poi": [
+            "NGV International",
+            "Public Buildings",
+            "144.969342535451",
+            "-37.8230135001",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 4,
+          "poi": [
+            "Parliament Railway Station",
+            "Railway Station",
+            "144.972330132127",
+            "-37.8095762219",
+            "low"
+          ]
+        }
+      ],
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "insert_index": 2,
+      "selected_cand_id": 2,
+      "selected_poi": [
+        "Melbourne Visitor Centre",
+        "Visitor Centre",
+        "144.967937138226",
+        "-37.8177352402",
+        "high"
+      ]
+    },
+    "rec_exmaples": [
+      "183",
+      "295",
+      "102",
+      "2864",
+      "3043"
+    ],
+    "rec_examples_gpt_text_large": [
+      "3595",
+      "295",
+      "473",
+      "444",
+      "933"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "3595",
+      "295",
+      "3448",
+      "3022",
+      "3282"
+    ],
+    "rec_examples_qwen3_8b": [
+      "3595",
+      "1155",
+      "473",
+      "3448",
+      "444"
+    ]
+  },
+  "3732": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Royal Exhibition Building",
+          "Art Gallery/Museum",
+          "144.971521914952",
+          "-37.8046026243",
+          "high"
+        ],
+        [
+          "Melbourne Aquarium",
+          "Aquarium",
+          "144.958425696055",
+          "-37.8209627825",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "Candidate POIs": [
+        {
+          "cand_id": 0,
+          "poi": [
+            "Artplay",
+            "Indoor Recreation Facility",
+            "144.971542586509",
+            "-37.81841988",
+            "medium"
+          ]
+        },
+        {
+          "cand_id": 1,
+          "poi": [
+            "Birrarung Marr",
+            "Informal Outdoor Facility (Park/Garden/Reserve)",
+            "144.97314667014",
+            "-37.818061084",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 2,
+          "poi": [
+            "Carlton Gardens South",
+            "Informal Outdoor Facility (Park/Garden/Reserve)",
+            "144.971266479841",
+            "-37.8060684577",
+            "medium"
+          ]
+        },
+        {
+          "cand_id": 3,
+          "poi": [
+            "Council House 2 (CH2)",
+            "Retail/Office/Carpark",
+            "144.966638432727",
+            "-37.8142591432",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 4,
+          "poi": [
+            "Westpac Centre",
+            "Major Sports & Recreation Facility",
+            "144.979720306309",
+            "-37.8242456859",
+            "low"
+          ]
+        }
+      ],
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "insert_index": 0,
+      "selected_cand_id": 2,
+      "selected_poi": [
+        "Carlton Gardens South",
+        "Informal Outdoor Facility (Park/Garden/Reserve)",
+        "144.971266479841",
+        "-37.8060684577",
+        "medium"
+      ]
+    },
+    "rec_exmaples": [
+      "1012",
+      "1093",
+      "1047",
+      "1765",
+      "3253"
+    ],
+    "rec_examples_gpt_text_large": [
+      "902",
+      "3927",
+      "3022",
+      "813",
+      "1304"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "1304",
+      "950",
+      "3448",
+      "3282",
+      "3407"
+    ],
+    "rec_examples_qwen3_8b": [
+      "898",
+      "902",
+      "813",
+      "601",
+      "2531"
+    ]
+  },
+  "3617": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Melbourne Convention Centre",
+          "Function/Conference/Exhibition Centre",
+          "144.952288281644",
+          "-37.8249040485",
+          "high"
+        ],
+        [
+          "Flinders Street Railway Station",
+          "Railway Station",
+          "144.967064817875",
+          "-37.8179063008",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n",
+      "Candidate POIs": [
+        {
+          "cand_id": 0,
+          "poi": [
+            "Batman Park",
+            "Informal Outdoor Facility (Park/Garden/Reserve)",
+            "144.956665812218",
+            "-37.821846095",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 1,
+          "poi": [
+            "NGV International",
+            "Public Buildings",
+            "144.969342535451",
+            "-37.8230135001",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 2,
+          "poi": [
+            "North Melbourne Railway Station",
+            "Railway Station",
+            "144.942429848025",
+            "-37.8073823625",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 3,
+          "poi": [
+            "Royal Botanic Gardens",
+            "Informal Outdoor Facility (Park/Garden/Reserve)",
+            "144.980850432751",
+            "-37.8306631583",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 4,
+          "poi": [
+            "St Mary's Anglican Church",
+            "Church",
+            "144.953761537074",
+            "-37.8031663673",
+            "low"
+          ]
+        }
+      ],
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "insert_index": 0,
+      "selected_cand_id": 2,
+      "selected_poi": [
+        "North Melbourne Railway Station",
+        "Railway Station",
+        "144.942429848025",
+        "-37.8073823625",
+        "low"
+      ]
+    },
+    "rec_exmaples": [
+      "183",
+      "295",
+      "102",
+      "2864",
+      "3043"
+    ],
+    "rec_examples_gpt_text_large": [
+      "3247",
+      "1718",
+      "3216",
+      "183",
+      "626"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "1600",
+      "626",
+      "3247",
+      "3953",
+      "295"
+    ],
+    "rec_examples_qwen3_8b": [
+      "957",
+      "731",
+      "3588",
+      "620",
+      "1471"
+    ]
+  },
+  "113": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "IMAX Melbourne",
+          "Cinema",
+          "144.970639929886",
+          "-37.8034315562",
+          "medium"
+        ],
+        [
+          "Carlton Gardens North",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.971997551189",
+          "-37.8017690847",
+          "low"
+        ]
+      ],
+      "hint": "\nThe need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n",
+      "Candidate POIs": [
+        {
+          "cand_id": 0,
+          "poi": [
+            "Melbourne Museum",
+            "Art Gallery/Museum",
+            "144.971690718887",
+            "-37.8035518129",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 1,
+          "poi": [
+            "Sinclair's Cottage",
+            "Art Gallery/Museum",
+            "144.980554992725",
+            "-37.8145407488",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 2,
+          "poi": [
+            "St Francis Church",
+            "Church",
+            "144.962422614541",
+            "-37.8118847832",
+            "medium"
+          ]
+        },
+        {
+          "cand_id": 3,
+          "poi": [
+            "St James Church",
+            "Church",
+            "144.952468571683",
+            "-37.8101281202",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 4,
+          "poi": [
+            "Waterfront City",
+            "Retail/Office",
+            "144.939136876334",
+            "-37.8150566618",
+            "high"
+          ]
+        }
+      ],
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "insert_index": 1,
+      "selected_cand_id": 0,
+      "selected_poi": [
+        "Melbourne Museum",
+        "Art Gallery/Museum",
+        "144.971690718887",
+        "-37.8035518129",
+        "high"
+      ]
+    },
+    "rec_exmaples": [
+      "1235",
+      "1032",
+      "852",
+      "2110",
+      "2157"
+    ],
+    "rec_examples_gpt_text_large": [
+      "3347",
+      "1341",
+      "1032",
+      "2157",
+      "852"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "1732",
+      "2110",
+      "3334",
+      "2157",
+      "929"
+    ],
+    "rec_examples_qwen3_8b": [
+      "526",
+      "535",
+      "2683",
+      "102",
+      "3292"
+    ]
+  },
+  "3235": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "NGV International",
+          "Public Buildings",
+          "144.969342535451",
+          "-37.8230135001",
+          "high"
+        ],
+        [
+          "Myer",
+          "Department Store",
+          "144.963855087868",
+          "-37.8135911985",
+          "high"
+        ],
+        [
+          "The Ian Potter Centre: NGV Australia",
+          "Art Gallery/Museum",
+          "144.969899048343",
+          "-37.8174831423",
+          "medium"
+        ],
+        [
+          "St Patricks Cathedral",
+          "Church",
+          "144.975901529712",
+          "-37.810114095",
+          "medium"
+        ],
+        [
+          "Central Pier",
+          "Function/Conference/Exhibition Centre",
+          "144.943475014215",
+          "-37.8165177308",
+          "low"
+        ],
+        [
+          "Polly Woodside",
+          "Art Gallery/Museum",
+          "144.953478052064",
+          "-37.8242574266",
+          "low"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n",
+      "Candidate POIs": [
+        {
+          "cand_id": 0,
+          "poi": [
+            "Birrarung Marr",
+            "Informal Outdoor Facility (Park/Garden/Reserve)",
+            "144.97314667014",
+            "-37.818061084",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 1,
+          "poi": [
+            "Docklands Park",
+            "Informal Outdoor Facility (Park/Garden/Reserve)",
+            "144.946781702342",
+            "-37.8209956786",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 2,
+          "poi": [
+            "Parliament Reserve",
+            "Informal Outdoor Facility (Park/Garden/Reserve)",
+            "144.973462202839",
+            "-37.8098526206",
+            "medium"
+          ]
+        },
+        {
+          "cand_id": 3,
+          "poi": [
+            "SBS (Special Broadcasting Service)",
+            "Office",
+            "144.968740597156",
+            "-37.817692121",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 4,
+          "poi": [
+            "Southgate Arts and Leisure Precinct",
+            "Retail/Office/Carpark",
+            "144.965989052839",
+            "-37.8202245787",
+            "high"
+          ]
+        }
+      ],
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "insert_index": 6,
+      "selected_cand_id": 4,
+      "selected_poi": [
+        "Southgate Arts and Leisure Precinct",
+        "Retail/Office/Carpark",
+        "144.965989052839",
+        "-37.8202245787",
+        "high"
+      ]
+    },
+    "rec_exmaples": [
+      "183",
+      "295",
+      "102",
+      "2864",
+      "3043"
+    ],
+    "rec_examples_gpt_text_large": [
+      "933",
+      "1278",
+      "3595",
+      "3866",
+      "1468"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "312",
+      "933",
+      "3805",
+      "3196",
+      "3940"
+    ],
+    "rec_examples_qwen3_8b": [
+      "3196",
+      "3282",
+      "1193",
+      "1468",
+      "1825"
+    ]
+  },
+  "3184": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Melbourne Town Hall",
+          "Public Buildings",
+          "144.966542722283",
+          "-37.8150754791",
+          "high"
+        ],
+        [
+          "Flinders Street Railway Station",
+          "Railway Station",
+          "144.967064817875",
+          "-37.8179063008",
+          "high"
+        ],
+        [
+          "Forum Theatre",
+          "Theatre Live",
+          "144.969386556998",
+          "-37.8164854097",
+          "high"
+        ]
+      ],
+      "hint": "\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "Candidate POIs": [
+        {
+          "cand_id": 0,
+          "poi": [
+            "Conservatory",
+            "Public Buildings",
+            "144.9785597431",
+            "-37.8140021272",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 1,
+          "poi": [
+            "Melbourne Central Railway Station",
+            "Railway Station",
+            "144.963100728702",
+            "-37.8108930047",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 2,
+          "poi": [
+            "New Quay",
+            "Informal Outdoor Facility (Park/Garden/Reserve)",
+            "144.941617889032",
+            "-37.8152178789",
+            "medium"
+          ]
+        },
+        {
+          "cand_id": 3,
+          "poi": [
+            "St Francis Church",
+            "Church",
+            "144.962422614541",
+            "-37.8118847832",
+            "medium"
+          ]
+        },
+        {
+          "cand_id": 4,
+          "poi": [
+            "St Pauls Cathedral",
+            "Church",
+            "144.967681647402",
+            "-37.8169549012",
+            "high"
+          ]
+        }
+      ],
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "insert_index": 2,
+      "selected_cand_id": 4,
+      "selected_poi": [
+        "St Pauls Cathedral",
+        "Church",
+        "144.967681647402",
+        "-37.8169549012",
+        "high"
+      ]
+    },
+    "rec_exmaples": [
+      "1897",
+      "1015",
+      "1738",
+      "1395",
+      "1579"
+    ],
+    "rec_examples_gpt_text_large": [
+      "611",
+      "271",
+      "517",
+      "2750",
+      "1827"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "3678",
+      "1049",
+      "611",
+      "3190",
+      "2231"
+    ],
+    "rec_examples_qwen3_8b": [
+      "2157",
+      "290",
+      "2750",
+      "957",
+      "271"
+    ]
+  },
+  "1758": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Australian Centre for Contemporary Art",
+          "Art Gallery/Museum",
+          "144.967252924593",
+          "-37.8266045433",
+          "low"
+        ],
+        [
+          "Hamer Hall",
+          "Theatre Live",
+          "144.967992144257",
+          "-37.8199901009",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "Candidate POIs": [
+        {
+          "cand_id": 0,
+          "poi": [
+            "City Baths",
+            "Major Sports & Recreation Facility",
+            "144.963189789721",
+            "-37.8071585351",
+            "medium"
+          ]
+        },
+        {
+          "cand_id": 1,
+          "poi": [
+            "Docklands Park",
+            "Informal Outdoor Facility (Park/Garden/Reserve)",
+            "144.946781702342",
+            "-37.8209956786",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 2,
+          "poi": [
+            "MTC Theatre",
+            "Theatre Live",
+            "144.968174400274",
+            "-37.8242661833",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 3,
+          "poi": [
+            "Melbourne Central Railway Station",
+            "Railway Station",
+            "144.962670059539",
+            "-37.8097759326",
+            "medium"
+          ]
+        },
+        {
+          "cand_id": 4,
+          "poi": [
+            "State Library Victoria",
+            "Public Buildings",
+            "144.964330322397",
+            "-37.8099852201",
+            "high"
+          ]
+        }
+      ],
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "insert_index": 1,
+      "selected_cand_id": 2,
+      "selected_poi": [
+        "MTC Theatre",
+        "Theatre Live",
+        "144.968174400274",
+        "-37.8242661833",
+        "low"
+      ]
+    },
+    "rec_exmaples": [
+      "1136",
+      "1468",
+      "1274",
+      "444",
+      "1825"
+    ],
+    "rec_examples_gpt_text_large": [
+      "167",
+      "530",
+      "3022",
+      "1597",
+      "3825"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "3022",
+      "1597",
+      "1937",
+      "3825",
+      "3656"
+    ],
+    "rec_examples_qwen3_8b": [
+      "530",
+      "167",
+      "1597",
+      "1868",
+      "3795"
+    ]
+  },
+  "1279": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Melbourne Central",
+          "Retail/Office/Carpark",
+          "144.962749729496",
+          "-37.8105371797",
+          "medium"
+        ],
+        [
+          "State Library Victoria",
+          "Public Buildings",
+          "144.964330322397",
+          "-37.8099852201",
+          "high"
+        ],
+        [
+          "QV Village",
+          "Retail/Office/Residential/Carpark",
+          "144.965714574014",
+          "-37.8106891897",
+          "high"
+        ],
+        [
+          "Shrine of Remembrance",
+          "Public Buildings",
+          "144.973441913623",
+          "-37.830208002",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n",
+      "Candidate POIs": [
+        {
+          "cand_id": 0,
+          "poi": [
+            "Birrarung Marr",
+            "Informal Outdoor Facility (Park/Garden/Reserve)",
+            "144.97314667014",
+            "-37.818061084",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 1,
+          "poi": [
+            "David Jones",
+            "Department Store",
+            "144.964373486798",
+            "-37.8133127261",
+            "medium"
+          ]
+        },
+        {
+          "cand_id": 2,
+          "poi": [
+            "Melbourne Theatre Company",
+            "Public Buildings",
+            "144.968297429894",
+            "-37.8239303848",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 3,
+          "poi": [
+            "Shrine of Rembrance Reserve",
+            "Informal Outdoor Facility (Park/Garden/Reserve)",
+            "144.973628364465",
+            "-37.8320733993",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 4,
+          "poi": [
+            "Victoria Police Museum",
+            "Art Gallery/Museum",
+            "144.954039975197",
+            "-37.8222182774",
+            "low"
+          ]
+        }
+      ],
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "insert_index": 3,
+      "selected_cand_id": 3,
+      "selected_poi": [
+        "Shrine of Rembrance Reserve",
+        "Informal Outdoor Facility (Park/Garden/Reserve)",
+        "144.973628364465",
+        "-37.8320733993",
+        "low"
+      ]
+    },
+    "rec_exmaples": [
+      "183",
+      "295",
+      "102",
+      "2864",
+      "3043"
+    ],
+    "rec_examples_gpt_text_large": [
+      "2301",
+      "626",
+      "1278",
+      "933",
+      "3247"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "312",
+      "933",
+      "3248",
+      "3940",
+      "3458"
+    ],
+    "rec_examples_qwen3_8b": [
+      "1827",
+      "336",
+      "626",
+      "2750",
+      "1819"
+    ]
+  },
+  "2918": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Melbourne Park",
+          "Major Sports & Recreation Facility",
+          "144.978735802793",
+          "-37.820908597",
+          "medium"
+        ],
+        [
+          "Hisense Arena",
+          "Major Sports & Recreation Facility",
+          "144.981834802535",
+          "-37.8231100027",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "Candidate POIs": [
+        {
+          "cand_id": 0,
+          "poi": [
+            "Central Pier",
+            "Function/Conference/Exhibition Centre",
+            "144.943475014215",
+            "-37.8165177308",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 1,
+          "poi": [
+            "Collins Street Baptist Church",
+            "Church",
+            "144.968072486031",
+            "-37.8147011905",
+            "medium"
+          ]
+        },
+        {
+          "cand_id": 2,
+          "poi": [
+            "Lutheran Trinity Church",
+            "Church",
+            "144.975729473552",
+            "-37.8109757054",
+            "medium"
+          ]
+        },
+        {
+          "cand_id": 3,
+          "poi": [
+            "Melbourne Magistrates Court",
+            "Government Building",
+            "144.956846193891",
+            "-37.8136147672",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 4,
+          "poi": [
+            "Rod Laver Arena",
+            "Major Sports & Recreation Facility",
+            "144.978487173787",
+            "-37.822045612",
+            "high"
+          ]
+        }
+      ],
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "insert_index": 0,
+      "selected_cand_id": 4,
+      "selected_poi": [
+        "Rod Laver Arena",
+        "Major Sports & Recreation Facility",
+        "144.978487173787",
+        "-37.822045612",
+        "high"
+      ]
+    },
+    "rec_exmaples": [
+      "1012",
+      "1093",
+      "1047",
+      "1765",
+      "3253"
+    ],
+    "rec_examples_gpt_text_large": [
+      "798",
+      "1043",
+      "517",
+      "3748",
+      "3629"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "798",
+      "3966",
+      "3407",
+      "3968",
+      "1304"
+    ],
+    "rec_examples_qwen3_8b": [
+      "2159",
+      "1043",
+      "517",
+      "798",
+      "3748"
+    ]
+  },
+  "5": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Wesley Church",
+          "Church",
+          "144.968168215633",
+          "-37.8101576447",
+          "medium"
+        ],
+        [
+          "The Museum Of Australian Chinese History",
+          "Art Gallery/Museum",
+          "144.96923385414",
+          "-37.8107686128",
+          "low"
+        ],
+        [
+          "QV Village",
+          "Retail/Office/Residential/Carpark",
+          "144.965714574014",
+          "-37.8106891897",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "Candidate POIs": [
+        {
+          "cand_id": 0,
+          "poi": [
+            "Dallas Brooks Centre",
+            "Function/Conference/Exhibition Centre",
+            "144.981383411592",
+            "-37.8097374138",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 1,
+          "poi": [
+            "Elisabeth Murdoch Hall",
+            "Public Buildings",
+            "144.967450979234",
+            "-37.8239733704",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 2,
+          "poi": [
+            "Her Majesty's Theatre",
+            "Theatre Live",
+            "144.969520183129",
+            "-37.8109975613",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 3,
+          "poi": [
+            "Melbourne Central",
+            "Retail/Office/Carpark",
+            "144.962749729496",
+            "-37.8105371797",
+            "medium"
+          ]
+        },
+        {
+          "cand_id": 4,
+          "poi": [
+            "Thoroughbred Racing Gallery",
+            "Art Gallery/Museum",
+            "144.9839700954",
+            "-37.8188662731",
+            "low"
+          ]
+        }
+      ],
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "insert_index": 2,
+      "selected_cand_id": 2,
+      "selected_poi": [
+        "Her Majesty's Theatre",
+        "Theatre Live",
+        "144.969520183129",
+        "-37.8109975613",
+        "high"
+      ]
+    },
+    "rec_exmaples": [
+      "1012",
+      "1093",
+      "1047",
+      "1765",
+      "3253"
+    ],
+    "rec_examples_gpt_text_large": [
+      "158",
+      "3622",
+      "264",
+      "1480",
+      "3950"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "264",
+      "3825",
+      "3780",
+      "3407",
+      "3971"
+    ],
+    "rec_examples_qwen3_8b": [
+      "158",
+      "619",
+      "2873",
+      "1136",
+      "3281"
+    ]
+  },
+  "3447": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Southern Cross Railway Station",
+          "Railway Station",
+          "144.952944748845",
+          "-37.8181633057",
+          "medium"
+        ],
+        [
+          "Myer",
+          "Department Store",
+          "144.963855087868",
+          "-37.8135911985",
+          "high"
+        ],
+        [
+          "Melbourne Visitor Booth",
+          "Visitor Centre",
+          "144.964425882562",
+          "-37.8139525061",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "Candidate POIs": [
+        {
+          "cand_id": 0,
+          "poi": [
+            "Fitzroy Gardens",
+            "Informal Outdoor Facility (Park/Garden/Reserve)",
+            "144.980455714669",
+            "-37.8129616332",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 1,
+          "poi": [
+            "Melbourne Aquarium",
+            "Aquarium",
+            "144.958425696055",
+            "-37.8209627825",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 2,
+          "poi": [
+            "Melbourne Central",
+            "Retail/Office/Carpark",
+            "144.962749729496",
+            "-37.8105371797",
+            "medium"
+          ]
+        },
+        {
+          "cand_id": 3,
+          "poi": [
+            "The Parish of Christ Church South Yarra",
+            "Church",
+            "144.986009385387",
+            "-37.8386270534",
+            "medium"
+          ]
+        },
+        {
+          "cand_id": 4,
+          "poi": [
+            "Treasury Reserve",
+            "Retail/Office",
+            "144.975236759799",
+            "-37.8129178793",
+            "low"
+          ]
+        }
+      ],
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "insert_index": 3,
+      "selected_cand_id": 2,
+      "selected_poi": [
+        "Melbourne Central",
+        "Retail/Office/Carpark",
+        "144.962749729496",
+        "-37.8105371797",
+        "medium"
+      ]
+    },
+    "rec_exmaples": [
+      "1012",
+      "1093",
+      "1047",
+      "1765",
+      "3253"
+    ],
+    "rec_examples_gpt_text_large": [
+      "119",
+      "1012",
+      "731",
+      "3245",
+      "620"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "1480",
+      "3221",
+      "3622",
+      "1012",
+      "3825"
+    ],
+    "rec_examples_qwen3_8b": [
+      "1012",
+      "902",
+      "645",
+      "1718",
+      "2931"
+    ]
+  },
+  "3185": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Forum Theatre",
+          "Theatre Live",
+          "144.969386556998",
+          "-37.8164854097",
+          "high"
+        ],
+        [
+          "Eureka Tower",
+          "Retail/Residential",
+          "144.964456721965",
+          "-37.821515754",
+          "high"
+        ],
+        [
+          "St Pauls Cathedral",
+          "Church",
+          "144.967681647402",
+          "-37.8169549012",
+          "high"
+        ]
+      ],
+      "hint": "\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "Candidate POIs": [
+        {
+          "cand_id": 0,
+          "poi": [
+            "Immigration Museum",
+            "Art Gallery/Museum",
+            "144.960426777129",
+            "-37.8191798798",
+            "medium"
+          ]
+        },
+        {
+          "cand_id": 1,
+          "poi": [
+            "Parliament Railway Station",
+            "Railway Station",
+            "144.973433796529",
+            "-37.8127621114",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 2,
+          "poi": [
+            "QV Village",
+            "Retail/Office/Residential/Carpark",
+            "144.965714574014",
+            "-37.8106891897",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 3,
+          "poi": [
+            "Southgate Arts and Leisure Precinct",
+            "Retail/Office/Carpark",
+            "144.965989052839",
+            "-37.8202245787",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 4,
+          "poi": [
+            "Victoria Police",
+            "Police Station",
+            "144.966486801188",
+            "-37.8164849024",
+            "high"
+          ]
+        }
+      ],
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "insert_index": 2,
+      "selected_cand_id": 3,
+      "selected_poi": [
+        "Southgate Arts and Leisure Precinct",
+        "Retail/Office/Carpark",
+        "144.965989052839",
+        "-37.8202245787",
+        "high"
+      ]
+    },
+    "rec_exmaples": [
+      "1897",
+      "1015",
+      "1738",
+      "1395",
+      "1579"
+    ],
+    "rec_examples_gpt_text_large": [
+      "1982",
+      "1047",
+      "1532",
+      "1460",
+      "3295"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "1395",
+      "3181",
+      "604",
+      "1129",
+      "3171"
+    ],
+    "rec_examples_qwen3_8b": [
+      "2363",
+      "1290",
+      "1847",
+      "3171",
+      "2231"
+    ]
+  },
+  "2219": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Elisabeth Murdoch Hall",
+          "Public Buildings",
+          "144.967450979234",
+          "-37.8239733704",
+          "low"
+        ],
+        [
+          "Melbourne Theatre Company",
+          "Public Buildings",
+          "144.968297429894",
+          "-37.8239303848",
+          "low"
+        ]
+      ],
+      "hint": "\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n",
+      "Candidate POIs": [
+        {
+          "cand_id": 0,
+          "poi": [
+            "Australian Broadcasting Corporation (ABC)",
+            "Office",
+            "144.966551401578",
+            "-37.8238133237",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 1,
+          "poi": [
+            "Flagstaff Railway Station",
+            "Railway Station",
+            "144.956318211113",
+            "-37.8122356515",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 2,
+          "poi": [
+            "Melbourne Town Hall",
+            "Public Buildings",
+            "144.966542722283",
+            "-37.8150754791",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 3,
+          "poi": [
+            "New Quay Marina",
+            "Marina",
+            "144.942283726231",
+            "-37.8152925455",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 4,
+          "poi": [
+            "Our Lady of Lebanon Church",
+            "Church",
+            "144.969334720932",
+            "-37.802576654",
+            "low"
+          ]
+        }
+      ],
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "insert_index": 0,
+      "selected_cand_id": 0,
+      "selected_poi": [
+        "Australian Broadcasting Corporation (ABC)",
+        "Office",
+        "144.966551401578",
+        "-37.8238133237",
+        "low"
+      ]
+    },
+    "rec_exmaples": [
+      "3319",
+      "1079",
+      "1766",
+      "2301",
+      "3260"
+    ],
+    "rec_examples_gpt_text_large": [
+      "295",
+      "933",
+      "1766",
+      "183",
+      "2301"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "3319",
+      "1079",
+      "1868",
+      "2750",
+      "1766"
+    ],
+    "rec_examples_qwen3_8b": [
+      "2157",
+      "2341",
+      "102",
+      "933",
+      "1868"
+    ]
+  },
+  "2477": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Regent Theatre",
+          "Theatre Live",
+          "144.967916735261",
+          "-37.8160014744",
+          "high"
+        ],
+        [
+          "Forum Theatre",
+          "Theatre Live",
+          "144.969386556998",
+          "-37.8164854097",
+          "high"
+        ],
+        [
+          "Parliament House",
+          "Office",
+          "144.97372641185",
+          "-37.8112466554",
+          "medium"
+        ],
+        [
+          "Parliament Railway Station",
+          "Railway Station",
+          "144.972330132127",
+          "-37.8095762219",
+          "low"
+        ],
+        [
+          "Her Majesty's Theatre",
+          "Theatre Live",
+          "144.969520183129",
+          "-37.8109975613",
+          "high"
+        ],
+        [
+          "Shrine of Remembrance",
+          "Public Buildings",
+          "144.973441913623",
+          "-37.830208002",
+          "high"
+        ]
+      ],
+      "hint": "The itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "Candidate POIs": [
+        {
+          "cand_id": 0,
+          "poi": [
+            "Athanaeum Theatre",
+            "Theatre Live",
+            "144.96732254212",
+            "-37.8149543478",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 1,
+          "poi": [
+            "Melbourne Central Railway Station",
+            "Railway Station",
+            "144.963100728702",
+            "-37.8108930047",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 2,
+          "poi": [
+            "Richmond Railway Station (Richmond) - Train stop",
+            "Railway Station",
+            "144.989400751664",
+            "-37.823899266",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 3,
+          "poi": [
+            "Royal Exhibition Building",
+            "Art Gallery/Museum",
+            "144.971521914952",
+            "-37.8046026243",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 4,
+          "poi": [
+            "Sidney Myer Music Bowl",
+            "Public Buildings",
+            "144.974686151365",
+            "-37.8233471609",
+            "high"
+          ]
+        }
+      ],
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "insert_index": 4,
+      "selected_cand_id": 3,
+      "selected_poi": [
+        "Royal Exhibition Building",
+        "Art Gallery/Museum",
+        "144.971521914952",
+        "-37.8046026243",
+        "high"
+      ]
+    },
+    "rec_exmaples": [
+      "1155",
+      "1483",
+      "1654",
+      "1043",
+      "202"
+    ],
+    "rec_examples_gpt_text_large": [
+      "2690",
+      "1193",
+      "1532",
+      "2341",
+      "1290"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "2341",
+      "3646",
+      "2018",
+      "3255",
+      "1193"
+    ],
+    "rec_examples_qwen3_8b": [
+      "1483",
+      "2926",
+      "2750",
+      "3043",
+      "2690"
+    ]
+  },
+  "3182": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Federation Square",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.968963600783",
+          "-37.8178516572",
+          "high"
+        ],
+        [
+          "Melbourne Visitor Centre",
+          "Visitor Centre",
+          "144.967937138226",
+          "-37.8177352402",
+          "high"
+        ],
+        [
+          "Hamer Hall",
+          "Theatre Live",
+          "144.967992144257",
+          "-37.8199901009",
+          "high"
+        ]
+      ],
+      "hint": "\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "Candidate POIs": [
+        {
+          "cand_id": 0,
+          "poi": [
+            "Harbour Town",
+            "Current Construction Site",
+            "144.938123825625",
+            "-37.8139256327",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 1,
+          "poi": [
+            "Melbourne Cricket Ground (MCG)",
+            "Major Sports & Recreation Facility",
+            "144.983402879078",
+            "-37.8194921618",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 2,
+          "poi": [
+            "Railway Good Shed No 2",
+            "Current Construction Site - Commercial",
+            "144.951378883631",
+            "-37.8211371302",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 3,
+          "poi": [
+            "Sandridge Rail Bridge",
+            "Informal Outdoor Facility (Park/Garden/Reserve)",
+            "144.96298113724",
+            "-37.8201763043",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 4,
+          "poi": [
+            "Shrine of Remembrance",
+            "Public Buildings",
+            "144.973441913623",
+            "-37.830208002",
+            "high"
+          ]
+        }
+      ],
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "insert_index": 2,
+      "selected_cand_id": 4,
+      "selected_poi": [
+        "Shrine of Remembrance",
+        "Public Buildings",
+        "144.973441913623",
+        "-37.830208002",
+        "high"
+      ]
+    },
+    "rec_exmaples": [
+      "1897",
+      "1015",
+      "1738",
+      "1395",
+      "1579"
+    ],
+    "rec_examples_gpt_text_large": [
+      "2849",
+      "472",
+      "3381",
+      "611",
+      "1015"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "2231",
+      "3190",
+      "611",
+      "1049",
+      "3678"
+    ],
+    "rec_examples_qwen3_8b": [
+      "2849",
+      "472",
+      "1868",
+      "2864",
+      "2943"
+    ]
+  },
+  "1798": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Shrine of Remembrance",
+          "Public Buildings",
+          "144.973441913623",
+          "-37.830208002",
+          "high"
+        ],
+        [
+          "Artplay",
+          "Indoor Recreation Facility",
+          "144.971542586509",
+          "-37.81841988",
+          "medium"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "Candidate POIs": [
+        {
+          "cand_id": 0,
+          "poi": [
+            "Carlton Gardens South",
+            "Informal Outdoor Facility (Park/Garden/Reserve)",
+            "144.971266479841",
+            "-37.8060684577",
+            "medium"
+          ]
+        },
+        {
+          "cand_id": 1,
+          "poi": [
+            "East Melbourne Synagogue",
+            "Synagogue",
+            "144.97422190954",
+            "-37.8091137289",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 2,
+          "poi": [
+            "Hamer Hall",
+            "Theatre Live",
+            "144.967992144257",
+            "-37.8199901009",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 3,
+          "poi": [
+            "Sandridge Rail Bridge",
+            "Informal Outdoor Facility (Park/Garden/Reserve)",
+            "144.96298113724",
+            "-37.8201763043",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 4,
+          "poi": [
+            "Sinclair's Cottage",
+            "Art Gallery/Museum",
+            "144.980554992725",
+            "-37.8145407488",
+            "low"
+          ]
+        }
+      ],
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "insert_index": 1,
+      "selected_cand_id": 2,
+      "selected_poi": [
+        "Hamer Hall",
+        "Theatre Live",
+        "144.967992144257",
+        "-37.8199901009",
+        "high"
+      ]
+    },
+    "rec_exmaples": [
+      "1012",
+      "1093",
+      "1047",
+      "1765",
+      "3253"
+    ],
+    "rec_examples_gpt_text_large": [
+      "712",
+      "3448",
+      "1597",
+      "2929",
+      "3242"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "2932",
+      "1750",
+      "121",
+      "712",
+      "2422"
+    ],
+    "rec_examples_qwen3_8b": [
+      "3232",
+      "3242",
+      "2929",
+      "2750",
+      "1980"
+    ]
+  },
+  "3042": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "County Court Melbourne",
+          "Public Buildings",
+          "144.957734246387",
+          "-37.813201162",
+          "low"
+        ],
+        [
+          "Former Royal Mint",
+          "Office",
+          "144.957055454136",
+          "-37.8121838749",
+          "low"
+        ],
+        [
+          "Flagstaff Railway Station",
+          "Railway Station",
+          "144.956318211113",
+          "-37.8122356515",
+          "low"
+        ],
+        [
+          "Flagstaff Railway Station",
+          "Railway Station",
+          "144.9561186805",
+          "-37.8116384404",
+          "low"
+        ],
+        [
+          "QV Village",
+          "Retail/Office/Residential/Carpark",
+          "144.965714574014",
+          "-37.8106891897",
+          "high"
+        ],
+        [
+          "State Library Victoria",
+          "Public Buildings",
+          "144.964330322397",
+          "-37.8099852201",
+          "high"
+        ],
+        [
+          "Melbourne Visitor Booth",
+          "Visitor Centre",
+          "144.964425882562",
+          "-37.8139525061",
+          "high"
+        ],
+        [
+          "David Jones",
+          "Department Store",
+          "144.964373486798",
+          "-37.8133127261",
+          "medium"
+        ],
+        [
+          "Myer",
+          "Department Store",
+          "144.963855087868",
+          "-37.8135911985",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "Candidate POIs": [
+        {
+          "cand_id": 0,
+          "poi": [
+            "Coronial Services Centre of Victoria",
+            "Office",
+            "144.96447462898",
+            "-37.8243437355",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 1,
+          "poi": [
+            "Elisabeth Murdoch Hall",
+            "Public Buildings",
+            "144.967450979234",
+            "-37.8239733704",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 2,
+          "poi": [
+            "Enterprize Park",
+            "Informal Outdoor Facility (Park/Garden/Reserve)",
+            "144.959276859602",
+            "-37.8202102696",
+            "medium"
+          ]
+        },
+        {
+          "cand_id": 3,
+          "poi": [
+            "SBS (Special Broadcasting Service)",
+            "Office",
+            "144.968740597156",
+            "-37.817692121",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 4,
+          "poi": [
+            "Sinclair's Cottage",
+            "Art Gallery/Museum",
+            "144.980554992725",
+            "-37.8145407488",
+            "low"
+          ]
+        }
+      ],
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "insert_index": 7,
+      "selected_cand_id": 0,
+      "selected_poi": [
+        "Coronial Services Centre of Victoria",
+        "Office",
+        "144.96447462898",
+        "-37.8243437355",
+        "low"
+      ]
+    },
+    "rec_exmaples": [
+      "1136",
+      "1468",
+      "1274",
+      "444",
+      "1825"
+    ],
+    "rec_examples_gpt_text_large": [
+      "1611",
+      "1819",
+      "1749",
+      "1921",
+      "1825"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "3692",
+      "3262",
+      "1825",
+      "2943",
+      "3927"
+    ],
+    "rec_examples_qwen3_8b": [
+      "1819",
+      "1827",
+      "645",
+      "1749",
+      "290"
+    ]
+  },
+  "1815": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Melbourne Visitor Centre",
+          "Visitor Centre",
+          "144.967937138226",
+          "-37.8177352402",
+          "high"
+        ],
+        [
+          "Melbourne Town Hall",
+          "Public Buildings",
+          "144.966542722283",
+          "-37.8150754791",
+          "high"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "Candidate POIs": [
+        {
+          "cand_id": 0,
+          "poi": [
+            "Melbourne Aquarium",
+            "Aquarium",
+            "144.958425696055",
+            "-37.8209627825",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 1,
+          "poi": [
+            "Melbourne Magistrates Court",
+            "Government Building",
+            "144.956846193891",
+            "-37.8136147672",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 2,
+          "poi": [
+            "Parliament House",
+            "Office",
+            "144.97372641185",
+            "-37.8112466554",
+            "medium"
+          ]
+        },
+        {
+          "cand_id": 3,
+          "poi": [
+            "Southern Cross Railway Station",
+            "Railway Station",
+            "144.952944748845",
+            "-37.8181633057",
+            "medium"
+          ]
+        },
+        {
+          "cand_id": 4,
+          "poi": [
+            "St Peter's Eastern Hill",
+            "Church",
+            "144.975259178609",
+            "-37.8097086715",
+            "low"
+          ]
+        }
+      ],
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "insert_index": 0,
+      "selected_cand_id": 2,
+      "selected_poi": [
+        "Parliament House",
+        "Office",
+        "144.97372641185",
+        "-37.8112466554",
+        "medium"
+      ]
+    },
+    "rec_exmaples": [
+      "1012",
+      "1093",
+      "1047",
+      "1765",
+      "3253"
+    ],
+    "rec_examples_gpt_text_large": [
+      "3221",
+      "1471",
+      "645",
+      "336",
+      "3292"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "2254",
+      "1536",
+      "1304",
+      "3968",
+      "2917"
+    ],
+    "rec_examples_qwen3_8b": [
+      "2683",
+      "852",
+      "2254",
+      "1536",
+      "813"
+    ]
+  },
+  "2093": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Melbourne Central Railway Station",
+          "Railway Station",
+          "144.962670059539",
+          "-37.8097759326",
+          "medium"
+        ],
+        [
+          "Melbourne Central Railway Station",
+          "Railway Station",
+          "144.96169061383",
+          "-37.8105992402",
+          "medium"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "Candidate POIs": [
+        {
+          "cand_id": 0,
+          "poi": [
+            "City Baths",
+            "Major Sports & Recreation Facility",
+            "144.963189789721",
+            "-37.8071585351",
+            "medium"
+          ]
+        },
+        {
+          "cand_id": 1,
+          "poi": [
+            "MTC Theatre",
+            "Theatre Live",
+            "144.968174400274",
+            "-37.8242661833",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 2,
+          "poi": [
+            "Parliament Railway Station",
+            "Railway Station",
+            "144.973742010011",
+            "-37.8121572789",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 3,
+          "poi": [
+            "Piazza Italia",
+            "Informal Outdoor Facility (Park/Garden/Reserve)",
+            "144.965863092947",
+            "-37.8025164193",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 4,
+          "poi": [
+            "St Augustines Church",
+            "Church",
+            "144.954862000132",
+            "-37.8169741359",
+            "medium"
+          ]
+        }
+      ],
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "insert_index": 1,
+      "selected_cand_id": 3,
+      "selected_poi": [
+        "Piazza Italia",
+        "Informal Outdoor Facility (Park/Garden/Reserve)",
+        "144.965863092947",
+        "-37.8025164193",
+        "low"
+      ]
+    },
+    "rec_exmaples": [
+      "1136",
+      "1468",
+      "1274",
+      "444",
+      "1825"
+    ],
+    "rec_examples_gpt_text_large": [
+      "3588",
+      "731",
+      "620",
+      "3746",
+      "2248"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "3588",
+      "731",
+      "620",
+      "3746",
+      "2248"
+    ],
+    "rec_examples_qwen3_8b": [
+      "3588",
+      "731",
+      "620",
+      "3746",
+      "1015"
+    ]
+  },
+  "1802": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Victoria Police",
+          "Police Station",
+          "144.966486801188",
+          "-37.8164849024",
+          "high"
+        ],
+        [
+          "Webb Bridge",
+          "Bridge",
+          "144.947291011905",
+          "-37.8232052385",
+          "medium"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "Candidate POIs": [
+        {
+          "cand_id": 0,
+          "poi": [
+            "Argyle Square",
+            "Informal Outdoor Facility (Park/Garden/Reserve)",
+            "144.965761295089",
+            "-37.8031480577",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 1,
+          "poi": [
+            "Artplay",
+            "Indoor Recreation Facility",
+            "144.971542586509",
+            "-37.81841988",
+            "medium"
+          ]
+        },
+        {
+          "cand_id": 2,
+          "poi": [
+            "Docklands Park",
+            "Informal Outdoor Facility (Park/Garden/Reserve)",
+            "144.946781702342",
+            "-37.8209956786",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 3,
+          "poi": [
+            "Flinders Street Railway Station",
+            "Railway Station",
+            "144.967064817875",
+            "-37.8179063008",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 4,
+          "poi": [
+            "Parliament Railway Station",
+            "Railway Station",
+            "144.973017263156",
+            "-37.8116061787",
+            "high"
+          ]
+        }
+      ],
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "insert_index": 1,
+      "selected_cand_id": 2,
+      "selected_poi": [
+        "Docklands Park",
+        "Informal Outdoor Facility (Park/Garden/Reserve)",
+        "144.946781702342",
+        "-37.8209956786",
+        "low"
+      ]
+    },
+    "rec_exmaples": [
+      "1012",
+      "1093",
+      "1047",
+      "1765",
+      "3253"
+    ],
+    "rec_examples_gpt_text_large": [
+      "3454",
+      "186",
+      "1765",
+      "964",
+      "3926"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "1047",
+      "1750",
+      "186",
+      "2932",
+      "2111"
+    ],
+    "rec_examples_qwen3_8b": [
+      "186",
+      "3454",
+      "3926",
+      "571",
+      "3334"
+    ]
+  },
+  "816": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Melbourne Convention Centre",
+          "Function/Conference/Exhibition Centre",
+          "144.952288281644",
+          "-37.8249040485",
+          "high"
+        ],
+        [
+          "Hamer Hall",
+          "Theatre Live",
+          "144.967992144257",
+          "-37.8199901009",
+          "high"
+        ],
+        [
+          "Treasury Gardens",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.975952335785",
+          "-37.8143993576",
+          "low"
+        ],
+        [
+          "Melbourne Town Hall",
+          "Public Buildings",
+          "144.966542722283",
+          "-37.8150754791",
+          "high"
+        ],
+        [
+          "Sinclair's Cottage",
+          "Art Gallery/Museum",
+          "144.980554992725",
+          "-37.8145407488",
+          "low"
+        ],
+        [
+          "Forum Theatre",
+          "Theatre Live",
+          "144.969386556998",
+          "-37.8164854097",
+          "high"
+        ],
+        [
+          "Her Majesty's Theatre",
+          "Theatre Live",
+          "144.969520183129",
+          "-37.8109975613",
+          "high"
+        ]
+      ],
+      "hint": "The itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "Candidate POIs": [
+        {
+          "cand_id": 0,
+          "poi": [
+            "Carlton Gardens North",
+            "Informal Outdoor Facility (Park/Garden/Reserve)",
+            "144.971997551189",
+            "-37.8017690847",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 1,
+          "poi": [
+            "Conservatory",
+            "Public Buildings",
+            "144.9785597431",
+            "-37.8140021272",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 2,
+          "poi": [
+            "Flagstaff Railway Station",
+            "Railway Station",
+            "144.956318211113",
+            "-37.8122356515",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 3,
+          "poi": [
+            "Myer",
+            "Department Store",
+            "144.963855087868",
+            "-37.8135911985",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 4,
+          "poi": [
+            "Parliament Railway Station",
+            "Railway Station",
+            "144.973742010011",
+            "-37.8121572789",
+            "low"
+          ]
+        }
+      ],
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "insert_index": 4,
+      "selected_cand_id": 1,
+      "selected_poi": [
+        "Conservatory",
+        "Public Buildings",
+        "144.9785597431",
+        "-37.8140021272",
+        "low"
+      ]
+    },
+    "rec_exmaples": [
+      "1155",
+      "1483",
+      "1654",
+      "1043",
+      "202"
+    ],
+    "rec_examples_gpt_text_large": [
+      "202",
+      "2750",
+      "3216",
+      "2919",
+      "1654"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "1483",
+      "601",
+      "3295",
+      "1445",
+      "3255"
+    ],
+    "rec_examples_qwen3_8b": [
+      "1532",
+      "1654",
+      "2341",
+      "1868",
+      "2691"
+    ]
+  },
+  "298": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Fox Classic Car Collection",
+          "Art Gallery/Museum",
+          "144.948496661709",
+          "-37.8213744301",
+          "low"
+        ],
+        [
+          "Melbourne Central Railway Station",
+          "Railway Station",
+          "144.96169061383",
+          "-37.8105992402",
+          "medium"
+        ]
+      ],
+      "hint": "The need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "Candidate POIs": [
+        {
+          "cand_id": 0,
+          "poi": [
+            "ANZ 'Gothic' Bank",
+            "Retail/Office/Carpark",
+            "144.961673719242",
+            "-37.8161580666",
+            "medium"
+          ]
+        },
+        {
+          "cand_id": 1,
+          "poi": [
+            "City Baths",
+            "Major Sports & Recreation Facility",
+            "144.963189789721",
+            "-37.8071585351",
+            "medium"
+          ]
+        },
+        {
+          "cand_id": 2,
+          "poi": [
+            "Malthouse Theatre",
+            "Theatre Live",
+            "144.966936821789",
+            "-37.8271768001",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 3,
+          "poi": [
+            "Melbourne Central Railway Station",
+            "Railway Station",
+            "144.963789344893",
+            "-37.8100167031",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 4,
+          "poi": [
+            "St Francis Church",
+            "Church",
+            "144.962422614541",
+            "-37.8118847832",
+            "medium"
+          ]
+        }
+      ],
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "insert_index": 1,
+      "selected_cand_id": 4,
+      "selected_poi": [
+        "St Francis Church",
+        "Church",
+        "144.962422614541",
+        "-37.8118847832",
+        "medium"
+      ]
+    },
+    "rec_exmaples": [
+      "1012",
+      "1093",
+      "1047",
+      "1765",
+      "3253"
+    ],
+    "rec_examples_gpt_text_large": [
+      "3022",
+      "902",
+      "620",
+      "731",
+      "3588"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "1304",
+      "3968",
+      "871",
+      "3407",
+      "1721"
+    ],
+    "rec_examples_qwen3_8b": [
+      "620",
+      "902",
+      "3588",
+      "731",
+      "117"
+    ]
+  },
+  "2328": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Federation Square",
+          "Informal Outdoor Facility (Park/Garden/Reserve)",
+          "144.968963600783",
+          "-37.8178516572",
+          "high"
+        ],
+        [
+          "SBS (Special Broadcasting Service)",
+          "Office",
+          "144.968740597156",
+          "-37.817692121",
+          "high"
+        ]
+      ],
+      "hint": "\nThe need-to-modify itinerary’s popularity mix (High/Medium/Low) is misaligned with the user’s preference; aim to reduce the global distribution gap, not just match local neighbors.\n",
+      "Candidate POIs": [
+        {
+          "cand_id": 0,
+          "poi": [
+            "Australian Centre For The Moving Image (ACMI)",
+            "Art Gallery/Museum",
+            "144.969070431323",
+            "-37.8176107327",
+            "medium"
+          ]
+        },
+        {
+          "cand_id": 1,
+          "poi": [
+            "Channel 7 - Melbourne Broadcast Centre",
+            "Film & RV Studio",
+            "144.94582326909",
+            "-37.8158572333",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 2,
+          "poi": [
+            "Piazza Italia",
+            "Informal Outdoor Facility (Park/Garden/Reserve)",
+            "144.965863092947",
+            "-37.8025164193",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 3,
+          "poi": [
+            "Riverslide Skate Park",
+            "Informal Outdoor Facility (Park/Garden/Reserve)",
+            "144.972951789291",
+            "-37.8207887122",
+            "medium"
+          ]
+        },
+        {
+          "cand_id": 4,
+          "poi": [
+            "Victorian Arts Centre",
+            "Art Gallery/Museum",
+            "144.968837288153",
+            "-37.8219947336",
+            "medium"
+          ]
+        }
+      ],
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "insert_index": 0,
+      "selected_cand_id": 0,
+      "selected_poi": [
+        "Australian Centre For The Moving Image (ACMI)",
+        "Art Gallery/Museum",
+        "144.969070431323",
+        "-37.8176107327",
+        "medium"
+      ]
+    },
+    "rec_exmaples": [
+      "1235",
+      "1032",
+      "852",
+      "2110",
+      "2157"
+    ],
+    "rec_examples_gpt_text_large": [
+      "1732",
+      "3426",
+      "957",
+      "1092",
+      "852"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "1732",
+      "1235",
+      "3334",
+      "1032",
+      "2911"
+    ],
+    "rec_examples_qwen3_8b": [
+      "3426",
+      "1738",
+      "871",
+      "2442",
+      "1732"
+    ]
+  },
+  "3720": {
+    "example_input": {
+      "need_to_modify itinerary": [
+        [
+          "Melbourne Town Hall",
+          "Public Buildings",
+          "144.966542722283",
+          "-37.8150754791",
+          "high"
+        ],
+        [
+          "Forum Theatre",
+          "Theatre Live",
+          "144.969386556998",
+          "-37.8164854097",
+          "high"
+        ],
+        [
+          "Hamer Hall",
+          "Theatre Live",
+          "144.967992144257",
+          "-37.8199901009",
+          "high"
+        ]
+      ],
+      "hint": "The itinerary’s category mix is misaligned with the intended thematic breadth (could be too focused, too diverse, or an imbalanced mixed profile); adjust to improve the global category profile.\n\nThe itinerary’s spatial class mix (Low/Medium/High segment distances) is misaligned with the intended coverage/compactness; adjust to improve the global route geometry without assuming a specific direction.\n",
+      "Candidate POIs": [
+        {
+          "cand_id": 0,
+          "poi": [
+            "Coronial Services Centre of Victoria",
+            "Office",
+            "144.96447462898",
+            "-37.8243437355",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 1,
+          "poi": [
+            "J.J Holland Park",
+            "Informal Outdoor Facility (Park/Garden/Reserve)",
+            "144.923837074813",
+            "-37.7982358832",
+            "low"
+          ]
+        },
+        {
+          "cand_id": 2,
+          "poi": [
+            "Melbourne Central Railway Station",
+            "Railway Station",
+            "144.962670059539",
+            "-37.8097759326",
+            "medium"
+          ]
+        },
+        {
+          "cand_id": 3,
+          "poi": [
+            "Melbourne Visitor Booth",
+            "Visitor Centre",
+            "144.964425882562",
+            "-37.8139525061",
+            "high"
+          ]
+        },
+        {
+          "cand_id": 4,
+          "poi": [
+            "University of Melbourne",
+            "Tertiary (University)",
+            "144.96099520158",
+            "-37.7982892285",
+            "medium"
+          ]
+        }
+      ],
+      "threshold_low": "0.3km",
+      "threshold_high": "0.77km"
+    },
+    "example_output": {
+      "insert_index": 1,
+      "selected_cand_id": 3,
+      "selected_poi": [
+        "Melbourne Visitor Booth",
+        "Visitor Centre",
+        "144.964425882562",
+        "-37.8139525061",
+        "high"
+      ]
+    },
+    "rec_exmaples": [
+      "1155",
+      "1483",
+      "1654",
+      "1043",
+      "202"
+    ],
+    "rec_examples_gpt_text_large": [
+      "2750",
+      "680",
+      "1827",
+      "1921",
+      "3727"
+    ],
+    "rec_examples_kalm_gemma3": [
+      "2750",
+      "1868",
+      "1827",
+      "1654",
+      "3629"
+    ],
+    "rec_examples_qwen3_8b": [
+      "2157",
+      "2691",
+      "1868",
+      "1654",
+      "2750"
+    ]
+  }
+}
