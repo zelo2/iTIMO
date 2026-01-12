@@ -1,30 +1,62 @@
-# iTIMO: Dataset and Code for Travel Itinerary Modification
+# iTIMO: An LLM-Empowered Synthesis Dataset for Travel Itinerary Modification
 
-This repository contains code and datasets for the paper *iTIMO: An LLM-empowered Synthesis Dataset for Travel Itinerary Modification*.
+This repository contains code and datasets for the iTIMO paper.
 
-## Task and Dataset Overview
+## Paper Structure (Hierarchical) → Repo Pointers
 
-The paper formalizes “itinerary modification” into two tasks:
+### 1. Problem Definition
 
-- **Itinerary Perturbation (synthesizing need-to-modify itineraries)**: given a real itinerary `i`, apply exactly one atomic edit to generate `i*` (a need-to-modify itinerary). The edit operation is `O={ADD, DELETE, REPLACE}` and is constrained by an intent set `Z={popularity, spatial distance, category diversity}` (the perturbation must disrupt the requested attributes).
-- **Itinerary Modification (repairing back to the original)**: given a need-to-modify itinerary `i*`, apply exactly one atomic operation to repair it back to the original itinerary `i`.
+- **Itinerary**: a real-world itinerary set $\mathcal{I}$ is composed of POIs from a POI set $\mathcal{P}$. An itinerary $i \in \mathcal{I}$ is a chronological sequence of POIs, and each POI can be described by a tuple $(c, \mathrm{lat}, \mathrm{lon}, \mathrm{pop})$.
+- **Atomic operations**: $\mathcal{O}=\{\mathrm{ADD}, \mathrm{DELETE}, \mathrm{REPLACE}\}$.
+- **Perturbation intents**: $\mathcal{Z}=\{z_{\mathrm{pop}}, z_{\mathrm{dis}}, z_{\mathrm{div}}\}$ (popularity, spatial distance, category diversity).
+- **Itinerary perturbation**: given $i$, apply one $o \in \mathcal{O}$ to generate a need-to-modify itinerary $i^*$ under intents $z \subseteq \mathcal{Z}$.
+- **Itinerary modification (repair)**: given $i^*$, apply one $o \in \mathcal{O}$ to revert back to $i$.
 
-This repository provides:
-- **Pre-built iTIMO SFT/eval data**: `benchmark/Dataset/`
-- **Perturbation scripts to generate need-to-modify itineraries**: `uni_perturbation.py` (V3.2 FM: Function Calling + Memory) and `baseline_perturbation.py` (DeepSeek V3.2 / R3.2 baselines)
-- **Benchmark scripts (zero-shot / few-shot / RAG / SFT evaluation)**: `benchmark/`
+Repo pointers:
+- Perturbation (generate $i^*$): `uni_perturbation.py`, `baseline_perturbation.py`
+- Repair benchmark (predict the inverse edit to recover $i$): `benchmark/`
 
-## Project Structure (Paper-to-Code Mapping)
+### 2. Hybrid Evaluation Metrics (for Perturbation / Hint Satisfaction)
 
-- `uni_perturbation.py`: perturbation generation with V3.2 FM (toolbox + memory; outputs need-to-modify itineraries)
-- `baseline_perturbation.py`: perturbation baselines (DeepSeek V3.2 / R3.2)
-- `template/prompts.py`: prompt templates for V3.2 FM (tool-calling contract + memory template)
-- `template/baseline_prompts.py`: baseline prompt templates
-- `template/functions.py`: tool schema (geo distance, stats, category diversity, etc.)
-- `position_POI_extraction.py`: extract the edit position and POI by comparing original vs perturbed itineraries
-- `benchmark/Dataset/`: iTIMO JSON data for 3 cities (Toronto/Melbourne/Florence) × 3 perturbations (ADD/DELETE/REPLACE) × train/val/test
-- `benchmark/`: evaluation + data processing (RAG construction, LLM calls, prediction parsing, metrics)
-- `dataset/`, `data-cikm16/`, `data-ijcai15/`, `LearNext-DATASET/`: real itineraries and POI metadata used for perturbation generation (from public datasets used in the paper)
+- Category diversity $\mathrm{CD}(\cdot)$ via category sequences (see tool implementation): `uni_perturbation.py`
+- Distribution shift with Hellinger distance $H(\cdot,\cdot)$ and rank shift with Kendall’s $\tau_b$: `uni_perturbation.py`, `benchmark/hint_satis_check.py`
+
+### 3. Dataset Construction Pipeline (Perturbation)
+
+#### 3.1 Prompt Templates
+
+- V3.2 FM prompts (tool-calling contract + memory template): `template/prompts.py`
+- Baseline prompts: `template/baseline_prompts.py`
+
+#### 3.2 Toolbox (Function Calling)
+
+- Tool schemas: `template/functions.py`
+- Tool implementations (geo distance segments, categorical stats, CD, etc.): `uni_perturbation.py`
+
+#### 3.3 Memory Module (Reducing Positional Bias)
+
+- Memory template and logging: `template/prompts.py`, `uni_perturbation.py`
+
+### 4. Benchmarking Pipeline (Itinerary Modification / Repair)
+
+#### 4.1 Dataset Format (SFT/Eval JSON)
+
+- Data root: `benchmark/Dataset/`
+
+#### 4.2 LLM Inference
+
+- Azure OpenAI runner: `benchmark/Prompt_LLM_Eval_Azure.py`
+- DeepSeek runner: `benchmark/Prompt_LLM_Eval_DS.py`
+- LM Studio runner: `benchmark/Prompt_LLM_Eval_Lmstudio.py`
+
+#### 4.3 Prediction Parsing and Evaluation
+
+- Parse model outputs to structured JSON: `benchmark/process_pred.py`
+- Accuracy + hint pass rates: `benchmark/eval.py`, `benchmark/hint_satis_check.py`
+
+### 5. Raw Data and POI Metadata (for Perturbation)
+
+- Real itineraries and POI data: `dataset/`, `data-cikm16/`, `data-ijcai15/`, `LearNext-DATASET/`
 
 ## Environment and Installation
 
@@ -43,10 +75,10 @@ Data lives in `benchmark/Dataset/iTIMO-*/`, with filenames:
 
 Each JSON file is a dict: `{ "<sid>": sample, ... }`, where:
 - `sample["example_input"]`:
-  - `need_to_modify itinerary`: `[[name, category, lon, lat, popularity], ...]`
+  - `need_to_modify itinerary` (the need-to-modify itinerary $i^*$): `[[name, category, lon, lat, popularity], ...]`
   - `hint`: which axes should shift vs remain invariant (popularity / category diversity / spatial)
   - `threshold_low` / `threshold_high`: distance thresholds (km) for spatial class segmentation
-- `sample["example_output"]`: gold repair action (**important: `PerturbOp` in the filename indicates how the itinerary was perturbed; the gold action is the inverse edit used to repair it**)
+- `sample["example_output"]`: gold repair action (**important: `PerturbOp` in the filename indicates how $i^*$ was perturbed; the gold action is the inverse edit used to recover $i$**)
   - `*_ADD_*.json`: itinerary was perturbed by **ADD**, so the gold repair is usually **DELETE**, with field `removed_index`
   - `*_DELETE_*.json`: itinerary was perturbed by **DELETE**, so the gold repair is usually **ADD**, with fields `insert_index`, `selected_poi`, `selected_cand_id`
   - `*_REPLACE_*.json`: itinerary was perturbed by **REPLACE**, so the gold repair is **REPLACE**, with fields `replaced_index`, `selected_poi`, `selected_cand_id`
