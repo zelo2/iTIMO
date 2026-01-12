@@ -64,6 +64,85 @@ pip install -r requirements.txt
 
 Note: running `uni_perturbation.py` / `baseline_perturbation.py` / `benchmark/Prompt_LLM_Eval_*.py` requires access to the corresponding APIs (DeepSeek / Azure OpenAI / OpenAI, etc.).
 
+## 📈 Benchmark: Itinerary Modification Evaluation (Different LLMs)
+
+This benchmark evaluates *itinerary modification (repair)*: given a need-to-modify itinerary, the LLM must output the **repair operation** (the inverse of the perturbation in the filename).
+
+### 0) Prepare dataset paths (required by the benchmark scripts)
+
+Some benchmark scripts expect files under `benchmark/Dataset/<City>_<PerturbOp>_<split>.json`, while the released data is stored under `benchmark/Dataset/iTIMO-*/`. Run once:
+
+```bash
+cd benchmark
+python - <<'PY'
+from pathlib import Path
+
+city_dir = {
+    "Melb": "iTIMO-Melbourne",
+    "Toro": "iTIMO-Toronto",
+    "Florence": "iTIMO-Florence",
+}
+ops = ["ADD", "DELETE", "REPLACE"]
+splits = ["train", "val", "test"]
+
+dataset_root = Path("Dataset")
+for city, sub in city_dir.items():
+    for op in ops:
+        for sp in splits:
+            src = dataset_root / sub / f"{city}_{op}_{sp}.json"
+            dst = dataset_root / f"{city}_{op}_{sp}.json"
+            if src.exists() and not dst.exists():
+                dst.symlink_to(src)
+
+# eval.py also looks for {City}_{Op}_examples.json at benchmark/ root.
+for city in city_dir:
+    for op in ops:
+        src = dataset_root / f"{city}_{op}_test.json"
+        dst = Path(f"{city}_{op}_examples.json")
+        if src.exists() and not dst.exists():
+            dst.symlink_to(src)
+
+print("Symlinks ready.")
+PY
+```
+
+### 1) Configure API keys / endpoints
+
+- Azure OpenAI: set `azure_endpoint` and API key in `benchmark/Prompt_LLM_Eval_Azure.py` and `benchmark/api_key/api_key.py`
+- DeepSeek: set key in `benchmark/api_key/api_key.py` (used by `benchmark/Prompt_LLM_Eval_DS.py`)
+- LM Studio: ensure a local OpenAI-compatible endpoint is running (used by `benchmark/Prompt_LLM_Eval_Lmstudio.py`)
+
+### 2) Run inference (choose one runner)
+
+Each runner writes raw predictions to `benchmark/SFT_results/`.
+
+```bash
+cd benchmark
+python Prompt_LLM_Eval_Azure.py
+# or: python Prompt_LLM_Eval_DS.py
+# or: python Prompt_LLM_Eval_Lmstudio.py
+```
+
+To switch LLMs / settings, edit the runner’s `__main__` block (e.g., `model_name`, `city_set`, `perturb_op_set`, `rag_settings`, `icl_num`, `temperature`).
+
+### 3) Parse model outputs to JSON
+
+```bash
+cd benchmark
+python process_pred.py
+```
+
+This writes parsed results to `benchmark/results_parsed/`.
+
+### 4) Compute metrics
+
+```bash
+cd benchmark
+python eval.py
+```
+
+The summary is saved to `benchmark/results_parsed/accuracy_hint_summary.json`.
+
 ## 🗂️ Repository Layout (What Each Part Does)
 
 ### 🧩 Top-level scripts
