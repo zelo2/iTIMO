@@ -94,6 +94,6 @@ Note: running `uni_perturbation.py` / `baseline_perturbation.py` / `benchmark/Pr
 
 ### 🗃️ Raw data folders (used for perturbation generation)
 
-- `data-cikm16/`: Melbourne raw data and POI lists.
-- `data-ijcai15/`: Toronto raw data and POI lists.
-- `LearNext-DATASET/`: Florence trajectories/POIs/categories.
+- `data-cikm16/`: Melbourne raw data and POI lists. Reference: Xiaoting Wang et al., “Improving Personalized Trip Recommendation to Avoid Crowds Using Pedestrian Sensor Data”, CIKM 2016 (see `data-cikm16/README.txt`).
+- `data-ijcai15/`: Toronto raw data and POI lists. References: Kwan Hui Lim et al., “Personalized Tour Recommendation based on User Interests and Points of Interest Visit Durations”, IJCAI 2015; and “Towards Next Generation Touring: Personalized Group Tours”, ICAPS 2016 (see `data-ijcai15/poiList-ijcai15/README.txt`).
+- `LearNext-DATASET/`: Florence trajectories/POIs/categories (LearNext). Reference: Baraglia, Muntean, Nardini, Silvestri, “LearNext: Learning to Predict Tourists Movements”, CIKM 2013 (see `LearNext-DATASET/ReadMe.txt`).
