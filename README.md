@@ -1,60 +1,114 @@
-# 🧭 <img src="logo/iTIMO.png" width="48" alt="iTIMO" /> iTIMO: An LLM-Empowered Synthesis Dataset for Travel Itinerary Modification
+<p align="center">
+  <img src="logo/iTIMO.png" width="420" alt="iTIMO" />
+</p>
 
-This README documents what each major file/folder in this repository is used for.
+# 🧭 iTIMO: An LLM-Empowered Synthesis Dataset for Travel Itinerary Modification
 
-## 📦 Repository Contents (File/Folder Roles)
+This repository provides the dataset and code for *iTIMO: An LLM-Empowered Synthesis Dataset for Travel Itinerary Modification*.
 
-### 🧩 Top-level scripts
+## 📦 Dataset
 
-- `uni_perturbation.py`: main perturbation generator (LLM + tool-calling + optional memory) that produces perturbed itineraries for different operations.
-- `baseline_perturbation.py`: baseline perturbation generator (simpler prompting / baseline settings).
-- `position_POI_extraction.py`: utility to detect which edit happened between an original itinerary and a perturbed itinerary (ADD/DELETE/REPLACE + index and POI).
+The released benchmark dataset is under `benchmark/Dataset/`:
+- `benchmark/Dataset/iTIMO-Florence/`
+- `benchmark/Dataset/iTIMO-Melbourne/`
+- `benchmark/Dataset/iTIMO-Toronto/`
 
-### 🧰 Prompt and tool templates
+### 🔁 Perturbation vs. Modification (Important)
 
-- `template/prompts.py`: prompt templates used by `uni_perturbation.py` (including memory prompt and tool-calling constraints).
-- `template/baseline_prompts.py`: baseline prompt templates used by `baseline_perturbation.py`.
-- `template/functions.py`: JSON-schema definitions of callable tools (used when invoking LLM tool-calling).
-- `template/CaseStudy.py`: case-study/demo utilities (if used).
+In filenames like `benchmark/Dataset/iTIMO-Florence/Florence_ADD_test.json`, the `ADD/DELETE/REPLACE` token refers to the **perturbation** operation used to create the need-to-modify itinerary. The **modification/repair** operation is the *inverse*:
+- `*_ADD_*.json` → repair with **DELETE** (gold label field: `removed_index`)
+- `*_DELETE_*.json` → repair with **ADD** (gold label fields: `insert_index`, `selected_poi`, `selected_cand_id`)
+- `*_REPLACE_*.json` → repair with **REPLACE** (gold label fields: `replaced_index`, `selected_poi`, `selected_cand_id`)
 
-### 🧪 Benchmark (model inference + evaluation)
+### 🧾 File Naming and Format
 
-- `benchmark/Dataset/`: pre-built JSON datasets for benchmarking (organized by city/operation/split).
-- `benchmark/Prompt_LLM_Eval_Azure.py`: runs repair/inference with Azure OpenAI and writes predictions to `benchmark/SFT_results/`.
-- `benchmark/Prompt_LLM_Eval_DS.py`: runs repair/inference with DeepSeek-compatible API and writes predictions to `benchmark/SFT_results/`.
-- `benchmark/Prompt_LLM_Eval_Lmstudio.py`: runs repair/inference via LM Studio (local OpenAI-compatible endpoint).
-- `benchmark/process_pred.py`: parses/repairs model outputs into valid JSON and writes to `benchmark/results_parsed/`.
-- `benchmark/hint_satis_check.py`: checks whether a model prediction satisfies the hint constraints (popularity/category/spatial axes).
-- `benchmark/eval.py`: computes accuracy metrics and hint-pass metrics from parsed results.
-- `benchmark/benchmark_prompts.py`: prompt templates for benchmarking (repair task prompts).
-- `benchmark/data_cons.py`: dataset construction/processing helpers used in benchmarking.
-- `benchmark/RAG_emd_search.py`: builds RAG neighbors from embeddings and writes `rec_examples_*` fields.
-- `benchmark/RAG_enhanced_data_cons.py`: writes embedding-based neighbor ids back into dataset JSONs (top-k retrieval).
-- `benchmark/RAG_hint_based.py`: hint-based retrieval / RAG helper logic (if used).
-- `benchmark/api_key/api_key.py`: placeholder API key file for different providers (fill with your keys).
+- Naming: `<City>_<PerturbOp>_<split>.json` (e.g., `Florence_ADD_test.json`)
+- Each file is a JSON dict: `{ "<sid>": sample, ... }`
+- `sample["example_input"]` includes:
+  - `need_to_modify itinerary`: `[[name, category, lon, lat, popularity], ...]`
+  - `hint`: natural-language constraints for axes (popularity / category / spatial)
+  - `threshold_low`, `threshold_high`: spatial thresholds (km)
+  - `Candidate POIs`: present in `*_DELETE_*.json` and `*_REPLACE_*.json` (needed for ADD/REPLACE repair); typically absent in `*_ADD_*.json`
 
-### 🗂️ Raw data and derived data folders
+### 📊 Dataset Size (#samples)
 
-- `dataset/`: processed itinerary splits used by perturbation scripts (e.g., `dataset/Melb/*.csv`, `dataset/Toro/*.csv`).
-- `data-cikm16/`: Melbourne-related raw data and POI lists.
-- `data-ijcai15/`: Toronto-related raw data and POI lists.
-- `LearNext-DATASET/`: Florence-related data (trajectories, POIs, categories).
+**iTIMO-Florence**
+| Perturbation | train | val | test |
+|---|---:|---:|---:|
+| ADD | 3107 | 443 | 889 |
+| DELETE | 2994 | 428 | 857 |
+| REPLACE | 3066 | 438 | 877 |
 
-### 🖼️ Assets
+**iTIMO-Melbourne**
+| Perturbation | train | val | test |
+|---|---:|---:|---:|
+| ADD | 280 | 40 | 81 |
+| DELETE | 262 | 37 | 76 |
+| REPLACE | 278 | 39 | 81 |
 
-- `logo/iTIMO.png`: README title image.
+**iTIMO-Toronto**
+| Perturbation | train | val | test |
+|---|---:|---:|---:|
+| ADD | 233 | 33 | 68 |
+| DELETE | 224 | 32 | 65 |
+| REPLACE | 233 | 33 | 67 |
 
-## 🛠️ Environment and Installation
+## 🧪 Perturbation (Generate Need-to-Modify Itineraries)
+
+Use these scripts to generate perturbed (need-to-modify) itineraries from raw trajectories:
+- `uni_perturbation.py`: perturbation generator with tool-calling + optional memory
+- `baseline_perturbation.py`: baseline perturbation generator
+
+Before running, set API keys in `benchmark/api_key/api_key.py` (and/or in the scripts if required).
+
+```bash
+python uni_perturbation.py
+```
+
+Notes:
+- City / operation are currently configured in each script’s `__main__` block.
+- Outputs are written under the corresponding data folders (e.g., `data-cikm16/`, `data-ijcai15/`, `LearNext-DATASET/`), depending on the selected city/operation.
+
+## 🛠️ Installation
 
 Recommended Python `>=3.10`.
 
 ```bash
-pip install openai pandas numpy tenacity httpx json-repair tqdm
+pip install -r requirements.txt
 ```
 
 Note: running `uni_perturbation.py` / `baseline_perturbation.py` / `benchmark/Prompt_LLM_Eval_*.py` requires access to the corresponding APIs (DeepSeek / Azure OpenAI / OpenAI, etc.).
 
-## 🚀 Quick Run Pointers (Optional)
+## 🗂️ Repository Layout (What Each Part Does)
 
-- Perturbation generation: edit the `__main__` blocks in `uni_perturbation.py` / `baseline_perturbation.py`, then run `python uni_perturbation.py` or `python baseline_perturbation.py`.
-- Benchmark inference/evaluation: see scripts under `benchmark/` (runners, parsers, metrics).
+### 🧩 Top-level scripts
+
+- `uni_perturbation.py`: main perturbation generator (LLM + tool-calling + optional memory).
+- `baseline_perturbation.py`: baseline perturbation generator.
+- `position_POI_extraction.py`: detects the edit (ADD/DELETE/REPLACE) between an original itinerary and a perturbed itinerary.
+
+### 🧰 Templates
+
+- `template/prompts.py`: prompts used by `uni_perturbation.py`.
+- `template/baseline_prompts.py`: prompts used by `baseline_perturbation.py`.
+- `template/functions.py`: tool JSON schemas used for tool-calling.
+- `template/CaseStudy.py`: case-study/demo utilities (if used).
+
+### 🧪 Benchmark (Repair Task Inference + Evaluation)
+
+- `benchmark/Dataset/`: released benchmark data (see “Dataset” above).
+- `benchmark/Prompt_LLM_Eval_Azure.py`: inference via Azure OpenAI → `benchmark/SFT_results/`.
+- `benchmark/Prompt_LLM_Eval_DS.py`: inference via DeepSeek API → `benchmark/SFT_results/`.
+- `benchmark/Prompt_LLM_Eval_Lmstudio.py`: inference via LM Studio endpoint → `benchmark/SFT_results/`.
+- `benchmark/process_pred.py`: parse/repair model outputs → `benchmark/results_parsed/`.
+- `benchmark/eval.py`: compute accuracy + hint-pass metrics.
+- `benchmark/hint_satis_check.py`: per-sample hint satisfaction checker.
+- `benchmark/benchmark_prompts.py`: benchmark prompts.
+- `benchmark/RAG_emd_search.py`, `benchmark/RAG_enhanced_data_cons.py`: embedding-based RAG neighbor construction.
+- `benchmark/api_key/api_key.py`: API key placeholders.
+
+### 🗃️ Raw data folders (used for perturbation generation)
+
+- `data-cikm16/`: Melbourne raw data and POI lists.
+- `data-ijcai15/`: Toronto raw data and POI lists.
+- `LearNext-DATASET/`: Florence trajectories/POIs/categories.
