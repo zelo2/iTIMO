@@ -1,6 +1,6 @@
-# iTIMO: Dataset and Code for Travel Itinerary Modification (Itinerary_Modification-2)
+# iTIMO: Dataset and Code for Travel Itinerary Modification
 
-This repository contains code and datasets for the paper *iTIMO: An LLM-empowered Synthesis Dataset for Travel Itinerary Modification*. Paper PDF: `Itinerary_Modification-2.pdf`.
+This repository contains code and datasets for the paper *iTIMO: An LLM-empowered Synthesis Dataset for Travel Itinerary Modification*.
 
 ## Task and Dataset Overview
 
@@ -16,7 +16,6 @@ This repository provides:
 
 ## Project Structure (Paper-to-Code Mapping)
 
-- `Itinerary_Modification-2.pdf`: the paper (task definition, metrics, pipeline, experiments)
 - `uni_perturbation.py`: perturbation generation with V3.2 FM (toolbox + memory; outputs need-to-modify itineraries)
 - `baseline_perturbation.py`: perturbation baselines (DeepSeek V3.2 / R3.2)
 - `template/prompts.py`: prompt templates for V3.2 FM (tool-calling contract + memory template)
@@ -158,4 +157,4 @@ python RAG_enhanced_data_cons.py --root . --topk 5 --inplace
 
 ## Citation
 
-Please cite according to the paper information in `Itinerary_Modification-2.pdf` (this repository does not include finalized arXiv/DOI metadata).
+Please cite the iTIMO paper if you use this code or dataset.
