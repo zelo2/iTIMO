@@ -32,26 +32,11 @@ In filenames like `benchmark/Dataset/iTIMO-Florence/Florence_ADD_test.json`, the
 
 ### 📊 Dataset Size (#samples)
 
-**iTIMO-Florence**
-| Perturbation | train | val | test |
-|---|---:|---:|---:|
-| ADD | 3107 | 443 | 889 |
-| DELETE | 2994 | 428 | 857 |
-| REPLACE | 3066 | 438 | 877 |
+The dataset statistics are provided in the paper (Table 2):
 
-**iTIMO-Melbourne**
-| Perturbation | train | val | test |
-|---|---:|---:|---:|
-| ADD | 280 | 40 | 81 |
-| DELETE | 262 | 37 | 76 |
-| REPLACE | 278 | 39 | 81 |
-
-**iTIMO-Toronto**
-| Perturbation | train | val | test |
-|---|---:|---:|---:|
-| ADD | 233 | 33 | 68 |
-| DELETE | 224 | 32 | 65 |
-| REPLACE | 233 | 33 | 67 |
+<p align="center">
+  <img src="figures/dataset_stats_table2.png" width="900" alt="iTIMO dataset statistics (Table 2)" />
+</p>
 
 ## 🧪 Perturbation (Generate Need-to-Modify Itineraries)
 
