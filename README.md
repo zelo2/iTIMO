@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="logo/iTIMO.png" width="420" alt="iTIMO" />
+  <img src="figures/iTIMO.png" width="420" alt="iTIMO" />
 </p>
 
 # 🧭 iTIMO: An LLM-Empowered Synthesis Dataset for Travel Itinerary Modification
@@ -170,12 +170,12 @@ Key flags:
 
 Outputs: `benchmark/SFT_predictions_fullft/{model}_{city}_{op}_...json`
 
-### LoRA / QLoRA (Unsloth SFT)
+### LoRA / QLoRA
 
 Runs one (city, op) with chosen train/infer RAG + ICL:
 
 ```bash
-python benchmark/fine_tune_unsloth.py \
+python benchmark/fine_tune_lora.py \
   --city Melb \
   --op ADD \
   --model_key gemma3 \
