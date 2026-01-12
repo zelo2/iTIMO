@@ -62,7 +62,7 @@ Recommended Python `>=3.10`.
 pip install -r requirements.txt
 ```
 
-Note: running `uni_perturbation.py` / `baseline_perturbation.py` / `benchmark/Prompt_LLM_Eval_*.py` requires access to the corresponding APIs (DeepSeek / Azure OpenAI / OpenAI, etc.).
+Note: running `uni_perturbation.py` / `baseline_perturbation.py` / `benchmark/Prompting_LLM.py` requires access to the corresponding APIs (DeepSeek / Azure OpenAI / OpenAI, etc.).
 
 ## 📈 Benchmark: Itinerary Modification Evaluation (Different LLMs)
 
@@ -108,9 +108,9 @@ PY
 
 ### 1) Configure API keys / endpoints
 
-- Azure OpenAI: set `azure_endpoint` and API key in `benchmark/Prompt_LLM_Eval_Azure.py` and `benchmark/api_key/api_key.py`
-- DeepSeek: set key in `benchmark/api_key/api_key.py` (used by `benchmark/Prompt_LLM_Eval_DS.py`)
-- LM Studio: ensure a local OpenAI-compatible endpoint is running (used by `benchmark/Prompt_LLM_Eval_Lmstudio.py`)
+- Azure OpenAI: pass `--azure_endpoint` and `--api_key` (or env `AZURE_API_KEY`) to `benchmark/Prompting_LLM.py` with `--provider azure`.
+- DeepSeek or other OpenAI-compatible endpoints: pass `--base_url` (e.g., `https://api.deepseek.com/v1`) and `--api_key` (or env `OPENAI_API_KEY`) to `benchmark/Prompting_LLM.py`.
+- LM Studio: ensure a local OpenAI-compatible endpoint is running, then call `benchmark/Prompting_LLM.py` with `--base_url http://localhost:1234/v1` and an `--api_key` token.
 
 ### 2) Run inference (single-setting runner)
 
@@ -196,6 +196,36 @@ Outputs: `benchmark/SFT_predictions_lora/{model}_{city}_{op}_...json`
 
 ## 🗂️ Repository Layout (What Each Part Does)
 
+```text
+iTIMO/
+├── uni_perturbation.py — main perturbation generator (LLM + tool-calling + optional memory)
+├── baseline_perturbation.py — baseline perturbation generator
+├── position_POI_extraction.py — diff detector between original and perturbed itineraries
+├── template/
+│   ├── prompts.py — prompts for uni_perturbation.py
+│   ├── baseline_prompts.py — prompts for baseline_perturbation.py
+│   ├── functions.py — tool JSON schemas for tool-calling
+│   └── CaseStudy.py — small demo/case-study helpers
+├── benchmark/
+│   ├── Prompting_LLM.py — prompt-based itinerary repair runner (Azure/OpenAI/DeepSeek/LM Studio)
+│   ├── process_pred.py — parse model outputs
+│   ├── eval.py — compute accuracy + hint metrics
+│   ├── hint_satis_check.py — per-sample hint satisfaction checker
+│   ├── benchmark_prompts.py — prompt templates for repair tasks
+│   ├── RAG_emd_search.py — embedding-based retrieval for RAG
+│   ├── RAG_enhanced_data_cons.py — RAG data construction with consistency filters
+│   ├── RAG_hint_based.py — hint-driven neighbor construction for RAG
+│   ├── data_cons.py — data construction utilities shared across RAG scripts
+│   ├── fine_tune_full.py — full-parameter SFT runner
+│   ├── fine_tune_lora.py — LoRA/QLoRA SFT runner
+│   ├── api_key/api_key.py — API key placeholders
+│   └── iTIMO/ — released benchmark splits (train/val/test for each city/op)
+├── data4perturb/ — processed itinerary splits consumed by perturbation scripts
+├── og_dataset/ — raw trajectory/POI datasets (CIKM’16, IJCAI’15, LearNext)
+├── figures/ — images used in README
+└── requirements.txt — Python dependencies
+```
+
 ### 🧩 Top-level scripts
 
 - `uni_perturbation.py`: main perturbation generator (LLM + tool-calling + optional memory).
@@ -212,14 +242,14 @@ Outputs: `benchmark/SFT_predictions_lora/{model}_{city}_{op}_...json`
 ### 🧪 Benchmark (Repair Task Inference + Evaluation)
 
 - `benchmark/iTIMO/`: released benchmark data (see “Dataset” above).
-- `benchmark/Prompt_LLM_Eval_Azure.py`: inference via Azure OpenAI → `benchmark/SFT_results/`.
-- `benchmark/Prompt_LLM_Eval_DS.py`: inference via DeepSeek API → `benchmark/SFT_results/`.
-- `benchmark/Prompt_LLM_Eval_Lmstudio.py`: inference via LM Studio endpoint → `benchmark/SFT_results/`.
+- `benchmark/Prompting_LLM.py`: inference via Azure/OpenAI-compatible endpoints → `benchmark/prompt_results/`.
 - `benchmark/process_pred.py`: parse/repair model outputs → `benchmark/results_parsed/`.
 - `benchmark/eval.py`: compute accuracy + hint-pass metrics.
 - `benchmark/hint_satis_check.py`: per-sample hint satisfaction checker.
 - `benchmark/benchmark_prompts.py`: benchmark prompts.
-- `benchmark/RAG_emd_search.py`, `benchmark/RAG_enhanced_data_cons.py`: embedding-based RAG neighbor construction.
+- `benchmark/RAG_emd_search.py`, `benchmark/RAG_enhanced_data_cons.py`, `benchmark/RAG_hint_based.py`: RAG neighbor construction variants.
+- `benchmark/data_cons.py`: RAG/data construction utilities used by prompting and retrieval scripts.
+- `benchmark/fine_tune_full.py`, `benchmark/fine_tune_lora.py`: SFT runners for full-parameter and LoRA/QLoRA tuning.
 - `benchmark/api_key/api_key.py`: API key placeholders.
 
 ### 🗃️ Raw data folders (used for perturbation generation)
