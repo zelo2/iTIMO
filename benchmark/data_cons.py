@@ -146,7 +146,7 @@ def example_construction(city_name, traj_id, dis_mark=None, perturb_op=None):
     input, label = data.sample(traj_id)
     # print(input, label)
 
-    # 放在 for 循环之前：确保经纬度列是浮点
+    # Ensure lat/long columns are float before the loop
     poi_info['lat'] = pd.to_numeric(poi_info['lat'], errors='coerce')
     poi_info['long'] = pd.to_numeric(poi_info['long'], errors='coerce')
 
@@ -157,38 +157,38 @@ def example_construction(city_name, traj_id, dis_mark=None, perturb_op=None):
         lon_val = float(x[2])
         lat_val = float(x[3])
 
-        # 先用名称 + 近似经纬度匹配（带容差）
+        # First try name + approximate lat/long match (with tolerance)
         cand = poi_info[
             (poi_info['poiName'] == poi_name) &
             (np.isclose(poi_info['lat'], lat_val, atol=1e-8)) &
             (np.isclose(poi_info['long'], lon_val, atol=1e-8))
         ]
 
-        # 如空，则用 名称+类别 兜底（Florence 用 theme；Melb/Toro 用 theme/subTheme）
+        # If empty, fall back to name + category (Florence uses theme; Melb/Toro use theme/subTheme)
         if cand.empty and cat_mark in poi_info.columns:
             cand = poi_info[
                 (poi_info['poiName'] == poi_name) &
                 (poi_info[cat_mark] == cat)
             ]
 
-        # 再空就报错，方便定位是哪一个 POI 对不上
+        # If still empty, raise for easier debugging of mismatched POIs
         if cand.empty:
             raise ValueError(
                 f"POI not found in poi_info: {poi_name} @({lat_val},{lon_val}), cat={cat}"
             )
 
-        # 多行时，优先再按类别收敛；仍多就取第一条
+        # If multiple rows, try narrowing by category; otherwise take first
         if len(cand) > 1 and cat_mark in cand.columns:
             cand2 = cand[cand[cat_mark] == cat]
             if not cand2.empty:
                 cand = cand2
         og_traj_id.append(int(cand['poiID'].iloc[0]))
 
-    # 这里开始是候选生成 + GT 对齐逻辑
+    # Candidate generation + GT alignment starts here
     label_float = None
 
     if perturb_op != 'ADD':
-        # 生成候选并随机采样 4 个
+        # Generate candidates and sample 4
         candidate_desc = candidate_generation(
             traj=traj,
             poi_info=poi_info,
@@ -197,7 +197,7 @@ def example_construction(city_name, traj_id, dis_mark=None, perturb_op=None):
         )
         candidate_desc = random.sample(candidate_desc, 4)
 
-        # 统一经纬度类型：label 和候选全部转为 float
+        # Normalize lon/lat types: convert label and candidates to float
         gt = label['poi_label']
         label_float = [gt[0], gt[1], float(gt[2]), float(gt[3]), gt[4]]
 
@@ -209,20 +209,20 @@ def example_construction(city_name, traj_id, dis_mark=None, perturb_op=None):
         candidate_desc = norm_cands
         candidate_desc.append(label_float)
 
-        # 排序后再生成 cand_id，保证 deterministic
+        # Sort then assign cand_id to keep deterministic ordering
         candidate_desc.sort()
 
         candidate_poi = []
         cand_id_label = -1
         for i, poi in enumerate(candidate_desc):
             candidate_poi.append({'cand_id': i, 'poi': poi})
-            # 用 float 版的 label 来匹配，避免 str vs float 导致匹配失败
+            # Match using float label to avoid str-vs-float mismatches
             if label_float is not None and poi == label_float:
                 cand_id_label = i
 
         input['Candidate POIs'] = candidate_poi
     else:
-        cand_id_label = -1  # ADD 情况下不会用到
+        cand_id_label = -1  # not used for ADD
 
     input['threshold_low'] = str(dis_mark['low']) + 'km'
     input['threshold_high'] = str(dis_mark['high']) + 'km'
@@ -238,7 +238,7 @@ def example_construction(city_name, traj_id, dis_mark=None, perturb_op=None):
 
     if perturb_op != 'ADD':
         example_output['selected_cand_id'] = cand_id_label
-        # 保持输出给 LLM 的 selected_poi 格式不变（经纬度还是 str）
+        # Keep selected_poi format (lon/lat as str) for LLM output
         example_output['selected_poi'] = label['poi_label']
 
     return example_input, example_output
@@ -288,7 +288,7 @@ def example_gene(city_name, dis_mark=None, perturb_op=None):
     traj_set = data.traj_set
 
     example_pool = {}
-    error_traj = []   # 记录出错的 traj_id（以及可选的错误信息）
+    error_traj = []   # track traj_id with errors (and optional messages)
 
     for i in tqdm.tqdm(traj_set):
         try:
@@ -296,18 +296,18 @@ def example_gene(city_name, dis_mark=None, perturb_op=None):
             input, label = data.sample(i)
             if input['hint'] == '':
                 continue
-            # 这里的 ValueError 可能在 example_construction 内部被抛出
+            # ValueError may be raised inside example_construction
             example_input, example_output = example_construction(
                 city_name, i, dis_mark, perturb_op
             )
             example_pool[i] = {'example_input': example_input,
                                'example_output': example_output}
         except ValueError as e:
-            # 只想记录 ValueError：跳过并记下来
+            # Record ValueErrors only; skip and continue
             error_traj.append((str(i), str(e)))
             continue
         except Exception as e:
-            # 可选：也把其他未预期错误记录下来，避免跑崩
+            # Optionally record unexpected errors to avoid crashing the run
             error_traj.append((str(i), f"{type(e).__name__}: {e}"))
             continue
 
@@ -315,12 +315,12 @@ def example_gene(city_name, dis_mark=None, perturb_op=None):
     with open(example_path, 'w', encoding='utf-8') as f:
         json.dump(example_pool, f, indent=4, ensure_ascii=False)
 
-    # 打印/保存错误列表
+    # Print/save error list
     if error_traj:
         ids_only = [t[0] for t in error_traj]
         print(f"[WARN] skipped {len(error_traj)} traj_ids due to errors.")
-        print(ids_only)  # 如果只想打印 id 列表
-        # 也可写一个错误文件，便于复盘
+        print(ids_only)  # if you only want id list
+        # optional: write an error file for debugging
         err_path = f'{city_name}_{perturb_op.upper()}_errors.json'
         with open(err_path, 'w', encoding='utf-8') as f:
             json.dump(

@@ -32,11 +32,8 @@ def openaiAPIcall(**kwargs):
 
 
 def unix_time_convert(unix_timestamp):
-    # print(unix_timestamp)
     datatime_object = datetime.datetime.fromtimestamp(unix_timestamp, tz=ZoneInfo("Australia/Melbourne"))
-    # 格式化输出为 时:分
     formatted_time = datatime_object.strftime('%H:%M')
-    # formatted_time = datatime_object.strftime('%Y-%m-%d %H:%M:%S')
 
     return formatted_time
 
@@ -65,7 +62,7 @@ def new_data_open(city_name):
 
 
 def remove_consecutive_duplicates(lst):
-    """去除list中连续重复的元素"""
+    """Remove consecutive duplicate elements"""
     return [key for key, _ in groupby(lst)]
 
 
@@ -265,7 +262,7 @@ def iTIMO_perturbation(city_name, op=None, think="R"):
 
     for current_round, traj_id in enumerate(traj_set):
         '''Initialize Memory'''
-        if traj_id != -1:  # 2138/2492 有问题 需要重新生成(REPLACE)
+        if traj_id != -1:  # If problematic traj_ids (e.g., 2138/2492), regenerate (REPLACE)
             mark = True
         if mark:
             cur_traj = traj[traj['seqID'] == traj_id].sort_values(by='startTime', ascending=True)
@@ -384,6 +381,5 @@ if __name__ == '__main__':
     with ThreadPoolExecutor(max_workers=2) as ex:
         futs = [ex.submit(iTIMO_perturbation, *args) for args in jobs]
         for fut in as_completed(futs):
-            results.append(fut.result())  # 如需容错可 try/except
+            results.append(fut.result())  # add try/except if fault-tolerant collection is needed
     print(results)
-

@@ -8,7 +8,7 @@ from benchmark import benchmark_prompts
 from pathlib import Path
 
 # ======================================================
-# 0) 初始化 Azure OpenAI client
+# 0) Initialize Azure OpenAI client
 # ======================================================
 from openai import AzureOpenAI
 from api_key import api_key
@@ -19,10 +19,10 @@ client = AzureOpenAI(
     api_key=api_key.azure_api_key,
 )
 
-# ================== RAG 模式 -> example.json 字段名 ==================
+# ================== RAG modes -> example.json field names ==================
 RAG_FIELD_MAP = {
     "none": None,
-    "hint": "rec_exmaples",              # 注意拼写
+    "hint": "rec_exmaples",              # keep spelling as in data
     "emd_qwen3_8b": "rec_examples_qwen3_8b",
     "emd_azure": "rec_examples_gpt_text_large",
     "emd_kalm_gemma3": "rec_examples_kalm_gemma3",
@@ -42,8 +42,8 @@ def safe_run_one_sid(*args, **kwargs):
     """
     args:
         0: sid
-        1: eval_examples   （当前 split 的数据：test/val/full）
-        2: icl_examples    （ICL 候选库：通常是 train）
+        1: eval_examples   (current split: test/val/full)
+        2: icl_examples    (ICL pool: usually train)
     """
     sid = args[0]
     eval_examples = args[1]
@@ -58,7 +58,7 @@ def safe_run_one_sid(*args, **kwargs):
 
 
 # ======================================================
-# 1) 全局 TPM 限流器
+# 1) Global TPM rate limiter
 # ======================================================
 TPM_LIMIT = 100000
 WINDOW_SEC = 120
@@ -135,7 +135,7 @@ def chunked(lst, batch_size):
 
 
 # ======================================================
-# 3) 构建单条 sid 的 messages（支持多 RAG 模式）
+# 3) Build messages for one sid (supports multiple RAG modes)
 # ======================================================
 def build_messages_for_sid(
     sid: str,
@@ -148,8 +148,8 @@ def build_messages_for_sid(
     rag_mode: str = "none",
 ):
     """
-    eval_examples: 当前要评估的 split（test/val/full）
-    icl_examples : ICL 候选库（通常是 train；full 模式下可以等于 eval_examples）
+    eval_examples: split to evaluate (test/val/full)
+    icl_examples : ICL pool (usually train; in full mode may equal eval_examples)
     """
     input_ex = eval_examples[sid]["example_input"]
     label_ex = eval_examples[sid]["example_output"]
@@ -163,15 +163,15 @@ def build_messages_for_sid(
         rng = random.Random(rng_seed)
 
         if field_name is None:
-            # 不用 RAG：从 ICL 库里随机 few-shots
+            # No RAG: random few-shots from ICL pool
             cand_pool = [k for k in valid_icl_pool if k != sid]
         else:
-            # RAG：从 eval_examples[sid] 里拿候选 ID，这些 ID 来自 train
+            # RAG: take candidate IDs from eval_examples[sid] (these IDs point to train)
             rec_ids = eval_examples[sid].get(field_name) or []
             cand_pool = [str(x) for x in rec_ids if str(x) != sid]
 
             if not cand_pool:
-                print(f"[WARN] sid={sid} rag_mode={rag_mode} 没有 {field_name}，降级为随机 few-shots")
+                print(f"[WARN] sid={sid} rag_mode={rag_mode} missing {field_name}, fallback to random few-shots")
                 cand_pool = [k for k in valid_icl_pool if k != sid]
 
         if len(cand_pool) <= icl_num:
@@ -179,8 +179,7 @@ def build_messages_for_sid(
         else:
             icl_pool = rng.sample(cand_pool, k=icl_num)
 
-        # 这里一定要从 icl_examples 里取内容（train 集），
-        # 而不是 eval_examples，否则就会 KeyError('883') 一类错误。
+        # Always fetch content from icl_examples (train pool), not eval_examples, to avoid missing keys.
         for j, ex_sid in enumerate(icl_pool, 1):
             ex_item = icl_examples[str(ex_sid)]
             ex_in = ex_item["example_input"]
@@ -213,7 +212,7 @@ def build_messages_for_sid(
 
 
 # ======================================================
-# 4) 单条 sid 调用
+# 4) Single sid invocation
 # ======================================================
 def run_one_sid(
     sid: str,
@@ -259,7 +258,7 @@ def run_one_sid(
 
 
 # ======================================================
-# 5) 主入口：按 batch 并发请求
+# 5) Main entry: batch parallel requests
 # ======================================================
 def batch_parallel_run(
     city_name="Melb",
@@ -267,18 +266,18 @@ def batch_parallel_run(
     icl_num=3,
     model_name="gpt-4.1",
     is_think=True,
-    is_full=False,                # False 表示用 SFT_data split（test），ICL 用 train
+    is_full=False,                # False: eval uses SFT_data/test, ICL uses SFT_data/train
     rag_mode: str = "none",
     batch_size=16,
     max_workers=8,
     temperature: float = 1.0,
 ):
     """
-    当 is_full=False 时：
+    When is_full is False:
         eval_examples = SFT_data/{city}_{op}_test.json
-        icl_examples  = SFT_data/{city}_{op}_train.json    （如果找不到就退回 eval_examples）
+        icl_examples  = SFT_data/{city}_{op}_train.json (fallback to eval_examples if missing)
 
-    当 is_full=True 时：
+    When is_full is True:
         eval_examples = {city}_{op}_test.json
         icl_examples  = eval_examples
     """
@@ -291,7 +290,7 @@ def batch_parallel_run(
     with open(example_path, "r", encoding="utf-8") as f:
         eval_examples = json.load(f)
 
-    # ---- load icl_examples（ICL 候选库，优先用 *_train.json）----
+    # ---- load icl_examples (ICL pool, prefer *_train.json) ----
     if is_full:
         icl_examples = eval_examples
     else:

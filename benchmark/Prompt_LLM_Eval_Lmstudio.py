@@ -27,10 +27,10 @@ from tenacity import (
     wait_random_exponential,
 )
 
-# ================== RAG 模式 -> example.json 字段名 ==================
+# ================== RAG modes -> example.json field names ==================
 RAG_FIELD_MAP = {
     "none": None,
-    "hint": "rec_exmaples",  # 注意拼写：你原来的 key 就是 rec_exmaples
+    "hint": "rec_exmaples",  # keep spelling as in the data
     "emd_qwen3_8b": "rec_examples_qwen3_8b",
     "emd_azure": "rec_examples_gpt_text_large",
     "emd_kalm_gemma3": "rec_examples_kalm_gemma3",
@@ -110,7 +110,7 @@ def geo_info_collect(city_name):
 
 
 def strip_think(text: str) -> str:
-    # 删除 <think>…</think>（大小写不敏感，跨行）
+    # Remove <think>…</think> (case-insensitive, across lines)
     return re.sub(r"<think>.*?</think>\s*", "", text,
                   flags=re.DOTALL | re.IGNORECASE)
 
@@ -127,14 +127,14 @@ def prompt_test(city_name,
                 flush_every: int = 20):
     """
     rag_mode:
-        "none"            : 不用 RAG，随机 few-shots
-        "hint"            : 用 rec_exmaples（当前 eval 文件里的字段，值是 train 的 id）
-        "emd_qwen3_8b"    : 用 rec_examples_qwen3_8b
-        "emd_azure"       : 用 rec_examples_gpt_text_large
-        "emd_kalm_gemma3" : 用 rec_examples_kalm_gemma3
+        "none"            : no RAG, random few-shots
+        "hint"            : use rec_exmaples (from current eval file; ids point to train)
+        "emd_qwen3_8b"    : use rec_examples_qwen3_8b
+        "emd_azure"       : use rec_examples_gpt_text_large
+        "emd_kalm_gemma3" : use rec_examples_kalm_gemma3
     is_full:
-        True  -> eval_examples = {city}_{OP}_EXAMPLES.json，ICL 也从这里取
-        False -> eval_examples = SFT_data/{city}_{OP}_test.json，ICL 从 SFT_data/{city}_{OP}_train.json 取
+        True  -> eval_examples = {city}_{OP}_EXAMPLES.json; ICL also from here
+        False -> eval_examples = SFT_data/{city}_{OP}_test.json; ICL from SFT_data/{city}_{OP}_train.json
     """
 
     print(f"Configurations:\n"
@@ -146,7 +146,7 @@ def prompt_test(city_name,
           f"LLM_seed: {llm_seed}\n"
           f"is_full: {is_full}\n")
 
-    # ========= 1. 决定 output 文件名（包含 rag_mode） =========
+    # ========= 1. Decide output filename (includes rag_mode) =========
     tag_parts = []
     if is_think:
         tag_parts.append("think")
@@ -163,7 +163,7 @@ def prompt_test(city_name,
     out_path = f"{out_root}/{city_name}/{perturb_op}/{model_name}/{model_name}_{tag}_example.json"
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
 
-    # ========= 2. 载入已有结果：断点续传 =========
+    # ========= 2. Load existing results (resume) =========
     if os.path.exists(out_path):
         try:
             with open(out_path, "r", encoding="utf-8") as f:
@@ -176,17 +176,17 @@ def prompt_test(city_name,
     else:
         output_records = {}
 
-    done_ids = set(output_records.keys())  # JSON 里 key 是 str
+    done_ids = set(output_records.keys())  # JSON keys are strings
 
-    # ========= 3. 数据预处理 =========
-    # 3.1 选择 eval_examples 和 icl_examples
+    # ========= 3. Data prep =========
+    # 3.1 choose eval_examples and icl_examples
     if city_name in ['Melb', 'Toro']:
         if city_name == 'Melb':
             cat_mark = 'subTheme'
         else:
             cat_mark = 'theme'
 
-        # eval 文件
+        # eval file
         if is_full:
             eval_path = f'{city_name}_{perturb_op.upper()}_examples.json'
         else:
@@ -195,7 +195,7 @@ def prompt_test(city_name,
         with open(eval_path, 'r', encoding='utf-8') as f:
             eval_examples = json.load(f)
 
-        # icl 文件（few-shot / RAG 池）
+        # icl file (few-shot / RAG pool)
         if is_full:
             icl_examples = eval_examples
         else:
@@ -207,7 +207,7 @@ def prompt_test(city_name,
                 print(f"[WARN] ICL train file not found: {icl_path}, fallback to eval_examples")
                 icl_examples = eval_examples
 
-        # 后面这些 traj/popLevel 是你原来的逻辑，不影响 RAG
+        # Traj/popLevel logic unchanged; does not affect RAG
         traj = new_data_open(city_name)
         traj['poiID'] -= 1
         _, poi_info = geo_info_collect(city_name)
@@ -265,21 +265,21 @@ def prompt_test(city_name,
             else:
                 traj.loc[j, 'popLevel'] = 'medium'
 
-    # few-shot / RAG 池的 id
+    # Few-shot / RAG pool ids
     valid_icl_pool = list(icl_examples.keys())
 
     data = dataset.Prompt_Dataset(city_name=city_name, perturb_op=perturb_op)
 
-    # 当前要跑的样本集合来自 eval_examples（默认 test）
+    # Current run samples come from eval_examples (default test)
     traj_set = eval_examples.keys()
 
     newly_added = 0
 
-    # ========= 4. 主循环 =========
+    # ========= 4. Main loop =========
     for sid in sorted(traj_set, key=lambda x: str(x)):
         sid_str = str(sid)
 
-        # 断点续传：已有结果直接跳过
+        # Resume: skip already processed ids
         if sid_str in done_ids:
             continue
 
@@ -292,34 +292,34 @@ def prompt_test(city_name,
         if icl_num > 0:
             field_name = RAG_FIELD_MAP.get(rag_mode, None)
 
-            # 局部 RNG：保证 (city, op, seed, sid, rag_mode) 决定性的 few-shot
+            # Local RNG to make few-shots deterministic for (city, op, seed, sid, rag_mode)
             rng = random.Random(
                 hash((city_name, perturb_op, llm_seed, sid_str, rag_mode)) & 0xffffffff
             )
 
             if field_name is None:
-                # 不用 RAG：从 ICL 池随机 few-shots（通常是 train）
+                # No RAG: random few-shots from ICL pool (usually train)
                 cand_pool = [k for k in valid_icl_pool if k != sid_str]
             else:
-                # RAG：从 eval_examples[sid] 的 rec_* 字段里拿候选（这些 id 指向 train）
+                # RAG: use rec_* ids from eval_examples[sid] (ids point to train)
                 rec_ids = ex.get(field_name) or []
                 cand_pool = [
                     str(x) for x in rec_ids
                     if str(x) in icl_examples and str(x) != sid_str
                 ]
 
-                # 如果这个样本没有检索到有效候选，就降级为 ICL 池随机 few-shots
+                # If no valid candidates, fall back to random few-shots
                 if not cand_pool:
-                    print(f"[WARN] {sid_str} rag_mode={rag_mode} 没有有效 {field_name}，降级为随机 few-shots")
+                    print(f"[WARN] {sid_str} rag_mode={rag_mode} missing valid {field_name}, fallback to random few-shots")
                     cand_pool = [k for k in valid_icl_pool if k != sid_str]
 
-            # 真实要用的 few-shot 列表 icl_pool
+            # Actual few-shot list icl_pool
             if len(cand_pool) <= icl_num:
-                icl_pool = cand_pool[:]  # 不够就全用上
+                icl_pool = cand_pool[:]  # use all if not enough
             else:
                 icl_pool = rng.sample(cand_pool, k=icl_num)
 
-            # 组织 few-shot 文本：内容一律从 icl_examples 里取（通常是 train）
+            # Build few-shot text: always from icl_examples (usually train)
             for j, sid2 in enumerate(icl_pool, 1):
                 sid2_str = str(sid2)
                 if sid2_str not in icl_examples:
@@ -376,17 +376,17 @@ def prompt_test(city_name,
         else:
             result = response.choices[0].message.content
 
-        # 存结果
+        # Save result
         output_records[sid_str] = {'response': result, 'label': label}
         newly_added += 1
 
-        # 周期性 flush
+        # Periodic flush
         if newly_added % flush_every == 0:
             print(f"[FLUSH] {newly_added} new results, flushing to {out_path}")
             with open(out_path, 'w', encoding='utf-8') as f:
                 json.dump(output_records, f, indent=4, ensure_ascii=False)
 
-    # 最后再写一次
+    # Final write
     with open(out_path, 'w', encoding='utf-8') as f:
         json.dump(output_records, f, indent=4, ensure_ascii=False)
     print(f"[DONE] Saved all results to {out_path}")
@@ -405,12 +405,12 @@ def multi_round_test(city_name,
                      is_full: bool = False,
                      max_workers=2):
     """
-    rag_mode_list: 跟 icl_num_set 一一对应，比如：
+    rag_mode_list: one-to-one with icl_num_set, e.g.:
         icl_num_set = [0, 3, 3, 3]
         rag_mode_list = ["none", "none", "hint", "emd_qwen3_8b"]
-    is_full: 透传给 prompt_test
+    is_full: forwarded to prompt_test
     """
-    assert len(icl_num_set) == len(rag_mode_list), "icl_num_set 与 rag_mode_list 长度必须一致"
+    assert len(icl_num_set) == len(rag_mode_list), "icl_num_set and rag_mode_list must have same length"
 
     results = {}
 
@@ -450,7 +450,7 @@ if __name__ == '__main__':
 
     model_name = "microsoft/phi-4-reasoning-plus"
     is_think = False
-    is_full = False   # 与 Azure 脚本一致：False -> eval 用 SFT_data/test, ICL 用 SFT_data/train
+    is_full = False   # align with Azure script: False -> eval uses SFT_data/test, ICL uses SFT_data/train
 
     for city_name in city_set:
         if city_name == 'Melb':
@@ -466,7 +466,7 @@ if __name__ == '__main__':
 
         #  0-shot: icl=0, rag=none
         #  few-shot: icl=3, rag=none
-        #  3 种 embedding RAG
+        #  three embedding RAG settings
         icl_num_set = [0, 3, 3, 3, 3, 3]
         rag_mode_list = ["none", "none", "hint", "emd_qwen3_8b", "emd_azure", "emd_kalm_gemma3"]
 

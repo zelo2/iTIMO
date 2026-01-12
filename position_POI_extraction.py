@@ -22,13 +22,13 @@ def _rows_equal(
     b: Row,
     *,
     float_tol: float = 1e-6,
-    compare_cols: Tuple[int, ...] = (0, 1, 2, 3, 4)  # 包含经纬度
+    compare_cols: Tuple[int, ...] = (0, 1, 2, 3, 4)  # includes lon/lat
 ) -> bool:
     """
-    比较两行是否“同一个 POI”：
-    - 0: name，1: category，2: lon，3: lat，4: popularity
-    - popularity 做大小写规整
-    - lon/lat 转 float 比较，允许 float_tol 容差
+    Compare two rows to judge “same POI”:
+    - 0: name, 1: category, 2: lon, 3: lat, 4: popularity
+    - popularity normalized by case
+    - lon/lat compared as float with float_tol
     """
     if not isinstance(a, (list, tuple)) or not isinstance(b, (list, tuple)):
         return False
@@ -36,7 +36,7 @@ def _rows_equal(
         if idx in (2, 3):  # lon/lat
             fa, fb = _to_float(a[idx]), _to_float(b[idx])
             if fa is None or fb is None:
-                if str(a[idx]) != str(b[idx]):  # 非数值就按字符串
+        if str(a[idx]) != str(b[idx]):  # if not numeric, compare as strings
                     return False
             else:
                 if not math.isfinite(fa) or not math.isfinite(fb):
@@ -58,14 +58,14 @@ def extract_change(
     operation: str,
     *,
     float_tol: float = 1e-6,
-    compare_cols: Tuple[int, ...] = (0, 1, 2, 3, 4)  # 默认包含经纬度
+    compare_cols: Tuple[int, ...] = (0, 1, 2, 3, 4)  # include lon/lat by default
 ) -> Dict[str, Any]:
     """
-    返回：
-      ADD:    {"ok":True,"operation":"ADD","index":i,"inserted": row_after}
-      DELETE: {"ok":True,"operation":"DELETE","index":i,"deleted":  row_before}
-      REPLACE:{"ok":True,"operation":"REPLACE","index":i,"before": row_before,"after": row_after}
-      失败：   {"ok":False,"error":"..."}
+    Returns:
+      ADD:     {"ok":True,"operation":"ADD","index":i,"inserted": row_after}
+      DELETE:  {"ok":True,"operation":"DELETE","index":i,"deleted":  row_before}
+      REPLACE: {"ok":True,"operation":"REPLACE","index":i,"before": row_before,"after": row_after}
+      Failure: {"ok":False,"error":"..."}
     """
     op = str(operation).strip().upper()
     n, m = len(original), len(perturbed)
@@ -94,7 +94,7 @@ def extract_change(
         return {"ok": True, "operation": "REPLACE", "index": i,
                 "before": original[i], "after": perturbed[i]}
 
-    # ADD / DELETE：双指针对齐
+    # ADD / DELETE: two-pointer alignment
     i = j = 0
     while i < n and j < m and _rows_equal(original[i], perturbed[j],
                                           float_tol=float_tol, compare_cols=compare_cols):

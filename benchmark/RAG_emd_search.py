@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-批量构建 emd_rag 的 rec_examples：
+Build rec_examples for embedding-based RAG in batch.
 
-假定目录结构类似：
+Expected layout:
     benchmark/
       Melb_ADD_examples.json
       Melb_ADD_examples_sample1000.json
@@ -14,7 +14,7 @@
         Melb_ADD_examples_KaLM_gemma3_embeddings.npz
         ...
 
-npz 命名约定（任一匹配即可）：
+NPZ naming (any of these patterns):
     <City>_<OP>_examples_qwen3_embeddings.npz
     <City>_<OP>_examples_qwen3_8b_embeddings.npz
     <City>_<OP>_examples_qwen3-8b_embeddings.npz
@@ -22,16 +22,15 @@ npz 命名约定（任一匹配即可）：
     <City>_<OP>_examples_KaLM_gemma3_embeddings.npz
     <City>_<OP>_examples_kalm_gemma3_embeddings.npz
 
-对每个 <City>_<OP>_examples.json：
-  1. 找到所有对应的 npz（qwen / azure / kalm-gemma3）
-  2. 在“全量 examples.json”上算一次 rec_examples_*
-  3. 如果存在对应的  *_examples_sample1000.json ，
-     再在这个 1000 子集上单独算一遍（只在 1000 条内部找近邻）
+For each <City>_<OP>_examples.json:
+  1) Find all matching npz (qwen / azure / kalm-gemma3)
+  2) Compute rec_examples_* on the full examples.json
+  3) If *_examples_sample1000.json exists, also compute within the 1000-subset only
 
-字段：
-    Qwen3-Embedding  ->  rec_examples_qwen3_8b
+Field names:
+    Qwen3-Embedding            -> rec_examples_qwen3_8b
     Azure text-embedding-3-large -> rec_examples_gpt_text_large
-    KaLM-gemma3      ->  rec_examples_kalm_gemma3
+    KaLM-gemma3                -> rec_examples_kalm_gemma3
 """
 
 import json
@@ -42,10 +41,10 @@ from typing import Dict, List, Tuple
 import numpy as np
 
 
-# ---------- 通用工具 ----------
+# ---------- Utilities ----------
 
 def load_examples(examples_path: Path) -> Dict[str, dict]:
-    """读取 json，并把 key 全部转成字符串。"""
+    """Load JSON and coerce all keys to strings."""
     with examples_path.open("r", encoding="utf-8") as f:
         data = json.load(f)
     return {str(k): v for k, v in data.items()}
@@ -53,17 +52,16 @@ def load_examples(examples_path: Path) -> Dict[str, dict]:
 
 def load_embeddings_from_npz(npz_path: Path, example_ids: List[str]):
     """
-    兼容两种 npz 格式：
-
-    A) 之前那种：
+    Support two NPZ formats:
+    A) Arrays:
         ids:        (N,)
         embeddings: (N, D)
-    B) 每个 id 一个 key：
+    B) Key-per-id:
         "113": (D,), "115": (D,), ...
 
-    返回：
-        id_list:  实际有向量的 id（按传入 example_ids 的顺序）
-        emd_mat:  (n, d) 的 float32 矩阵
+    Returns:
+        id_list: ids with vectors (preserving input order of example_ids)
+        emd_mat: (n, d) float32 matrix
     """
     npz = np.load(npz_path)
     files = list(npz.files)
@@ -74,7 +72,7 @@ def load_embeddings_from_npz(npz_path: Path, example_ids: List[str]):
         ids_arr = npz["ids"]
         embs = npz["embeddings"]
         if len(ids_arr) != len(embs):
-            raise ValueError(f"[{npz_path.name}] ids 和 embeddings 长度不一致")
+            raise ValueError(f"[{npz_path.name}] 'ids' and 'embeddings' lengths mismatch")
         for sid, vec in zip(ids_arr, embs):
             id2vec[str(sid)] = np.array(vec, dtype="float32").reshape(-1)
     else:
@@ -94,10 +92,10 @@ def load_embeddings_from_npz(npz_path: Path, example_ids: List[str]):
             missing.append(sid)
 
     if missing:
-        print(f"[WARN] {npz_path.name}: {len(missing)} ids 在 npz 里没找到，例如 {missing[:5]} ...")
+        print(f"[WARN] {npz_path.name}: {len(missing)} ids missing (e.g., {missing[:5]})")
 
     if not emd_list:
-        raise ValueError(f"[{npz_path.name}] 对当前数据集没有任何匹配向量，请检查 ids。")
+        raise ValueError(f"[{npz_path.name}] No matching vectors for the current dataset. Check ids.")
 
     emd_mat = np.vstack(emd_list)  # (n, d)
     return id_list, emd_mat
@@ -105,22 +103,22 @@ def load_embeddings_from_npz(npz_path: Path, example_ids: List[str]):
 
 def compute_topk_neighbors(id_list: List[str], emd_mat: np.ndarray, k: int = 5):
     """
-    用余弦相似度为每个 id 找 top-k 近邻（排除自己），返回 dict：
+    Cosine top-k neighbors (excluding self):
         id -> [neighbor_id1, ..., neighbor_idk]
 
-    这里的 id_list / emd_mat 可以是全量，也可以是 sample1000 的子集。
+    id_list / emd_mat can be full set or sample1000 subset.
     """
     n, d = emd_mat.shape
     if n <= 1:
-        raise ValueError("向量数量不足，无法做最近邻（n <= 1）")
+        raise ValueError("Not enough vectors for neighbors (n <= 1).")
 
-    # 归一化
+    # Normalize
     norms = np.linalg.norm(emd_mat, axis=1, keepdims=True)
     norms = np.maximum(norms, 1e-8)
     emd_norm = emd_mat / norms
 
     sims = emd_norm @ emd_norm.T  # (n, n)
-    np.fill_diagonal(sims, -np.inf)  # 排除自己
+    np.fill_diagonal(sims, -np.inf)  # exclude self
 
     k = min(k, n - 1)
     neighbor_dict: Dict[str, List[str]] = {}
@@ -135,14 +133,14 @@ def compute_topk_neighbors(id_list: List[str], emd_mat: np.ndarray, k: int = 5):
     return neighbor_dict
 
 
-# ---------- 扫描 RAG_Emd，建立 “base examples.json -> 多个 npz” 的映射 ----------
+# ---------- Scan RAG_Emd to map base examples.json -> multiple npz ----------
 
 def scan_rag_dir(rag_dir: Path):
     """
-    返回 mapping:
+    Returns mapping:
         base_examples_path -> List[(npz_path, field_name)]
 
-    base_examples_path 形如：
+    base_examples_path example:
         <root>/Melb_ADD_examples.json
         <root>/Florence_DELETE_examples.json
     """
@@ -186,48 +184,48 @@ def scan_rag_dir(rag_dir: Path):
                 "_KaLMgemma3",
             ]
         else:
-            print(f"[SKIP] 无法识别后端（既不含 qwen3*、azure，也不含 kalm/gemma3）：{npz_path.name}")
+            print(f"[SKIP] cannot detect backend (not qwen3*/azure/kalm-gemma3): {npz_path.name}")
             continue
 
         base_stem = stem_base
         for pat in strip_patterns:
             base_stem = base_stem.replace(pat, "")
 
-        # 这里得到的 examples 文件名是不带 sample1000 的“全量版”
+        # Base examples filename without sample1000 suffix
         examples_path = rag_dir.parent / f"{base_stem}.json"
         mapping.setdefault(examples_path, []).append((npz_path, field_name))
 
     return mapping
 
 
-# ---------- 对某一个 json（可以是 full，也可以是 sample1000）应用若干 npz ----------
+# ---------- Apply multiple npz to one json (full or sample1000) ----------
 
 def process_one_json(json_path: Path,
                      npz_list: List[Tuple[Path, str]],
                      topk: int,
                      inplace: bool):
     """
-    在给定的 json 上（可以是全量，也可以是 sample1000 子集）
-    利用 npz_list 里的多个 embedding 后端，生成对应的 rec_examples_* 字段。
+    For a given json (full or sample1000 subset), use multiple embedding backends
+    to generate rec_examples_* fields.
     """
     if not json_path.exists():
-        print(f"[WARN] {json_path} 不存在，跳过。")
+        print(f"[WARN] {json_path} not found, skip.")
         return
 
-    print(f"\n=== 处理 {json_path.name} ===")
+    print(f"\n=== Processing {json_path.name} ===")
     data = load_examples(json_path)
 
-    # 排序：统一返回 tuple，避免 int/str 混比较
+    # Sort to keep ordering stable and avoid int/str mix
     example_ids = sorted(
         data.keys(),
         key=lambda x: (0, int(x)) if str(x).isdigit() else (1, str(x)),
     )
-    print(f"  样本数：{len(example_ids)}")
+    print(f"  #samples: {len(example_ids)}")
 
     for npz_path, field_name in npz_list:
-        print(f"  -> 使用 {npz_path.name} 生成字段 {field_name} ...")
+        print(f"  -> using {npz_path.name} to build field {field_name} ...")
         id_list, emd_mat = load_embeddings_from_npz(npz_path, example_ids)
-        print(f"     有向量的样本数：{len(id_list)}，维度：{emd_mat.shape[1]}")
+        print(f"     samples with vectors: {len(id_list)}, dim: {emd_mat.shape[1]}")
 
         neighbors = compute_topk_neighbors(id_list, emd_mat, k=topk)
 
@@ -238,9 +236,9 @@ def process_one_json(json_path: Path,
             data[sid][field_name] = [str(x) for x in neigh_ids]
             updated += 1
 
-        print(f"     已写入 {updated} 条 rec_examples 到字段 {field_name}")
+        print(f"     wrote {updated} rec_examples to field {field_name}")
 
-    # 输出路径
+    # Output path
     inplace = True
     if inplace:
         out_path = json_path
@@ -250,10 +248,10 @@ def process_one_json(json_path: Path,
     with out_path.open("w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
-    print(f"  保存结果到：{out_path}")
+    print(f"  Saved to: {out_path}")
 
 
-# ---------- 主逻辑：先处理 full，再处理对应的 sample1000 ----------
+# ---------- Main: process full, then sample1000 ----------
 
 def main():
     parser = argparse.ArgumentParser()
@@ -261,18 +259,18 @@ def main():
         "--root",
         type=str,
         default=".",
-        help="工程根目录（里面要有 RAG_Emd 和 *_examples.json），默认当前目录",
+        help="Project root containing RAG_Emd and *_examples.json (default: cwd)",
     )
     parser.add_argument(
         "--topk",
         type=int,
         default=5,
-        help="每条 itinerary 取多少个相似样本，默认 5",
+        help="Top-k neighbors per itinerary (default: 5)",
     )
     parser.add_argument(
         "--inplace",
         action="store_true",
-        help="若指定，则直接覆盖原始 json；否则写到 *_with_emd_rec_examples.json",
+        help="If set, overwrite original json; otherwise write *_with_emd_rec_examples.json",
     )
     args = parser.parse_args()
 
@@ -280,34 +278,34 @@ def main():
     rag_dir = root / "RAG_Emd"
 
     if not rag_dir.exists():
-        raise FileNotFoundError(f"RAG_Emd 目录不存在：{rag_dir}")
+        raise FileNotFoundError(f"Missing RAG_Emd directory: {rag_dir}")
 
     mapping = scan_rag_dir(rag_dir)
     if not mapping:
-        print(f"在 {rag_dir} 下没有发现任何可用的 npz 文件。")
+        print(f"No usable npz files found under: {rag_dir}")
         return
 
-    print(f"找到 {len(mapping)} 个 base examples.json 需要处理：")
+    print(f"Found {len(mapping)} base examples.json to process:")
     for ex_path, pairs in mapping.items():
         print(f"  - {ex_path.name}: {[p.name for p, _ in pairs]}")
 
     for base_examples_path, npz_list in mapping.items():
-        # 1) 先处理全量 examples.json
+        # 1) process full examples.json
         if base_examples_path.exists():
             process_one_json(base_examples_path, npz_list, args.topk, args.inplace)
         else:
-            print(f"[WARN] base examples 不存在：{base_examples_path}")
+            print(f"[WARN] base examples not found: {base_examples_path}")
 
-        # 2) 如果有对应的 sample1000，就把它当成“新的数据集”再处理一次
+        # 2) if sample1000 exists, process it as its own subset
         sample_path = base_examples_path.with_name(base_examples_path.stem + "_sample1000.json")
         if sample_path.exists():
-            print(f"\n  -> 检测到子集文件：{sample_path.name}，将单独在 1000 条内部做最近邻")
+            print(f"\n  -> detected subset file: {sample_path.name}, running neighbors within 1000 subset")
             process_one_json(sample_path, npz_list, args.topk, args.inplace)
         else:
-            # 没有 sample1000 就略过
+            # no sample1000 -> skip
             pass
 
-    print("\n✅ 全部处理完毕。")
+    print("\n✅ All done.")
 
 
 if __name__ == "__main__":

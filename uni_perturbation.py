@@ -44,10 +44,10 @@ def make_ds_client():
 
 def ds_chat_create(payload: dict):
     """
-    稳健版本的 chat.completions.create：
-      - 每次都用新的 Client 发送请求
-      - 404 -> 重建 client 后重试
-      - 5xx/429/APIConnectionError -> 指数退避重试
+    Robust chat.completions.create:
+      - build a fresh client per request
+      - 404 -> rebuild client then retry
+      - 5xx/429/APIConnectionError -> exponential backoff + retry
     """
 
     client = make_ds_client()
@@ -71,11 +71,8 @@ def openaiAPIcall(**kwargs):
 
 
 def unix_time_convert(unix_timestamp):
-    # print(unix_timestamp)
     datatime_object = datetime.datetime.fromtimestamp(unix_timestamp, tz=ZoneInfo("Australia/Melbourne"))
-    # 格式化输出为 时:分
     formatted_time = datatime_object.strftime('%H:%M')
-    # formatted_time = datatime_object.strftime('%Y-%m-%d %H:%M:%S')
 
     return formatted_time
 
@@ -110,7 +107,7 @@ def new_data_open(city_name):
 
 
 def remove_consecutive_duplicates(lst):
-    """去除list中连续重复的元素"""
+    """Remove consecutive duplicate elements from list"""
     return [key for key, _ in groupby(lst)]
 
 
@@ -227,9 +224,9 @@ def _require_keys(args, required):
     return None
 
 
-# --- geo_distance_segments（如前） ---
+# --- geo_distance_segments (as above) ---
 def _maybe_json(v):
-    """如果 v 是 str，尝试 json.loads；否则原样返回。失败则原样返回。"""
+    """If v is str, try json.loads; otherwise return as-is. On failure, return as-is."""
     if isinstance(v, str):
         try:
             return json.loads(v)
@@ -240,14 +237,14 @@ def _maybe_json(v):
 
 def _as_waypoints(v):
     """
-    期望输入： [{"lat": <num>, "lon": <num>}, ...]
-    容错：
-      - 整个列表被 stringify：先 json.loads 一层
-      - 列表元素被 stringify：逐元素再 json.loads 一层
-    严格：
-      - 一律返回 Python list（绝不返回 set/dict）
-      - 每个元素都是 {"lat": float, "lon": float}
-    失败返回 None
+    Expected input: [{"lat": <num>, "lon": <num>}, ...]
+    Tolerances:
+      - If entire list is stringified: json.loads once
+      - If each element is stringified: json.loads per element
+    Rules:
+      - Always return Python list (no set/dict)
+      - Each element must be {"lat": float, "lon": float}
+    On failure: return None
     """
     v = _maybe_json(v)
     if not isinstance(v, list):
@@ -266,7 +263,7 @@ def _as_waypoints(v):
         except Exception:
             return None
         out.append({"lat": lat, "lon": lon})
-    return out  # ← **确保是 list**
+    return out  # ensure list
 
 
 def _haversine_km(a, b):
@@ -291,14 +288,14 @@ def _spatial_class(L_km):
 
 
 def tool_geo_distance_segments(args):
-    # 1) 解析顶层
+    # 1) parse top-level
     if not isinstance(args, dict):
         try:
             args = json.loads(args or "{}")
         except Exception:
             args = {}
 
-    # 2) 必填校验
+    # 2) required fields
     required = ["waypoints_before", "waypoints_after"]
     missing = [k for k in required if k not in args or args[k] is None]
     if missing:
@@ -310,7 +307,7 @@ def tool_geo_distance_segments(args):
             "received": list(args.keys())
         }
 
-    # 3) 规范化为 list[dict]
+    # 3) normalize to list[dict]
     wb = _as_waypoints(args["waypoints_before"])
     wa = _as_waypoints(args["waypoints_after"])
     if wb is None or wa is None:
@@ -323,7 +320,7 @@ def tool_geo_distance_segments(args):
             }
         }
 
-    # 4) 类型与结构硬校验（避免 set/dict 混入）
+    # 4) strict type/structure check (avoid set/dict)
     if not isinstance(wb, list) or not isinstance(wa, list):
         return {"error": "invalid_arguments", "message": "waypoints_* must be lists"}
     for prefix, wps in (("before", wb), ("after", wa)):
@@ -335,7 +332,7 @@ def tool_geo_distance_segments(args):
             if not isinstance(p["lat"], (int, float)) or not isinstance(p["lon"], (int, float)):
                 return {"error": "invalid_arguments", "message": f"Waypoint {prefix}[{idx}] lat/lon must be numeric"}
 
-    # 5) 计算段
+    # 5) compute segments
     def segments(wps):
         if len(wps) < 2:
             return [], []
@@ -349,7 +346,7 @@ def tool_geo_distance_segments(args):
     db, cb = segments(wb)
     da, ca = segments(wa)
 
-    # 6) 段数 = 点数 - 1，长度一致性检查
+    # 6) segment count must equal len(points)-1
     if len(db) != max(0, len(wb) - 1) or len(da) != max(0, len(wa) - 1):
         return {"error": "inconsistent_result", "message": "segment count must equal len(waypoints)-1"}
 
@@ -362,14 +359,14 @@ def tool_geo_distance_segments(args):
 # ---------------------------Categorical Diversity---------------------------
 def categories_from_itinerary(args):
     import json
-    # 解析
+    # parse
     if not isinstance(args, dict):
         try:
             args = json.loads(args or "{}")
         except Exception:
             args = {}
 
-    # 必填：itinerary（二维数组）
+    # required: itinerary (2D list)
     if "itinerary" not in args or args["itinerary"] is None:
         return {
             "error": "missing_arguments",
@@ -452,15 +449,15 @@ def tool_stats_from_categories(args):
     """
     Compute distribution/Hellinger/τ-b for categorical labels (before vs after).
 
-    关键增强：
-    - 允许 labels_before/after 与 domain 大小写不一致；按 domain 做不区分大小写映射，统一成 domain 中的“规范写法”。
-    - 若 labels_* 中出现不在 domain 的值（哪怕大小写不同），返回 {"error":"invalid_arguments", ...}。
-    - 保持原有返回结构与字段含义不变。
+    Key points:
+    - Case-insensitive mapping of labels_before/after to domain; normalize to the canonical form in domain.
+    - If any label is not in domain (case-insensitive), return {"error":"invalid_arguments", ...}.
+    - Preserve return structure and field semantics.
     """
     import json, math
     from collections import Counter
 
-    # -------- 解析与必填校验 --------
+    # -------- parse and required checks --------
     if not isinstance(args, dict):
         try:
             args = json.loads(args or "{}")
@@ -482,17 +479,17 @@ def tool_stats_from_categories(args):
     if not (isinstance(lb, list) and isinstance(la, list) and isinstance(domain, list)):
         return {"error": "invalid_arguments", "message": "labels_* and domain must be lists."}
 
-    # -------- 按 domain 构造大小写无关映射并校验 domain --------
+    # -------- build case-insensitive domain map and validate --------
     def _norm_token(x):
         return str(x).strip().lower()
 
     if any(str(d).strip() == "" for d in domain):
         return {"error": "invalid_arguments", "message": "domain contains empty token."}
 
-    dom_map = {}  # 规范化后的 key -> domain 中的原始写法（作为“标准写法”）
+    dom_map = {}  # normalized key -> canonical token from domain
     for tok in domain:
         key = _norm_token(tok)
-        # 若大小写不同但语义相同的重复，属于 domain 冲突
+        # duplicate token (case-insensitive) means domain conflict
         if key in dom_map and dom_map[key] != str(tok):
             return {
                 "error": "invalid_arguments",
@@ -502,7 +499,7 @@ def tool_stats_from_categories(args):
             }
         dom_map[key] = str(tok)
 
-    # -------- 规范化 labels_* 到 domain 的标准写法（Title Case 由 domain 决定）--------
+    # -------- normalize labels_* to canonical domain tokens --------
     def _canonize(seq, name):
         out = []
         for i, x in enumerate(seq):
@@ -528,16 +525,16 @@ def tool_stats_from_categories(args):
         return tmp
     la = tmp
 
-    # -------- 计数（严格按 domain 的顺序聚合）--------
+    # -------- counts in domain order --------
     cb = {k: int(Counter(lb).get(k, 0)) for k in domain}
     ca = {k: int(Counter(la).get(k, 0)) for k in domain}
 
-    # 分布
+    # distribution
     sb, sa = sum(cb.values()), sum(ca.values())
     pb = {k: (0.0 if sb == 0 else round(cb[k] / sb, 12)) for k in domain}
     pa = {k: (0.0 if sa == 0 else round(ca[k] / sa, 12)) for k in domain}
 
-    # 竞赛排名（并列同名次）
+    # competition ranks (ties share rank)
     def comp_ranks(counts):
         items = sorted(((k, counts[k]) for k in domain), key=lambda x: (-x[1], x[0]))
         ranks = {};
@@ -558,7 +555,7 @@ def tool_stats_from_categories(args):
     H = math.sqrt(sum((math.sqrt(pb[k]) - math.sqrt(pa[k])) ** 2 for k in domain)) / math.sqrt(2.0)
     H = float(round(H, 12))
 
-    # -------- Kendall's tau 相关计算 --------
+    # -------- Kendall's tau related calculations --------
     C = D = T_x = T_y = 0
     n = len(domain)
     for i in range(n):
@@ -582,12 +579,12 @@ def tool_stats_from_categories(args):
     denom_std = math.sqrt((C + D + T_x) * (C + D + T_y))
     tau_b_std = 0.0 if denom_std == 0 else float(round((C - D) / denom_std, 12))
 
-    # Goodman–Kruskal γ（只看非并列对）
+    # Goodman–Kruskal gamma (non-tied pairs only)
     gamma = None
     if (C + D) > 0:
         gamma = float(round((C - D) / (C + D), 12))
 
-    # 成对符号一致率（含并列）
+    # pairwise sign agreement (including ties)
     def pairwise_signs(counts):
         signs = {}
         for i in range(n):
@@ -604,7 +601,7 @@ def tool_stats_from_categories(args):
     tau_pairwise = 1.0 if total_pairs == 0 else float(round(matches / total_pairs, 12))
     all_pairs_match = (matches == total_pairs)
 
-    # τ 策略（与原实现保持一致；可通过 args["tau_policy"] 覆盖）
+    # tau policy (kept same as original; overridable via args["tau_policy"])
     tau_policy = str(args.get("tau_policy", "b_sign_override")).lower()
     if tau_policy == "b":
         tau_val = tau_b_std
@@ -615,7 +612,7 @@ def tool_stats_from_categories(args):
     else:  # "pairwise_sign"
         tau_val = tau_pairwise
 
-    # 扰动判定（容错 thresholds）
+    # disruption decision (tolerant thresholds)
     thr = args.get("thresholds", {}) or {}
     try:
         hell_thr = float(thr.get("hellinger", 0.1))
@@ -671,11 +668,11 @@ def handle_tool_call(call):
         return {"error": "tool_runtime_error", "tool": name, "message": str(e), "received": list(args.keys())}
 
 
-# ---------- 多轮 tool-calling 主循环（支持频繁调用） ----------
+# ---------- Multi-round tool-calling loop (supports frequent calls) ----------
 def run_with_tools(model, messages, tools, max_tool_rounds=800, stop_tokens=["</final_json>"], temperature=0):
     """
-    返回：content, usage_summary
-    usage_summary 结构：
+    Returns: content, usage_summary
+    usage_summary structure:
     {
       "totals": {"prompt_tokens": int, "completion_tokens": int, "total_tokens": int},
       "rounds": [
@@ -686,8 +683,8 @@ def run_with_tools(model, messages, tools, max_tool_rounds=800, stop_tokens=["</
           "total_tokens": int,
           "finish_reason": str|None,
           "tools_called": [str, ...],
-          "prompt_tokens_details": {...},         # 若 SDK 提供
-          "completion_tokens_details": {...}      # 若 SDK 提供
+          "prompt_tokens_details": {...},         # if SDK provides
+          "completion_tokens_details": {...}      # if SDK provides
         },
         ...
       ],
@@ -704,7 +701,7 @@ def run_with_tools(model, messages, tools, max_tool_rounds=800, stop_tokens=["</
 
     for round_idx in range(1, max_tool_rounds + 1):
 
-        # —— B) 如果这轮不会用到工具，就不要发 tools 字段（兼容一些路由）
+        # If this round will not use tools, omit the tools field (better compatibility)
         tools_payload = tools if (tools and isinstance(tools, list) and len(tools) > 0) else None
 
         payload = {
@@ -719,30 +716,30 @@ def run_with_tools(model, messages, tools, max_tool_rounds=800, stop_tokens=["</
         if tools_payload is not None:
             payload["tools"] = tools_payload
 
-        # log_payload_brief(payload, round_idx=None)  # 可选：定位异常轮次
+        # log_payload_brief(payload, round_idx=None)  # optional debug
 
-        resp = ds_chat_create(payload)  # ← 关键：用封装后的稳健请求
+        resp = ds_chat_create(payload)  # robust request wrapper
         # print(resp)
         # assert 1 == 0
 
-        # ====== 新增：更细分的 usage 采集与归一化 ======
+        # Collect and normalize usage details
         usage = getattr(resp, "usage", None)
         u = {}
         if usage is not None:
             try:
-                u = usage.to_dict()  # OpenAI/兼容 SDK
+                u = usage.to_dict()  # OpenAI/compatible SDK
             except Exception:
                 if isinstance(usage, dict):
                     u = usage
                 else:
                     u = {}
 
-        # 兼容不同字段命名
+        # Normalize different field names
         prompt_tokens = int(u.get("prompt_tokens") or u.get("input_tokens") or 0)
         completion_tokens = int(u.get("completion_tokens") or u.get("output_tokens") or 0)
         total_tokens = int(u.get("total_tokens") or (prompt_tokens + completion_tokens))
 
-        # 可选的细项（若 SDK 有）
+        # Optional details (if SDK provides)
         prompt_details = u.get("prompt_tokens_details") or {}
         completion_details = u.get("completion_tokens_details") or {}
 
@@ -757,7 +754,7 @@ def run_with_tools(model, messages, tools, max_tool_rounds=800, stop_tokens=["</
             except Exception:
                 tool_names.append("UNKNOWN_TOOL")
 
-        # 按轮记录
+        # Per-round log
         usage_summary["rounds"].append({
             "round": round_idx,
             "prompt_tokens": prompt_tokens,
@@ -769,7 +766,7 @@ def run_with_tools(model, messages, tools, max_tool_rounds=800, stop_tokens=["</
             "completion_tokens_details": completion_details,
         })
 
-        # 累计
+        # Accumulate totals
         usage_summary["totals"]["prompt_tokens"] += prompt_tokens
         usage_summary["totals"]["completion_tokens"] += completion_tokens
         usage_summary["totals"]["total_tokens"] += total_tokens
@@ -779,7 +776,7 @@ def run_with_tools(model, messages, tools, max_tool_rounds=800, stop_tokens=["</
             usage_summary["by_tool"][name] = usage_summary["by_tool"].get(name, 0) + 1
         # ==============================================
 
-        # 主流程不变
+        # Main flow
         tcs = getattr(msg, "tool_calls", None)
         if tcs:
             messages.append(msg)
@@ -793,7 +790,7 @@ def run_with_tools(model, messages, tools, max_tool_rounds=800, stop_tokens=["</
                 })
             continue
 
-        # 正常返回：内容 + 分类 usage
+        # normal return: content + usage
         return msg.content, usage_summary
 
     raise RuntimeError("Exceeded max tool-calling rounds")
@@ -801,11 +798,11 @@ def run_with_tools(model, messages, tools, max_tool_rounds=800, stop_tokens=["</
 
 def extract_json(text: str):
     """
-    更稳健的 JSON 提取：
-    1) 去掉 <think>…</think>
-    2) 优先在 <final_json> 之后做字符串感知的括号配平
-    3) 若未找到，降级扫描三引号代码块与全文
-    4) 只返回 dict（优先含关键键），否则抛错
+    Robust JSON extraction:
+    1) strip <think>…</think>
+    2) after <final_json> do quote-aware brace balancing
+    3) if still missing, scan triple-quoted blocks then full text
+    4) return dict (prefer containing key signals) or raise
     """
     if not isinstance(text, str) or not text.strip():
         raise ValueError("Empty model output.")
@@ -841,7 +838,7 @@ def extract_json(text: str):
         return _normalize(obj)
 
     def _balance_from(t: str, start: int):
-        """字符串感知的配平：处理引号与转义。"""
+        """Quote-aware balancing: handle quotes and escapes."""
         if start < 0 or start >= len(t) or t[start] not in "{[":
             return None
         stack, in_str, esc = [], False, False
@@ -872,12 +869,12 @@ def extract_json(text: str):
 
     def _score(d: dict):
         hits = sum(1 for k in d.keys() if k in PREFERRED_KEYS)
-        return (1 if hits > 0 else 0, hits, -len(d))  # 命中关键键优先，命中数多优先、更短优先
+        return (1 if hits > 0 else 0, hits, -len(d))  # prefer key hits, then count, then shorter length
 
-    # 先剔除 <think> 段
+    # drop <think> section first
     s = re.sub(r"(?is)<think>.*?</think>", "", text)
 
-    # 1) 在 <final_json> 之后尝试
+    # 1) try after <final_json>
     if "<final_json>" in s:
         tail = s.split("<final_json>", 1)[1]
         start = tail.find("{")
@@ -887,18 +884,18 @@ def extract_json(text: str):
                 obj = _try_parse(clip)
                 if isinstance(obj, dict):
                     return obj
-                # 不是 dict 就继续降级
+                # not a dict: keep searching
 
     best = None  # (score_tuple, obj)
 
-    # 2) 扫描三引号代码块
+    # 2) scan triple-quoted code blocks
     for m in re.finditer(r"```[\w-]*\s*([\s\S]*?)\s*```", s, re.IGNORECASE):
         block = m.group(1)
         starts = []
         p1, p2 = block.find("{"), block.find("[")
         if p1 != -1: starts.append(p1)
         if p2 != -1: starts.append(p2)
-        for k in sorted(starts, key=lambda x: (block[x] != "{", x)):  # '{' 优先
+        for k in sorted(starts, key=lambda x: (block[x] != "{", x)):  # prioritize '{'
             clip = _balance_from(block, k)
             if not clip:
                 continue
@@ -907,10 +904,10 @@ def extract_json(text: str):
                 sc = _score(obj)
                 if best is None or sc > best[0]:
                     best = (sc, obj)
-                    if sc[0] == 1:  # 命中关键键
+                    if sc[0] == 1:  # key hit found
                         return obj
 
-    # 3) 全文兜底扫描（最多 300 个起点）
+    # 3) fallback: scan full text (up to 300 starts)
     tried = 0
     for i, ch in enumerate(s):
         if ch not in "{[":
@@ -1233,4 +1230,3 @@ if __name__ == '__main__':
 
     # Toronto + ADD perturbation
     iTIMO_perturbation(city_set[0], op=op_set[0], checkpoint=-1)
-

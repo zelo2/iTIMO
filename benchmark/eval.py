@@ -1,21 +1,21 @@
 # -*- coding: utf-8 -*-
 """
-一次性评估：
-  1) index / poi / edit 三个 accuracy
-  2) popularity / category / spatial 的 Hint Pass Rate
-  3) 三轴平均 Hint Pass Rate（hint_pass_rate_avg）
-  4) All-axes pass rate（check_one(...)[ "ok" ] 的通过率）
+Batch evaluation:
+  1) index / poi / edit accuracy
+  2) Hint Pass Rate for popularity / category / spatial
+  3) Average of three-axis Hint Pass Rate (hint_pass_rate_avg)
+  4) All-axes pass rate (check_one(...)[ "ok" ])
 
-POI acc 判定规则：
-  - 若 gold / pred 都给了 selected_cand_id，且相等 → 认为 POI 正确；
-  - 否则，若 gold / pred 都给了完整 POI（selected_poi / poi_label），
-    则在归一化经纬度为 float 后比较，只要完全一致 → 认为 POI 正确；
-  - 只要满足上述任意一种，即记为 POI 命中。
+POI accuracy rules:
+  - If gold and pred both provide selected_cand_id and they match → POI correct
+  - Else, if gold and pred both provide full POI (selected_poi / poi_label),
+    compare after converting lon/lat to float; exact match → POI correct
+  - If either condition is met, count as POI hit
 
-用法：直接在 benchmark 目录下运行：
+Usage (run inside benchmark/):
     python eval.py
 
-假定目录结构：
+Expected layout:
     benchmark/
       Melb_ADD_examples.json
       Melb_DELETE_examples.json
@@ -30,15 +30,15 @@ import json
 from pathlib import Path
 from typing import Any, Dict, Tuple, Optional
 
-from hint_satis_check import check_one   # 这里用的是 5d9e 那个脚本里的 check_one
+from hint_satis_check import check_one   # uses check_one from hint_satis_check
 
 
-# ========= 工具函数：gold / pred 提取 =========
+# ========= Helpers: extract gold / pred =========
 
 def get_gold_index(label: Dict[str, Any]):
     """
-    从 label 里取“正确 index”。
-    会依次尝试: insert_index / replaced_index / removed_index / index_label
+    Extract gold index from label.
+    Tries: insert_index / replaced_index / removed_index / index_label
     """
     if not isinstance(label, dict):
         return None
@@ -50,8 +50,8 @@ def get_gold_index(label: Dict[str, Any]):
 
 def get_gold_poi(label: Dict[str, Any]):
     """
-    从 label 里取“正确 POI 的完整 tuple/list”。
-    优先用 selected_poi / poi_label，不再退化成 candidate_id。
+    Extract gold POI tuple/list from label.
+    Prefer selected_poi / poi_label, do not fall back to candidate_id.
     """
     if not isinstance(label, dict):
         return None
@@ -64,7 +64,7 @@ def get_gold_poi(label: Dict[str, Any]):
 
 def get_gold_cand_id(label: Dict[str, Any]):
     """
-    从 label 里取“正确候选 id”（如果存在）。
+    Extract gold candidate id from label (if any).
     """
     if not isinstance(label, dict):
         return None
@@ -76,7 +76,7 @@ def get_gold_cand_id(label: Dict[str, Any]):
 
 def get_pred_index(resp: Dict[str, Any]):
     """
-    从模型 response 里取预测 index（兼容多种命名）。
+    Extract predicted index from model response (multiple key variants).
     """
     if not isinstance(resp, dict):
         return None
@@ -99,9 +99,9 @@ def get_pred_index(resp: Dict[str, Any]):
 
 def get_pred_poi(resp: Dict[str, Any]):
     """
-    从模型 response 里取预测 POI 的完整 tuple/list：
-      - 优先 selected_poi / poi_label
-      - 兜底 poi 字段
+    Extract predicted POI tuple/list from response:
+      - Prefer selected_poi / poi_label
+      - Fallback to poi
     """
     if not isinstance(resp, dict):
         return None
@@ -116,7 +116,7 @@ def get_pred_poi(resp: Dict[str, Any]):
 
 def get_pred_cand_id(resp: Dict[str, Any]):
     """
-    从模型 response 里取预测的候选 id（如果存在）。
+    Extract predicted candidate id from response (if any).
     """
     if not isinstance(resp, dict):
         return None
@@ -128,18 +128,18 @@ def get_pred_cand_id(resp: Dict[str, Any]):
 
 def normalize_poi(poi: Any):
     """
-    归一化 POI 表示，用于比较：
-    - 列表/tuple: [name, cat, lon, lat, pop]，会尝试把 lon/lat 转成 float
-    - 字典且含 'poi' 字段 → 先取出 poi 再处理
-    - 其它类型原样返回
+    Normalize POI for comparison:
+    - list/tuple: [name, cat, lon, lat, pop]; try to convert lon/lat to float
+    - dict with 'poi' key: extract poi then process
+    - otherwise return as-is
     """
-    # 如果是字典，尝试取 'poi' 字段
+    # If dict, try to take 'poi' field
     if isinstance(poi, dict) and "poi" in poi:
         poi = poi["poi"]
 
     if isinstance(poi, (list, tuple)):
         res = list(poi)
-        # 通常经纬度在下标 2,3，尝试转成 float
+        # lon/lat typically at indices 2 and 3; try float conversion
         for idx in (2, 3):
             if idx < len(res):
                 try:
@@ -154,34 +154,34 @@ def safe_rate(num: int, den: int):
     return (num / den) if den else None
 
 
-# ========= 单文件：Accuracy + Hint Pass =========
+# ========= Single file: Accuracy + Hint Pass =========
 
 def eval_one_file(path: Path, examples: Optional[Dict[str, Any]]):
     """
-    对单个 results_parsed/..._example.json 做：
+    For one results_parsed/..._example.json:
       - index / poi / edit accuracy
       - popularity / category / spatial Hint Pass + All-axes Pass
 
-    POI acc 的规则：
-      1) 若 gold/pred 都有 candidate_id 且相等 → 视为正确；
-      2) 否则，若 gold/pred 都有完整 POI，normalize 后完全相等 → 视为正确；
-      3) 满足 (1) 或 (2) 之一即计为 POI 正确。
+    POI acc rules:
+      1) If gold/pred both have candidate_id and match → correct
+      2) Else if gold/pred both have full POI and normalize(...) matches → correct
+      3) Either (1) or (2) counts as correct
     """
     with path.open("r", encoding="utf-8") as f:
         data = json.load(f)
 
-    # accuracy 部分
+    # accuracy section
     total_idx = correct_idx = 0
     total_poi = correct_poi = 0
     total_edit = correct_edit = 0
 
-    # hint 部分
+    # hint section
     hint_all_total = 0
     hint_all_pass = 0
     hint_axis_total = {"popularity": 0, "category": 0, "spatial": 0}
     hint_axis_pass = {"popularity": 0, "category": 0, "spatial": 0}
 
-    skipped = 0  # 完全结构不对 / 没 label / 没 response 的样本
+    skipped = 0  # invalid structure or missing label/response
 
     for sid, rec in data.items():
         if not isinstance(rec, dict):
@@ -191,7 +191,7 @@ def eval_one_file(path: Path, examples: Optional[Dict[str, Any]]):
         label = rec.get("label")
         resp = rec.get("response")
 
-        # ---------- Accuracy：需要 label 和 dict 类型 resp ----------
+        # ---------- Accuracy: requires label and dict resp ----------
         if isinstance(label, dict) and isinstance(resp, dict):
             gold_idx = get_gold_index(label)
             pred_idx = get_pred_index(resp)
@@ -217,18 +217,18 @@ def eval_one_file(path: Path, examples: Optional[Dict[str, Any]]):
                 if idx_ok:
                     correct_idx += 1
 
-            # POI accuracy（候选 id 优先，其次比 POI 内容）
+            # POI accuracy (candidate id preferred, else POI content)
             has_gold_cid = gold_cid is not None
             has_pred_cid = pred_cid is not None
             has_gold_poi = gold_poi is not None
             has_pred_poi = pred_poi is not None
 
-            # 只要在 cand_id 或 POI 上能对齐一种，就计入分母
+            # Count if either candidate_id or POI can be aligned
             if (has_gold_cid and has_pred_cid) or (has_gold_poi and has_pred_poi):
                 total_poi += 1
                 poi_ok = False
 
-                # 1) 先看 candidate_id 是否一致
+                # 1) compare candidate_id first
                 if has_gold_cid and has_pred_cid:
                     try:
                         if int(gold_cid) == int(pred_cid):
@@ -237,14 +237,14 @@ def eval_one_file(path: Path, examples: Optional[Dict[str, Any]]):
                         if gold_cid == pred_cid:
                             poi_ok = True
 
-                # 2) 如果 candidate_id 不一致 / 缺失，再比较 POI 内容
+                # 2) if candidate_id missing/mismatch, compare POI content
                 if (not poi_ok) and has_gold_poi and has_pred_poi:
                     poi_ok = (normalize_poi(gold_poi) == normalize_poi(pred_poi))
 
                 if poi_ok:
                     correct_poi += 1
 
-            # edit accuracy（index & poi 同时对）
+            # edit accuracy (index & POI both correct)
             if idx_ok is not None and poi_ok is not None:
                 total_edit += 1
                 if idx_ok and poi_ok:
@@ -252,7 +252,7 @@ def eval_one_file(path: Path, examples: Optional[Dict[str, Any]]):
         else:
             skipped += 1
 
-        # ---------- Hint Pass：依赖 examples + resp ----------
+        # ---------- Hint Pass: depends on examples + resp ----------
         if examples is None or resp is None:
             continue
 
@@ -268,7 +268,7 @@ def eval_one_file(path: Path, examples: Optional[Dict[str, Any]]):
         if example_input is None:
             continue
 
-        # resp 可以是 dict / str / list，check_one 会自己处理
+        # resp may be dict / str / list; check_one handles it
         res_hint = check_one(example_input, example_output, resp)
         if not isinstance(res_hint, dict):
             continue
@@ -289,7 +289,7 @@ def eval_one_file(path: Path, examples: Optional[Dict[str, Any]]):
                     if axr.get("ok", False):
                         hint_axis_pass[ax] += 1
 
-    # 汇总 accuracy
+    # summarize accuracy
     res: Dict[str, Any] = {
         "file": str(path),
         "n_records": len(data),
@@ -302,7 +302,7 @@ def eval_one_file(path: Path, examples: Optional[Dict[str, Any]]):
         "n_skipped": skipped,
     }
 
-    # 汇总 Hint Pass
+    # summarize Hint Pass
     res["hint_all_total"] = hint_all_total
     res["hint_all_pass"] = hint_all_pass
     res["hint_all_pass_rate"] = safe_rate(hint_all_pass, hint_all_total)
@@ -323,13 +323,13 @@ def eval_one_file(path: Path, examples: Optional[Dict[str, Any]]):
     return res
 
 
-# ========= 路径解析 & 主循环 =========
+# ========= Path parsing & main loop =========
 
 def parse_setting_from_path(path: Path, root: Path):
     """
-    解析路径拿元信息：
+    Parse path metadata:
     results_parsed/city/op/model/model_think[_rag]_icl_example.json
-      → city, op, model, setting(zero-shot/few-shots/rag), icl_num
+      → city, op, model, setting (zero-shot/few-shots/rag), icl_num
     """
     rel = path.relative_to(root)
     parts = rel.parts  # [city, op, model, filename]
@@ -373,7 +373,7 @@ def main():
 
     print(f"Found {len(files)} parsed result files under {root}")
 
-    # cache 每个 (city, op) 对应的 examples，避免重复读盘
+    # cache each (city, op) examples to avoid repeated disk reads
     examples_cache: Dict[Tuple[str, str], Optional[Dict[str, Any]]] = {}
 
     all_results = []

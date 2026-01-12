@@ -13,16 +13,16 @@ client = OpenAI(
     api_key=api_key.deepseek_api_key,
 )
 
-# ================== RAG 模式 -> example.json 字段名 ==================
+# ================== RAG modes -> example.json field names ==================
 RAG_FIELD_MAP = {
     "none": None,
-    "hint": "rec_exmaples",              # 注意拼写
+    "hint": "rec_exmaples",              # keep spelling as in data
     "emd_qwen3_8b": "rec_examples_qwen3_8b",
     "emd_azure": "rec_examples_gpt_text_large",
     "emd_kalm_gemma3": "rec_examples_kalm_gemma3",
 }
 
-SFT_DIR = "Dataset"  # 你的 SFT json 目录
+SFT_DIR = "Dataset"  # SFT json directory
 
 # ======================================================
 # 0) Windows-safe atomic dump
@@ -71,8 +71,8 @@ def safe_run_one_sid(*args, **kwargs):
     """
     args:
         0: sid
-        1: eval_examples   （当前要跑的 split：SFT test 或 full）
-        2: icl_examples    （ICL 池：通常是 train）
+        1: eval_examples   (current split: SFT test or full)
+        2: icl_examples    (ICL pool: usually train)
     """
     sid = args[0]
     eval_examples = args[1]
@@ -86,7 +86,7 @@ def safe_run_one_sid(*args, **kwargs):
         }
 
 # ======================================================
-# 1) 全局 TPM 限流器
+# 1) Global TPM rate limiter
 # ======================================================
 TPM_LIMIT = 300000
 WINDOW_SEC = 60
@@ -153,13 +153,13 @@ def chunked(lst, batch_size):
         yield lst[i:i + batch_size]
 
 # ======================================================
-# 3) 构建单条 sid messages（eval_examples + icl_examples）
+# 3) Build messages for one sid (eval_examples + icl_examples)
 # ======================================================
 def build_messages_for_sid(
     sid: str,
-    eval_examples: dict,      # 当前评估集（SFT test 或 full）
-    icl_examples: dict,       # ICL few-shot 池（通常是 train）
-    valid_icl_pool,           # list[str] -> icl_examples 的键
+    eval_examples: dict,      # split to evaluate (SFT test or full)
+    icl_examples: dict,       # ICL few-shot pool (usually train)
+    valid_icl_pool,           # list[str] -> keys in icl_examples
     base_prompt,
     icl_num: int = 0,
     is_think: bool = False,
@@ -167,11 +167,11 @@ def build_messages_for_sid(
 ):
     """
     rag_mode:
-        "none"            : 不用 RAG，随机 few-shots（从 valid_icl_pool 中选）
-        "hint"            : 用 rec_exmaples（eval_examples[sid] 上的字段）
-        "emd_qwen3_8b"    : 用 rec_examples_qwen3_8b
-        "emd_azure"       : 用 rec_examples_gpt_text_large
-        "emd_kalm_gemma3" : 用 rec_examples_kalm_gemma3
+        "none"            : no RAG, random few-shots from valid_icl_pool
+        "hint"            : use rec_exmaples in eval_examples[sid]
+        "emd_qwen3_8b"    : use rec_examples_qwen3_8b
+        "emd_azure"       : use rec_examples_gpt_text_large
+        "emd_kalm_gemma3" : use rec_examples_kalm_gemma3
     """
     input_ex = eval_examples[sid]["example_input"]
     label_ex = eval_examples[sid]["example_output"]
@@ -180,24 +180,24 @@ def build_messages_for_sid(
     if icl_num > 0:
         field_name = RAG_FIELD_MAP.get(rag_mode, None)
 
-        # 构造局部 RNG，使同 (sid, rag_mode) 可复现
+        # Local RNG for reproducibility per (sid, rag_mode)
         rng_seed = hash((sid, rag_mode)) & 0xffffffff
         rng = random.Random(rng_seed)
 
         if field_name is None:
-            # 不用 RAG：在 few-shot 库中随机
+            # No RAG: random few-shots from pool
             cand_pool = [k for k in valid_icl_pool if k != sid]
         else:
-            # 用某种 RAG：eval_examples[sid] 里有 rec_* 字段，值是 train 的 id
+            # With RAG: rec_* field in eval_examples[sid] refers to train ids
             rec_ids = eval_examples[sid].get(field_name) or []
-            # 过滤掉不在 icl_examples 里的样本，避免 KeyError
+            # Filter out ids not in icl_examples to avoid KeyError
             cand_pool = [
                 str(x) for x in rec_ids
                 if str(x) in icl_examples and str(x) != sid
             ]
 
             if not cand_pool:
-                print(f"[WARN] sid={sid} rag_mode={rag_mode} 没有有效 {field_name} 候选，降级为随机 few-shots")
+                print(f"[WARN] sid={sid} rag_mode={rag_mode} missing valid {field_name}, fallback to random few-shots")
                 cand_pool = [k for k in valid_icl_pool if k != sid]
 
         if len(cand_pool) <= icl_num:
@@ -205,7 +205,7 @@ def build_messages_for_sid(
         else:
             icl_pool = rng.sample(cand_pool, k=icl_num)
 
-        # few-shot 内容一律从 icl_examples（train）里取
+        # Few-shot content always comes from icl_examples (train)
         for j, ex_sid in enumerate(icl_pool, 1):
             ex_sid_str = str(ex_sid)
             if ex_sid_str not in icl_examples:
@@ -238,7 +238,7 @@ def build_messages_for_sid(
     return messages, label_ex, system_prompt, user_content
 
 # ======================================================
-# 4) 单条 sid 调用
+# 4) Single sid invocation
 # ======================================================
 def run_one_sid(
     sid: str,
@@ -282,7 +282,7 @@ def run_one_sid(
     return sid, {"response": content, "label": label}
 
 # ======================================================
-# 5) 主入口：batch 并发 + 断点续跑（仅 is_full 判定）
+# 5) Main entry: batch parallel run (only is_full toggle)
 # ======================================================
 def batch_parallel_run(
     city_name="Melb",
@@ -299,7 +299,7 @@ def batch_parallel_run(
     """
     is_full = False:
         eval_examples = SFT_data/{city}_{op}_test.json
-        icl_examples  = SFT_data/{city}_{op}_train.json （若无则退回 eval_examples）
+        icl_examples  = SFT_data/{city}_{op}_train.json (fallback to eval_examples if missing)
 
     is_full = True:
         eval_examples = {city}_{op}_test.json
@@ -315,7 +315,7 @@ def batch_parallel_run(
     with open(eval_path, "r", encoding="utf-8") as f:
         eval_examples = json.load(f)
 
-    # ---- load icl_examples（few-shot / RAG 池）----
+    # ---- load icl_examples (few-shot / RAG pool) ----
     if is_full:
         icl_examples = eval_examples
     else:
@@ -340,7 +340,7 @@ def batch_parallel_run(
     else:
         raise ValueError(f"Unknown perturb_op={perturb_op}")
 
-    # ---- 构造输出文件名：包含 think / rag_mode / icl_num ----
+    # ---- build output filename (includes think / rag_mode / icl_num) ----
     tag_parts = []
     if is_think:
         tag_parts.append("think")
@@ -416,13 +416,13 @@ if __name__ == "__main__":
     perturb_op_set = ["ADD", "DELETE", "REPLACE"]
     model_name = "deepseek-reasoner"
     is_think = True
-    is_full = False   # 和 Azure/LM Studio 脚本保持一致
+    is_full = False   # align with Azure/LM Studio scripts
 
     # (rag_mode, icl_num)
     rag_settings = [
         ("none", 0),              # 0-shot baseline
         ("none", 3),              # few-shot, no RAG
-        # ("hint", 3),              # 原始 hint-RAG (rec_exmaples)
+        # ("hint", 3),              # original hint-RAG (rec_exmaples)
         # ("emd_qwen3_8b", 3),      # Qwen embedding RAG
         # ("emd_azure", 3),         # GPT embedding RAG
         # ("emd_kalm_gemma3", 3),   # KaLM-gemma3 RAG

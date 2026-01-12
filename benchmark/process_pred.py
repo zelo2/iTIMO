@@ -4,35 +4,35 @@ from pathlib import Path
 from json_repair import repair_json
 
 def parse_response(resp):
-    """把 response 字符串修复并转成 dict。若已是 dict 就原样返回。"""
+    """Repair response string to dict; if already dict, return as-is."""
     if not isinstance(resp, str):
         return resp
 
-    # 1) 去掉 <think>…</think>
+    # 1) Strip <think>…</think>
     resp = re.sub(r"<think>.*?</think>\s*", "", resp, flags=re.S | re.I)
 
-    # 2) 优先提取 ```json ... ``` 或 ``` ... ``` 里的对象
+    # 2) Prefer objects inside ```json ...``` or ``` ...```
     m = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", resp, flags=re.S | re.I)
     if m:
         resp = m.group(1)
 
-    # 3) 纠错 + 解析
+    # 3) Repair + parse
     fixed = repair_json(resp)
     return json.loads(fixed)
 
 
 def should_process_file(p: Path) -> bool:
     """
-    只处理评测结果文件，避免误处理 examples/token_usage 等。
-    规则：文件名以 _example.json 结尾。
+    Only process evaluation result files, avoid examples/token_usage, etc.
+    Rule: filename ends with _example.json.
     """
     return p.name.endswith("_example.json")
 
 
 def process_one_file(src_path: Path, src_root: Path, dst_root: Path) -> bool:
     """
-    读取 src_path，解析 response，写到 dst_root 的镜像路径。
-    返回 True 表示成功写出了文件。
+    Load src_path, parse response, write to mirrored path under dst_root.
+    Returns True if written successfully.
     """
     try:
         with src_path.open("r", encoding="utf-8") as f:
@@ -52,9 +52,9 @@ def process_one_file(src_path: Path, src_root: Path, dst_root: Path) -> bool:
                 v["response"] = parse_response(v.get("response"))
             except Exception as e:
                 bad += 1
-                v.setdefault("parse_error", str(e))  # 记录错误但不中断
+                v.setdefault("parse_error", str(e))  # record error but continue
 
-    # 计算目标镜像路径
+    # Compute destination mirrored path
     rel = src_path.relative_to(src_root)
     dst_path = dst_root / rel
     dst_path.parent.mkdir(parents=True, exist_ok=True)

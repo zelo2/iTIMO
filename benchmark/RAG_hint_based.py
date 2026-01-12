@@ -5,12 +5,12 @@ import re
 import json
 from collections import defaultdict
 
-ROOT = "SFT_data"   # 你的 train/val/test 都在这个目录下
+ROOT = "SFT_data"   # train/val/test live here
 
 
-# --------- 工具函数 ---------
+# --------- Utility functions ---------
 def get_hint(entry):
-    """安全地取出 example_input.hint 并 strip。"""
+    """Safely extract example_input.hint and strip."""
     try:
         return (entry.get("example_input", {})).get("hint", "").strip()
     except Exception:
@@ -46,13 +46,13 @@ def get_selected_cand_id(entry):
 
 def select_diverse_ids(train_data, source_ids, current_id, k=5):
     """
-    从同 hint 的 train 样本集合里挑最多 k 个，尽量让 insert_index 和 selected_cand_id 多样化。
+    Pick up to k ids from train with the same hint, maximizing diversity on insert_index and selected_cand_id.
 
-    train_data: 只包含 train 的 dict
-    source_ids: 同 hint 的所有 train 样本 id 列表
-    current_id: 当前样本 id（train/val/test 都可以）
+    train_data: dict containing only train samples
+    source_ids: ids in train sharing the same hint
+    current_id: current sample id (train/val/test)
     """
-    # 备选（排除自己，如果 current_id 也在 train 里）
+    # candidates (exclude self if current_id in train)
     cand = []
     for sid in source_ids:
         if sid == current_id:
@@ -65,7 +65,7 @@ def select_diverse_ids(train_data, source_ids, current_id, k=5):
     used_idx, used_cid = set(), set()
     picked = []
 
-    # 先按 index 分组，尽量“一组只取一个”，同时优先拿没用过的 cand_id
+    # group by index; prefer one per group and new cand_id
     idx_groups = defaultdict(list)
     for sid, idx, cid in cand:
         idx_groups[idx].append((sid, idx, cid))
@@ -86,7 +86,7 @@ def select_diverse_ids(train_data, source_ids, current_id, k=5):
         if len(picked) >= k:
             break
 
-    # 不足 k 个则继续补：优先选择“同时带来新 index 与新 cand_id”的样本
+    # If still short, fill with items bringing new index and cand_id
     if len(picked) < k:
         remaining = [t for t in cand if t[0] not in picked]
 
@@ -113,22 +113,22 @@ def select_diverse_ids(train_data, source_ids, current_id, k=5):
     return picked[:k]
 
 
-# --------- 针对某个 (city, op) 处理 train/val/test ---------
+# --------- Process one (city, op) for train/val/test ---------
 def process_city_op(city, op, k=5):
     """
-    对一个 city+op 组合：
+    For a given city+op:
         SFT_data/{city}_{op}_train.json
         SFT_data/{city}_{op}_val.json
         SFT_data/{city}_{op}_test.json
-    三个文件的 rec_exmaples 都只从 train.json 里选。
+    rec_exmaples for all splits are selected from train.json.
     """
     train_path = os.path.join(ROOT, f"{city}_{op}_train.json")
     if not os.path.exists(train_path):
-        print(f"[SKIP] {train_path} 不存在，跳过 {city}-{op}")
+        print(f"[SKIP] {train_path} not found, skip {city}-{op}")
         return
 
     print(f"\n=== Processing {city} - {op} ===")
-    # ---- 1) 读 train，基于 train 建立 hint 分组 ----
+    # ---- 1) read train, build hint groups ----
     with open(train_path, "r", encoding="utf-8") as f:
         train_data = json.load(f)
 
@@ -140,11 +140,11 @@ def process_city_op(city, op, k=5):
     print(f"  Train samples: {len(train_data)}")
     print(f"  Unique hints in train: {len(hint_to_ids)}")
 
-    # ---- 2) 对 train/val/test 逐个文件生成 rec_exmaples ----
+    # ---- 2) build rec_exmaples for train/val/test ----
     for split in ["train", "val", "test"]:
         path = os.path.join(ROOT, f"{city}_{op}_{split}.json")
         if not os.path.exists(path):
-            print(f"  [{split}] {path} 不存在，跳过。")
+            print(f"  [{split}] {path} not found, skip.")
             continue
 
         print(f"  [{split}] building rec_exmaples from TRAIN pool ...")
@@ -154,10 +154,10 @@ def process_city_op(city, op, k=5):
         augmented = {}
         for sid, entry in data_split.items():
             h = get_hint(entry)
-            pool = hint_to_ids.get(h, [])  # 只用 train 中同 hint 的 ids
+            pool = hint_to_ids.get(h, [])  # only ids with same hint from train
             rec_list = select_diverse_ids(train_data, pool, current_id=sid, k=k)
             new_entry = dict(entry)
-            # 注意字段名保持为 rec_exmaples（跟你之前代码一致）
+            # keep field name rec_exmaples (to stay consistent with existing code)
             new_entry["rec_exmaples"] = rec_list
             augmented[sid] = new_entry
 
@@ -168,7 +168,7 @@ def process_city_op(city, op, k=5):
 
 
 if __name__ == "__main__":
-    # 自动扫描 SFT_data 下所有 *_train.json，推断出 city 和 op
+    # Auto-scan SFT_data for *_train.json to infer city and op
     train_files = [
         f for f in os.listdir(ROOT)
         if f.endswith("_train.json")
@@ -181,7 +181,7 @@ if __name__ == "__main__":
     for name in sorted(train_files):
         print("  -", name)
 
-    # 从文件名解析 city 和 op，比如 Melb_ADD_train.json
+    # Parse city/op from filename, e.g., Melb_ADD_train.json
     pattern = re.compile(r"(.+)_([A-Z]+)_train\.json")
 
     city_op_set = set()

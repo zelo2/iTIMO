@@ -76,7 +76,7 @@ tools = [
                         "items": {
                             "type": "array",
                             "items": {
-                                # 行内的每个单元格可以是 string / number / boolean / null
+                                # each cell may be string / number / boolean / null
                                 "oneOf": [
                                     {"type": "string"},
                                     {"type": "number"},
