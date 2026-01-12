@@ -8,14 +8,14 @@ This repository provides the dataset and code for *iTIMO: An LLM-Empowered Synth
 
 ## 📦 Dataset
 
-The released benchmark dataset is under `benchmark/Dataset/`:
-- `benchmark/Dataset/iTIMO-Florence/`
-- `benchmark/Dataset/iTIMO-Melbourne/`
-- `benchmark/Dataset/iTIMO-Toronto/`
+The released benchmark dataset is under `benchmark/iTIMO/`:
+- `benchmark/iTIMO/iTIMO-Florence/`
+- `benchmark/iTIMO/iTIMO-Melbourne/`
+- `benchmark/iTIMO/iTIMO-Toronto/`
 
 ### 🔁 Perturbation vs. Modification (Important)
 
-In filenames like `benchmark/Dataset/iTIMO-Florence/Florence_ADD_test.json`, the `ADD/DELETE/REPLACE` token refers to the **perturbation** operation used to create the need-to-modify itinerary. The **modification/repair** operation is the *inverse*:
+In filenames like `benchmark/iTIMO/iTIMO-Florence/Florence_ADD_test.json`, the `ADD/DELETE/REPLACE` token refers to the **perturbation** operation used to create the need-to-modify itinerary. The **modification/repair** operation is the *inverse*:
 - `*_ADD_*.json` → repair with **DELETE** (gold label field: `removed_index`)
 - `*_DELETE_*.json` → repair with **ADD** (gold label fields: `insert_index`, `selected_poi`, `selected_cand_id`)
 - `*_REPLACE_*.json` → repair with **REPLACE** (gold label fields: `replaced_index`, `selected_poi`, `selected_cand_id`)
@@ -70,7 +70,7 @@ This benchmark evaluates *itinerary modification (repair)*: given a need-to-modi
 
 ### 0) Prepare dataset paths (required by the benchmark scripts)
 
-Some benchmark scripts expect files under `benchmark/Dataset/<City>_<PerturbOp>_<split>.json`, while the released data is stored under `benchmark/Dataset/iTIMO-*/`. Run once:
+Some benchmark scripts expect files under `benchmark/iTIMO/<City>_<PerturbOp>_<split>.json`, while the released data is stored under `benchmark/iTIMO/iTIMO-*/`. Run once:
 
 ```bash
 cd benchmark
@@ -85,7 +85,7 @@ city_dir = {
 ops = ["ADD", "DELETE", "REPLACE"]
 splits = ["train", "val", "test"]
 
-dataset_root = Path("Dataset")
+dataset_root = Path("iTIMO")
 for city, sub in city_dir.items():
     for op in ops:
         for sp in splits:
@@ -112,18 +112,24 @@ PY
 - DeepSeek: set key in `benchmark/api_key/api_key.py` (used by `benchmark/Prompt_LLM_Eval_DS.py`)
 - LM Studio: ensure a local OpenAI-compatible endpoint is running (used by `benchmark/Prompt_LLM_Eval_Lmstudio.py`)
 
-### 2) Run inference (choose one runner)
+### 2) Run inference (single-setting runner)
 
-Each runner writes raw predictions to `benchmark/SFT_results/`.
+Use the unified runner (per-call single city/op/model/rag/icl). Output goes to `benchmark/prompt_results/`.
 
 ```bash
 cd benchmark
-python Prompt_LLM_Eval_Azure.py
-# or: python Prompt_LLM_Eval_DS.py
-# or: python Prompt_LLM_Eval_Lmstudio.py
+python Prompting_LLM.py \
+  --city Melb --op ADD --split test \
+  --provider openai \
+  --model "deepseek-chat" \
+  --api_key "$DEEPSEEK_KEY" \
+  --rag_mode none --icl_num 3 \
+  --temperature 0.1 --max_new_tokens 256
 ```
 
-To switch LLMs / settings, edit the runner’s `__main__` block (e.g., `model_name`, `city_set`, `perturb_op_set`, `rag_settings`, `icl_num`, `temperature`).
+- For Azure: `--provider azure --model <deployment_name> --azure_endpoint <url> --api_key <key> --azure_api_version 2024-12-01-preview`
+- For LM Studio or other OpenAI-compatible endpoints: `--provider openai --base_url http://localhost:1234/v1`
+- Default output: `benchmark/prompt_results/prompt_eval_<provider>_<model>_<city>_<op>_rag-<rag>_icl-<icl>_<split>.json`; override with `--output`.
 
 ### 3) Parse model outputs to JSON
 
@@ -145,7 +151,7 @@ The summary is saved to `benchmark/results_parsed/accuracy_hint_summary.json`.
 
 ## 🏋️‍♀️ SFT Fine-tuning Runners (Single Setting per Run)
 
-Both SFT runners load data from `benchmark/Dataset/<City>/<City>_<OP>_<split>.json`. You can override base model paths via env (e.g., `ITIMO_FFT_MODEL_QWEN3`, `ITIMO_LORA_MODEL_GEMMA3`).
+Both SFT runners load data from `benchmark/iTIMO/<City>/<City>_<OP>_<split>.json`. You can override base model paths via env (e.g., `ITIMO_FFT_MODEL_QWEN3`, `ITIMO_LORA_MODEL_GEMMA3`).
 
 ### Full-parameter FT (Unsloth FFT)
 
@@ -205,7 +211,7 @@ Outputs: `benchmark/SFT_predictions_lora/{model}_{city}_{op}_...json`
 
 ### 🧪 Benchmark (Repair Task Inference + Evaluation)
 
-- `benchmark/Dataset/`: released benchmark data (see “Dataset” above).
+- `benchmark/iTIMO/`: released benchmark data (see “Dataset” above).
 - `benchmark/Prompt_LLM_Eval_Azure.py`: inference via Azure OpenAI → `benchmark/SFT_results/`.
 - `benchmark/Prompt_LLM_Eval_DS.py`: inference via DeepSeek API → `benchmark/SFT_results/`.
 - `benchmark/Prompt_LLM_Eval_Lmstudio.py`: inference via LM Studio endpoint → `benchmark/SFT_results/`.
@@ -218,6 +224,8 @@ Outputs: `benchmark/SFT_predictions_lora/{model}_{city}_{op}_...json`
 
 ### 🗃️ Raw data folders (used for perturbation generation)
 
-- `data-cikm16/`: Melbourne raw data and POI lists. Reference: Xiaoting Wang et al., “Improving Personalized Trip Recommendation to Avoid Crowds Using Pedestrian Sensor Data”, CIKM 2016 (see `data-cikm16/README.txt`).
-- `data-ijcai15/`: Toronto raw data and POI lists. References: Kwan Hui Lim et al., “Personalized Tour Recommendation based on User Interests and Points of Interest Visit Durations”, IJCAI 2015; and “Towards Next Generation Touring: Personalized Group Tours”, ICAPS 2016 (see `data-ijcai15/poiList-ijcai15/README.txt`).
-- `LearNext-DATASET/`: Florence trajectories/POIs/categories (LearNext). Reference: Baraglia, Muntean, Nardini, Silvestri, “LearNext: Learning to Predict Tourists Movements”, CIKM 2013 (see `LearNext-DATASET/ReadMe.txt`).
+- `og_dataset/data-cikm16/`: Melbourne raw data and POI lists. Reference: Xiaoting Wang et al., “Improving Personalized Trip Recommendation to Avoid Crowds Using Pedestrian Sensor Data”, CIKM 2016 (see `og_dataset/data-cikm16/README.txt`).
+- `og_dataset/data-ijcai15/`: Toronto raw data and POI lists. References: Kwan Hui Lim et al., “Personalized Tour Recommendation based on User Interests and Points of Interest Visit Durations”, IJCAI 2015; and “Towards Next Generation Touring: Personalized Group Tours”, ICAPS 2016 (see `og_dataset/data-ijcai15/poiList-ijcai15/README.txt`).
+- `og_dataset/LearNext-DATASET/`: Florence trajectories/POIs/categories (LearNext). Reference: Baraglia, Muntean, Nardini, Silvestri, “LearNext: Learning to Predict Tourists Movements”, CIKM 2013 (see `og_dataset/LearNext-DATASET/ReadMe.txt`).
+
+- `data4perturb/`: processed itinerary splits used by perturbation scripts.
