@@ -143,6 +143,51 @@ python eval.py
 
 The summary is saved to `benchmark/results_parsed/accuracy_hint_summary.json`.
 
+## 🏋️‍♀️ SFT Fine-tuning Runners (Single Setting per Run)
+
+Both SFT runners load data from `benchmark/Dataset/<City>/<City>_<OP>_<split>.json`. You can override base model paths via env (e.g., `ITIMO_FFT_MODEL_QWEN3`, `ITIMO_LORA_MODEL_GEMMA3`).
+
+### Full-parameter FT (Unsloth FFT)
+
+Runs one (city, op) with chosen train/infer RAG + ICL:
+
+```bash
+python benchmark/fine_tune_full.py \
+  --city Melb \
+  --op ADD \
+  --model_key qwen3 \
+  --train_rag_mode none --train_icl_num 3 \
+  --infer_rag_mode none --infer_icl_num 3 \
+  --batch_size 8 --max_new_tokens 256
+```
+
+Key flags:
+- `--city {Melb,Toro,Florence}` and `--op {ADD,DELETE,REPLACE}`
+- `--model_key {qwen3,gemma3,llama3}`
+- Train setting: `--train_rag_mode`, `--train_icl_num`
+- Inference setting: `--infer_rag_mode`, `--infer_icl_num`
+- `--batch_size`, `--max_new_tokens`, `--resume/--no-resume`, `--force_rerun`
+
+Outputs: `benchmark/SFT_predictions_fullft/{model}_{city}_{op}_...json`
+
+### LoRA / QLoRA (Unsloth SFT)
+
+Runs one (city, op) with chosen train/infer RAG + ICL:
+
+```bash
+python benchmark/fine_tune_unsloth.py \
+  --city Melb \
+  --op ADD \
+  --model_key gemma3 \
+  --train_rag_mode none --train_icl_num 3 \
+  --infer_rag_mode none --infer_icl_num 3 \
+  --batch_size 1 --max_new_tokens 256
+```
+
+Key flags mirror the full-FT script (`--city`, `--op`, `--model_key`, train/infer RAG+ICL, batch, tokens, resume/force).
+
+Outputs: `benchmark/SFT_predictions_lora/{model}_{city}_{op}_...json`
+
 ## 🗂️ Repository Layout (What Each Part Does)
 
 ### 🧩 Top-level scripts
