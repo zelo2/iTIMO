@@ -8,14 +8,14 @@ This repository provides the dataset and code for *iTIMO: An LLM-Empowered Synth
 
 ## 📦 Dataset
 
-The released benchmark dataset is under `benchmark/iTIMO/`:
-- `benchmark/iTIMO/iTIMO-Florence/`
-- `benchmark/iTIMO/iTIMO-Melbourne/`
-- `benchmark/iTIMO/iTIMO-Toronto/`
+The released benchmark dataset is under `benchmark/iTIMO_dataset/`:
+- `benchmark/iTIMO_dataset/iTIMO-Florence/`
+- `benchmark/iTIMO_dataset/iTIMO-Melbourne/`
+- `benchmark/iTIMO_dataset/iTIMO-Toronto/`
 
 ### 🔁 Perturbation vs. Modification (Important)
 
-In filenames like `benchmark/iTIMO/iTIMO-Florence/Florence_ADD_test.json`, the `ADD/DELETE/REPLACE` token refers to the **perturbation** operation used to create the need-to-modify itinerary. The **modification/repair** operation is the *inverse*:
+In filenames like `benchmark/iTIMO_dataset/iTIMO-Florence/Florence_ADD_test.json`, the `ADD/DELETE/REPLACE` token refers to the **perturbation** operation used to create the need-to-modify itinerary. The **modification/repair** operation is the *inverse*:
 - `*_ADD_*.json` → repair with **DELETE** (gold label field: `removed_index`)
 - `*_DELETE_*.json` → repair with **ADD** (gold label fields: `insert_index`, `selected_poi`, `selected_cand_id`)
 - `*_REPLACE_*.json` → repair with **REPLACE** (gold label fields: `replaced_index`, `selected_poi`, `selected_cand_id`)
@@ -70,7 +70,7 @@ This benchmark evaluates *itinerary modification (repair)*: given a need-to-modi
 
 ### 0) Prepare dataset paths (required by the benchmark scripts)
 
-Some benchmark scripts expect files under `benchmark/iTIMO/<City>_<PerturbOp>_<split>.json`, while the released data is stored under `benchmark/iTIMO/iTIMO-*/`. Run once:
+Some benchmark scripts expect files under `benchmark/iTIMO_dataset/<City>_<PerturbOp>_<split>.json`, while the released data is stored under `benchmark/iTIMO_dataset/iTIMO-*/`. Run once:
 
 ```bash
 cd benchmark
@@ -85,7 +85,7 @@ city_dir = {
 ops = ["ADD", "DELETE", "REPLACE"]
 splits = ["train", "val", "test"]
 
-dataset_root = Path("iTIMO")
+dataset_root = Path("iTIMO_dataset")
 for city, sub in city_dir.items():
     for op in ops:
         for sp in splits:
@@ -151,7 +151,7 @@ The summary is saved to `benchmark/results_parsed/accuracy_hint_summary.json`.
 
 ## 🏋️‍♀️ SFT Fine-tuning Runners (Single Setting per Run)
 
-Both SFT runners load data from `benchmark/iTIMO/<City>/<City>_<OP>_<split>.json`. You can override base model paths via env (e.g., `ITIMO_FFT_MODEL_QWEN3`, `ITIMO_LORA_MODEL_GEMMA3`).
+Both SFT runners load data from `benchmark/iTIMO_dataset/<City>/<City>_<OP>_<split>.json`. You can override base model paths via env (e.g., `ITIMO_FFT_MODEL_QWEN3`, `ITIMO_LORA_MODEL_GEMMA3`).
 
 ### Full-parameter FT (Unsloth FFT)
 
@@ -219,7 +219,7 @@ iTIMO/
 │   ├── fine_tune_full.py — full-parameter SFT runner
 │   ├── fine_tune_lora.py — LoRA/QLoRA SFT runner
 │   ├── api_key/api_key.py — API key placeholders
-│   └── iTIMO/ — released benchmark splits (train/val/test for each city/op)
+│   └── iTIMO_dataset/ — released benchmark splits (train/val/test for each city/op)
 ├── data4perturb/ — processed itinerary splits consumed by perturbation scripts
 ├── og_dataset/ — raw trajectory/POI datasets (CIKM’16, IJCAI’15, LearNext)
 ├── figures/ — images used in README
@@ -241,7 +241,7 @@ iTIMO/
 
 ### 🧪 Benchmark (Repair Task Inference + Evaluation)
 
-- `benchmark/iTIMO/`: released benchmark data (see “Dataset” above).
+- `benchmark/iTIMO_dataset/`: released benchmark data (see “Dataset” above).
 - `benchmark/Prompting_LLM.py`: inference via Azure/OpenAI-compatible endpoints → `benchmark/prompt_results/`.
 - `benchmark/process_pred.py`: parse/repair model outputs → `benchmark/results_parsed/`.
 - `benchmark/eval.py`: compute accuracy + hint-pass metrics.

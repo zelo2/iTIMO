@@ -37,7 +37,7 @@ from benchmark_prompts import prompt_add, prompt_delete, prompt_replace
 # ======================================================================================
 def find_benchmark_dir(start: Path) -> Path:
     """
-    Locate benchmark directory that contains benchmark_prompts.py and iTIMO/.
+    Locate benchmark directory that contains benchmark_prompts.py and iTIMO_dataset/.
     Supports:
       - cwd == benchmark/
       - cwd == project root with benchmark in ./benchmark
@@ -46,7 +46,7 @@ def find_benchmark_dir(start: Path) -> Path:
     start = start.resolve()
 
     def ok(p: Path) -> bool:
-        return (p / "iTIMO").exists() and (p / "benchmark_prompts.py").exists()
+        return (p / "iTIMO_dataset").exists() and (p / "benchmark_prompts.py").exists()
 
     # start is already benchmark/
     if ok(start):
@@ -63,7 +63,7 @@ def find_benchmark_dir(start: Path) -> Path:
         if ok(p / "benchmark"):
             return (p / "benchmark").resolve()
 
-    raise FileNotFoundError(f"Cannot locate benchmark/ with iTIMO + benchmark_prompts.py from start={start}")
+    raise FileNotFoundError(f"Cannot locate benchmark/ with iTIMO_dataset + benchmark_prompts.py from start={start}")
 
 BENCHMARK_DIR = find_benchmark_dir(Path.cwd())
 print("[BENCHMARK_DIR]", BENCHMARK_DIR, flush=True)
@@ -188,7 +188,7 @@ INSTR_RESP_MARKERS = {
 # ======================================================================================
 # 5) Paths and model names
 # ======================================================================================
-DATA_ROOT = BENCHMARK_DIR / "iTIMO"
+DATA_ROOT = BENCHMARK_DIR / "iTIMO_dataset"
 CITY_DIR_MAP: Dict[str, str] = {
     "Melb": "iTIMO-Melbourne",
     "Toro": "iTIMO-Toronto",

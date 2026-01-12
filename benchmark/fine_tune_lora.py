@@ -36,7 +36,7 @@ torch.backends.cudnn.allow_tf32 = True
 def find_benchmark_dir(start: Path) -> Path:
     start = start.resolve()
     def ok(p: Path) -> bool:
-        return (p / "iTIMO").exists() and (p / "benchmark_prompts.py").exists()
+        return (p / "iTIMO_dataset").exists() and (p / "benchmark_prompts.py").exists()
     if ok(start):
         return start
     if ok(start / "benchmark"):
@@ -46,11 +46,11 @@ def find_benchmark_dir(start: Path) -> Path:
             return p.resolve()
         if ok(p / "benchmark"):
             return (p / "benchmark").resolve()
-    raise FileNotFoundError(f"Cannot locate benchmark/ with iTIMO + benchmark_prompts.py from start={start}")
+    raise FileNotFoundError(f"Cannot locate benchmark/ with iTIMO_dataset + benchmark_prompts.py from start={start}")
 
 BENCHMARK_DIR = find_benchmark_dir(Path(__file__).resolve().parent if "__file__" in globals() else Path.cwd())
 
-DATA_ROOT = BENCHMARK_DIR / "iTIMO"
+DATA_ROOT = BENCHMARK_DIR / "iTIMO_dataset"
 CITY_DIR_MAP: Dict[str, str] = {
     "Melb": "iTIMO-Melbourne",
     "Toro": "iTIMO-Toronto",

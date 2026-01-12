@@ -36,7 +36,7 @@ from openai import AzureOpenAI
 
 from benchmark import benchmark_prompts
 
-DATA_ROOT = Path(__file__).resolve().parent / "iTIMO"
+DATA_ROOT = Path(__file__).resolve().parent / "iTIMO_dataset"
 CITY_DIR_MAP: Dict[str, str] = {
     "Melb": "iTIMO-Melbourne",
     "Toro": "iTIMO-Toronto",
