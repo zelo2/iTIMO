@@ -2,7 +2,7 @@
   <img src="figures/iTIMO.png" width="420" alt="iTIMO" />
 </p>
 
-# 🧭 iTIMO: An LLM-Empowered Synthesis Dataset for Travel Itinerary Modification
+# 🗺️ iTIMO: An LLM-Empowered Synthesis Dataset for Travel Itinerary Modification
 
 This repository provides the dataset and code for *iTIMO: An LLM-Empowered Synthesis Dataset for Travel Itinerary Modification*.
 
