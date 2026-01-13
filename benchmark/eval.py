@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-Batch evaluation:
-  1) index / poi / edit accuracy
+Batch evaluation for itinerary modification predictions.
+
+What it computes:
+  1) index / POI / edit accuracy
   2) Hint Pass Rate for popularity / category / spatial
   3) Average of three-axis Hint Pass Rate (hint_pass_rate_avg)
   4) All-axes pass rate (check_one(...)[ "ok" ])
@@ -13,22 +15,22 @@ POI accuracy rules:
   - If either condition is met, count as POI hit
 
 Usage (run inside benchmark/):
-    python eval.py
+    # parsed results (recommended)
+    python eval.py --root results_parsed --glob "*_example.json"
 
-Expected layout:
-    benchmark/
-      Melb_ADD_examples.json
-      Melb_DELETE_examples.json
-      Melb_REPLACE_examples.json
-      ...
-      results_parsed/
-        Melb/DELETE/xxx/xxx_example.json
-        ...
+    # raw prompt results (auto-parse responses to dict)
+    python eval.py --root prompt_results --glob "*.json" --auto-parse
+
+Examples expected in CWD (symlink or copy):
+    Melb_ADD_examples.json, Melb_DELETE_examples.json, Melb_REPLACE_examples.json, ...
 """
 
+import argparse
 import json
 from pathlib import Path
 from typing import Any, Dict, Tuple, Optional
+
+from json_repair import repair_json
 
 from hint_satis_check import check_one   # uses check_one from hint_satis_check
 
@@ -154,9 +156,40 @@ def safe_rate(num: int, den: int):
     return (num / den) if den else None
 
 
+def json_repair_load(x: Any) -> Optional[Dict[str, Any]]:
+    """
+    Best-effort conversion of model response to dict:
+      - if dict, return as-is
+      - if list, prefer the last dict; else try repairing last string
+      - if string, json-repair then json.loads
+      - else, return None
+    """
+    if x is None:
+        return None
+    if isinstance(x, dict):
+        return x
+    if isinstance(x, list):
+        for obj in reversed(x):
+            if isinstance(obj, dict):
+                return obj
+        for obj in reversed(x):
+            if isinstance(obj, str):
+                try:
+                    return json.loads(repair_json(obj))
+                except Exception:
+                    pass
+        return None
+    if isinstance(x, str):
+        try:
+            return json.loads(repair_json(x))
+        except Exception:
+            return None
+    return None
+
+
 # ========= Single file: Accuracy + Hint Pass =========
 
-def eval_one_file(path: Path, examples: Optional[Dict[str, Any]]):
+def eval_one_file(path: Path, examples: Optional[Dict[str, Any]], *, auto_parse: bool):
     """
     For one results_parsed/..._example.json:
       - index / poi / edit accuracy
@@ -182,6 +215,7 @@ def eval_one_file(path: Path, examples: Optional[Dict[str, Any]]):
     hint_axis_pass = {"popularity": 0, "category": 0, "spatial": 0}
 
     skipped = 0  # invalid structure or missing label/response
+    parse_failed = 0  # auto-parse failures
 
     for sid, rec in data.items():
         if not isinstance(rec, dict):
@@ -189,7 +223,16 @@ def eval_one_file(path: Path, examples: Optional[Dict[str, Any]]):
             continue
 
         label = rec.get("label")
-        resp = rec.get("response")
+        resp_raw = rec.get("response")
+        resp = resp_raw
+
+        # optional json-repair parsing for raw string/list responses
+        if auto_parse and not isinstance(resp, dict):
+            parsed = json_repair_load(resp)
+            if parsed is not None:
+                resp = parsed
+            else:
+                parse_failed += 1
 
         # ---------- Accuracy: requires label and dict resp ----------
         if isinstance(label, dict) and isinstance(resp, dict):
@@ -300,6 +343,7 @@ def eval_one_file(path: Path, examples: Optional[Dict[str, Any]]):
         "n_used_for_edit": total_edit,
         "edit_acc": total_edit and (correct_edit / total_edit) or None,
         "n_skipped": skipped,
+        "n_parse_failed": parse_failed,
     }
 
     # summarize Hint Pass
@@ -325,53 +369,134 @@ def eval_one_file(path: Path, examples: Optional[Dict[str, Any]]):
 
 # ========= Path parsing & main loop =========
 
-def parse_setting_from_path(path: Path, root: Path):
+CITY_CODES = {"Melb", "Toro", "Florence"}
+OPS = {"ADD", "DELETE", "REPLACE"}
+
+
+def derive_setting(rag_mode: Optional[str], icl_num: Optional[int]) -> str:
+    if rag_mode and rag_mode != "none":
+        return "rag"
+    if icl_num == 0:
+        return "zero-shot"
+    if icl_num is not None and icl_num > 0:
+        return "few-shots"
+    return ""
+
+
+def parse_setting_from_path(path: Path, root: Path) -> Dict[str, Any]:
     """
-    Parse path metadata:
-    results_parsed/city/op/model/model_think[_rag]_icl_example.json
-      → city, op, model, setting (zero-shot/few-shots/rag), icl_num
+    Parse path metadata for both legacy and prompt_eval file names.
+    Examples:
+      results_parsed/Melb/DELETE/model/foo_icl_3_example.json
+      results_parsed/prompt_eval_openai_deepseek-chat_Melb_ADD_rag-none_icl-3_test_example.json
     """
     rel = path.relative_to(root)
-    parts = rel.parts  # [city, op, model, filename]
+    parts = rel.parts
 
-    city = parts[0] if len(parts) >= 1 else ""
-    op = parts[1] if len(parts) >= 2 else ""
-    model = parts[2] if len(parts) >= 3 else ""
-    fname = parts[3] if len(parts) >= 4 else path.name
-
+    fname = rel.name
     stem = fname[:-5] if fname.endswith(".json") else fname
     tokens = stem.split("_")
 
-    setting = ""
-    icl_num = None
+    meta: Dict[str, Any] = {
+        "city": "",
+        "op": "",
+        "model": "",
+        "provider": "",
+        "rag_mode": "",
+        "split": "",
+        "icl_num": None,
+        "setting": "",
+    }
 
-    if "rag" in tokens:
-        setting = "rag"
-        try:
-            idx = tokens.index("rag")
-            icl_num = int(tokens[idx + 1])
-        except Exception:
-            pass
-    else:
-        nums = [t for t in tokens if t.isdigit()]
-        if nums:
+    # Legacy nested folder: city/op/model/filename
+    if len(parts) >= 4:
+        meta["city"] = parts[0]
+        meta["op"] = parts[1]
+        meta["model"] = parts[2]
+
+    # prompt_eval_<provider>_<model>_<city>_<op>_rag-<rag>_icl-<icl>_<split>[_example]
+    if stem.startswith("prompt_eval_") and len(tokens) >= 5:
+        meta["provider"] = tokens[2] if len(tokens) > 2 else ""
+        meta["model"] = tokens[3] if len(tokens) > 3 else meta["model"]
+        meta["city"] = tokens[4] if len(tokens) > 4 else meta["city"]
+        meta["op"] = tokens[5] if len(tokens) > 5 else meta["op"]
+
+    # Fallback: pull city/op from tokens if still missing
+    if not meta["city"]:
+        for t in tokens:
+            if t in CITY_CODES:
+                meta["city"] = t
+                break
+    if not meta["op"]:
+        for t in tokens:
+            if t in OPS:
+                meta["op"] = t
+                break
+
+    # rag mode and icl num
+    for tok in tokens:
+        if tok.startswith("rag-"):
+            meta["rag_mode"] = tok.split("-", 1)[1] or "rag"
+        elif tok == "rag":
+            meta["rag_mode"] = "rag"
+        if tok.startswith("icl"):
             try:
-                icl_num = int(nums[0])
+                meta["icl_num"] = int(tok.split("-", 1)[1])
             except Exception:
-                icl_num = None
-        if icl_num == 0:
-            setting = "zero-shot"
-        elif icl_num is not None and icl_num > 0:
-            setting = "few-shots"
+                nums = [s for s in tok.split("-") if s.isdigit()]
+                if nums:
+                    try:
+                        meta["icl_num"] = int(nums[0])
+                    except Exception:
+                        pass
 
-    return city, op, model, setting, icl_num
+    # split (test/val/train/full) if present
+    for tok in reversed(tokens):
+        if tok in {"train", "val", "test", "full"}:
+            meta["split"] = tok
+            break
+
+    if not meta["rag_mode"]:
+        meta["rag_mode"] = "none"
+
+    meta["setting"] = derive_setting(meta["rag_mode"], meta["icl_num"])
+    return meta
+
+
+def parse_args():
+    parser = argparse.ArgumentParser(description="Evaluate itinerary modification predictions.")
+    parser.add_argument(
+        "--root",
+        default="results_parsed",
+        help="Root folder containing parsed prediction JSONs.",
+    )
+    parser.add_argument(
+        "--glob",
+        default="*_example.json",
+        help="Glob pattern (relative to --root) to select prediction files.",
+    )
+    parser.add_argument(
+        "--examples-dir",
+        default=".",
+        help="Directory containing <City>_<OP>_examples.json (symlink or copy).",
+    )
+    parser.add_argument(
+        "--auto-parse",
+        action="store_true",
+        help="Attempt json-repair on string/list responses before computing accuracy.",
+    )
+    return parser.parse_args()
 
 
 def main():
-    root = Path("results_parsed")
-    files = sorted(root.rglob("*_example.json"))
+    args = parse_args()
+    root = Path(args.root)
+    if not root.exists():
+        raise FileNotFoundError(f"Root path not found: {root}")
 
-    print(f"Found {len(files)} parsed result files under {root}")
+    files = sorted(root.rglob(args.glob))
+
+    print(f"Found {len(files)} result files under {root} matching '{args.glob}'")
 
     # cache each (city, op) examples to avoid repeated disk reads
     examples_cache: Dict[Tuple[str, str], Optional[Dict[str, Any]]] = {}
@@ -379,13 +504,18 @@ def main():
     all_results = []
 
     for path in files:
-        city, op, model, setting, icl_num = parse_setting_from_path(path, root)
+        meta = parse_setting_from_path(path, root)
+        city = meta.get("city", "")
+        op = meta.get("op", "")
+        model = meta.get("model", "")
+        setting = meta.get("setting", "")
+        icl_num = meta.get("icl_num")
 
         key = (city, op)
         if key in examples_cache:
             examples = examples_cache[key]
         else:
-            examples_path = Path(f"{city}_{op}_examples.json")
+            examples_path = Path(args.examples_dir) / f"{city}_{op}_examples.json"
             if examples_path.exists():
                 with examples_path.open("r", encoding="utf-8") as f:
                     examples = json.load(f)
@@ -394,15 +524,9 @@ def main():
                 examples = None
             examples_cache[key] = examples
 
-        res = eval_one_file(path, examples)
+        res = eval_one_file(path, examples, auto_parse=args.auto_parse)
 
-        res.update({
-            "city": city,
-            "op": op,
-            "model": model,
-            "setting": setting,
-            "icl_num": icl_num,
-        })
+        res.update(meta)
         all_results.append(res)
 
         def fmt(x):
@@ -410,6 +534,7 @@ def main():
 
         file_name = Path(res["file"]).name
         n_skipped = res.get("n_skipped", 0)
+        n_parse_failed = res.get("n_parse_failed", 0)
 
         idx_acc = res.get("index_acc")
         poi_acc = res.get("poi_acc")
@@ -421,9 +546,18 @@ def main():
         spa_rate = res.get("spatial_hint_pass_rate")
         hint_avg = res.get("hint_pass_rate_avg")
 
+        provider = res.get("provider") or ""
+        rag_mode = res.get("rag_mode") or ""
+        split = res.get("split") or ""
+
+        meta_desc = f"[{city}/{op}/{split}] {model}"
+        if provider:
+            meta_desc += f" ({provider})"
+        meta_desc += f" ({setting or 'setting?'}, rag={rag_mode or 'none'}, icl={icl_num})"
+
         print(
-            f"{file_name} | skipped={n_skipped} | "
-            f"[{city}/{op}] {model} ({setting}, icl={icl_num}): "
+            f"{file_name} | skipped={n_skipped}, parse_failed={n_parse_failed} | "
+            f"{meta_desc}: "
             f"idx={fmt(idx_acc)}, poi={fmt(poi_acc)}, edit={fmt(edit_acc)}, "
             f"HintAll={fmt(all_pass_rate)}, "
             f"pop={fmt(pop_rate)}, cat={fmt(cat_rate)}, spa={fmt(spa_rate)}, "
