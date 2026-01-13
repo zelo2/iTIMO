@@ -14,12 +14,12 @@ POI accuracy rules:
     compare after converting lon/lat to float; exact match → POI correct
   - If either condition is met, count as POI hit
 
-Usage (run inside benchmark/):
+Usage (run inside repo or benchmark/):
     # parsed results (recommended)
-    python eval.py --root results_parsed --glob "*_example.json"
+    python eval.py --glob "*_example.json"
 
-    # raw prompt results (auto-parse responses to dict)
-    python eval.py --root prompt_results --glob "*.json" --auto-parse
+    # raw prompt results (auto-parse responses to dict; defaults look under prompt_results/)
+    python eval.py --glob "*.json" --auto-parse
 
 Examples expected in CWD (symlink or copy):
     Melb_ADD_examples.json, Melb_DELETE_examples.json, Melb_REPLACE_examples.json, ...
@@ -28,11 +28,40 @@ Examples expected in CWD (symlink or copy):
 import argparse
 import json
 from pathlib import Path
-from typing import Any, Dict, Tuple, Optional
+from typing import Any, Dict, List, Optional, Tuple
 
 from json_repair import repair_json
 
 from hint_satis_check import check_one   # uses check_one from hint_satis_check
+
+
+SCRIPT_DIR = Path(__file__).resolve().parent
+REPO_ROOT = SCRIPT_DIR.parent
+
+# Known prediction roots (parsed or raw)
+DEFAULT_ROOT_NAMES = [
+    "results_parsed",
+    "benchmark/results_parsed",   # when running from inside benchmark/
+    "prompt_results",             # raw prompt outputs (with --auto-parse)
+    "benchmark/prompt_results",   # raw prompt outputs when running inside benchmark/
+    "SFT_predictions_fullft",     # full FT outputs
+    "SFT_predictions_lora",       # LoRA outputs
+    "SFT_results",                # legacy
+]
+
+
+def collect_default_roots() -> List[Path]:
+    roots = []
+    seen = set()
+    for base in DEFAULT_ROOT_NAMES:
+        for anchor in (SCRIPT_DIR, REPO_ROOT):
+            p = (anchor / base).resolve()
+            if p in seen:
+                continue
+            if p.exists():
+                roots.append(p)
+                seen.add(p)
+    return roots
 
 
 # ========= Helpers: extract gold / pred =========
@@ -466,14 +495,17 @@ def parse_setting_from_path(path: Path, root: Path) -> Dict[str, Any]:
 def parse_args():
     parser = argparse.ArgumentParser(description="Evaluate itinerary modification predictions.")
     parser.add_argument(
-        "--root",
-        default="results_parsed",
-        help="Root folder containing parsed prediction JSONs.",
+        "--roots",
+        nargs="+",
+        default=None,
+        help="Root folders containing prediction JSONs. "
+             "Default: auto-detect under benchmark/ (results_parsed, prompt_results, "
+             "SFT_predictions_fullft, SFT_predictions_lora, SFT_results, and their benchmark/ prefixed variants).",
     )
     parser.add_argument(
         "--glob",
         default="*_example.json",
-        help="Glob pattern (relative to --root) to select prediction files.",
+        help="Glob pattern (relative to each root) to select prediction files.",
     )
     parser.add_argument(
         "--examples-dir",
@@ -483,91 +515,101 @@ def parse_args():
     parser.add_argument(
         "--auto-parse",
         action="store_true",
-        help="Attempt json-repair on string/list responses before computing accuracy.",
+        help="Attempt json-repair on string/list responses before computing accuracy (needed for raw prompt_results).",
+    )
+    parser.add_argument(
+        "--summary",
+        default=None,
+        help="Custom path for the summary JSON. Default: accuracy_hint_summary.json in the first root.",
     )
     return parser.parse_args()
 
 
 def main():
     args = parse_args()
-    root = Path(args.root)
-    if not root.exists():
-        raise FileNotFoundError(f"Root path not found: {root}")
-
-    files = sorted(root.rglob(args.glob))
-
-    print(f"Found {len(files)} result files under {root} matching '{args.glob}'")
-
-    # cache each (city, op) examples to avoid repeated disk reads
-    examples_cache: Dict[Tuple[str, str], Optional[Dict[str, Any]]] = {}
+    roots = [Path(r).resolve() for r in (args.roots or collect_default_roots())]
+    if not roots:
+        raise FileNotFoundError("No roots found. Provide --roots or ensure default prediction folders exist.")
 
     all_results = []
+    examples_cache: Dict[Tuple[str, str], Optional[Dict[str, Any]]] = {}
 
-    for path in files:
-        meta = parse_setting_from_path(path, root)
-        city = meta.get("city", "")
-        op = meta.get("op", "")
-        model = meta.get("model", "")
-        setting = meta.get("setting", "")
-        icl_num = meta.get("icl_num")
+    total_files = 0
+    for root in roots:
+        if not root.exists():
+            print(f"[SKIP ROOT] not found: {root}")
+            continue
 
-        key = (city, op)
-        if key in examples_cache:
-            examples = examples_cache[key]
-        else:
-            examples_path = Path(args.examples_dir) / f"{city}_{op}_examples.json"
-            if examples_path.exists():
-                with examples_path.open("r", encoding="utf-8") as f:
-                    examples = json.load(f)
+        files = sorted(root.rglob(args.glob))
+        total_files += len(files)
+        print(f"[ROOT] {root} matched {len(files)} file(s) with '{args.glob}'")
+
+        for path in files:
+            meta = parse_setting_from_path(path, root)
+            city = meta.get("city", "")
+            op = meta.get("op", "")
+            model = meta.get("model", "")
+            setting = meta.get("setting", "")
+            icl_num = meta.get("icl_num")
+
+            key = (city, op)
+            if key in examples_cache:
+                examples = examples_cache[key]
             else:
-                print(f"[WARN] examples file not found for {city}/{op}: {examples_path}")
-                examples = None
-            examples_cache[key] = examples
+                examples_path = Path(args.examples_dir) / f"{city}_{op}_examples.json"
+                if examples_path.exists():
+                    with examples_path.open("r", encoding="utf-8") as f:
+                        examples = json.load(f)
+                else:
+                    print(f"[WARN] examples file not found for {city}/{op}: {examples_path}")
+                    examples = None
+                examples_cache[key] = examples
 
-        res = eval_one_file(path, examples, auto_parse=args.auto_parse)
+            res = eval_one_file(path, examples, auto_parse=args.auto_parse)
 
-        res.update(meta)
-        all_results.append(res)
+            res.update(meta)
+            all_results.append(res)
 
-        def fmt(x):
-            return f"{x:.4f}" if isinstance(x, (int, float)) and x is not None else "None"
+            def fmt(x):
+                return f"{x:.4f}" if isinstance(x, (int, float)) and x is not None else "None"
 
-        file_name = Path(res["file"]).name
-        n_skipped = res.get("n_skipped", 0)
-        n_parse_failed = res.get("n_parse_failed", 0)
+            file_name = Path(res["file"]).name
+            n_skipped = res.get("n_skipped", 0)
+            n_parse_failed = res.get("n_parse_failed", 0)
 
-        idx_acc = res.get("index_acc")
-        poi_acc = res.get("poi_acc")
-        edit_acc = res.get("edit_acc")
+            idx_acc = res.get("index_acc")
+            poi_acc = res.get("poi_acc")
+            edit_acc = res.get("edit_acc")
 
-        all_pass_rate = res.get("hint_all_pass_rate")
-        pop_rate = res.get("popularity_hint_pass_rate")
-        cat_rate = res.get("category_hint_pass_rate")
-        spa_rate = res.get("spatial_hint_pass_rate")
-        hint_avg = res.get("hint_pass_rate_avg")
+            all_pass_rate = res.get("hint_all_pass_rate")
+            pop_rate = res.get("popularity_hint_pass_rate")
+            cat_rate = res.get("category_hint_pass_rate")
+            spa_rate = res.get("spatial_hint_pass_rate")
+            hint_avg = res.get("hint_pass_rate_avg")
 
-        provider = res.get("provider") or ""
-        rag_mode = res.get("rag_mode") or ""
-        split = res.get("split") or ""
+            provider = res.get("provider") or ""
+            rag_mode = res.get("rag_mode") or ""
+            split = res.get("split") or ""
 
-        meta_desc = f"[{city}/{op}/{split}] {model}"
-        if provider:
-            meta_desc += f" ({provider})"
-        meta_desc += f" ({setting or 'setting?'}, rag={rag_mode or 'none'}, icl={icl_num})"
+            meta_desc = f"[{city}/{op}/{split}] {model}"
+            if provider:
+                meta_desc += f" ({provider})"
+            meta_desc += f" ({setting or 'setting?'}, rag={rag_mode or 'none'}, icl={icl_num})"
 
-        print(
-            f"{file_name} | skipped={n_skipped}, parse_failed={n_parse_failed} | "
-            f"{meta_desc}: "
-            f"idx={fmt(idx_acc)}, poi={fmt(poi_acc)}, edit={fmt(edit_acc)}, "
-            f"HintAll={fmt(all_pass_rate)}, "
-            f"pop={fmt(pop_rate)}, cat={fmt(cat_rate)}, spa={fmt(spa_rate)}, "
-            f"HintAvg={fmt(hint_avg)}"
-        )
+            print(
+                f"{file_name} | skipped={n_skipped}, parse_failed={n_parse_failed} | "
+                f"{meta_desc}: "
+                f"idx={fmt(idx_acc)}, poi={fmt(poi_acc)}, edit={fmt(edit_acc)}, "
+                f"HintAll={fmt(all_pass_rate)}, "
+                f"pop={fmt(pop_rate)}, cat={fmt(cat_rate)}, spa={fmt(spa_rate)}, "
+                f"HintAvg={fmt(hint_avg)}"
+            )
 
-    out_json = root / "accuracy_hint_summary.json"
-    with out_json.open("w", encoding="utf-8") as f:
+    summary_path = Path(args.summary) if args.summary else (roots[0] / "accuracy_hint_summary.json")
+    summary_path.parent.mkdir(parents=True, exist_ok=True)
+    with summary_path.open("w", encoding="utf-8") as f:
         json.dump(all_results, f, ensure_ascii=False, indent=2)
-    print(f"\nSaved summary to {out_json}")
+    print(f"\nProcessed {total_files} file(s) across {len(roots)} root(s). Saved summary to {summary_path}")
 
 
 if __name__ == "__main__":

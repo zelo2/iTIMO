@@ -115,23 +115,60 @@ def process_one_file(src_path: Path, src_root: Path, dst_root: Path) -> bool:
 # CLI
 # --------------------------------------------------------------------------- #
 
-DEFAULT_ROOTS = [
+SCRIPT_DIR = Path(__file__).resolve().parent
+REPO_ROOT = SCRIPT_DIR.parent
+
+# Targets the outputs of:
+# - benchmark/Prompting_LLM.py          -> benchmark/prompt_results/…  (or benchmark/benchmark/prompt_results if run inside benchmark/)
+# - benchmark/fine_tune_full.py         -> benchmark/SFT_predictions_fullft/…
+# - benchmark/fine_tune_lora.py         -> benchmark/SFT_predictions_lora/…
+# - legacy scripts                      -> benchmark/SFT_results/…
+DEFAULT_ROOT_NAMES = [
     "prompt_results",
+    "benchmark/prompt_results",  # handle running Prompting_LLM.py from inside benchmark/
     "SFT_predictions_fullft",
     "SFT_predictions_lora",
-    "SFT_results",  # legacy
+    "SFT_results",
 ]
 
 
-def iter_source_files(roots: List[Path], glob_pattern: str, process_all: bool) -> Iterable[Tuple[Path, Path]]:
+def collect_default_roots() -> List[Path]:
+    """Return existing default roots anchored at script dir and repo root."""
+    roots = []
+    seen = set()
+    for base in DEFAULT_ROOT_NAMES:
+        for anchor in (SCRIPT_DIR, REPO_ROOT):
+            p = (anchor / base).resolve()
+            if p in seen:
+                continue
+            if p.exists():
+                roots.append(p)
+                seen.add(p)
+    return roots
+
+
+def dest_subdir_for_root(root: Path) -> Path:
+    """
+    Mirror the source root relative to repo root when possible to avoid collisions
+    (e.g., benchmark/prompt_results vs. benchmark/benchmark/prompt_results).
+    """
+    try:
+        rel = root.relative_to(REPO_ROOT)
+        return rel
+    except Exception:
+        return Path(root.name)
+
+
+def iter_source_files(roots: List[Path], glob_pattern: str, process_all: bool) -> Iterable[Tuple[Path, Path, Path]]:
     for root in roots:
         if not root.exists():
             print(f"[SKIP ROOT] not found: {root}")
             continue
         files = [p for p in root.rglob(glob_pattern) if should_process_file(p, process_all=process_all)]
         print(f"[ROOT] {root} matched {len(files)} file(s)")
+        dest_subdir = dest_subdir_for_root(root)
         for p in files:
-            yield root, p
+            yield root, p, dest_subdir
 
 
 def parse_args():
@@ -140,7 +177,9 @@ def parse_args():
         "--roots",
         nargs="+",
         default=None,
-        help=f"Source roots (default: {', '.join(DEFAULT_ROOTS)} if they exist).",
+        help="Source roots. Default: known prediction folders under benchmark/ (prompt_results, "
+             "SFT_predictions_fullft, SFT_predictions_lora, SFT_results), plus benchmark/benchmark/prompt_results "
+             "if Prompting_LLM.py was run from inside benchmark/.",
     )
     parser.add_argument(
         "--glob",
@@ -149,8 +188,8 @@ def parse_args():
     )
     parser.add_argument(
         "--dst-root",
-        default="results_parsed",
-        help="Destination root for parsed files.",
+        default=None,
+        help="Destination root for parsed files (default: benchmark/results_parsed).",
     )
     parser.add_argument(
         "--all",
@@ -162,16 +201,20 @@ def parse_args():
 
 def main():
     args = parse_args()
-    roots = [Path(r) for r in (args.roots or DEFAULT_ROOTS)]
-    dst_root = Path(args.dst_root)
+    roots = [Path(r).resolve() for r in (args.roots or collect_default_roots())]
+    if not roots:
+        print("[WARN] No source roots found. Provide --roots or ensure default folders exist.")
+        return
+
+    dst_root = Path(args.dst_root or (SCRIPT_DIR / "results_parsed")).resolve()
     dst_root.mkdir(parents=True, exist_ok=True)
 
     items = list(iter_source_files(roots, args.glob, process_all=args.all))
     print(f"Total matched files: {len(items)}")
 
     written = 0
-    for src_root, path in items:
-        if process_one_file(path, src_root, dst_root):
+    for src_root, path, dest_subdir in items:
+        if process_one_file(path, src_root, dst_root / dest_subdir):
             written += 1
 
     print(f"Done. Written {written}/{len(items)} files into {dst_root}.")
