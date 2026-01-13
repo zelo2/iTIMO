@@ -15,10 +15,10 @@ The released benchmark dataset is under `benchmark/iTIMO_dataset/`:
 
 ### 🔁 Perturbation vs. Modification (Important)
 
-In filenames like `benchmark/iTIMO_dataset/iTIMO-Florence/Florence_ADD_test.json`, the `ADD/DELETE/REPLACE` token refers to the **perturbation** operation used to create the need-to-modify itinerary. The **modification/repair** operation is the *inverse*:
-- `*_ADD_*.json` → repair with **DELETE** (gold label field: `removed_index`)
-- `*_DELETE_*.json` → repair with **ADD** (gold label fields: `insert_index`, `selected_poi`, `selected_cand_id`)
-- `*_REPLACE_*.json` → repair with **REPLACE** (gold label fields: `replaced_index`, `selected_poi`, `selected_cand_id`)
+In filenames like `benchmark/iTIMO_dataset/iTIMO-Florence/Florence_ADD_test.json`, the `ADD/DELETE/REPLACE` token refers to the **perturbation** operation used to create the need-to-modify itinerary. The **modification** operation is the *inverse*:
+- `*_ADD_*.json` → modify with **DELETE** (gold label field: `removed_index`)
+- `*_DELETE_*.json` → modify with **ADD** (gold label fields: `insert_index`, `selected_poi`, `selected_cand_id`)
+- `*_REPLACE_*.json` → modify with **REPLACE** (gold label fields: `replaced_index`, `selected_poi`, `selected_cand_id`)
 
 ### 🧾 File Naming and Format
 
@@ -28,14 +28,14 @@ In filenames like `benchmark/iTIMO_dataset/iTIMO-Florence/Florence_ADD_test.json
   - `need_to_modify itinerary`: `[[name, category, lon, lat, popularity], ...]`
   - `hint`: natural-language constraints for axes (popularity / category / spatial)
   - `threshold_low`, `threshold_high`: spatial thresholds (km)
-  - `Candidate POIs`: present in `*_DELETE_*.json` and `*_REPLACE_*.json` (needed for ADD/REPLACE repair); typically absent in `*_ADD_*.json`
+  - `Candidate POIs`: present in `*_DELETE_*.json` and `*_REPLACE_*.json` (needed for ADD/REPLACE modification); typically absent in `*_ADD_*.json`
 
 ### 📊 Dataset Size (#samples)
 
 The dataset statistics are provided in the paper (Table 2):
 
 <p align="center">
-  <img src="figures/dataset_stats_table2.png" width="900" alt="iTIMO dataset statistics (Table 2)" />
+  <img src="figures/dataset_stats_table2.png" width="720" alt="iTIMO dataset statistics (Table 2)" />
 </p>
 
 ## 🧪 Perturbation (Generate Need-to-Modify Itineraries)
@@ -66,7 +66,7 @@ Note: running `uni_perturbation.py` / `baseline_perturbation.py` / `benchmark/Pr
 
 ## 📈 Benchmark: Itinerary Modification Evaluation (Different LLMs)
 
-This benchmark evaluates *itinerary modification (repair)*: given a need-to-modify itinerary, the LLM must output the **repair operation** (the inverse of the perturbation in the filename).
+This benchmark evaluates *itinerary modification*: given a need-to-modify itinerary, the LLM must output the **modification operation** (the inverse of the perturbation in the filename).
 
 ### 0) Prepare dataset paths (required by the benchmark scripts)
 
@@ -207,11 +207,11 @@ iTIMO/
 │   ├── functions.py — tool JSON schemas for tool-calling
 │   └── CaseStudy.py — small demo/case-study helpers
 ├── benchmark/
-│   ├── Prompting_LLM.py — prompt-based itinerary repair runner (Azure/OpenAI/DeepSeek/LM Studio)
+│   ├── Prompting_LLM.py — prompt-based itinerary modification runner (Azure/OpenAI/DeepSeek/LM Studio)
 │   ├── process_pred.py — parse model outputs
 │   ├── eval.py — compute accuracy + hint metrics
 │   ├── hint_satis_check.py — per-sample hint satisfaction checker
-│   ├── benchmark_prompts.py — prompt templates for repair tasks
+│   ├── benchmark_prompts.py — prompt templates for modification tasks
 │   ├── RAG_emd_search.py — embedding-based retrieval for RAG
 │   ├── RAG_enhanced_data_cons.py — RAG data construction with consistency filters
 │   ├── RAG_hint_based.py — hint-driven neighbor construction for RAG
