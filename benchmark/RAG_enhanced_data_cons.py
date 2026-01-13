@@ -2,29 +2,23 @@
 """
 Build embedding-based RAG neighbors and write them into SFT JSON files.
 
-Directory conventions (project root):
-  project_root/
-    RAG_Emd/
-      Melb_ADD_examples_qwen3_embeddings.npz
-      Melb_ADD_examples_azure_embeddings.npz
-      Melb_ADD_examples_KaLM_gemma3_embeddings.npz
-      ...
-    Dataset/
-      iTIMO-Florence/
-        (either JSON files live here)
-        Florence_ADD_train.json
-        Florence_ADD_val.json
-        Florence_ADD_test.json
+Directory conventions (auto-detected):
+  repo_root/
+    benchmark/
+      RAG_emd/ (or RAG_Emd/)
+        Melb_ADD_examples_qwen3_embeddings.npz
+        Melb_ADD_examples_azure_embeddings.npz
+        Melb_ADD_examples_KaLM_gemma3_embeddings.npz
         ...
-        (or JSON files live in a subfolder)
-        SFT_data/
+      iTIMO_dataset/
+        iTIMO-Florence/
           Florence_ADD_train.json
           Florence_ADD_val.json
           Florence_ADD_test.json
-      iTIMO-Melbourne/
-        ...
-      iTIMO-Toronto/
-        ...
+        iTIMO-Melbourne/
+        iTIMO-Toronto/
+
+Legacy Dataset/ and SFT_data/ layouts are still supported if present.
 
 Goal:
   For each <City>_<OP> (e.g., Melb_ADD, Florence_DELETE, Toro_REPLACE):
@@ -41,6 +35,50 @@ from pathlib import Path
 from typing import Dict, List, Tuple, Optional
 
 import numpy as np
+
+# City directory mapping (lower-case city token -> folder name)
+CITY_DIR_MAP = {
+    "melb": "iTIMO-Melbourne",
+    "melbourne": "iTIMO-Melbourne",
+    "toro": "iTIMO-Toronto",
+    "toronto": "iTIMO-Toronto",
+    "florence": "iTIMO-Florence",
+}
+
+
+def resolve_rag_dir(root: Path) -> Path:
+    """
+    Locate the directory containing embedding npz files.
+    Checks RAG_emd/ or RAG_Emd/ under <root> and <root>/benchmark.
+    """
+    candidates = [
+        root / "RAG_emd",
+        root / "RAG_Emd",
+        root / "benchmark" / "RAG_emd",
+        root / "benchmark" / "RAG_Emd",
+    ]
+    for cand in candidates:
+        if cand.exists():
+            return cand.resolve()
+    raise FileNotFoundError("Missing RAG_emd directory. Tried: " + ", ".join(str(c) for c in candidates))
+
+
+def resolve_dataset_root(root: Path) -> Path:
+    """
+    Locate dataset root (iTIMO_dataset). Tries:
+      - <root>/benchmark/iTIMO_dataset
+      - <root>/iTIMO_dataset
+      - <root>/Dataset (legacy)
+    """
+    candidates = [
+        root / "benchmark" / "iTIMO_dataset",
+        root / "iTIMO_dataset",
+        root / "Dataset",  # legacy
+    ]
+    for cand in candidates:
+        if cand.exists():
+            return cand.resolve()
+    raise FileNotFoundError("Missing dataset root. Tried: " + ", ".join(str(c) for c in candidates))
 
 
 # -------------------------
@@ -282,9 +320,10 @@ def resolve_city_sft_dir(dataset_root: Path, base_key: str) -> Path:
     Resolve the directory that contains <base_key>_train.json.
 
     Candidate patterns:
-      Dataset/iTIMO-*/<base_key>_train.json
-      Dataset/iTIMO-*/SFT_data/<base_key>_train.json
-      Dataset/iTIMO-*/sft_data/<base_key>_train.json
+      iTIMO_dataset/iTIMO-*/<base_key>_train.json
+      iTIMO_dataset/iTIMO-*/SFT_data/<base_key>_train.json
+      iTIMO_dataset/iTIMO-*/sft_data/<base_key>_train.json
+      iTIMO_dataset/<base_key>_train.json (legacy)
 
     First try common city mappings, then fall back to scanning all Dataset/iTIMO-* folders.
     """
@@ -293,13 +332,9 @@ def resolve_city_sft_dir(dataset_root: Path, base_key: str) -> Path:
     # Fast path using common mappings (case-insensitive).
     city = base_key.split("_", 1)[0].lower()
     preferred = []
-
-    if city in {"melb", "melbourne"}:
-        preferred.append(dataset_root / "iTIMO-Melbourne")
-    if city in {"florence"}:
-        preferred.append(dataset_root / "iTIMO-Florence")
-    if city in {"toro", "toronto"}:
-        preferred.append(dataset_root / "iTIMO-Toronto")
+    mapped = CITY_DIR_MAP.get(city)
+    if mapped:
+        preferred.append(dataset_root / mapped)
 
     def candidates_for_city_dir(city_dir: Path) -> List[Path]:
         return [
@@ -308,22 +343,26 @@ def resolve_city_sft_dir(dataset_root: Path, base_key: str) -> Path:
             city_dir / "sft_data",
         ]
 
+    search_dirs: List[Path] = []
     for city_dir in preferred:
         if city_dir.exists():
-            for cand in candidates_for_city_dir(city_dir):
-                if (cand / train_name).exists():
-                    return cand
+            search_dirs.extend(candidates_for_city_dir(city_dir))
 
-    # Fallback: scan all iTIMO-* folders under Dataset
+    # Fallback: scan all iTIMO-* folders under dataset_root
     for city_dir in sorted(dataset_root.glob("iTIMO-*")):
         if not city_dir.is_dir():
             continue
-        for cand in candidates_for_city_dir(city_dir):
-            if (cand / train_name).exists():
-                return cand
+        search_dirs.extend(candidates_for_city_dir(city_dir))
+
+    # Legacy: allow train files directly under dataset_root or its SFT_data subfolder
+    search_dirs.extend(candidates_for_city_dir(dataset_root))
+
+    for cand in search_dirs:
+        if (cand / train_name).exists():
+            return cand
 
     raise FileNotFoundError(
-        f"Cannot find '{train_name}' under any Dataset/iTIMO-* folder (or its SFT_data subfolder)."
+        f"Cannot find '{train_name}' under iTIMO_dataset/ (checked folders and SFT_data subfolders)."
     )
 
 
@@ -432,7 +471,7 @@ def main() -> None:
         "--root",
         type=str,
         default=".",
-        help="Project root directory containing RAG_Emd/ and Dataset/ (default: current directory).",
+        help="Project root (will search for RAG_emd/ and benchmark/iTIMO_dataset/ relative to it).",
     )
     parser.add_argument(
         "--topk",
@@ -447,14 +486,12 @@ def main() -> None:
     )
     args = parser.parse_args()
 
-    root = Path(args.root).resolve()
-    rag_dir = root / "RAG_Emd"
-    dataset_root = root / "Dataset"
+    root = Path(args.root).expanduser().resolve()
+    rag_dir = resolve_rag_dir(root)
+    dataset_root = resolve_dataset_root(root)
 
-    if not rag_dir.exists():
-        raise FileNotFoundError(f"Missing RAG_Emd directory: {rag_dir}")
-    if not dataset_root.exists():
-        raise FileNotFoundError(f"Missing Dataset directory: {dataset_root}")
+    print(f"[RAG dir] {rag_dir}")
+    print(f"[Dataset root] {dataset_root}")
 
     mapping = scan_rag_dir(rag_dir)
     if not mapping:

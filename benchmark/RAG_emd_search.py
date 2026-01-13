@@ -2,17 +2,21 @@
 """
 Build rec_examples for embedding-based RAG in batch.
 
-Expected layout:
+Expected layout (auto-detected):
     benchmark/
-      Melb_ADD_examples.json
-      Melb_ADD_examples_sample1000.json
-      Melb_DELETE_examples.json
-      ...
-      RAG_Emd/
+      iTIMO_dataset/
+        iTIMO-Florence/Florence_ADD_examples.json
+        iTIMO-Melbourne/Melb_ADD_examples.json
+        iTIMO-Toronto/Toro_ADD_examples.json
+        ... (and *_sample1000.json if available)
+      RAG_emd/   (or RAG_Emd/)
         Melb_ADD_examples_qwen3_embeddings.npz
         Melb_ADD_examples_azure_embeddings.npz
         Melb_ADD_examples_KaLM_gemma3_embeddings.npz
         ...
+
+Legacy support:
+  If <City>_<OP>_examples.json live alongside RAG_emd/, those will also be picked up.
 
 NPZ naming (any of these patterns):
     <City>_<OP>_examples_qwen3_embeddings.npz
@@ -33,12 +37,78 @@ Field names:
     KaLM-gemma3                -> rec_examples_kalm_gemma3
 """
 
-import json
 import argparse
+import json
 from pathlib import Path
-from typing import Dict, List, Tuple
+from typing import Dict, List, Optional, Tuple
 
 import numpy as np
+
+# ---------- Path helpers ----------
+
+def resolve_rag_dir(root: Path) -> Path:
+    """
+    Locate the directory that stores embedding npz files.
+    Tries RAG_emd/ or RAG_Emd/ under:
+      - <root>
+      - <root>/benchmark
+    """
+    candidates = [
+        root / "RAG_emd",
+        root / "RAG_Emd",
+        root / "benchmark" / "RAG_emd",
+        root / "benchmark" / "RAG_Emd",
+    ]
+    for cand in candidates:
+        if cand.exists():
+            return cand.resolve()
+    raise FileNotFoundError(
+        "Missing RAG_emd directory. Tried: "
+        + ", ".join(str(c) for c in candidates)
+    )
+
+
+def build_examples_search_paths(root: Path, rag_dir: Path) -> List[Path]:
+    """
+    Build a list of directories to search for <City>_<OP>_examples.json.
+    Priority:
+      1) benchmark/iTIMO_dataset/iTIMO-*/
+      2) benchmark/iTIMO_dataset/
+      3) parent of RAG_emd (legacy: examples next to embeddings)
+    """
+    candidates = [
+        root / "benchmark" / "iTIMO_dataset",
+        root / "iTIMO_dataset",
+        rag_dir.parent,
+    ]
+
+    search_paths: List[Path] = []
+    seen = set()
+
+    for cand in candidates:
+        if not cand.exists():
+            continue
+        cand_res = cand.resolve()
+        if cand_res.is_dir() and cand_res not in seen:
+            search_paths.append(cand_res)
+            seen.add(cand_res)
+        # Include per-city subfolders (iTIMO-Florence, etc.)
+        for sub in cand_res.glob("iTIMO-*"):
+            if sub.is_dir() and sub not in seen:
+                search_paths.append(sub)
+                seen.add(sub)
+
+    return search_paths
+
+
+def find_examples_path(base_stem: str, search_paths: List[Path]) -> Optional[Path]:
+    """Search for <base_stem>.json inside the provided directories."""
+    filename = f"{base_stem}.json"
+    for directory in search_paths:
+        cand = directory / filename
+        if cand.exists():
+            return cand
+    return None
 
 
 # ---------- Utilities ----------
@@ -135,14 +205,14 @@ def compute_topk_neighbors(id_list: List[str], emd_mat: np.ndarray, k: int = 5):
 
 # ---------- Scan RAG_Emd to map base examples.json -> multiple npz ----------
 
-def scan_rag_dir(rag_dir: Path):
+def scan_rag_dir(rag_dir: Path, search_paths: List[Path]):
     """
     Returns mapping:
         base_examples_path -> List[(npz_path, field_name)]
 
     base_examples_path example:
-        <root>/Melb_ADD_examples.json
-        <root>/Florence_DELETE_examples.json
+        benchmark/iTIMO_dataset/iTIMO-Melbourne/Melb_ADD_examples.json
+        benchmark/iTIMO_dataset/iTIMO-Florence/Florence_DELETE_examples.json
     """
     mapping: Dict[Path, List[Tuple[Path, str]]] = {}
 
@@ -192,7 +262,14 @@ def scan_rag_dir(rag_dir: Path):
             base_stem = base_stem.replace(pat, "")
 
         # Base examples filename without sample1000 suffix
-        examples_path = rag_dir.parent / f"{base_stem}.json"
+        examples_path = find_examples_path(base_stem, search_paths)
+        if examples_path is None:
+            print(
+                f"[WARN] Cannot find {base_stem}.json (searched: "
+                f"{', '.join(str(p) for p in search_paths)})"
+            )
+            continue
+
         mapping.setdefault(examples_path, []).append((npz_path, field_name))
 
     return mapping
@@ -259,7 +336,7 @@ def main():
         "--root",
         type=str,
         default=".",
-        help="Project root containing RAG_Emd and *_examples.json (default: cwd)",
+        help="Project root (will search for RAG_emd/ under <root> or <root>/benchmark)",
     )
     parser.add_argument(
         "--topk",
@@ -274,13 +351,16 @@ def main():
     )
     args = parser.parse_args()
 
-    root = Path(args.root).resolve()
-    rag_dir = root / "RAG_Emd"
+    root = Path(args.root).expanduser().resolve()
+    rag_dir = resolve_rag_dir(root)
+    search_paths = build_examples_search_paths(root, rag_dir)
 
-    if not rag_dir.exists():
-        raise FileNotFoundError(f"Missing RAG_Emd directory: {rag_dir}")
+    print(f"[RAG dir] {rag_dir}")
+    print("Search roots for *_examples.json:")
+    for p in search_paths:
+        print(f"  - {p}")
 
-    mapping = scan_rag_dir(rag_dir)
+    mapping = scan_rag_dir(rag_dir, search_paths)
     if not mapping:
         print(f"No usable npz files found under: {rag_dir}")
         return

@@ -1,11 +1,15 @@
 # build_rec_from_train.py
 # -*- coding: utf-8 -*-
-import os
-import re
 import json
+import re
 from collections import defaultdict
+from pathlib import Path
 
-ROOT = "SFT_data"   # train/val/test live here
+# Default to released benchmark splits under benchmark/iTIMO_dataset/iTIMO-*/
+# Fallback to legacy SFT_data/ if someone still keeps that layout around.
+SCRIPT_DIR = Path(__file__).resolve().parent
+DATA_ROOT = SCRIPT_DIR / "iTIMO_dataset"
+LEGACY_ROOT = SCRIPT_DIR / "SFT_data"
 
 
 # --------- Utility functions ---------
@@ -114,22 +118,22 @@ def select_diverse_ids(train_data, source_ids, current_id, k=5):
 
 
 # --------- Process one (city, op) for train/val/test ---------
-def process_city_op(city, op, k=5):
+def process_city_op(city, op, base_dir: Path, k=5):
     """
     For a given city+op:
-        SFT_data/{city}_{op}_train.json
-        SFT_data/{city}_{op}_val.json
-        SFT_data/{city}_{op}_test.json
+        {base_dir}/{city}_{op}_train.json
+        {base_dir}/{city}_{op}_val.json
+        {base_dir}/{city}_{op}_test.json
     rec_exmaples for all splits are selected from train.json.
     """
-    train_path = os.path.join(ROOT, f"{city}_{op}_train.json")
-    if not os.path.exists(train_path):
+    train_path = base_dir / f"{city}_{op}_train.json"
+    if not train_path.exists():
         print(f"[SKIP] {train_path} not found, skip {city}-{op}")
         return
 
     print(f"\n=== Processing {city} - {op} ===")
     # ---- 1) read train, build hint groups ----
-    with open(train_path, "r", encoding="utf-8") as f:
+    with train_path.open("r", encoding="utf-8") as f:
         train_data = json.load(f)
 
     hint_to_ids = defaultdict(list)
@@ -142,13 +146,13 @@ def process_city_op(city, op, k=5):
 
     # ---- 2) build rec_exmaples for train/val/test ----
     for split in ["train", "val", "test"]:
-        path = os.path.join(ROOT, f"{city}_{op}_{split}.json")
-        if not os.path.exists(path):
+        path = base_dir / f"{city}_{op}_{split}.json"
+        if not path.exists():
             print(f"  [{split}] {path} not found, skip.")
             continue
 
         print(f"  [{split}] building rec_exmaples from TRAIN pool ...")
-        with open(path, "r", encoding="utf-8") as f:
+        with path.open("r", encoding="utf-8") as f:
             data_split = json.load(f)
 
         augmented = {}
@@ -161,38 +165,42 @@ def process_city_op(city, op, k=5):
             new_entry["rec_exmaples"] = rec_list
             augmented[sid] = new_entry
 
-        with open(path, "w", encoding="utf-8") as f:
+        with path.open("w", encoding="utf-8") as f:
             json.dump(augmented, f, ensure_ascii=False, indent=2)
 
         print(f"    -> {split}: {len(augmented)} items updated and saved to {path}")
 
 
 if __name__ == "__main__":
-    # Auto-scan SFT_data for *_train.json to infer city and op
-    train_files = [
-        f for f in os.listdir(ROOT)
-        if f.endswith("_train.json")
-    ]
+    # Auto-scan benchmark/iTIMO_dataset/ (preferred) and legacy SFT_data/ for *_train.json
+    candidate_roots = [DATA_ROOT, LEGACY_ROOT]
+    train_files = []
+    for root in candidate_roots:
+        if not root.exists():
+            continue
+        train_files.extend(root.glob("**/*_train.json"))
+
     if not train_files:
-        print("No *_train.json found in SFT_data/")
+        print("No *_train.json found under iTIMO_dataset/ or SFT_data/")
         exit(0)
 
     print("Found train files:")
-    for name in sorted(train_files):
-        print("  -", name)
+    for path in sorted(train_files):
+        print("  -", path)
 
     # Parse city/op from filename, e.g., Melb_ADD_train.json
     pattern = re.compile(r"(.+)_([A-Z]+)_train\.json")
 
-    city_op_set = set()
-    for name in train_files:
-        m = pattern.match(name)
+    city_op_dirs = {}
+    for path in train_files:
+        m = pattern.match(path.name)
         if not m:
             continue
         city, op = m.group(1), m.group(2)
-        city_op_set.add((city, op))
+        # Prefer the first hit (iTIMO_dataset is scanned before legacy SFT_data)
+        city_op_dirs.setdefault((city, op), path.parent)
 
-    for city, op in sorted(city_op_set):
-        process_city_op(city, op, k=5)
+    for (city, op), base_dir in sorted(city_op_dirs.items()):
+        process_city_op(city, op, base_dir=base_dir, k=5)
 
     print("\nAll city/op splits processed.")
