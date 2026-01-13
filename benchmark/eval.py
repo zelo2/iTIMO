@@ -15,7 +15,7 @@ POI accuracy rules:
   - If either condition is met, count as POI hit
 
 Usage (run inside repo or benchmark/):
-    # parsed results (recommended)
+    # parsed results (recommended) – writes accuracy_hint_summary.json inside each detected root
     python eval.py --glob "*_example.json"
 
     # raw prompt results (auto-parse responses to dict; defaults look under prompt_results/)
@@ -50,17 +50,34 @@ DEFAULT_ROOT_NAMES = [
 ]
 
 
+def maybe_add_root(p: Path, roots: List[Path], seen: set):
+    if p in seen:
+        return
+    if p.exists():
+        roots.append(p)
+        seen.add(p)
+
+
 def collect_default_roots() -> List[Path]:
-    roots = []
+    """
+    Detect prediction folders. If results_parsed exists, expand to its subfolders
+    (e.g., results_parsed/prompt_results, results_parsed/SFT_predictions_lora).
+    """
+    roots: List[Path] = []
     seen = set()
+
     for base in DEFAULT_ROOT_NAMES:
         for anchor in (SCRIPT_DIR, REPO_ROOT):
             p = (anchor / base).resolve()
-            if p in seen:
-                continue
-            if p.exists():
-                roots.append(p)
-                seen.add(p)
+
+            if p.name == "results_parsed" and p.exists():
+                subdirs = [d for d in p.iterdir() if d.is_dir()]
+                if subdirs:
+                    for sd in subdirs:
+                        maybe_add_root(sd.resolve(), roots, seen)
+                    continue
+            maybe_add_root(p, roots, seen)
+
     return roots
 
 
@@ -509,8 +526,8 @@ def parse_args():
     )
     parser.add_argument(
         "--examples-dir",
-        default=".",
-        help="Directory containing <City>_<OP>_examples.json (symlink or copy).",
+        default=str(SCRIPT_DIR),
+        help="Directory containing <City>_<OP>_examples.json (symlink or copy). Default: benchmark/ directory.",
     )
     parser.add_argument(
         "--auto-parse",
@@ -520,7 +537,7 @@ def parse_args():
     parser.add_argument(
         "--summary",
         default=None,
-        help="Custom path for the summary JSON. Default: accuracy_hint_summary.json in the first root.",
+        help="Optional aggregated summary JSON path (in addition to per-root summaries).",
     )
     return parser.parse_args()
 
@@ -531,18 +548,21 @@ def main():
     if not roots:
         raise FileNotFoundError("No roots found. Provide --roots or ensure default prediction folders exist.")
 
-    all_results = []
     examples_cache: Dict[Tuple[str, str], Optional[Dict[str, Any]]] = {}
 
-    total_files = 0
+    overall_results = []
+    overall_files = 0
+
     for root in roots:
         if not root.exists():
             print(f"[SKIP ROOT] not found: {root}")
             continue
 
         files = sorted(root.rglob(args.glob))
-        total_files += len(files)
+        overall_files += len(files)
         print(f"[ROOT] {root} matched {len(files)} file(s) with '{args.glob}'")
+
+        root_results = []
 
         for path in files:
             meta = parse_setting_from_path(path, root)
@@ -568,7 +588,8 @@ def main():
             res = eval_one_file(path, examples, auto_parse=args.auto_parse)
 
             res.update(meta)
-            all_results.append(res)
+            root_results.append(res)
+            overall_results.append(res)
 
             def fmt(x):
                 return f"{x:.4f}" if isinstance(x, (int, float)) and x is not None else "None"
@@ -605,11 +626,22 @@ def main():
                 f"HintAvg={fmt(hint_avg)}"
             )
 
-    summary_path = Path(args.summary) if args.summary else (roots[0] / "accuracy_hint_summary.json")
-    summary_path.parent.mkdir(parents=True, exist_ok=True)
-    with summary_path.open("w", encoding="utf-8") as f:
-        json.dump(all_results, f, ensure_ascii=False, indent=2)
-    print(f"\nProcessed {total_files} file(s) across {len(roots)} root(s). Saved summary to {summary_path}")
+        # per-root summary
+        root_summary = Path(args.summary) if args.summary and len(roots) == 1 else (root / "accuracy_hint_summary.json")
+        root_summary.parent.mkdir(parents=True, exist_ok=True)
+        with root_summary.open("w", encoding="utf-8") as f:
+            json.dump(root_results, f, ensure_ascii=False, indent=2)
+        print(f"[SUMMARY] saved {len(root_results)} record(s) -> {root_summary}")
+
+    # optional aggregated summary across roots
+    if args.summary and len(roots) > 1:
+        overall_path = Path(args.summary).resolve()
+        overall_path.parent.mkdir(parents=True, exist_ok=True)
+        with overall_path.open("w", encoding="utf-8") as f:
+            json.dump(overall_results, f, ensure_ascii=False, indent=2)
+        print(f"[SUMMARY-ALL] saved {len(overall_results)} record(s) -> {overall_path}")
+
+    print(f"\nProcessed {overall_files} file(s) across {len(roots)} root(s).")
 
 
 if __name__ == "__main__":
