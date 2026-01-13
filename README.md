@@ -41,13 +41,13 @@ The dataset statistics are provided in the paper (Table 2):
 ## 🧪 Perturbation (Generate Need-to-Modify Itineraries)
 
 Use these scripts to generate perturbed (need-to-modify) itineraries from raw trajectories:
-- `uni_perturbation.py`: perturbation generator with tool-calling + optional memory
+- `V31FM_perturbation.py`: perturbation generator with tool-calling + optional memory
 - `baseline_perturbation.py`: baseline perturbation generator
 
 Before running, set API keys in `benchmark/api_key/api_key.py` (and/or in the scripts if required).
 
 ```bash
-python uni_perturbation.py
+python V31FM_perturbation.py
 ```
 
 Notes:
@@ -62,7 +62,7 @@ Recommended Python `>=3.10`.
 pip install -r requirements.txt
 ```
 
-Note: running `uni_perturbation.py` / `baseline_perturbation.py` / `benchmark/Prompting_LLM.py` requires access to the corresponding APIs (DeepSeek / Azure OpenAI / OpenAI, etc.).
+Note: running `V31FM_perturbation.py` / `baseline_perturbation.py` / `benchmark/Prompting_LLM.py` requires access to the corresponding APIs (DeepSeek / Azure OpenAI / OpenAI, etc.).
 
 ## 📈 Benchmark: Itinerary Modification Evaluation (Different LLMs)
 
@@ -198,11 +198,11 @@ Outputs: `benchmark/SFT_predictions_lora/{model}_{city}_{op}_...json`
 
 ```text
 iTIMO/
-├── uni_perturbation.py — main perturbation generator (LLM + tool-calling + optional memory)
+├── V31FM_perturbation.py — main perturbation generator (LLM + tool-calling + optional memory)
 ├── baseline_perturbation.py — baseline perturbation generator
 ├── position_POI_extraction.py — diff detector between original and perturbed itineraries
 ├── template/
-│   ├── prompts.py — prompts for uni_perturbation.py
+│   ├── prompts.py — prompts for V31FM_perturbation.py
 │   ├── baseline_prompts.py — prompts for baseline_perturbation.py
 │   ├── functions.py — tool JSON schemas for tool-calling
 │   └── CaseStudy.py — small demo/case-study helpers
