@@ -2,7 +2,7 @@
   <img src="figures/iTIMO.png" alt="iTIMO" />
 </p>
 
-# 🗺️ iTIMO: An LLM-Empowered Synthesis Dataset for Travel Itinerary Modification
+# 🍄 iTIMO: An LLM-Empowered Synthesis Dataset for Travel Itinerary Modification
 
 This repository provides the dataset and code for *iTIMO: An LLM-Empowered Synthesis Dataset for Travel Itinerary Modification*.
 
@@ -225,37 +225,3 @@ iTIMO/
 ├── figures/ — images used in README
 └── requirements.txt — Python dependencies
 ```
-
-### 🧩 Top-level scripts
-
-- `uni_perturbation.py`: main perturbation generator (LLM + tool-calling + optional memory).
-- `baseline_perturbation.py`: baseline perturbation generator.
-- `position_POI_extraction.py`: detects the edit (ADD/DELETE/REPLACE) between an original itinerary and a perturbed itinerary.
-
-### 🧰 Templates
-
-- `template/prompts.py`: prompts used by `uni_perturbation.py`.
-- `template/baseline_prompts.py`: prompts used by `baseline_perturbation.py`.
-- `template/functions.py`: tool JSON schemas used for tool-calling.
-- `template/CaseStudy.py`: case-study/demo utilities (if used).
-
-### 🧪 Benchmark (Repair Task Inference + Evaluation)
-
-- `benchmark/iTIMO_dataset/`: released benchmark data (see “Dataset” above).
-- `benchmark/Prompting_LLM.py`: inference via Azure/OpenAI-compatible endpoints → `benchmark/prompt_results/`.
-- `benchmark/process_pred.py`: parse/repair model outputs → `benchmark/results_parsed/`.
-- `benchmark/eval.py`: compute accuracy + hint-pass metrics.
-- `benchmark/hint_satis_check.py`: per-sample hint satisfaction checker.
-- `benchmark/benchmark_prompts.py`: benchmark prompts.
-- `benchmark/RAG_emd_search.py`, `benchmark/RAG_enhanced_data_cons.py`, `benchmark/RAG_hint_based.py`: RAG neighbor construction variants.
-- `benchmark/data_cons.py`: RAG/data construction utilities used by prompting and retrieval scripts.
-- `benchmark/fine_tune_full.py`, `benchmark/fine_tune_lora.py`: SFT runners for full-parameter and LoRA/QLoRA tuning.
-- `benchmark/api_key/api_key.py`: API key placeholders.
-
-### 🗃️ Raw data folders (used for perturbation generation)
-
-- `og_dataset/data-cikm16/`: Melbourne raw data and POI lists. Reference: Xiaoting Wang et al., “Improving Personalized Trip Recommendation to Avoid Crowds Using Pedestrian Sensor Data”, CIKM 2016 (see `og_dataset/data-cikm16/README.txt`).
-- `og_dataset/data-ijcai15/`: Toronto raw data and POI lists. References: Kwan Hui Lim et al., “Personalized Tour Recommendation based on User Interests and Points of Interest Visit Durations”, IJCAI 2015; and “Towards Next Generation Touring: Personalized Group Tours”, ICAPS 2016 (see `og_dataset/data-ijcai15/poiList-ijcai15/README.txt`).
-- `og_dataset/LearNext-DATASET/`: Florence trajectories/POIs/categories (LearNext). Reference: Baraglia, Muntean, Nardini, Silvestri, “LearNext: Learning to Predict Tourists Movements”, CIKM 2013 (see `og_dataset/LearNext-DATASET/ReadMe.txt`).
-
-- `data4perturb/`: processed itinerary splits used by perturbation scripts.
