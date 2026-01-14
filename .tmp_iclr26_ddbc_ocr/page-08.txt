@@ -1,0 +1,69 @@
+Under review as a conference paper at ICLR 2026
+
+4.6 ABLATION STUDY
+
+Key components. To further evaluate the effectiveness of key components of our model, we conduct
+ablation experiments (Tablef4) to assess the contribution of each design choice in DDBC. Consider-
+ing the resource and time overhead imposed by the extremely large vocabulary in Spotify (254,155),
+performing ablation studies without RVQ would be prohibitively expensive. Therefore, we adopt
+Spotifyk = 30, the shortest sequence setting, as a more practical benchmark for these experiments.
+We study how each component contributes to
+performance: hierarchical (coarse-to-fine) de-
+coding, token validity filter, boi token, data aug- oq
+mentation, we also investigate how different Variant | FI Jace OAS
+
+RVQ depth affect performance. We derive the Our proposed DDBC 0.166 0.092 0.620
+
+Table 4: Ablation study of key components.
+
+following insights. (1) Removing RVQ results w/o RVQ 0.028 0.015 0.556
+in a dramatic performance drop. We encode w/o boi token | O.116 0,063 0.536
+items using their IDs and initialize their embed- w/o data augmentation | 0.152 0.084 0.598
+
+dings with CLHE features, results in a dramatic __Wo token validity filter | 0.163 0.090 =
+
+drop in both F1 and Jaccard. This demonstrates
+
+RVQ mitigates the dimensionality curse due to N, which is crucial as it permits dense supervi-
+sion. (2) Discarding the boi token leads to a performance decline. Since Diffusion’s generation
+lacks inherent sequence, integrating the boi token is necessary to guide the model with positional
+information. (3) Data augmentation shows beneficial for modeling. The results of training on the
+original dataset show a slight performance reduction in this case, and simple data augmentation
+remains significant for diffusion modeling because it explicitly provides richer input context. (4)
+The token validity filter remains essential to guarantee the validity of the generated bundles, despite
+its removal leading to only a marginal decrease in performance. We evaluated the necessity of the
+token validity filter during inference. While removing the filter resulted in only a marginal decrease
+in overall performance, the invalid ratio concurrently rose to 2.5%. Therefore, the filter remains
+essential to guarantee the validity of the generated bundles.
+
+Effect of RVQ depth. To investigate the impact of the item
+embedding antition level on model performance as dis- Table 5: Effect of RVQ levels.
+cussed in method section,with a fixed 4 levels RVQ, we train le | Fl Jace OAS
+DDBC with utilizing different levels of RVQ. We report the re-
+sults in Table] As the number of RVQ levels used increases, Hh ee Ooce boot
+the model captures increasingly finer-grained item informa- {1.2.3} 0.148 0.081 0.590
+tion, leading to substantial improvements in all the evaluation Our proposed DDBC
+
+metrics. We state that the current setting represents a favorable {1,2, 3,4} | 0.166 0.092 0.620
+trade-off between the representational capacity and compres-_—_§_ ——————————_
+sion ratio of RVQ.
+
+5 CONCLUSION
+
+We recast bundle construction with a masked discrete diffusion model that progressively resolves
+unknown items in an order-agnostic manner. Conceptually, the formulation address the dual di-
+mensionality curses: (i) it removes spurious ordering, reducing the search space from permutations
+to combinations, preserves fine-grained, higher-order item relations, and (ii)shrinks the effective
+search space by mapping items to codes drawn from a globally shared codebook. Empirically, cou-
+pling DDM with RVQ yields consistent gains over prior sequential and non-sequential construction
+baselines, with especially strong improvements as bundle length grows.
+
+Discussion. Our current instantiation assumes fixed-length bundles, learning when to stop (ie.,
+variable-length completion and principled halting criteria) remains open. Personalization is medi-
+ated by frozen encoders for user—item signals and item semantics; introducing explicit condition-
+ing into the diffusion process (e.g., context features, or user instruction) could yield user-specific
+bundling. The RVQ design space (e.g., number of levels, codebook sizes, and training regimes)
+deserves further study to balance identifiability, compression, and semantic smoothness. Finally,
+diffusion schedules and inference policies merit deeper optimization: adaptive timestep schedules,
+selective re-masking strategies, and entropy-guided decoding may improve sample efficiency and
+robustness.

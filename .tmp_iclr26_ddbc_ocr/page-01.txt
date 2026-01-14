@@ -1,0 +1,74 @@
+Under review as a conference paper at ICLR 2026
+
+Highlighting that retrievaling is not suitable for bundle construction.
+Generative paradigm is more practical.
+
+within a bundle), the theoretical space of modeling a bundle as a sequence is the permutation, i.e.,
+
+P(N,k), while modeling it as a set by relaxing the sequential constraint will significantly downgrade
+the space to the combination, i.e., C(V.k). Nonetheless, simply discarding the sequential construc-
+tion paradigm, e.g., existing non-sequential construction methods (Tomasi et al. 2024
+
+(2024), only partially addresses the problem, since the space of the combination is still exponential
+
+to item catalog size N and bundle length k, which we call the two dimensionality curses;
+
+These two dimensionality curses induce two technical challenges: First, bundle construction requires
+to model the intra*bundle relations, such as similarity, compatibility, composability, efc., among any
+
+possible combinations of items, ¢.g., pair-wise, tripartite, and quaternary (Chang et al, 2020). Thus;
+how to effectively and efficiently preserve these higher-order relations, considering that the com-
+
+. Second
+and more seriously, the item catalogs, from which we draw items to build the bundle, are often
+huge. For example, N could be tens of thousands or even millions on some online platforms such as
+Spotifyor’Amazon; Conventional approaches typically leverage one embedding for each item (Mal
+fetal] (2024c), consequently, it is highly difficult to navigate through the huge candidate space and
+precisely pick the desired item for a certain bundle. Therefore; how to learn item embeddings that
+are sufficiently discriminative regarding different bundling functions while maintaining a relatively
+small search space poses the second technical challenge.
+
+To tackle the above two challenges, we propose a method that leverages Discrete Diffusion for
+Bundle Construction, named as DDBC. Specifically, to model the higher-order intra-bundle item
+relations, we introduce diffusion model as the backbone to replace the previous sequential or non-
+sequential solutions. Basically, the diffusion model features with a non-sequential construction
+paradigm, where it picks items according to the learned strategies regarding the entire bundle struc-
+ture instead of following a certain pre-defined left-to-right sequential order. Interms of the second
+
+The codes of each item are selected from a globally shared codebook that is significantly smaller
+than the original item set, remarkably relaxing the dimensionality curse caused by NV. By integrat-
+ing the RVQ tokenizer into the diffusion backbone, we design our discrete diffusion model DDBC.
+
+; at each forward step we randomly
+mask a subset of positions, eventually reaching an all> MASK). The training objective is to learn the
+reverse denoising dynamics po(b;—1 | bz, t).
+
+, we iteratively denoise until the bundle is fully recovered. Importantly, ran-
+dom masking exposes the model to rich contexts during training, thereby approximating the joint
+distribution modeling over bundle items and providing the flexibility to accommodate different de-
+coding priors. Also, the item codes learned by RVQ have different levels of semantic granularity,
+therefore, the diffusion model can learn the bundling strategy more fine-grainedly.
+
+Our contributions include: (1) We emphasize bundle construction should follow a non-sequential
+construction paradigm and instantiate it with a masked denoising process. (2) We operate the diffu-
+sion model in a vector-quantized discrete space using RVQ, which relaxing the dimensionality curse
+caused by huge item catalog size. (3) We provide extensive and detailed empirical evidence that
+our approach outperforms baselines in bundle construction, with benefits especially pronounced on
+larger bundles and larger item catalogs. Comprehensive ablation and model studies further verify
+the contribution of each component.
+
+2 RELATED WORK
+
+We review three lines of literature most relevant to our work: bundle construction, generative rec-
+ommendation, and discrete diffusion models.
+
+Bundle construction is the task of selecting a subset of items from the large item pools to build an
+entire bundle or complete a partial bundle. It typically comprises two parts: (1) an encoder for users,
+items, and bundles, and (2) a bundle generator. On the encoder side, early advances fuse semantics
+
+feature (often via multimodal encoders e.g., (2023)/Li et al] 2023)) with collaborative
+
+signals (Sarwar et al} 2001} 2020) to learn stronger item embeddings
+bt . However, these encoders do not directly capture bundle-level
+
+structure; semantically similar items may still not co-occur, whereas real user-constructed bundles

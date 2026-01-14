@@ -1,0 +1,65 @@
+Under review as a conference paper at ICLR 2026
+
+Michael Janner, Yilun Du, Joshua B. Tenenbaum, and Sergey Levine. Planning with diffusion for
+flexible behavior synthesis. In JCML, volume 162 of Proceedings of Machine Learning Research,
+pp. 9902-9915. PMLR, 2022.
+
+Zheng Ju, Honghui Du, Elias Z. Tragos, Neil Hurley, and Aonghus Lawlor. Diffgr: A discrete
+diffusion-based model for personalised recommendation by reconstructing user-item bipartite
+graphs. In ECIR (3), volume 15574 of Lecture Notes in Computer Science, pp. 246-254. Springer,
+2025.
+
+Wang-Cheng Kang and Julian J. McAuley. Self-attentive sequential recommendation. In JCDM, pp.
+197-206. IEEE Computer Society, 2018.
+
+Zhifeng Kong, Wei Ping, Jiaji Huang, Kexin Zhao, and Bryan Catanzaro. Diffwave: A versatile
+diffusion model for audio synthesis. In JCLR. OpenReview.net, 2021.
+
+Doyup Lee, Chiheon Kim, Saehoon Kim, Minsu Cho, and Wook-Shin Han. Autoregressive image
+generation using residual quantization. In CVPR, pp. 11523-11532, 2022.
+
+Junnan Li, Dongxu Li, Silvio Savarese, and Steven Hoi. Blip-2: Bootstrapping language-image
+pre-training with frozen image encoders and large language models. In JCML, pp. 19730-19742,
+2023.
+
+Lei Li, Yongfeng Zhang, Dugang Liu, and Li Chen. Large language models for generative recom-
+mendation: A survey and visionary discussions. In LREC/COLING, pp. 10146-10159. ELRA
+and ICCL, 2024a.
+
+Zihao Li, Aixin Sun, and Chenliang Li. Diffurec: A diffusion model for sequential recommendation.
+ACM Trans. Inf. Syst., 42(3):66:1-66:28, 2024b.
+
+Dawen Liang, Rahul G Krishnan, Matthew D Hoffman, and Tony Jebara. Variational autoencoders
+for collaborative filtering. In WWW, pp. 689-698, 2018.
+
+Xiao Lin, Xiaokai Chen, Chenyang Wang, Hantao Shu, Linfeng Song, Biao Li, and Peng Jiang.
+Discrete conditional diffusion for reranking in recommendation. In WWW (Companion Volume),
+pp. 161-169. ACM, 2024.
+
+Han Liu, Yinwei Wei, Xuemeng Song, Weili Guan, Yuan-Fang Li, and Liqiang Nie. Mmgrec:
+Multimodal generative recommendation with transformer model. CoRR, abs/2404.16555, 2024.
+
+Haohe Liu, Zehua Chen, Yi Yuan, Xinhao Mei, Xubo Liu, Danilo Mandic, Wenwu Wang, and
+Mark D. Plumbley. Audioldm: Text-to-audio generation with latent diffusion models. In
+Proceedings of the 40th International Conference on Machine Learning, volume 202 of Pro-
+ceedings of Machine Learning Research, pp. 21450-21474. PMLR, 2023. URL
+
+Xiaohao Liu, Jie Wu, Zhulin Tao, Yunshan Ma, Yinwei Wei, and Tat-Seng Chua. Fine-tuning
+multimodal large language models for product bundling. In KDD (1), pp. 848-858. ACM, 2025.
+
+Yunshan Ma, Yingzhi He, An Zhang, Xiang Wang, and Tat-Seng Chua. Crosscbr: Cross-view
+contrastive learning for bundle recommendation. In KDD, pp. 1233-1241, 2022.
+
+Yunshan Ma, Yingzhi He, Xiang Wang, Yinwei Wei, Xiaoyu Du, Yuyangzi Fu, and Tat-Seng Chua.
+Multicbr: Multi-view contrastive learning for bundle recommendation. ACM Transactions on
+Information Systems, 42(4):1-23, 2024a.
+
+Yunshan Ma, Yingzhi He, Wenjun Zhong, Xiang Wang, Roger Zimmermann, and Tat-Seng Chua.
+CIRP: cross-item relational pre-training for multimodal product bundling. In ACM Multimedia,
+pp. 9641-9649. ACM, 2024b.
+
+Yunshan Ma, Xiaohao Liu, Yinwei Wei, Zhulin Tao, Xiang Wang, and Tat-Seng Chua. Leveraging
+multimodal features and item-level user feedback for bundle construction. In WSDM, pp. 510-
+519, 2024c.
+
+11

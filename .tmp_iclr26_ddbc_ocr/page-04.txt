@@ -1,0 +1,65 @@
+Under review as a conference paper at ICLR 2026
+
+do not rely on absolute positions. To realize this idea, weadopta discrete diffusion framework with
+
+The key components are: an input tokenization design
+for bundles, a forward corruption process that incrementally masks tokens, a bidirectional Trans-
+former as the reverse denoiser, and an order-agnostic inference procedure with token-level validity
+constraints.
+
+Input tokenization for bundles. We serialize a bundle by inserting <boi> before each item and
+wrapping with <bos> and <eos>. Let 2,2 denote the ¢-th code token of item j (j=1,...,|bJ,
+f=1,...,L). We use exactly two index sets:
+
+OQfag = {<bos>, <boi>, <eos>}, Qeoae = {(7,2) : 9 =1,..., |b], 2=1,..., LZ}. @)
+Tokens in Qpag are never masked; corruption and prediction operate only on z;,¢ with (j,£) € Qeoae:
+
+Forward corruption. We use an absorbing-mask Markov chain as in masked discrete diffusion. At
+each step t € {1,...,7'}, each currently unmasked token z;,¢ with (j,£) € Qeoae is independently
+replaced by [MASK] with probability 3; € (0,1):
+
+a(2\% =u Ea = u) =1-(;, a(2\% = [MASK] Lv x [MASK] ) =f, (4
+for any token value uw # [MASK], with the absorbing condition ae? = [MASK] | 2d =
+
+[MASK] ) = 1 and independence across (j,£). Let a; = [[/_, (1 — 8s) be the survival probability.
+The closed-form transition from t=0 to t is:
+
+a(242 v | 2 u) a, 1fv = ul} + (1— a) 1fv = [MASK] ], (5)
+
+i.e. after t steps a token either survives with probability a; or is masked with probability 1 — a;.
+
+Reverse denoising. A bidirectional Transformer 6 is trained to predict the original token values
+from a corrupted sequence. At inference, it produces a categorical distribution for each masked
+position conditioned on the current noisy tokens, the timestep t:
+
+po(z? | C®,t) AC, where AC 4 {pe [0,1] : 1" p=1}. (6)
+Following common practice infSahoo et al] G02), we use the “simple” reconstruction objective that
+
+trains pp to predict the original token BY, directly from a state Z“) corrupted at a random timestep t.
+Crucially, tokens that are unmasked, either because they belong to b; or because they have already
+been generated in a previous step, are treated as clamped observations; they are never masked again
+and remain fixed in all subsequent steps. This mechanism enables the model to unmask items in any
+
+order during generation, without ever overwriting a code once it’s decided. |
+
+Training objective. Let M; C Qcoae be the set of positions masked by the forward process at step
+t. The discrete diffusion variational objective reduces to a weighted masked-token cross-entropy:
+
+Lnevso = Ew i,....7} Em, S — log Po(2\ | Zt). 7)
+(G,L)EMe
+
+Inference. We model bundle construction as iterative denoising of a partially masked token matrix.
+Let the observed set be b, and the unknown complementary set be b, with |b,| items. Denote
+by , the positions (including all RVQ levels) that belong to items in b,, by Q, the positions that
+belong to items in b,, and by Qaag. We construct an input sequence by flattening tokens row-wise
+and inserting <boi> before each item’s L tokens to mark boundaries. Formally, the initial state Z
+is:
+
+Zu = [fu € Qe UQhag] Gu + If[u € Qy] [MASK]. (8)
+Here, «,, represents the given token at position u, with Qgag kept unmasked so the model knows item
+segmentation. The tokens of b, remain clamped throughout. After decoding, a predicted item i jis
+
+obtained by mapping its token tuple back to the catalog or to a reconstruction E; = a.
+
+*While diffusion can be extended to allow re-masking to revise earlier decisions, we do not enable that
+option here and leave it to future work.

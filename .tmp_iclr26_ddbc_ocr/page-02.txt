@@ -1,0 +1,68 @@
+Under review as a conference paper at ICLR 2026
+
+balance relevance, exhibit diversity, and maintain complementarity (Sun et al.| /2024). Most bundle
+generators still follow a sequential construction paradigm (Chen et al.| 2019; Bai etal] 2019}
+fal} BOZT} [Deng etal 2021 [iu etal} 2025} I ~however, the item order within
+
+a bundle does not necessarily reflect how users construct or consume bundles. Relying on a fixed
+order can introduce unnecessary order bias and harm generalization by overfitting to dataset-specific
+sequences (Yang et al} 2024). Several non-sequential approaches have been proposed.
+predicts all bundle items in parallel with a contrastive non-auto-regressive decoder, but it
+relies on predefined templates and fixed object types. (2024) uses a continuous-space
+diffusion model but only accepts text prompts as input. ( ) outputs an order-agnostic
+set in one shot; however, it lacks explicit intra-bundle relations interactions during generation. More
+importantly, all of these works generate bundles from scratch and do not address partial-bundle
+completion. Our approach targets this gap via discrete masked denoising, completing the missing
+items in an order-agnostic manner.
+
+Generative recommendation is a paradigm that reframes recommendation as generating target
+
+item IDs rather than full-rank retrieving. (Wu et al} 2024 [Liet al} 2024a) The line originates from
+generative retrieval ( (Rajput et al} 2023): using residual vector quantization (Lee et al} (2022),
+
+items are quantized into multiple semantic IDs from coarse to fine, and an auto-regressive decoder
+generates these IDs conditioned on context. Subsequent work extends this paradigm to multimodal
+settings (Liu et al’ (2024) and LLM backbones (Zheng et al.| 2024} Zhai et al} 2025). As previously
+discussed, sequential construction paradigm is not suitable for bundling tasks; accordingly, we retain
+the multiple semantic-ID idea but replace AR backbone with a discrete diffusion model.
+
+Diffusion models learn to generate data by inverting a forward noise process; in continuous spaces
+
+they have been widely used for images, audio, and trajectories {Tanner et al/} (2022;
+
+gorical tokens by corrupting symbols (often to an absorbing [MASK]) and denoising to reconstruct
+
+them (Austin et al] (Austin et al.| 2021} Sahoo et al 2024). Within recommendation, diffusion has largely been
+
+applied to ; sequential hext-item prediction, operating on item latent embedding space
+
+(Yang et al] while discrete diffusion remains ee spe underex,
+Crore Ci aral| BODE arsea BOSS) 1 this work, we adopt an MDLM-style discrete diffusion
+backbone and leverage its order-agnostic nature to better model bundles. To the best of our knowl-
+edge, we are the first to study bundle construction with discrete diffusion.
+
+3 METHOD
+
+Our framework consists of two key components: (1) RVQ to discretize item embeddings, and (2)
+a DDM that operates over the code tokens for full bundle construction. The overall architecture is
+illustrated in Figure [I]
+
+3.1 PROBLEM FORMULATION
+
+Let Z = {i1,%2,...,in} denote the item catalog and B = {bj,b2,..., baz} the collection of
+bundles, where NV and M denote the number of items and bundles, respectively. Each bundle b € B
+is set of items, b = {i;,,4).,+-- Aj) }, {d1,--++J|b[} C IN], |b] = 2. Each item é € TZ is mapped
+by a feature extractor to a latent vector E(i), where the feature often encapsulates semantic signals
+and collaborative-filtering signals depending on the datasets. We formulate the bundle construction
+task as: for a bundle b, given a non-empty partial bundle (a subset of the entire bundle) b, C b,
+
+predict the rest part of the bundle (the complementary item set) by = b\ by.
+
+3.2 RESIDUAL QUANTIZATION OF ITEM EMBEDDINGS
+
+To make masked discrete diffusion feasible on large catalogs, we first discretize continuous item
+embeddings into a compact, hierarchical code space via RVQ. We apply an L-level RVQ to obtain
+
+a tuple of discrete code indices z(i) = (z“)(i),...,2™)(i)). The last level is a dedup code that
+carries no semantics and acts purely as an auto-increment field to ensure a one-to-one mapping
+from a code tuple back to a unique item ID. Formally, 2“ (i) € {1,..., Ce} indexes a codeword in

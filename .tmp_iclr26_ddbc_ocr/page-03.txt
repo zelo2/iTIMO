@@ -1,0 +1,96 @@
+Under review as a conference paper at ICLR 2026
+
+Item Tokenization Mask Discrete Diffusion Modeling Illustration
+Bunce, ———: ip igi
+
+Training full bundte b
+=~ «8000
+wwe st BOD ED ae os : oF Te
+£e=t | aoe o> ABE > MED o> EB) en > ED o> 0 ~OO =. a a n &
+§ eat, | pon te GB ene ne nt I ene > neater» Bee ene see) n> ace
+
+i £=T Yyooe bot <m> <m> <m> <m> po <i> <m> <m> <m> ho) <m> <m> <m> <m> bol “<m> <m> <m> <m> eos
+Quantizer i “ 2 8 tb
+~~ 8 & iy — bh
+(EB bei cme cme <> cme boi <m> cme <m> <m> 008 aa ae * >
+EB ca: Bi) ene n> cre bai <r “+ <m> eos
+
+om Eco gy ig
+co 9D = 2 ae
+
+~G000-a@ he
+
+a6
+5
+BE
+8
+3
+a
+5
+
+,
+58
+oa
+08
+oo
+oe
+
+i
+goooo
+a
+
+cf
+
+Inference
+BO WD temcodes Flag token <p Mask token © —> Forward corruption —> Reversedenoising O<t,<t,<t;<T —O<t’<t';<t',<T”
+Figure 1: The overall framework of DDBC. The left side illustrates the item tokenization process
+via RVQ. The right side visualizes the training and inference stages of the masked discrete diffusion
+
+modeling. To be noted, we only show the forward process of the training stage, of which the back-
+ward process is just a reverse of the forward and omitted for simplicity.
+
+codebook C\ = fe,. wes el} C R®. Let the residual be r(°) = E (i) and, for £ =
+
+. . - 2 ¢
+20 (i) = arg _gnin 7 |r“ — e(|[>, r) = rl) 4: (1)
+
+The reconstruction uses only the semantic codebooks: E(i) = S742) 1.0 Early codebooks
+
+20 (i)"
+capture "coarsesemantics; later/residualcodebooks' refine details, inducing semantic smoothness
+among similar items. We train the codebooks with an RVQ loss that combines a reconstruction term
+and a codebook commitment term:
+
+L-1
+Lava = |] — BCI) +8 (se P] — egy + [POP —sele@, jylll)» @
+f=1
+
+where sg[-] denotes stop-gradient and £ balances the commitment loss. We use a straight-through
+estimator for the discrete assignment; codebooks are updated via gradient descent; For a bundle
+
+j-th row contains the L codes representing item 7;.
+
+Among many quantization strategies, we choose RVQ for three reasons. (1) Vocabulary compres-
+
+sion. Its theoretical capacity is We C¢, enabling a small per-level vocabulary to index a very large
+item universe. (2) Denser supervision.
+
+denser than item-ID supervision; We quantify the increase in effective supervision in Section] (3)
+Coarse-to-fine granularity of semantics. Hierarchical/residual\codebooks perform implicit cluster-
+ing at multiple granularities, which benefits downstream denoising, Additionally, when a candidate
+
+set is available in real applications, the finest semantic level and the disambiguation index may be
+unnecessary at inference time:
+
+itemsiviarantinvertediindextovericoderprefixes) We study this design choice in Section]
+
+3.3. MASKED DISCRETE DIFFUSION OVER CODE TOKENS
+
+We cast bundle construction as a masked discrete denoising process. In contrast to sequential con-
+struction paradigm, this formulation avoids imposing any arbitrary order on the items and instead
+allows the model to leverage the full set context in an order-agnostic manner. Importantly, our dis-
+
+crete diffusion does not directly impose a set-invariant objective: items are still flattened into a list
+and we do not explicitly enforce permutation invariance. Nevertheless, it serves as a good approx-
+imation to set modeling: at each training step, the already-revealed context and the positions to be
+revealed are randomized, providing rich, position-agnostic supervision so that the learned features

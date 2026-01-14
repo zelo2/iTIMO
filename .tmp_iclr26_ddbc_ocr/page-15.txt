@@ -1,0 +1,44 @@
+Under review as a conference paper at ICLR 2026
+
+when the bundle length (k:) increases from 30 to 90, the latent-space quality improves substantially
+and stable. Specifically, the average OAS decreases consistently from 0.397 (Spotify,_3,) to 0.338
+(Spotify,—¢9) and finally to 0.315 (Spotify, 99). Since a lower OAS score indicates lower distance
+and higher similarity, this trend suggests that our method has an improved capacity to model longer
+bundles.
+
+Table 8: Latent-space quality at A=50. We report the {min, avg, max, var} OAS over test bundles,
+corresponding to minimal, average, maximal, and variance, respectively.
+
+Dataset min avg max var
+Spotify,39 0.477 0.603 0.717 0.003
+Spotify,¢9 0.582 0.662 0.733 0.001
+Spotify, 99 0.625 0.685 0.738 0.001
+POGk=4 0.246 0.525 0.791 0.018
+
+Additional ablation study results. We report ablation study results on Spotify, 3) (A=1 or A=10)
+in Table[] The results obtained at A=10 are consistent with those observed at A=1. (1) The Residual
+Vector Quantization (RVQ) component exhibits to be absolutely indispensable. This result confirms
+the substantial mechanism of RVQ to mitigate the dimensionality curse caused by the huge item cat-
+alog size (N). (2) The boi token could provide positional guidance and improve latent space quality
+largely. Removing the boi token results in a significant performance degradation. (3) Simple data
+augmentation (item swapping) proves to be a beneficial technique for enhancing order-agnostic mod-
+eling and improving model robustness by mitigating overfitting to specific bundle arrangements. (4)
+Although the Token Validity Filter yields only a marginal performance improvement, its inclusion
+remains necessary to guarantee the validity of the generated bundles during inference.
+
+Table 9: Ablation study on Spotify;,.39 (A=1 vs. A=10). “Proposed” is our model DDBC; each of
+the other variants changes exactly one component that is removed from the proposed method.
+
+A=1 A=10
+FI+ Jacet OASt FIt Jace + OAS Tt
+Our proposed DDBC 0.282 0.178 0.618 0.166 0.092 0.620
+
+Variant
+
+w/o RVQ 0.021 0.011 0.557 0.028 0.015 0.556
+w/o token validity filter 0.276 0.173 - 0.163 0.090 -
+w/o boi token 0.176 0.104 0.538 0.116 0.063 0.536
+
+w/o data augmentation 0.254 0.158 0.599 0.152 0.084 0.598
+
+16

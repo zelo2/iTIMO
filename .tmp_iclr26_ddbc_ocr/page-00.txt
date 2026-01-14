@@ -1,0 +1,60 @@
+Under review as a conference paper at ICLR 2026
+
+DISCRETE DIFFUSION FOR BUNDLE CONSTRUCTION
+
+Anonymous authors
+Paper under double-blind review
+
+ABSTRACT
+
+As a central task in product bundling, bundle construction aims to select a subset
+of items from huge item catalogs to complete a partial bundle. Existing methods
+
+time, nevertheless, this paradigm is fundamentally unsuitable for the essentially
+unordered bundles. In contrast, the non-sequential construction paradigm models
+bundle as a set, while it still faces two dimensionality curses: the combination
+complexity is exponential to the catalog size and bundle length. Accordingly, we
+identify two technical challenges: 1) howstoreffectivelyrandiefficientlymiodelithe
+higher-order intra-bundle relations with the growth of bundle length: and 2) how
+to learn item embeddings that are sufficiently discriminative while maintaining a
+relatively smaller search space other than the huge item set.
+
+To address these challenges, we propose DDBC, a Discrete Diffusion model for
+Bundle Construction. DDBC leverages a masked denoising diffusion process to
+build bundles non-sequentially, capturing joint dependencies among items without
+relying on certain pre-defined order. To mitigate the curse of large catalog size,
+We integrate residual vector quantization (RVQ), which compresses item embed-
+dings into discrete codes drawn from a globally shared codebook, enabling more
+efficient search while retaining semantic granularity. We evaluate our method on
+real-world bundle construction datasets of music playlist continuation and fash-
+ion outfit completion, and the experimental results show that DDBC can achieve
+more than 100% relative performance improvements compared with state-of-the-
+art baseline methods. Ablation and model analyses further confirm the effective-
+ness of both the diffusion backbone and RVQ tokenizer, where the performance
+gain is more significant for larger catalog size and longer bundle length. Our code
+
+is available atthttps: //anonymous. 4open. science/r/DDBC- 44EE
+
+1 INTRODUCTION
+
+Product bundling has been a pervasive business strategy, which originates from conventional retail-
+ing, evolves to e-commerce, and is further adopted by generic online services, such as music and
+video streaming (Chang et al| 2020). A product bundle is a set of relevant items assembled to satisfy
+users’ needs (e.g., games, outfits, playlists, meal kits) (Sun et al.| 2024) and promote sales regard-
+ing sellers’ pursuit. Bundle construction, i.e., select a subset of items from the large item pools to
+build an entire bundle or complete a partial bundle, is the first and foremost problem among various
+bundle-centric studies, such as personalized bundle recommendation (Ma et al.| 2022).
+
+Existing studies, either specifically designed for bundle construction (Han et al. 2017 [Bai et al]
+2019; 2019} [Deng et al, 2021) or general sequential recommendation (Kang &
+f 2019), have a fatal yet ever-overlooked flaw: most of them are based
+
+the entire bundle, however, such a sequential construction paradigm is essentially not suitable for
+bundle construction. Intuitively, a bundle is not a sequence of user’s interacted items, and a user is
+not necessarily to follow a certain sequential order to consume the items within a bundle[]} Thereby,
+sequential dependencies barely exist between consecutive items in a bundle, and’sequential models
+bring marginal’ benefits to bundle construction: Delving deep into the technical foundations, con-
+
+sider N as the total number of items (item catalog size) and k as the bundle length (number of items
+
+‘Some bundles may have a sequential order by design, while here we focus on the general scenarios.
