@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="figures/iTIMO_cropped.png" alt="iTIMO" />
+  <img src="figures/iTIMO_cropped.png" alt="iTIMO" width="720" />
 </p>
 
 # 🍄 iTIMO: An LLM-Empowered Synthesis Dataset for Travel Itinerary Modification
