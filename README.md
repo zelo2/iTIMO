@@ -38,22 +38,11 @@ The dataset statistics are provided in the paper (Table 2):
   <img src="figures/dataset_stats_table2.png" width="720" alt="iTIMO dataset statistics (Table 2)" />
 </p>
 
-## 🧪 Perturbation (Generate Need-to-Modify Itineraries)
+## 🧭 Project Structure
 
-Use these scripts to generate perturbed (need-to-modify) itineraries from raw trajectories:
-- `Dataset_Pipline/V31FM_perturbation.py`: perturbation generator with tool-calling + optional memory
-- `Dataset_Pipline/baseline_perturbation.py`: baseline perturbation generator
-
-Before running, set API keys in `benchmark/api_key/api_key.py` (and/or in the scripts if required).
-
-```bash
-python Dataset_Pipline/V31FM_perturbation.py
-```
-
-Notes:
-- City / operation are currently configured in each script’s `__main__` block.
-- Outputs are written under the corresponding data folders (e.g., `data-cikm16/`, `data-ijcai15/`), depending on the selected city/operation.
-- Florence LearNext inputs are read from `data4perturb/Florence/` (Trajectories/PoIs/Categories CSVs).
+This repo has two main parts:
+- Data construction & perturbation: `Dataset_Pipline/README.md`
+- Benchmark & evaluation: `benchmark/README.md`
 
 ## 🛠️ Installation
 
@@ -65,135 +54,13 @@ pip install -r requirements.txt
 
 Note: running `Dataset_Pipline/V31FM_perturbation.py` / `Dataset_Pipline/baseline_perturbation.py` / `benchmark/Prompting_LLM.py` requires access to the corresponding APIs (DeepSeek / Azure OpenAI / OpenAI, etc.).
 
-## 📈 Benchmark: Itinerary Modification Evaluation (Different LLMs)
+## 🧪 Data Construction (Perturbation + Examples)
 
-This benchmark evaluates *itinerary modification*: given a need-to-modify itinerary, the LLM must output the **modification operation** (the inverse of the perturbation in the filename).
+See `Dataset_Pipline/README.md` for perturbation and dataset construction steps.
 
-### 0) Prepare dataset paths (required by the benchmark scripts)
+## 📈 Benchmark & Evaluation
 
-Some benchmark scripts expect files under `benchmark/iTIMO_dataset/<City>_<PerturbOp>_<split>.json`, while the released data is stored under `benchmark/iTIMO_dataset/iTIMO-*/`. Run once:
-
-```bash
-cd benchmark
-python - <<'PY'
-from pathlib import Path
-
-city_dir = {
-    "Melb": "iTIMO-Melbourne",
-    "Toro": "iTIMO-Toronto",
-    "Florence": "iTIMO-Florence",
-}
-ops = ["ADD", "DELETE", "REPLACE"]
-splits = ["train", "val", "test"]
-
-dataset_root = Path("iTIMO_dataset")
-for city, sub in city_dir.items():
-    for op in ops:
-        for sp in splits:
-            src = dataset_root / sub / f"{city}_{op}_{sp}.json"
-            dst = dataset_root / f"{city}_{op}_{sp}.json"
-            if src.exists() and not dst.exists():
-                dst.symlink_to(src)
-
-# eval.py also looks for {City}_{Op}_examples.json at benchmark/ root.
-for city in city_dir:
-    for op in ops:
-        src = dataset_root / f"{city}_{op}_test.json"
-        dst = Path(f"{city}_{op}_examples.json")
-        if src.exists() and not dst.exists():
-            dst.symlink_to(src)
-
-print("Symlinks ready.")
-PY
-```
-
-### 1) Configure API keys / endpoints
-
-- Azure OpenAI: pass `--azure_endpoint` and `--api_key` (or env `AZURE_API_KEY`) to `benchmark/Prompting_LLM.py` with `--provider azure`.
-- DeepSeek or other OpenAI-compatible endpoints: pass `--base_url` (e.g., `https://api.deepseek.com/v1`) and `--api_key` (or env `OPENAI_API_KEY`) to `benchmark/Prompting_LLM.py`.
-- LM Studio: ensure a local OpenAI-compatible endpoint is running, then call `benchmark/Prompting_LLM.py` with `--base_url http://localhost:1234/v1` and an `--api_key` token.
-
-### 2) Run inference (single-setting runner)
-
-Use the unified runner (per-call single city/op/model/rag/icl). Output goes to `benchmark/prompt_results/`.
-
-```bash
-cd benchmark
-python Prompting_LLM.py \
-  --city Melb --op ADD --split test \
-  --provider openai \
-  --model "deepseek-chat" \
-  --api_key "$DEEPSEEK_KEY" \
-  --rag_mode none --icl_num 3 \
-  --temperature 0.1 --max_new_tokens 256
-```
-
-- For Azure: `--provider azure --model <deployment_name> --azure_endpoint <url> --api_key <key> --azure_api_version 2024-12-01-preview`
-- For LM Studio or other OpenAI-compatible endpoints: `--provider openai --base_url http://localhost:1234/v1`
-- Default output: `benchmark/prompt_results/prompt_eval_<provider>_<model>_<city>_<op>_rag-<rag>_icl-<icl>_<split>.json`; override with `--output`.
-
-### 3) Parse model outputs to JSON
-
-```bash
-cd benchmark
-python process_pred.py
-```
-
-This writes parsed results to `benchmark/results_parsed/`.
-
-### 4) Compute metrics
-
-```bash
-cd benchmark
-python eval.py
-```
-
-The summary is saved to `benchmark/results_parsed/accuracy_hint_summary.json`.
-
-## 🏋️‍♀️ SFT Fine-tuning Runners (Single Setting per Run)
-
-Both SFT runners load data from `benchmark/iTIMO_dataset/<City>/<City>_<OP>_<split>.json`. You can override base model paths via env (e.g., `ITIMO_FFT_MODEL_QWEN3`, `ITIMO_LORA_MODEL_GEMMA3`).
-
-### Full-parameter FT (Unsloth FFT)
-
-Runs one (city, op) with chosen train/infer RAG + ICL:
-
-```bash
-python benchmark/fine_tune_full.py \
-  --city Melb \
-  --op ADD \
-  --model_key qwen3 \
-  --train_rag_mode none --train_icl_num 3 \
-  --infer_rag_mode none --infer_icl_num 3 \
-  --batch_size 8 --max_new_tokens 256
-```
-
-Key flags:
-- `--city {Melb,Toro,Florence}` and `--op {ADD,DELETE,REPLACE}`
-- `--model_key {qwen3,gemma3,llama3}`
-- Train setting: `--train_rag_mode`, `--train_icl_num`
-- Inference setting: `--infer_rag_mode`, `--infer_icl_num`
-- `--batch_size`, `--max_new_tokens`, `--resume/--no-resume`, `--force_rerun`
-
-Outputs: `benchmark/SFT_predictions_fullft/{model}_{city}_{op}_...json`
-
-### LoRA / QLoRA
-
-Runs one (city, op) with chosen train/infer RAG + ICL:
-
-```bash
-python benchmark/fine_tune_lora.py \
-  --city Melb \
-  --op ADD \
-  --model_key gemma3 \
-  --train_rag_mode none --train_icl_num 3 \
-  --infer_rag_mode none --infer_icl_num 3 \
-  --batch_size 1 --max_new_tokens 256
-```
-
-Key flags mirror the full-FT script (`--city`, `--op`, `--model_key`, train/infer RAG+ICL, batch, tokens, resume/force).
-
-Outputs: `benchmark/SFT_predictions_lora/{model}_{city}_{op}_...json`
+See `benchmark/README.md` for evaluation, inference, parsing, and fine-tuning.
 
 ## 🗂️ Repository Layout (What Each Part Does)
 
