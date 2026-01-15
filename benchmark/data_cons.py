@@ -33,15 +33,19 @@ def new_data_open(city_name):
 
         return data
 
-    if city_name in ['Florence', 'Pisa', 'Rome']:
+    if city_name == 'Florence':
         # WARNING: MUST ENCODE it via "utf-8"
+        if city_name == 'Florence':
+            base_path = "../data4perturb/Florence"
+        else:
+            base_path = f"../LearNext-DATASET/{city_name}"
         data = pd.read_csv(
-            f"../LearNext-DATASET/{city_name}/Trajectories-{city_name.upper()}-final2.csv",
+            f"{base_path}/Trajectories-{city_name.upper()}-final2.csv",
             encoding='utf-8'
         )
 
         poi_info = pd.read_csv(
-            f"../LearNext-DATASET/{city_name}/PoIs-{city_name.upper()}-final.csv",
+            f"{base_path}/PoIs-{city_name.upper()}-final.csv",
             encoding='utf-8'
         )
 
@@ -51,7 +55,7 @@ def new_data_open(city_name):
 
 
 def geo_info_collect(city_name):
-    if city_name not in ['Florence', 'Pisa', 'Rome']:
+    if city_name != 'Florence':
         if city_name in ['Buda', 'Delh', 'Edin', 'Glas', 'Osak', 'Pert', 'Toro', 'Vien']:
             path = f'../data-ijcai15/poiList-ijcai15/POI-{city_name}.csv'
         elif city_name == 'Melb':
