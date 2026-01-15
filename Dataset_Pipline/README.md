@@ -43,10 +43,49 @@ python Dataset_Pipline/data_cons.py
 Notes:
 - City / operation are configured in `__main__`.
 - The output file is written to the current working directory as
-  `<City>_<OP>_examples.json`. Move or symlink it to `benchmark/iTIMO_dataset/`
-  (or a city subfolder) if you want it picked up by benchmark/RAG tools.
+  `<City>_<OP>_examples.json`.
 
-## 3) (Optional) RAG neighbor construction
+## 3) Build benchmark splits (train/val/test)
+
+`*_examples.json` are keyed by `seqID`. To build the benchmark dataset, split the
+examples into train/val/test and write them to:
+
+`benchmark/iTIMO_dataset/iTIMO-<City>/<City>_<OP>_{train,val,test}.json`
+
+For Melb/Toro you can use the existing split CSVs under `data4perturb/<City>/`
+and filter by the `seqID` column. Example:
+
+```bash
+python - <<'PY'
+import json
+import pandas as pd
+from pathlib import Path
+
+city = "Toro"   # Melb / Toro
+op = "ADD"
+city_dir = {"Melb": "iTIMO-Melbourne", "Toro": "iTIMO-Toronto"}
+
+with open(f"{city}_{op}_examples.json", "r", encoding="utf-8") as f:
+    examples = json.load(f)
+
+splits = {}
+for split in ["train", "val", "test"]:
+    df = pd.read_csv(f"data4perturb/{city}/{split}.csv")
+    ids = set(str(x) for x in df["seqID"].unique())
+    splits[split] = {k: v for k, v in examples.items() if str(k) in ids}
+
+out_dir = Path("benchmark/iTIMO_dataset") / city_dir[city]
+out_dir.mkdir(parents=True, exist_ok=True)
+for split, data in splits.items():
+    out_path = out_dir / f"{city}_{op}_{split}.json"
+    out_path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n")
+PY
+```
+
+For Florence, define your own split ids (e.g., fixed seed random split) and apply
+the same filtering logic against the `seqID` keys.
+
+## 4) (Optional) RAG neighbor construction
 
 These scripts use embedding files under `RAG_emd/` to add `rec_examples_*` fields.
 
@@ -61,3 +100,10 @@ Notes:
 - `RAG_enhanced_data_cons.py` writes `rec_examples_*` into
   `benchmark/iTIMO_dataset/<City>_<OP>_{train,val,test}.json`.
 - `RAG_hint_based.py` builds `rec_examples` from train-only pools.
+
+### Relationship between RAG scripts
+
+- `RAG_emd_search.py`: add `rec_examples_*` to `*_examples.json` (no split awareness).
+- `RAG_enhanced_data_cons.py`: add `rec_examples_*` to train/val/test splits, with
+  retrieval candidates drawn from train only.
+- `RAG_hint_based.py`: add `rec_examples` using hint similarity (no embeddings).

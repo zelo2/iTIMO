@@ -3,6 +3,9 @@
 This folder contains evaluation and training code that operates on the released
 iTIMO benchmark dataset under `benchmark/iTIMO_dataset/`.
 
+If you are building the dataset yourself (perturbation + examples + splits),
+see [Dataset_Pipline/README.md](../Dataset_Pipline/README.md) first.
+
 ## 0) Prepare dataset paths (required once)
 
 Some scripts expect flat files under `benchmark/iTIMO_dataset/` while the released data
