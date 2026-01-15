@@ -96,6 +96,13 @@ python Dataset_Pipline/data_split.py --city Melb
 python Dataset_Pipline/data_split.py --city Toro
 ```
 
+To build benchmark JSON splits from `data_cons.py` outputs, pass `--op`:
+
+```bash
+python Dataset_Pipline/data_split.py --city Florence --op ADD
+python Dataset_Pipline/data_split.py --city Melb --op DELETE
+```
+
 ## 4) (Optional) RAG neighbor construction
 
 These scripts use embedding files under `RAG_emd/` to add `rec_examples_*` fields.
