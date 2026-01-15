@@ -118,7 +118,7 @@ Notes:
 - `RAG_build_hint.py` builds `rec_examples` from train-only pools.
 
 ### 🔗 Relationship between RAG scripts
-
+- RAG embeddings are available on https://drive.google.com/file/d/1RJA5HUFlaTXv7FGTsWvpAKUlTiQ8x_4Y/view?usp=sharing
 - `RAG_build_emd.py`: add `rec_examples_*` to train/val/test splits, with
   retrieval candidates drawn from train only.
 - `RAG_build_hint.py`: add `rec_examples` using hint similarity (no embeddings).
