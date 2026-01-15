@@ -41,8 +41,8 @@ The dataset statistics are provided in the paper (Table 2):
 ## 🧭 Project Structure
 
 This repo has two main parts:
-- Data construction & perturbation: `Dataset_Pipline/README.md`
-- Benchmark & evaluation: `benchmark/README.md`
+- Data construction & perturbation: [Dataset_Pipline/README.md](Dataset_Pipline/README.md)
+- Benchmark & evaluation: [benchmark/README.md](benchmark/README.md)
 
 ## 🛠️ Installation
 
@@ -56,11 +56,11 @@ Note: running `Dataset_Pipline/V31FM_perturbation.py` / `Dataset_Pipline/baselin
 
 ## 🧪 Data Construction (Perturbation + Examples)
 
-See `Dataset_Pipline/README.md` for perturbation and dataset construction steps.
+See [Dataset_Pipline/README.md](Dataset_Pipline/README.md) for perturbation and dataset construction steps.
 
 ## 📈 Benchmark & Evaluation
 
-See `benchmark/README.md` for evaluation, inference, parsing, and fine-tuning.
+See [benchmark/README.md](benchmark/README.md) for evaluation, inference, parsing, and fine-tuning.
 
 ## 🗂️ Repository Layout (What Each Part Does)
 
