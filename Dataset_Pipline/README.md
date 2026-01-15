@@ -5,7 +5,7 @@ generation and building the example JSON files used by the benchmark.
 
 ## Inputs
 
-- `data4perturb/Melb|Toro/{train,val,test}.csv` for Melb/Toro splits.
+- `data4perturb/<City>/{train,val,test}.csv` for split definitions (Melb/Toro provided; Florence can be generated).
 - `data4perturb/Florence/Trajectories-FLORENCE.csv`
 - `data4perturb/Florence/PoIs-FLORENCE.csv`
 - `data4perturb/Florence/Categories-Florence.csv` (optional in scripts, used for reference).
@@ -48,12 +48,12 @@ Notes:
 ## 3) Build benchmark splits (train/val/test)
 
 `*_examples.json` are keyed by `seqID`. To build the benchmark dataset, split the
-examples into train/val/test and write them to:
+examples into train/val/test (7:1:2) and write them to:
 
 `benchmark/iTIMO_dataset/iTIMO-<City>/<City>_<OP>_{train,val,test}.json`
 
-For Melb/Toro you can use the existing split CSVs under `data4perturb/<City>/`
-and filter by the `seqID` column. Example:
+Use the split CSVs under `data4perturb/<City>/` and filter by the `seqID` column
+(already 7:1:2). Example:
 
 ```bash
 python - <<'PY'
@@ -82,28 +82,36 @@ for split, data in splits.items():
 PY
 ```
 
-For Florence, define your own split ids (e.g., fixed seed random split) and apply
-the same filtering logic against the `seqID` keys.
+If you do not have split CSVs yet, generate them first:
+
+```bash
+python Dataset_Pipline/split_florence.py
+```
+
+This uses a fixed random seed of 42 by default. You can override it via `--seed`.
+You can also auto-generate splits for Melb/Toro by specifying `--city`:
+
+```bash
+python Dataset_Pipline/split_florence.py --city Melb
+python Dataset_Pipline/split_florence.py --city Toro
+```
 
 ## 4) (Optional) RAG neighbor construction
 
 These scripts use embedding files under `RAG_emd/` to add `rec_examples_*` fields.
 
 ```bash
-python Dataset_Pipline/RAG_emd_search.py --root .
-python Dataset_Pipline/RAG_enhanced_data_cons.py --root . --inplace
-python Dataset_Pipline/RAG_hint_based.py
+python Dataset_Pipline/RAG_build_emd.py --root . --inplace
+python Dataset_Pipline/RAG_build_hint.py
 ```
 
 Notes:
-- `RAG_emd_search.py` updates `*_examples.json` files directly.
-- `RAG_enhanced_data_cons.py` writes `rec_examples_*` into
+- `RAG_build_emd.py` writes `rec_examples_*` into
   `benchmark/iTIMO_dataset/<City>_<OP>_{train,val,test}.json`.
-- `RAG_hint_based.py` builds `rec_examples` from train-only pools.
+- `RAG_build_hint.py` builds `rec_examples` from train-only pools.
 
 ### Relationship between RAG scripts
 
-- `RAG_emd_search.py`: add `rec_examples_*` to `*_examples.json` (no split awareness).
-- `RAG_enhanced_data_cons.py`: add `rec_examples_*` to train/val/test splits, with
+- `RAG_build_emd.py`: add `rec_examples_*` to train/val/test splits, with
   retrieval candidates drawn from train only.
-- `RAG_hint_based.py`: add `rec_examples` using hint similarity (no embeddings).
+- `RAG_build_hint.py`: add `rec_examples` using hint similarity (no embeddings).
