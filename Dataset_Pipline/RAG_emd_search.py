@@ -44,6 +44,8 @@ from typing import Dict, List, Optional, Tuple
 
 import numpy as np
 
+DEFAULT_ROOT = Path(__file__).resolve().parents[1]
+
 # ---------- Path helpers ----------
 
 def resolve_rag_dir(root: Path) -> Path:
@@ -335,7 +337,7 @@ def main():
     parser.add_argument(
         "--root",
         type=str,
-        default=".",
+        default=str(DEFAULT_ROOT),
         help="Project root (will search for RAG_emd/ under <root> or <root>/benchmark)",
     )
     parser.add_argument(

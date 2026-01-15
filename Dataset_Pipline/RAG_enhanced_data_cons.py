@@ -36,6 +36,8 @@ from typing import Dict, List, Tuple, Optional
 
 import numpy as np
 
+DEFAULT_ROOT = Path(__file__).resolve().parents[1]
+
 # City directory mapping (lower-case city token -> folder name)
 CITY_DIR_MAP = {
     "melb": "iTIMO-Melbourne",
@@ -470,7 +472,7 @@ def main() -> None:
     parser.add_argument(
         "--root",
         type=str,
-        default=".",
+        default=str(DEFAULT_ROOT),
         help="Project root (will search for RAG_emd/ and benchmark/iTIMO_dataset/ relative to it).",
     )
     parser.add_argument(

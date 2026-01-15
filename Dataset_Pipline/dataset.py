@@ -1,7 +1,13 @@
 import json
+import sys
+from pathlib import Path
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from Dataset_Pipline.position_POI_extraction import extract_change
 from benchmark import benchmark_prompts
-from position_POI_extraction import extract_change
 
 class Prompt_Dataset():
     def __init__(self, city_name, perturb_op=None):
@@ -13,9 +19,17 @@ class Prompt_Dataset():
             self.poi_mark = 'before'
 
         if city_name == 'Melb':
-            path = "../data-cikm16/perturbation_data/Melbourne_"+ perturb_op + '.json'
+            path = REPO_ROOT / "data-cikm16" / "perturbation_data" / f"Melbourne_{perturb_op}.json"
         elif city_name == 'Toro':
-            path = "../data-ijcai15/Toro/perturbation_data/Toronto_" + perturb_op + '.json'
+            path = REPO_ROOT / "data-ijcai15" / "Toro" / "perturbation_data" / f"Toronto_{perturb_op}.json"
+        elif city_name == 'Florence':
+            path = (
+                REPO_ROOT
+                / "LearNext-DATASET"
+                / "Florence"
+                / "perturbation_data"
+                / f"Florence_{perturb_op}.json"
+            )
 
         with open(path, 'r', encoding='utf-8') as f:
             data = json.load(f)

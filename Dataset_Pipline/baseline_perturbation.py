@@ -2,6 +2,8 @@ import random
 import time
 import numpy as np
 import json
+import sys
+from pathlib import Path
 from math import radians, sin, cos, sqrt, atan2
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
@@ -12,7 +14,11 @@ from itertools import groupby
 import datetime
 from zoneinfo import ZoneInfo
 
-from template import baseline_prompts
+REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from Dataset_Pipline.template import baseline_prompts
 from urllib.parse import unquote_plus
 
 deepseek_api_key = "YOUR API KEY"

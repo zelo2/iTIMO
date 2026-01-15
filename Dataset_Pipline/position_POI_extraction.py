@@ -36,7 +36,7 @@ def _rows_equal(
         if idx in (2, 3):  # lon/lat
             fa, fb = _to_float(a[idx]), _to_float(b[idx])
             if fa is None or fb is None:
-        if str(a[idx]) != str(b[idx]):  # if not numeric, compare as strings
+                if str(a[idx]) != str(b[idx]):  # if not numeric, compare as strings
                     return False
             else:
                 if not math.isfinite(fa) or not math.isfinite(fb):

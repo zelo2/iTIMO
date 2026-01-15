@@ -41,18 +41,19 @@ The dataset statistics are provided in the paper (Table 2):
 ## 🧪 Perturbation (Generate Need-to-Modify Itineraries)
 
 Use these scripts to generate perturbed (need-to-modify) itineraries from raw trajectories:
-- `V31FM_perturbation.py`: perturbation generator with tool-calling + optional memory
-- `baseline_perturbation.py`: baseline perturbation generator
+- `Dataset_Pipline/V31FM_perturbation.py`: perturbation generator with tool-calling + optional memory
+- `Dataset_Pipline/baseline_perturbation.py`: baseline perturbation generator
 
 Before running, set API keys in `benchmark/api_key/api_key.py` (and/or in the scripts if required).
 
 ```bash
-python V31FM_perturbation.py
+python Dataset_Pipline/V31FM_perturbation.py
 ```
 
 Notes:
 - City / operation are currently configured in each script’s `__main__` block.
-- Outputs are written under the corresponding data folders (e.g., `data-cikm16/`, `data-ijcai15/`, `LearNext-DATASET/`), depending on the selected city/operation.
+- Outputs are written under the corresponding data folders (e.g., `data-cikm16/`, `data-ijcai15/`), depending on the selected city/operation.
+- Florence LearNext inputs are read from `data4perturb/Florence/` (Trajectories/PoIs/Categories CSVs).
 
 ## 🛠️ Installation
 
@@ -62,7 +63,7 @@ Recommended Python `>=3.10`.
 pip install -r requirements.txt
 ```
 
-Note: running `V31FM_perturbation.py` / `baseline_perturbation.py` / `benchmark/Prompting_LLM.py` requires access to the corresponding APIs (DeepSeek / Azure OpenAI / OpenAI, etc.).
+Note: running `Dataset_Pipline/V31FM_perturbation.py` / `Dataset_Pipline/baseline_perturbation.py` / `benchmark/Prompting_LLM.py` requires access to the corresponding APIs (DeepSeek / Azure OpenAI / OpenAI, etc.).
 
 ## 📈 Benchmark: Itinerary Modification Evaluation (Different LLMs)
 
@@ -198,30 +199,32 @@ Outputs: `benchmark/SFT_predictions_lora/{model}_{city}_{op}_...json`
 
 ```text
 iTIMO/
-├── V31FM_perturbation.py — main perturbation generator (LLM + tool-calling + optional memory)
-├── baseline_perturbation.py — baseline perturbation generator
-├── position_POI_extraction.py — diff detector between original and perturbed itineraries
-├── template/
-│   ├── prompts.py — prompts for V31FM_perturbation.py
-│   ├── baseline_prompts.py — prompts for baseline_perturbation.py
-│   ├── functions.py — tool JSON schemas for tool-calling
-│   └── CaseStudy.py — small demo/case-study helpers
+├── Dataset_Pipline/
+│   ├── V31FM_perturbation.py — main perturbation generator (LLM + tool-calling + optional memory)
+│   ├── baseline_perturbation.py — baseline perturbation generator
+│   ├── position_POI_extraction.py — diff detector between original and perturbed itineraries
+│   ├── data_cons.py — data construction utilities shared across RAG scripts
+│   ├── dataset.py — prompt dataset loader for perturbation outputs
+│   ├── RAG_emd_search.py — embedding-based retrieval for RAG
+│   ├── RAG_enhanced_data_cons.py — RAG data construction with consistency filters
+│   ├── RAG_hint_based.py — hint-driven neighbor construction for RAG
+│   └── template/
+│       ├── prompts.py — prompts for V31FM_perturbation.py
+│       ├── baseline_prompts.py — prompts for baseline_perturbation.py
+│       ├── functions.py — tool JSON schemas for tool-calling
+│       └── CaseStudy.py — small demo/case-study helpers
 ├── benchmark/
 │   ├── Prompting_LLM.py — prompt-based itinerary modification runner (Azure/OpenAI/DeepSeek/LM Studio)
 │   ├── process_pred.py — parse model outputs
 │   ├── eval.py — compute accuracy + hint metrics
 │   ├── hint_satis_check.py — per-sample hint satisfaction checker
 │   ├── benchmark_prompts.py — prompt templates for modification tasks
-│   ├── RAG_emd_search.py — embedding-based retrieval for RAG
-│   ├── RAG_enhanced_data_cons.py — RAG data construction with consistency filters
-│   ├── RAG_hint_based.py — hint-driven neighbor construction for RAG
-│   ├── data_cons.py — data construction utilities shared across RAG scripts
 │   ├── fine_tune_full.py — full-parameter SFT runner
 │   ├── fine_tune_lora.py — LoRA/QLoRA SFT runner
 │   ├── api_key/api_key.py — API key placeholders
 │   └── iTIMO_dataset/ — released benchmark splits (train/val/test for each city/op)
-├── data4perturb/ — processed itinerary splits consumed by perturbation scripts
-├── og_dataset/ — raw trajectory/POI datasets (CIKM’16, IJCAI’15, LearNext)
+├── data4perturb/ — Florence LearNext CSVs used by perturbation scripts
+├── og_dataset/ — raw trajectory/POI datasets (CIKM’16, IJCAI’15)
 ├── figures/ — images used in README
 └── requirements.txt — Python dependencies
 ```

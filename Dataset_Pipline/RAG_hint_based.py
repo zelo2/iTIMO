@@ -7,9 +7,9 @@ from pathlib import Path
 
 # Default to released benchmark splits under benchmark/iTIMO_dataset/iTIMO-*/
 # Fallback to legacy SFT_data/ if someone still keeps that layout around.
-SCRIPT_DIR = Path(__file__).resolve().parent
-DATA_ROOT = SCRIPT_DIR / "iTIMO_dataset"
-LEGACY_ROOT = SCRIPT_DIR / "SFT_data"
+REPO_ROOT = Path(__file__).resolve().parents[1]
+DATA_ROOT = REPO_ROOT / "benchmark" / "iTIMO_dataset"
+LEGACY_ROOT = REPO_ROOT / "benchmark" / "SFT_data"
 
 
 # --------- Utility functions ---------
