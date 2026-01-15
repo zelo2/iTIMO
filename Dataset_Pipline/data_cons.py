@@ -29,7 +29,7 @@ from tenacity import (
 def new_data_open(city_name):
     max_len = -1
     if city_name in ['Melb', 'Toro']:
-        base_dir = REPO_ROOT / "dataset" / city_name
+        base_dir = REPO_ROOT / "data4perturb" / city_name
         train_data = pd.read_csv(base_dir / "train.csv")
         test_data = pd.read_csv(base_dir / "test.csv")
         val_data = pd.read_csv(base_dir / "val.csv")
@@ -61,9 +61,9 @@ def new_data_open(city_name):
 def geo_info_collect(city_name):
     if city_name != 'Florence':
         if city_name in ['Buda', 'Delh', 'Edin', 'Glas', 'Osak', 'Pert', 'Toro', 'Vien']:
-            path = REPO_ROOT / "data-ijcai15" / "poiList-ijcai15" / f"POI-{city_name}.csv"
+            path = REPO_ROOT / "og_dataset" / "data-ijcai15" / "poiList-ijcai15" / f"POI-{city_name}.csv"
         elif city_name == 'Melb':
-            path = REPO_ROOT / "data-cikm16" / f"POI-{city_name}.csv"
+            path = REPO_ROOT / "og_dataset" / "data-cikm16" / f"POI-{city_name}.csv"
         poi_info = []
         with open(path, 'r') as f:
             reader = csv.reader(f, delimiter='\t')

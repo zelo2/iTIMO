@@ -46,9 +46,10 @@ def unix_time_convert(unix_timestamp):
 
 def new_data_open(city_name):
     if city_name in ['Melb', 'Toro']:
-        train_data = pd.read_csv(f'dataset/{city_name}/train.csv')
-        test_data = pd.read_csv(f'dataset/{city_name}/test.csv')
-        val_data = pd.read_csv(f'dataset/{city_name}/val.csv')
+        base_dir = REPO_ROOT / "data4perturb" / city_name
+        train_data = pd.read_csv(base_dir / "train.csv")
+        test_data = pd.read_csv(base_dir / "test.csv")
+        val_data = pd.read_csv(base_dir / "val.csv")
 
         data = pd.concat([train_data, test_data])
         data = pd.concat([data, val_data])
@@ -56,13 +57,10 @@ def new_data_open(city_name):
 
     if city_name == 'Florence':
         # WARNING: MUST ENCODE it via "utf-8"
-        if city_name == 'Florence':
-            base_path = "data4perturb/Florence"
-        else:
-            base_path = f"LearNext-DATASET/{city_name}"
-        data = pd.read_csv(f"{base_path}/Trajectories-{city_name.upper()}-final2.csv",
+        base_path = REPO_ROOT / "data4perturb" / "Florence"
+        data = pd.read_csv(base_path / f"Trajectories-{city_name.upper()}-final2.csv",
                            encoding='utf-8')
-        poi_info = pd.read_csv(f"{base_path}/PoIs-{city_name.upper()}-final.csv",
+        poi_info = pd.read_csv(base_path / f"PoIs-{city_name.upper()}-final.csv",
                                encoding='utf-8')
         # cat_info = pd.read_csv(f"{base_path}/Categories-{city_name.upper()}.csv")
 
@@ -94,9 +92,9 @@ def haversine_distance(lat1, lon1, lat2, lon2):
 def geo_info_collect(city_name):
     if city_name != 'Florence':
         if city_name in ['Buda', 'Delh', 'Edin', 'Glas', 'Osak', 'Pert', 'Toro', 'Vien']:
-            path = f'data-ijcai15/poiList-ijcai15/POI-{city_name}.csv'
+            path = REPO_ROOT / "og_dataset" / "data-ijcai15" / "poiList-ijcai15" / f"POI-{city_name}.csv"
         elif city_name == 'Melb':
-            path = f'data-cikm16/POI-{city_name}.csv'
+            path = REPO_ROOT / "og_dataset" / "data-cikm16" / f"POI-{city_name}.csv"
         poi_info = []
         with open(path, 'r') as f:
             reader = csv.reader(f, delimiter='\t')
