@@ -1,4 +1,4 @@
-# Benchmark: Evaluation & Fine-tuning
+# 📈 Benchmark: Evaluation & Fine-tuning
 
 This folder contains evaluation and training code that operates on the released
 iTIMO benchmark dataset under `benchmark/iTIMO_dataset/`.
@@ -6,7 +6,7 @@ iTIMO benchmark dataset under `benchmark/iTIMO_dataset/`.
 If you are building the dataset yourself (perturbation + examples + splits),
 see [Dataset_Pipline/README.md](../Dataset_Pipline/README.md) first.
 
-## 0) Prepare dataset paths (required once)
+## 🧩 0) Prepare dataset paths (required once)
 
 Some scripts expect flat files under `benchmark/iTIMO_dataset/` while the released data
 is organized under `benchmark/iTIMO_dataset/iTIMO-*/`. Run once to create symlinks:
@@ -45,7 +45,7 @@ print("Symlinks ready.")
 PY
 ```
 
-## 1) Configure API keys / endpoints
+## 🔐 1) Configure API keys / endpoints
 
 - Azure OpenAI: pass `--azure_endpoint` and `--api_key` (or env `AZURE_API_KEY`) to
   `benchmark/Prompting_LLM.py` with `--provider azure`.
@@ -54,7 +54,7 @@ PY
 - LM Studio: ensure a local OpenAI-compatible endpoint is running, then call
   `benchmark/Prompting_LLM.py` with `--base_url http://localhost:1234/v1` and an `--api_key`.
 
-## 2) Run inference
+## ▶️ 2) Run inference
 
 ```bash
 cd benchmark
@@ -69,7 +69,7 @@ python Prompting_LLM.py \
 
 Output goes to `benchmark/prompt_results/` by default.
 
-## 3) Parse model outputs
+## 🧾 3) Parse model outputs
 
 ```bash
 cd benchmark
@@ -78,7 +78,7 @@ python process_pred.py
 
 Parsed results are written to `benchmark/results_parsed/`.
 
-## 4) Compute metrics
+## 📊 4) Compute metrics
 
 ```bash
 cd benchmark
@@ -87,7 +87,7 @@ python eval.py
 
 The summary is saved to `benchmark/results_parsed/accuracy_hint_summary.json`.
 
-## 5) (Optional) SFT fine-tuning
+## 🧪 5) (Optional) SFT fine-tuning
 
 Full-parameter FT:
 

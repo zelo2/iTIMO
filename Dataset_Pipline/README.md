@@ -1,9 +1,9 @@
-# Dataset_Pipline: Perturbation & Dataset Construction
+# 🧪 Dataset_Pipline: Perturbation & Dataset Construction
 
 This folder contains the data construction pipeline for iTIMO, including perturbation
 generation and building the example JSON files used by the benchmark.
 
-## Inputs
+## 📥 Inputs
 
 - `data4perturb/<City>/{train,val,test}.csv` for split definitions (Melb/Toro provided; Florence can be generated).
 - `data4perturb/Florence/Trajectories-FLORENCE.csv`
@@ -12,7 +12,7 @@ generation and building the example JSON files used by the benchmark.
 - `og_dataset/data-ijcai15/poiList-ijcai15/POI-*.csv` and `og_dataset/data-cikm16/POI-*.csv`
   for POI metadata.
 
-## 1) Perturbation generation
+## 🧬 1) Perturbation generation
 
 Scripts:
 - `Dataset_Pipline/V31FM_perturbation.py` (LLM + tool-calling)
@@ -31,7 +31,7 @@ Notes:
   - `data-ijcai15/Toro/perturbation_data/` (Toro)
   - `LearNext-DATASET/Florence/perturbation_data/` (Florence)
 
-## 2) Build examples (`*_examples.json`)
+## 🧱 2) Build examples (`*_examples.json`)
 
 `Dataset_Pipline/data_cons.py` converts perturbation outputs into example JSON files
 that include candidate POIs, thresholds, and gold labels.
@@ -45,7 +45,7 @@ Notes:
 - The output file is written to the current working directory as
   `<City>_<OP>_examples.json`.
 
-## 3) Build benchmark splits (train/val/test)
+## 🧩 3) Build benchmark splits (train/val/test)
 
 `*_examples.json` are keyed by `seqID`. To build the benchmark dataset, split the
 examples into train/val/test (7:1:2) and write them to:
@@ -103,7 +103,7 @@ python Dataset_Pipline/data_split.py --city Florence --op ADD
 python Dataset_Pipline/data_split.py --city Melb --op DELETE
 ```
 
-## 4) (Optional) RAG neighbor construction
+## 🔎 4) (Optional) RAG neighbor construction
 
 These scripts use embedding files under `RAG_emd/` to add `rec_examples_*` fields.
 
@@ -117,7 +117,7 @@ Notes:
   `benchmark/iTIMO_dataset/<City>_<OP>_{train,val,test}.json`.
 - `RAG_build_hint.py` builds `rec_examples` from train-only pools.
 
-### Relationship between RAG scripts
+### 🔗 Relationship between RAG scripts
 
 - `RAG_build_emd.py`: add `rec_examples_*` to train/val/test splits, with
   retrieval candidates drawn from train only.
