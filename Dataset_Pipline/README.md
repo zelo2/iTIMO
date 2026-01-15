@@ -85,15 +85,15 @@ PY
 If you do not have split CSVs yet, generate them first:
 
 ```bash
-python Dataset_Pipline/split_florence.py
+python Dataset_Pipline/data_split.py
 ```
 
 This uses a fixed random seed of 42 by default. You can override it via `--seed`.
 You can also auto-generate splits for Melb/Toro by specifying `--city`:
 
 ```bash
-python Dataset_Pipline/split_florence.py --city Melb
-python Dataset_Pipline/split_florence.py --city Toro
+python Dataset_Pipline/data_split.py --city Melb
+python Dataset_Pipline/data_split.py --city Toro
 ```
 
 ## 4) (Optional) RAG neighbor construction

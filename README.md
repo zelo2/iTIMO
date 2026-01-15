@@ -72,7 +72,7 @@ iTIMO/
 │   ├── position_POI_extraction.py — diff detector between original and perturbed itineraries
 │   ├── data_cons.py — data construction utilities shared across RAG scripts
 │   ├── dataset.py — prompt dataset loader for perturbation outputs
-│   ├── split_florence.py — generate train/val/test CSV splits (7:1:2)
+│   ├── data_split.py — generate train/val/test CSV splits (7:1:2)
 │   ├── RAG_build_emd.py — RAG data construction with embedding neighbors
 │   ├── RAG_build_hint.py — RAG data construction with hint neighbors
 │   └── template/
