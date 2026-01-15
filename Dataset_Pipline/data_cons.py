@@ -44,12 +44,12 @@ def new_data_open(city_name):
         # WARNING: MUST ENCODE it via "utf-8"
         base_path = REPO_ROOT / "data4perturb" / "Florence"
         data = pd.read_csv(
-            base_path / f"Trajectories-{city_name.upper()}-final2.csv",
+            base_path / f"Trajectories-{city_name.upper()}.csv",
             encoding='utf-8'
         )
 
         poi_info = pd.read_csv(
-            base_path / f"PoIs-{city_name.upper()}-final.csv",
+            base_path / f"PoIs-{city_name.upper()}.csv",
             encoding='utf-8'
         )
 

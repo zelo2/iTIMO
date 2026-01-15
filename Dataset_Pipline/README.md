@@ -6,8 +6,8 @@ generation and building the example JSON files used by the benchmark.
 ## Inputs
 
 - `data4perturb/Melb|Toro/{train,val,test}.csv` for Melb/Toro splits.
-- `data4perturb/Florence/Trajectories-FLORENCE-final2.csv`
-- `data4perturb/Florence/PoIs-FLORENCE-final.csv`
+- `data4perturb/Florence/Trajectories-FLORENCE.csv`
+- `data4perturb/Florence/PoIs-FLORENCE.csv`
 - `data4perturb/Florence/Categories-Florence.csv` (optional in scripts, used for reference).
 - `og_dataset/data-ijcai15/poiList-ijcai15/POI-*.csv` and `og_dataset/data-cikm16/POI-*.csv`
   for POI metadata.
@@ -60,4 +60,4 @@ Notes:
 - `RAG_emd_search.py` updates `*_examples.json` files directly.
 - `RAG_enhanced_data_cons.py` writes `rec_examples_*` into
   `benchmark/iTIMO_dataset/<City>_<OP>_{train,val,test}.json`.
-- `RAG_hint_based.py` builds `rec_exmaples` (legacy field name) from train-only pools.
+- `RAG_hint_based.py` builds `rec_examples` from train-only pools.

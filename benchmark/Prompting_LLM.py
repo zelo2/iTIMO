@@ -46,7 +46,7 @@ CITY_DIR_MAP: Dict[str, str] = {
 # RAG modes -> example.json field names
 RAG_FIELD_MAP: Dict[str, Optional[str]] = {
     "none": None,
-    "hint": "rec_exmaples",  # keep spelling as in data
+    "hint": "rec_examples",
     "emd_qwen3_8b": "rec_examples_qwen3_8b",
     "emd_azure": "rec_examples_gpt_text_large",
     "emd_kalm_gemma3": "rec_examples_kalm_gemma3",

@@ -124,7 +124,7 @@ def process_city_op(city, op, base_dir: Path, k=5):
         {base_dir}/{city}_{op}_train.json
         {base_dir}/{city}_{op}_val.json
         {base_dir}/{city}_{op}_test.json
-    rec_exmaples for all splits are selected from train.json.
+    rec_examples for all splits are selected from train.json.
     """
     train_path = base_dir / f"{city}_{op}_train.json"
     if not train_path.exists():
@@ -144,14 +144,14 @@ def process_city_op(city, op, base_dir: Path, k=5):
     print(f"  Train samples: {len(train_data)}")
     print(f"  Unique hints in train: {len(hint_to_ids)}")
 
-    # ---- 2) build rec_exmaples for train/val/test ----
+    # ---- 2) build rec_examples for train/val/test ----
     for split in ["train", "val", "test"]:
         path = base_dir / f"{city}_{op}_{split}.json"
         if not path.exists():
             print(f"  [{split}] {path} not found, skip.")
             continue
 
-        print(f"  [{split}] building rec_exmaples from TRAIN pool ...")
+        print(f"  [{split}] building rec_examples from TRAIN pool ...")
         with path.open("r", encoding="utf-8") as f:
             data_split = json.load(f)
 
@@ -161,8 +161,7 @@ def process_city_op(city, op, base_dir: Path, k=5):
             pool = hint_to_ids.get(h, [])  # only ids with same hint from train
             rec_list = select_diverse_ids(train_data, pool, current_id=sid, k=k)
             new_entry = dict(entry)
-            # keep field name rec_exmaples (to stay consistent with existing code)
-            new_entry["rec_exmaples"] = rec_list
+            new_entry["rec_examples"] = rec_list
             augmented[sid] = new_entry
 
         with path.open("w", encoding="utf-8") as f:

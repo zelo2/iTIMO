@@ -119,7 +119,7 @@ RAG_SETTINGS: List[Tuple[str, int]] = [
 
 RAG_FIELD_MAP: Dict[str, Optional[str]] = {
     "none": None,
-    "hint": "rec_exmaples",
+    "hint": "rec_examples",
     "emd_qwen3_8b": "rec_examples_qwen3_8b",
     "emd_azure": "rec_examples_gpt_text_large",
     "emd_kalm_gemma3": "rec_examples_kalm_gemma3",
