@@ -119,13 +119,13 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 REPO_ROOT = SCRIPT_DIR.parent
 
 # Targets the outputs of:
-# - benchmark/Prompting_LLM.py          -> benchmark/prompt_results/…  (or benchmark/benchmark/prompt_results if run inside benchmark/)
-# - benchmark/fine_tune_full.py         -> benchmark/SFT_predictions_fullft/…
-# - benchmark/fine_tune_lora.py         -> benchmark/SFT_predictions_lora/…
-# - legacy scripts                      -> benchmark/SFT_results/…
+# - Benchmark/Prompting_LLM.py          -> Benchmark/prompt_results/…  (or Benchmark/Benchmark/prompt_results if run inside Benchmark/)
+# - Benchmark/fine_tune_full.py         -> Benchmark/SFT_predictions_fullft/…
+# - Benchmark/fine_tune_lora.py         -> Benchmark/SFT_predictions_lora/…
+# - legacy scripts                      -> Benchmark/SFT_results/…
 DEFAULT_ROOT_NAMES = [
     "prompt_results",
-    "benchmark/prompt_results",  # handle running Prompting_LLM.py from inside benchmark/
+    "Benchmark/prompt_results",  # handle running Prompting_LLM.py from inside Benchmark/
     "SFT_predictions_fullft",
     "SFT_predictions_lora",
     "SFT_results",
@@ -150,7 +150,7 @@ def collect_default_roots() -> List[Path]:
 def dest_subdir_for_root(root: Path) -> Path:
     """
     Mirror the source root relative to repo root when possible to avoid collisions
-    (e.g., benchmark/prompt_results vs. benchmark/benchmark/prompt_results).
+    (e.g., Benchmark/prompt_results vs. Benchmark/Benchmark/prompt_results).
     """
     try:
         rel = root.relative_to(REPO_ROOT)
@@ -177,9 +177,9 @@ def parse_args():
         "--roots",
         nargs="+",
         default=None,
-        help="Source roots. Default: known prediction folders under benchmark/ (prompt_results, "
-             "SFT_predictions_fullft, SFT_predictions_lora, SFT_results), plus benchmark/benchmark/prompt_results "
-             "if Prompting_LLM.py was run from inside benchmark/.",
+        help="Source roots. Default: known prediction folders under Benchmark/ (prompt_results, "
+             "SFT_predictions_fullft, SFT_predictions_lora, SFT_results), plus Benchmark/Benchmark/prompt_results "
+             "if Prompting_LLM.py was run from inside Benchmark/.",
     )
     parser.add_argument(
         "--glob",
@@ -189,7 +189,7 @@ def parse_args():
     parser.add_argument(
         "--dst-root",
         default=None,
-        help="Destination root for parsed files (default: benchmark/results_parsed).",
+        help="Destination root for parsed files (default: Benchmark/results_parsed).",
     )
     parser.add_argument(
         "--all",

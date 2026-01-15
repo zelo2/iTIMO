@@ -1,4 +1,4 @@
-# 🧪 Dataset_Pipline: Perturbation & Dataset Construction
+# 🧪 DatasetPipeline: Perturbation & Dataset Construction
 
 This folder contains the data construction pipeline for iTIMO, including perturbation
 generation and building the example JSON files used by the benchmark.
@@ -15,13 +15,13 @@ generation and building the example JSON files used by the benchmark.
 ## 🧬 1) Perturbation generation
 
 Scripts:
-- `Dataset_Pipline/V31FM_perturbation.py` (LLM + tool-calling)
-- `Dataset_Pipline/baseline_perturbation.py` (baseline)
+- `DatasetPipeline/V31FM_perturbation.py` (LLM + tool-calling)
+- `DatasetPipeline/baseline_perturbation.py` (baseline)
 
-Before running, set API keys in the scripts (and/or `benchmark/api_key/api_key.py` if used).
+Before running, set API keys in the scripts (and/or `Benchmark/api_key/api_key.py` if used).
 
 ```bash
-python Dataset_Pipline/V31FM_perturbation.py
+python DatasetPipeline/V31FM_perturbation.py
 ```
 
 Notes:
@@ -33,11 +33,11 @@ Notes:
 
 ## 🧱 2) Build examples (`*_examples.json`)
 
-`Dataset_Pipline/data_cons.py` converts perturbation outputs into example JSON files
+`DatasetPipeline/data_cons.py` converts perturbation outputs into example JSON files
 that include candidate POIs, thresholds, and gold labels.
 
 ```bash
-python Dataset_Pipline/data_cons.py
+python DatasetPipeline/data_cons.py
 ```
 
 Notes:
@@ -50,7 +50,7 @@ Notes:
 `*_examples.json` are keyed by `seqID`. To build the benchmark dataset, split the
 examples into train/val/test (7:1:2) and write them to:
 
-`benchmark/iTIMO_dataset/iTIMO-<City>/<City>_<OP>_{train,val,test}.json`
+`Benchmark/iTIMO_dataset/iTIMO-<City>/<City>_<OP>_{train,val,test}.json`
 
 Use the split CSVs under `data4perturb/<City>/` and filter by the `seqID` column
 (already 7:1:2). Example:
@@ -74,7 +74,7 @@ for split in ["train", "val", "test"]:
     ids = set(str(x) for x in df["seqID"].unique())
     splits[split] = {k: v for k, v in examples.items() if str(k) in ids}
 
-out_dir = Path("benchmark/iTIMO_dataset") / city_dir[city]
+out_dir = Path("Benchmark/iTIMO_dataset") / city_dir[city]
 out_dir.mkdir(parents=True, exist_ok=True)
 for split, data in splits.items():
     out_path = out_dir / f"{city}_{op}_{split}.json"
@@ -85,22 +85,22 @@ PY
 If you do not have split CSVs yet, generate them first:
 
 ```bash
-python Dataset_Pipline/data_split.py
+python DatasetPipeline/data_split.py
 ```
 
 This uses a fixed random seed of 42 by default. You can override it via `--seed`.
 You can also auto-generate splits for Melb/Toro by specifying `--city`:
 
 ```bash
-python Dataset_Pipline/data_split.py --city Melb
-python Dataset_Pipline/data_split.py --city Toro
+python DatasetPipeline/data_split.py --city Melb
+python DatasetPipeline/data_split.py --city Toro
 ```
 
 To build benchmark JSON splits from `data_cons.py` outputs, pass `--op`:
 
 ```bash
-python Dataset_Pipline/data_split.py --city Florence --op ADD
-python Dataset_Pipline/data_split.py --city Melb --op DELETE
+python DatasetPipeline/data_split.py --city Florence --op ADD
+python DatasetPipeline/data_split.py --city Melb --op DELETE
 ```
 
 ## 🔎 4) (Optional) RAG neighbor construction
@@ -108,13 +108,13 @@ python Dataset_Pipline/data_split.py --city Melb --op DELETE
 These scripts use embedding files under `RAG_emd/` to add `rec_examples_*` fields.
 
 ```bash
-python Dataset_Pipline/RAG_build_emd.py --root . --inplace
-python Dataset_Pipline/RAG_build_hint.py
+python DatasetPipeline/RAG_build_emd.py --root . --inplace
+python DatasetPipeline/RAG_build_hint.py
 ```
 
 Notes:
 - `RAG_build_emd.py` writes `rec_examples_*` into
-  `benchmark/iTIMO_dataset/<City>_<OP>_{train,val,test}.json`.
+  `Benchmark/iTIMO_dataset/<City>_<OP>_{train,val,test}.json`.
 - `RAG_build_hint.py` builds `rec_examples` from train-only pools.
 
 ### 🔗 Relationship between RAG scripts

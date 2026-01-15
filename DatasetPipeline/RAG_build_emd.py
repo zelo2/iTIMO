@@ -4,7 +4,7 @@ Build embedding-based RAG neighbors and write them into SFT JSON files.
 
 Directory conventions (auto-detected):
   repo_root/
-    benchmark/
+    Benchmark/
       RAG_emd/ (or RAG_Emd/)
         Melb_ADD_examples_qwen3_embeddings.npz
         Melb_ADD_examples_azure_embeddings.npz
@@ -51,13 +51,13 @@ CITY_DIR_MAP = {
 def resolve_rag_dir(root: Path) -> Path:
     """
     Locate the directory containing embedding npz files.
-    Checks RAG_emd/ or RAG_Emd/ under <root> and <root>/benchmark.
+    Checks RAG_emd/ or RAG_Emd/ under <root> and <root>/Benchmark.
     """
     candidates = [
         root / "RAG_emd",
         root / "RAG_Emd",
-        root / "benchmark" / "RAG_emd",
-        root / "benchmark" / "RAG_Emd",
+        root / "Benchmark" / "RAG_emd",
+        root / "Benchmark" / "RAG_Emd",
     ]
     for cand in candidates:
         if cand.exists():
@@ -68,12 +68,12 @@ def resolve_rag_dir(root: Path) -> Path:
 def resolve_dataset_root(root: Path) -> Path:
     """
     Locate dataset root (iTIMO_dataset). Tries:
-      - <root>/benchmark/iTIMO_dataset
+      - <root>/Benchmark/iTIMO_dataset
       - <root>/iTIMO_dataset
       - <root>/Dataset (legacy)
     """
     candidates = [
-        root / "benchmark" / "iTIMO_dataset",
+        root / "Benchmark" / "iTIMO_dataset",
         root / "iTIMO_dataset",
         root / "Dataset",  # legacy
     ]
@@ -473,7 +473,7 @@ def main() -> None:
         "--root",
         type=str,
         default=str(DEFAULT_ROOT),
-        help="Project root (will search for RAG_emd/ and benchmark/iTIMO_dataset/ relative to it).",
+        help="Project root (will search for RAG_emd/ and Benchmark/iTIMO_dataset/ relative to it).",
     )
     parser.add_argument(
         "--topk",

@@ -18,7 +18,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from Dataset_Pipline.template import baseline_prompts
+from DatasetPipeline.template import baseline_prompts
 from urllib.parse import unquote_plus
 
 deepseek_api_key = "YOUR API KEY"

@@ -14,9 +14,9 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from Dataset_Pipline import dataset
-from Dataset_Pipline.V31FM_perturbation import candidate_generation, haversine_distance
-from benchmark import benchmark_prompts
+from DatasetPipeline import dataset
+from DatasetPipeline.V31FM_perturbation import candidate_generation, haversine_distance
+from Benchmark import benchmark_prompts
 
 
 from tenacity import (

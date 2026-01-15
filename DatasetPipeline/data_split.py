@@ -39,7 +39,7 @@ def load_examples(path: Path):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Split trajectories and build benchmark JSON splits.")
+    parser = argparse.ArgumentParser(description="Split trajectories and build Benchmark JSON splits.")
     parser.add_argument(
         "--city",
         choices=["Florence", "Melb", "Toro"],
@@ -58,7 +58,7 @@ def main():
     parser.add_argument(
         "--op",
         choices=["ADD", "DELETE", "REPLACE"],
-        help="If set, split <City>_<OP>_examples.json into benchmark train/val/test JSON.",
+        help="If set, split <City>_<OP>_examples.json into Benchmark train/val/test JSON.",
     )
     parser.add_argument(
         "--examples_path",
@@ -68,7 +68,7 @@ def main():
     parser.add_argument(
         "--examples_out_dir",
         default=None,
-        help="Output dir for benchmark JSON splits (default: benchmark/iTIMO_dataset/iTIMO-<City>).",
+        help="Output dir for Benchmark JSON splits (default: Benchmark/iTIMO_dataset/iTIMO-<City>).",
     )
     parser.add_argument(
         "--force_resplit",
@@ -149,7 +149,7 @@ def main():
 
         out_examples_dir = Path(
             args.examples_out_dir
-            or (REPO_ROOT / "benchmark" / "iTIMO_dataset" / CITY_DIR_MAP[city])
+            or (REPO_ROOT / "Benchmark" / "iTIMO_dataset" / CITY_DIR_MAP[city])
         )
         out_examples_dir.mkdir(parents=True, exist_ok=True)
 
@@ -157,7 +157,7 @@ def main():
             data = {k: v for k, v in examples.items() if str(k) in ids}
             out_path = out_examples_dir / f"{city}_{args.op}_{split}.json"
             out_path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n")
-        print(f"Wrote benchmark splits to: {out_examples_dir}")
+        print(f"Wrote Benchmark splits to: {out_examples_dir}")
 
 
 if __name__ == "__main__":

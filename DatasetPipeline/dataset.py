@@ -6,8 +6,8 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from Dataset_Pipline.position_POI_extraction import extract_change
-from benchmark import benchmark_prompts
+from DatasetPipeline.position_POI_extraction import extract_change
+from Benchmark import benchmark_prompts
 
 class Prompt_Dataset():
     def __init__(self, city_name, perturb_op=None):

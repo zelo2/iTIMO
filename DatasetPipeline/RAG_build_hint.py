@@ -5,11 +5,11 @@ import re
 from collections import defaultdict
 from pathlib import Path
 
-# Default to released benchmark splits under benchmark/iTIMO_dataset/iTIMO-*/
+# Default to released benchmark splits under Benchmark/iTIMO_dataset/iTIMO-*/
 # Fallback to legacy SFT_data/ if someone still keeps that layout around.
 REPO_ROOT = Path(__file__).resolve().parents[1]
-DATA_ROOT = REPO_ROOT / "benchmark" / "iTIMO_dataset"
-LEGACY_ROOT = REPO_ROOT / "benchmark" / "SFT_data"
+DATA_ROOT = REPO_ROOT / "Benchmark" / "iTIMO_dataset"
+LEGACY_ROOT = REPO_ROOT / "Benchmark" / "SFT_data"
 
 
 # --------- Utility functions ---------
@@ -171,7 +171,7 @@ def process_city_op(city, op, base_dir: Path, k=5):
 
 
 if __name__ == "__main__":
-    # Auto-scan benchmark/iTIMO_dataset/ (preferred) and legacy SFT_data/ for *_train.json
+    # Auto-scan Benchmark/iTIMO_dataset/ (preferred) and legacy SFT_data/ for *_train.json
     candidate_roots = [DATA_ROOT, LEGACY_ROOT]
     train_files = []
     for root in candidate_roots:

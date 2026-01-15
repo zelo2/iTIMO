@@ -34,7 +34,7 @@ from typing import Dict, List, Optional
 from openai import OpenAI
 from openai import AzureOpenAI
 
-from benchmark import benchmark_prompts
+import benchmark_prompts
 
 DATA_ROOT = Path(__file__).resolve().parent / "iTIMO_dataset"
 CITY_DIR_MAP: Dict[str, str] = {
@@ -168,7 +168,7 @@ def run_once(args):
     icl_examples = load_split(args.city, args.op, "train")
     valid_icl_pool = list(icl_examples.keys())
 
-    out_path = Path(args.output or f"benchmark/prompt_results/prompt_eval_{args.provider}_{args.model}_{args.city}_{args.op}_rag-{args.rag_mode}_icl-{args.icl_num}_{args.split}.json")
+    out_path = Path(args.output or f"Benchmark/prompt_results/prompt_eval_{args.provider}_{args.model}_{args.city}_{args.op}_rag-{args.rag_mode}_icl-{args.icl_num}_{args.split}.json")
     existing = {}
     if args.resume and out_path.exists():
         try:

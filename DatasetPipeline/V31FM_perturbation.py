@@ -20,12 +20,12 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from Dataset_Pipline import position_POI_extraction
-from Dataset_Pipline.template import functions, prompts
+from DatasetPipeline import position_POI_extraction
+from DatasetPipeline.template import functions, prompts
 from urllib.parse import unquote_plus
 import time, httpx
 from openai import OpenAI, NotFoundError, APIStatusError, RateLimitError, APIConnectionError
-from benchmark.api_key import api_key
+from Benchmark.api_key import api_key
 
 
 deepseek_api_key = "YOUR API KEY"

@@ -14,7 +14,7 @@ POI accuracy rules:
     compare after converting lon/lat to float; exact match → POI correct
   - If either condition is met, count as POI hit
 
-Usage (run inside repo or benchmark/):
+Usage (run inside repo or Benchmark/):
     # parsed results (recommended) – writes accuracy_hint_summary.json inside each detected root
     python eval.py --glob "*_example.json"
 
@@ -41,9 +41,9 @@ REPO_ROOT = SCRIPT_DIR.parent
 # Known prediction roots (parsed or raw)
 DEFAULT_ROOT_NAMES = [
     "results_parsed",
-    "benchmark/results_parsed",   # when running from inside benchmark/
+    "Benchmark/results_parsed",   # when running from inside Benchmark/
     "prompt_results",             # raw prompt outputs (with --auto-parse)
-    "benchmark/prompt_results",   # raw prompt outputs when running inside benchmark/
+    "Benchmark/prompt_results",   # raw prompt outputs when running inside Benchmark/
     "SFT_predictions_fullft",     # full FT outputs
     "SFT_predictions_lora",       # LoRA outputs
     "SFT_results",                # legacy
@@ -516,8 +516,8 @@ def parse_args():
         nargs="+",
         default=None,
         help="Root folders containing prediction JSONs. "
-             "Default: auto-detect under benchmark/ (results_parsed, prompt_results, "
-             "SFT_predictions_fullft, SFT_predictions_lora, SFT_results, and their benchmark/ prefixed variants).",
+             "Default: auto-detect under Benchmark/ (results_parsed, prompt_results, "
+             "SFT_predictions_fullft, SFT_predictions_lora, SFT_results, and their Benchmark/ prefixed variants).",
     )
     parser.add_argument(
         "--glob",
@@ -527,7 +527,7 @@ def parse_args():
     parser.add_argument(
         "--examples-dir",
         default=str(SCRIPT_DIR),
-        help="Directory containing <City>_<OP>_examples.json (symlink or copy). Default: benchmark/ directory.",
+        help="Directory containing <City>_<OP>_examples.json (symlink or copy). Default: Benchmark/ directory.",
     )
     parser.add_argument(
         "--auto-parse",

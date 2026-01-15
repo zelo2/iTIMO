@@ -9,7 +9,7 @@ iTIMO Full Fine-tuning (Unsloth FFT) + Immediate Inference (NO model saving)
 - ✅ Lazy-build token cache: only build for needed (city, op, rag, icl)
 - ✅ No ckpt/model saving (only prediction JSON)
 - ✅ gemma3 / llama3 hyperparameters auto-mapped via MODEL_TRIAL_MAP
-- ✅ Notebook-safe: works without __file__ (auto-locates benchmark/)
+- ✅ Notebook-safe: works without __file__ (auto-locates Benchmark/)
 """
 
 import os
@@ -33,14 +33,14 @@ from benchmark_prompts import prompt_add, prompt_delete, prompt_replace
 
 
 # ======================================================================================
-# 1) Notebook-safe benchmark/ discovery
+# 1) Notebook-safe Benchmark/ discovery
 # ======================================================================================
 def find_benchmark_dir(start: Path) -> Path:
     """
-    Locate benchmark directory that contains benchmark_prompts.py and iTIMO_dataset/.
+    Locate Benchmark directory that contains benchmark_prompts.py and iTIMO_dataset/.
     Supports:
-      - cwd == benchmark/
-      - cwd == project root with benchmark in ./benchmark
+      - cwd == Benchmark/
+      - cwd == project root with Benchmark in ./Benchmark
       - deeper cwd: walk parents until found
     """
     start = start.resolve()
@@ -48,22 +48,22 @@ def find_benchmark_dir(start: Path) -> Path:
     def ok(p: Path) -> bool:
         return (p / "iTIMO_dataset").exists() and (p / "benchmark_prompts.py").exists()
 
-    # start is already benchmark/
+    # start is already Benchmark/
     if ok(start):
         return start
 
-    # start/benchmark
-    if ok(start / "benchmark"):
-        return (start / "benchmark").resolve()
+    # start/Benchmark
+    if ok(start / "Benchmark"):
+        return (start / "Benchmark").resolve()
 
     # parents
     for p in [start] + list(start.parents):
         if ok(p):
             return p.resolve()
-        if ok(p / "benchmark"):
-            return (p / "benchmark").resolve()
+        if ok(p / "Benchmark"):
+            return (p / "Benchmark").resolve()
 
-    raise FileNotFoundError(f"Cannot locate benchmark/ with iTIMO_dataset + benchmark_prompts.py from start={start}")
+    raise FileNotFoundError(f"Cannot locate Benchmark/ with iTIMO_dataset + benchmark_prompts.py from start={start}")
 
 BENCHMARK_DIR = find_benchmark_dir(Path.cwd())
 print("[BENCHMARK_DIR]", BENCHMARK_DIR, flush=True)

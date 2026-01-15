@@ -39,14 +39,14 @@ def find_benchmark_dir(start: Path) -> Path:
         return (p / "iTIMO_dataset").exists() and (p / "benchmark_prompts.py").exists()
     if ok(start):
         return start
-    if ok(start / "benchmark"):
-        return (start / "benchmark").resolve()
+    if ok(start / "Benchmark"):
+        return (start / "Benchmark").resolve()
     for p in [start] + list(start.parents):
         if ok(p):
             return p.resolve()
-        if ok(p / "benchmark"):
-            return (p / "benchmark").resolve()
-    raise FileNotFoundError(f"Cannot locate benchmark/ with iTIMO_dataset + benchmark_prompts.py from start={start}")
+        if ok(p / "Benchmark"):
+            return (p / "Benchmark").resolve()
+    raise FileNotFoundError(f"Cannot locate Benchmark/ with iTIMO_dataset + benchmark_prompts.py from start={start}")
 
 BENCHMARK_DIR = find_benchmark_dir(Path(__file__).resolve().parent if "__file__" in globals() else Path.cwd())
 

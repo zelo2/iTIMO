@@ -8,14 +8,14 @@ This repository provides the dataset and code for *iTIMO: An LLM-Empowered Synth
 
 ## 📦 Dataset
 
-The released benchmark dataset is under `benchmark/iTIMO_dataset/`:
-- `benchmark/iTIMO_dataset/iTIMO-Florence/`
-- `benchmark/iTIMO_dataset/iTIMO-Melbourne/`
-- `benchmark/iTIMO_dataset/iTIMO-Toronto/`
+The released benchmark dataset is under `Benchmark/iTIMO_dataset/`:
+- `Benchmark/iTIMO_dataset/iTIMO-Florence/`
+- `Benchmark/iTIMO_dataset/iTIMO-Melbourne/`
+- `Benchmark/iTIMO_dataset/iTIMO-Toronto/`
 
 ### 🔁 Perturbation vs. Modification (Important)
 
-In filenames like `benchmark/iTIMO_dataset/iTIMO-Florence/Florence_ADD_test.json`, the `ADD/DELETE/REPLACE` token refers to the **perturbation** operation used to create the need-to-modify itinerary. The **modification** operation is the *inverse*:
+In filenames like `Benchmark/iTIMO_dataset/iTIMO-Florence/Florence_ADD_test.json`, the `ADD/DELETE/REPLACE` token refers to the **perturbation** operation used to create the need-to-modify itinerary. The **modification** operation is the *inverse*:
 - `*_ADD_*.json` → modify with **DELETE** (gold label field: `removed_index`)
 - `*_DELETE_*.json` → modify with **ADD** (gold label fields: `insert_index`, `selected_poi`, `selected_cand_id`)
 - `*_REPLACE_*.json` → modify with **REPLACE** (gold label fields: `replaced_index`, `selected_poi`, `selected_cand_id`)
@@ -41,8 +41,8 @@ The dataset statistics are provided in the paper (Table 2):
 ## 🧭 Project Structure
 
 This repo has two main parts:
-- Data construction & perturbation: [Dataset_Pipline/README.md](Dataset_Pipline/README.md)
-- Benchmark & evaluation: [benchmark/README.md](benchmark/README.md)
+- Data construction & perturbation: [DatasetPipeline/README.md](DatasetPipeline/README.md)
+- Benchmark & evaluation: [Benchmark/README.md](Benchmark/README.md)
 
 ## 🛠️ Installation
 
@@ -52,21 +52,21 @@ Recommended Python `>=3.10`.
 pip install -r requirements.txt
 ```
 
-Note: running `Dataset_Pipline/V31FM_perturbation.py` / `Dataset_Pipline/baseline_perturbation.py` / `benchmark/Prompting_LLM.py` requires access to the corresponding APIs (DeepSeek / Azure OpenAI / OpenAI, etc.).
+Note: running `DatasetPipeline/V31FM_perturbation.py` / `DatasetPipeline/baseline_perturbation.py` / `Benchmark/Prompting_LLM.py` requires access to the corresponding APIs (DeepSeek / Azure OpenAI / OpenAI, etc.).
 
 ## 🧪 Data Construction (Perturbation + Examples)
 
-See [Dataset_Pipline/README.md](Dataset_Pipline/README.md) for perturbation and dataset construction steps.
+See [DatasetPipeline/README.md](DatasetPipeline/README.md) for perturbation and dataset construction steps.
 
 ## 📈 Benchmark & Evaluation
 
-See [benchmark/README.md](benchmark/README.md) for evaluation, inference, parsing, and fine-tuning.
+See [Benchmark/README.md](Benchmark/README.md) for evaluation, inference, parsing, and fine-tuning.
 
 ## 🗂️ Repository Layout (What Each Part Does)
 
 ```text
 iTIMO/
-├── Dataset_Pipline/
+├── DatasetPipeline/
 │   ├── V31FM_perturbation.py — main perturbation generator (LLM + tool-calling + optional memory)
 │   ├── baseline_perturbation.py — baseline perturbation generator
 │   ├── position_POI_extraction.py — diff detector between original and perturbed itineraries
@@ -80,7 +80,7 @@ iTIMO/
 │       ├── baseline_prompts.py — prompts for baseline_perturbation.py
 │       ├── functions.py — tool JSON schemas for tool-calling
 │       └── CaseStudy.py — small demo/case-study helpers
-├── benchmark/
+├── Benchmark/
 │   ├── Prompting_LLM.py — prompt-based itinerary modification runner (Azure/OpenAI/DeepSeek/LM Studio)
 │   ├── process_pred.py — parse model outputs
 │   ├── eval.py — compute accuracy + hint metrics
