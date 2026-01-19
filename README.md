@@ -8,7 +8,7 @@ This repository provides the dataset and code for *iTIMO: An LLM-Empowered Synth
 
 ## 📄 Supplementary Material (Quick Link)
 
-**[supplementary_material.pdf](supplementary_material.pdf)** — dataset details, additional analysis, and extended examples.
+**[supplementary_material.pdf](supplementary_material.pdf)** — dataset details, additional analysis, and prompt examples.
 
 ## 📦 Dataset
 
