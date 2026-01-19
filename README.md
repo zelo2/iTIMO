@@ -38,6 +38,10 @@ The dataset statistics are provided in the paper (Table 2):
   <img src="figures/dataset_stats_table2.png" width="720" alt="iTIMO dataset statistics (Table 2)" />
 </p>
 
+## 📄 Supplementary Material
+
+The supplementary material is available at `supplementary_material.pdf` (dataset details, additional analysis, and extended examples).
+
 ## 🧭 Project Structure
 
 This repo has two main parts:
