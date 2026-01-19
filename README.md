@@ -6,6 +6,10 @@
 
 This repository provides the dataset and code for *iTIMO: An LLM-Empowered Synthesis Dataset for Travel Itinerary Modification*.
 
+## 📄 Supplementary Material (Quick Link)
+
+**[supplementary_material.pdf](supplementary_material.pdf)** — dataset details, additional analysis, and extended examples.
+
 ## 📦 Dataset
 
 The released benchmark dataset is under `Benchmark/iTIMO_dataset/`:
@@ -37,10 +41,6 @@ The dataset statistics are provided in the paper (Table 2):
 <p align="center">
   <img src="figures/dataset_stats_table2.png" width="720" alt="iTIMO dataset statistics (Table 2)" />
 </p>
-
-## 📄 Supplementary Material
-
-The supplementary material is available at `supplementary_material.pdf` (dataset details, additional analysis, and extended examples).
 
 ## 🧭 Project Structure
 
