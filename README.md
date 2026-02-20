@@ -39,7 +39,7 @@ In filenames like `Benchmark/iTIMO_dataset/iTIMO-Florence/Florence_ADD_test.json
 The dataset statistics are provided in the paper (Table 2):
 
 <p align="center">
-  <img src="figures/dataset_stats_table2.png" width="720" alt="iTIMO dataset statistics (Table 2)" />
+  <img src="figures/dataset_stats_table2.png" width="720" alt="iTIMO dataset statistics (Table 3)" />
 </p>
 
 ## 🧭 Project Structure
